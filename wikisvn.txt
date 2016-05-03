@@ -1,0 +1,45 @@
+
+####################################
+Prérequis : installer svn 
+- ubuntu : sudo apt-get install subversion 
+- windows : https://sourceforge.net/projects/win32svn/
+- mac : débrouillez vous les enfants 
+
+####################################
+
+
+#Récupération pour la première fois du dépot (demande de mdp insa)
+
+svn checkout https://svn.insa-lyon.fr/svn/Tendance/
+
+
+#Récupération de la dernière version du projet
+
+svn update 
+
+
+#Mise à jour des modifications dans le dépôt (après avoir crée un nouveau fichier)
+
+svn commit -m "Ajout de ta mère dans le dépot de mes couilles"
+
+
+#Ajout d'un fichier (effectif qu'au prochain commit)
+
+svn add fichier.mescouilles
+
+
+#Suppression d'un fichier 
+
+svn delete fichier.mescouilles
+
+
+
+Breeef les commandes les plus sophitiquées sont là 
+
+https://dev.nozav.org/intro_svn.html
+
+
+La bise 
+Mehdi 
+
+
