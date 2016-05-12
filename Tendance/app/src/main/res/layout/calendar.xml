@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    tools:context="insa.tc.tendance.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonshape"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/home"/>
+
+        <ImageButton
+            android:id="@+id/calendar"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/calendar2"/>
+
+        <ImageButton
+            android:id="@+id/tshirt"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/tshirt"/>
+
+        <ImageButton
+            android:id="@+id/friend"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/friend"/>
+
+        <ImageButton
+            android:id="@+id/me"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/me"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/layout1"
+        android:background="@color/blanc">
+
+        <CalendarView
+            android:layout_width="match_parent"
+            android:layout_height="326dp"
+            android:id="@+id/calendarView"
+            android:background="@color/blanc"
+            android:onClick="onClick" />
+
+    </LinearLayout>
+
+</RelativeLayout>
