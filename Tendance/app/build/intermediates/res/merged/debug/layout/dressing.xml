@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    tools:context="insa.tc.tendance.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonshape"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/home"/>
+
+        <ImageButton
+            android:id="@+id/calendar"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/calendar"/>
+
+        <ImageButton
+            android:id="@+id/tshirt"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/tshirt2"/>
+
+        <ImageButton
+            android:id="@+id/friend"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/friend"/>
+
+        <ImageButton
+            android:id="@+id/me"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/me"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menudressing"
+        android:orientation="vertical"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/buttonshape"
+        android:layout_above="@+id/layout1"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coat"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:background="@drawable/buttonshape"
+            android:id="@+id/coat"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:text="Top"
+            android:background="@drawable/buttonshape"
+            android:id="@+id/top" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:text="Trousers"
+            android:background="@drawable/buttonshape"
+            android:id="@+id/trousers" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:text="Dress"
+            android:background="@drawable/buttonshape"
+            android:id="@+id/dress" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:text="Skirt"
+            android:background="@drawable/buttonshape"
+            android:id="@+id/skirt" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:text="Shoes"
+            android:background="@drawable/buttonshape"
+            android:id="@+id/shoes" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:text="other"
+            android:background="@drawable/buttonshape"
+            android:id="@+id/other" />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/iconadd"
+            android:id="@+id/addButton"
+            android:background="@null"
+            android:layout_weight="0.25" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/menudressing"
+        android:layout_alignParentTop="true"
+        android:background="@color/blanc"
+        android:layout_above="@+id/layout1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/sendoutfit"
+                android:background="@color/blanc"
+                android:src="@drawable/sendoutfit" />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/photogr"
+                android:background="@color/blanc"
+                android:src="@drawable/photogr" />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/questiontshirt"
+                android:background="@color/blanc"
+                android:src="@drawable/questiontshirt" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/blanc"
+            android:id="@+id/imageButton"
+            android:src="@drawable/comment"
+            android:layout_gravity="right|bottom" />
+
+    </FrameLayout>
+
+</RelativeLayout>
