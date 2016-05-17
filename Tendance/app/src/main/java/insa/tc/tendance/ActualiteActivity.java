@@ -36,7 +36,7 @@ public class ActualiteActivity extends Activity {
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent calendrier = new Intent(ActualiteActivity.this, CalendarActivity.class);
+                Intent calendrier = new Intent(ActualiteActivity.this, MyCalendarActivity.class);
                 startActivity(calendrier);
             }
         });

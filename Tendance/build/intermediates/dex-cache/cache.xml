@@ -1,19 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/Users/Camille/.gradle/caches/modules-2/files-2.1/com.darwinsys/hirondelle-date4j/1.5.1/7b52de513f87ae4d9ff5d17518def0a1e9bc3df0/hirondelle-date4j-1.5.1.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="7b52de513f87ae4d9ff5d17518def0a1e9bc3df0">
-        <dex dex="/Users/Camille/AndroidStudioProjects/Tendance/app/build/intermediates/pre-dexed/debug/hirondelle-date4j-1.5.1_613940c560d7d6cc013ecddca1629acb41121376.jar" />
-    </item>
-    <item
-        jar="/Users/Camille/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="fea01abd91186a7148aaaf8c517b823eedaac79a">
-        <dex dex="/Users/Camille/AndroidStudioProjects/Tendance/app/build/intermediates/pre-dexed/debug/com.roomorama-caldroid-3.0.1_1a38e398d91ebb7d20f6f962ffacbf11e9d8419e.jar" />
-    </item>
-
-</items>
+<items version="2" />

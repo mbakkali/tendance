@@ -21,6 +21,10 @@
         <activity android:name=".PersonnelActivity" />
         <activity android:name=".DressingActivity" />
         <activity android:name=".FriendActivity" />
+        <activity
+            android:name=".MyCalendarActivity"
+            android:label="@string/app_name"/>
+
     </application>
 
 </manifest>
