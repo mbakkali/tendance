@@ -1,222 +1,246 @@
 [
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/red_border_gray_bg.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/red_border_gray_bg.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/iconmail.jpeg",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/iconmail.jpeg"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/red_border_dark.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/red_border_dark.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_list_selector_holo_dark.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_btn_borderless_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_btn_borderless_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_indicator_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_ratingbar_indicator_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_textfield_search_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/tshirt2.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/tshirt2.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/fb.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/fb.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/iconadd.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/iconadd.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_btn_radio_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_thumb_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_light.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_list_selector_holo_light.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_cab_background_top_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/comment.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/comment.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/comment.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/comment.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/calendar.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/calendar.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/buttonshape.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/buttonshape.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_cab_background_top_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_switch_thumb_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/left_arrow.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/left_arrow.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/iconsex.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/iconsex.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_list_selector_holo_dark.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/calendar.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/calendar.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/me2.PNG",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/me2.PNG"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/red_border_dark.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/red_border_dark.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/iconadd.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/iconadd.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/calendar_days.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/calendar_days.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/questiontshirt.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/questiontshirt.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/calendar2.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/calendar2.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_thumb_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_seekbar_thumb_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/logo.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/logo.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_item_background_holo_dark.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/red_border_gray_bg.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/red_border_gray_bg.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/buttonrond.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/buttonrond.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/buttonrond.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/buttonrond.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/buttonshape.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/buttonshape.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/red_border.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/red_border.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/tshirt.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/tshirt.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/logo.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/logo.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/cell_bg.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/cell_bg.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_btn_default_mtrl_shape.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/tshirt.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/tshirt.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/friend.PNG",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/friend.PNG"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/disable_cell.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/disable_cell.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_internal_bg.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_cab_background_internal_bg.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/sendoutfit.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/sendoutfit.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/icontel.jpeg",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/icontel.jpeg"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/friend.PNG",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/friend.PNG"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/cell_bg_dark.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/cell_bg_dark.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background_dark.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_dialog_material_background_dark.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/photogr.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/photogr.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/friend2.PNG",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/friend2.PNG"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/disable_cell.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/disable_cell.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/questiontshirt.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/questiontshirt.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_indicator_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_ratingbar_indicator_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/menu.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/menu.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/home2.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/home2.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_btn_borderless_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_btn_borderless_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/calendar2.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/calendar2.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_text_cursor_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_text_cursor_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/iconmail.jpeg",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/iconmail.jpeg"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/arrow_left.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/arrow_left.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_track_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_seekbar_track_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/me2.PNG",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/me2.PNG"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/home.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/home.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_btn_radio_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/friend2.PNG",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/friend2.PNG"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_small_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_ratingbar_small_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background_light.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_dialog_material_background_light.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/home2.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/home2.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background_dark.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_dialog_material_background_dark.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/calendardays.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/calendardays.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_light.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_list_selector_background_transition_holo_light.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_light.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/sendoutfit.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/sendoutfit.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/disabled_cell_dark.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/disabled_cell_dark.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/right_arrow.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/right_arrow.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_internal_bg.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_cab_background_internal_bg.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_spinner_textfield_background_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_textfield_search_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_full_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_ratingbar_full_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_full_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_ratingbar_full_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/cell_bg.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/cell_bg.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_track_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_seekbar_track_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_tab_indicator_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/plusadd.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/plusadd.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/iconsex.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/iconsex.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/fb.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/fb.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_item_background_holo_light.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_item_background_holo_dark.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/me.PNG",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/me.PNG"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_btn_default_mtrl_shape.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/disabled_cell_dark.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/disabled_cell_dark.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_btn_check_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_btn_check_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/red_border.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/red_border.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/left_arrow.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/left_arrow.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_switch_thumb_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/photogr.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/photogr.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_small_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_ratingbar_small_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_item_background_holo_light.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/home.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/home.png"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_text_cursor_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_text_cursor_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/icontel.jpeg",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/icontel.jpeg"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_btn_check_material.xml",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_btn_check_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_tab_indicator_material.xml"
     },
     {
-        "merged": "/home/patrik/AndroidStudioProjects/Tendance/app/build/intermediates/res/merged/debug/drawable/tshirt2.png",
-        "source": "/home/patrik/AndroidStudioProjects/Tendance/app/src/main/res/drawable/tshirt2.png"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/cell_bg_dark.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/cell_bg_dark.xml"
+    },
+    {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background_light.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_dialog_material_background_light.xml"
+    },
+    {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/right_arrow.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/right_arrow.xml"
+    },
+    {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_light.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/me.PNG",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/me.PNG"
+    },
+    {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/arrow_right.png",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/arrow_right.png"
     }
 ]
