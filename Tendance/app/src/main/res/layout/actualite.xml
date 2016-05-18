@@ -57,4 +57,282 @@
             android:src="@drawable/me"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/blanc"
+        android:layout_above="@+id/layout1">
+
+        <ScrollView
+            android:layout_width="370dp"
+            android:layout_height="500dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="350dp"
+                android:layout_height="380dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/blanc"
+                android:weightSum="1">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/blanc"
+                    android:weightSum="1"
+                    android:id="@+id/headerUser">
+
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:id="@+id/userPicture1"
+                        android:src="@android:drawable/ic_menu_myplaces"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/headerright">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="User 1"
+                            android:id="@+id/userName1"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="04/05/2016"
+                            android:id="@+id/date1"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Description, BlaBlaBlaBlaBlaBlaBlaBla BlaBlaBla BlaBlaBla"
+                    android:id="@+id/descr1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.17"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:layout_height="260dp"
+                    android:background="@color/blanc"
+                    android:id="@+id/picturesplace">
+
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="270dp"
+                        android:id="@+id/outfit1"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/blanc"
+                        android:src="@drawable/tshirt"/>
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="270dp"
+                        android:id="@+id/selfie1"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/blanc"
+                        android:src="@android:drawable/ic_menu_myplaces"/>
+                </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="350dp"
+                android:layout_height="380dp"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/blanc"
+                android:weightSum="1">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/blanc"
+                    android:weightSum="1"
+                    android:id="@+id/headerUser2">
+
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:id="@+id/userPicture2"
+                        android:src="@android:drawable/ic_menu_myplaces"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/headerright2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="User 2"
+                            android:id="@+id/userName2"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="04/05/2016"
+                            android:id="@+id/date2"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Description, BlaBlaBlaBlaBlaBlaBlaBla BlaBlaBla BlaBlaBla"
+                    android:id="@+id/descr2"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.17"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:layout_height="260dp"
+                    android:background="@color/blanc"
+                    android:id="@+id/picturesplace2">
+
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="270dp"
+                        android:id="@+id/outfit2"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/blanc"
+                        android:src="@drawable/tshirt"/>
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="270dp"
+                        android:id="@+id/selfie2"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/blanc"
+                        android:src="@android:drawable/ic_menu_myplaces"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="350dp"
+                android:layout_height="380dp"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/blanc"
+                android:weightSum="1">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/blanc"
+                    android:weightSum="1"
+                    android:id="@+id/headerUser3">
+
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:id="@+id/userPicture3"
+                        android:src="@android:drawable/ic_menu_myplaces"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/headerright3">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="User 3"
+                            android:id="@+id/userName3"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="04/05/2016"
+                            android:id="@+id/date3"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Description, BlaBlaBlaBlaBlaBlaBlaBla BlaBlaBla BlaBlaBla"
+                    android:id="@+id/descr"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.17"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:layout_height="260dp"
+                    android:background="@color/blanc"
+                    android:id="@+id/picturesplace3">
+
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="270dp"
+                        android:id="@+id/outfit3"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/blanc"
+                        android:src="@drawable/tshirt"/>
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="270dp"
+                        android:id="@+id/selfie3"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/blanc"
+                        android:src="@android:drawable/ic_menu_myplaces"/>
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
 </RelativeLayout>
