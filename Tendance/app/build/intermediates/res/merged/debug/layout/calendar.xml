@@ -11,10 +11,10 @@
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttonshape"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
 
         <ImageButton
             android:id="@+id/home"
@@ -63,16 +63,16 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/layout1"
         android:background="@color/blanc"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_above="@+id/layout1">
 
         <LinearLayout
             android:id="@+id/buttonlayout"
             android:layout_width="fill_parent"
             android:layout_height="60sp"
             android:background="#ff0000"
-            android:gravity="left|top"
+            android:gravity="start|top"
             android:height="60sp"
             android:orientation="horizontal" >
 
@@ -120,35 +120,46 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" >
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/calendarheader"
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/calendardays" >
-            </ImageView>
+                android:layout_gravity="center" >
+
+                <ImageView
+                    android:id="@+id/calendarheader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/calendardays" >
+                </ImageView>
+            </LinearLayout>
+
+            <GridView
+                android:id="@+id/calendarView"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:numColumns="7">
+            </GridView>
+
+            <Button
+                android:id="@+id/selectedDayMonthYear"
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/buttonshape"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFFFFF" >
+            </Button>
+
         </LinearLayout>
 
-        <GridView
-            android:id="@+id/calendarView"
-            android:layout_width="fill_parent"
-            android:layout_height="203dp"
-            android:numColumns="7"
-            android:layout_weight="0.49">
-        </GridView>
-
-        <Button
-            android:id="@+id/selectedDayMonthYear"
-            android:layout_width="204dp"
+        <ScrollView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/buttonshape"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF" >
-        </Button>
+            android:id="@+id/scrollView2" />
 
     </LinearLayout>
 

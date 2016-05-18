@@ -1,46 +1,46 @@
 [
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_secondary_text_material_light.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/switch_thumb_material_dark.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_primary_text_material_dark.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_secondary_text_material_light.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/cell_text_color_dark.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/color/cell_text_color_dark.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_primary_text_material_light.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/switch_thumb_material_light.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_primary_text_material_light.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/cell_text_color.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/color/cell_text_color.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/cell_text_color.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/color/cell_text_color.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_secondary_text_material_dark.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/cell_text_color_dark.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/color/cell_text_color_dark.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_primary_text_disable_only_material_light.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/switch_thumb_material_light.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_search_url_text.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_secondary_text_material_dark.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/switch_thumb_material_dark.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_search_url_text.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_primary_text_disable_only_material_dark.xml"
+        "merged": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/home/patrik/AndroidStudioProjects/back/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_primary_text_disable_only_material_dark.xml"
     }
 ]

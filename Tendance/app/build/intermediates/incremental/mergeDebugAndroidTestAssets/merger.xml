@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/Camille/Documents/4TC/Tendance/app/src/androidTest/assets"/><source path="/Users/Camille/Documents/4TC/Tendance/app/build/generated/assets/shaders/androidTest/debug"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/home/patrik/AndroidStudioProjects/back/Tendance/app/src/androidTest/assets"/><source path="/home/patrik/AndroidStudioProjects/back/Tendance/app/build/generated/assets/shaders/androidTest/debug"/></dataSet></merger>
