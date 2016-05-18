@@ -55,5 +55,5 @@
             android:background="#FF0000"
             android:src="@drawable/me"/>
     </LinearLayout>
-
+    
 </RelativeLayout>
