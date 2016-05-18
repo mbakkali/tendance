@@ -64,7 +64,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:background="@color/blanc">
+        android:background="@color/blanc"
+        android:layout_above="@+id/scrollView">
 
         <LinearLayout
             android:orientation="vertical"
