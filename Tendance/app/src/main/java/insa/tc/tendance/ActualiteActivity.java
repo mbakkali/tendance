@@ -1,6 +1,7 @@
 package insa.tc.tendance;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,6 +19,9 @@ public class ActualiteActivity extends Activity {
     ImageButton tshirt;
     ImageButton friend;
     ImageButton me;
+    ImageButton like;
+    ImageButton like2;
+    ImageButton like3;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +69,53 @@ public class ActualiteActivity extends Activity {
             public void onClick(View v) {
                 Intent user = new Intent(ActualiteActivity.this, PersonnelActivity.class);
                 startActivity(user);
+            }
+        });
+
+
+        like = (ImageButton)findViewById(R.id.like1);
+        like.setOnClickListener(new View.OnClickListener() {
+            int i =0;
+
+            public void onClick(View v) {
+
+                if (i % 2 == 0){
+                    like.setImageResource(R.drawable.heart1);
+                    i = i + 1;
+                } else {
+                    like.setImageResource(R.drawable.heart2);
+                    i = i + 1;
+                }
+            }
+        });
+        like2 = (ImageButton)findViewById(R.id.like2);
+        like2.setOnClickListener(new View.OnClickListener() {
+            int i =0;
+
+            public void onClick(View v) {
+
+                if (i % 2 == 0){
+                    like2.setImageResource(R.drawable.heart1);
+                    i = i + 1;
+                } else {
+                    like2.setImageResource(R.drawable.heart2);
+                    i = i + 1;
+                }
+            }
+        });
+        like3 = (ImageButton)findViewById(R.id.like3);
+        like3.setOnClickListener(new View.OnClickListener() {
+            int i =0;
+
+            public void onClick(View v) {
+
+                if (i % 2 == 0){
+                    like3.setImageResource(R.drawable.heart1);
+                    i = i + 1;
+                } else {
+                    like3.setImageResource(R.drawable.heart2);
+                    i = i + 1;
+                }
             }
         });
     }
