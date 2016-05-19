@@ -76,92 +76,121 @@
                 android:orientation="vertical"
                 android:layout_width="350dp"
                 android:layout_height="380dp"
-                android:layout_marginTop="16dp"
-                android:background="@color/blanc"
                 android:weightSum="1">
 
-
                 <LinearLayout
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_width="350dp"
-                    android:layout_height="70dp"
+                    android:layout_height="440dp"
+                    android:layout_marginTop="16dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/blanc"
                     android:weightSum="1"
-                    android:id="@+id/headerUser">
+                    android:layout_weight="0.70">
 
-
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:id="@+id/userPicture1"
-                        android:src="@android:drawable/ic_menu_myplaces"/>
 
                     <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
+                        android:layout_width="350dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/blanc"
+                        android:weightSum="1"
+                        android:id="@+id/headerUser1">
+
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/userPicture1"
+                            android:src="@android:drawable/ic_menu_myplaces"/>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/headerright1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="User 1"
+                                android:id="@+id/userName1"
+                                android:textColor="@color/black"
+                                android:textSize="26dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="04/05/2016"
+                                android:id="@+id/date1"
+                                android:textColor="@color/black"
+                                android:textSize="26dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/headerright">
+                        android:layout_height="80dp"
+                        android:text="Description, BlaBlaBlaBlaBlaBlaBlaBla BlaBlaBla BlaBlaBla"
+                        android:id="@+id/descr1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="0.17"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="User 1"
-                            android:id="@+id/userName1"
-                            android:textColor="@color/black"
-                            android:textSize="26dp"/>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="350dp"
+                        android:layout_height="260dp"
+                        android:background="@color/blanc"
+                        android:id="@+id/picturesplace1">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="04/05/2016"
-                            android:id="@+id/date1"
-                            android:textColor="@color/black"
-                            android:textSize="26dp"/>
+
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="270dp"
+                            android:id="@+id/outfit1"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/blanc"
+                            android:src="@drawable/tshirt"/>
+
+
+
+                        <ImageView
+                            android:layout_width="160dp"
+                            android:layout_height="270dp"
+                            android:id="@+id/selfie1"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/blanc"
+                            android:src="@android:drawable/ic_menu_myplaces"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="350dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/blanc"
+                        android:layout_weight="0.70">
+
+                        <ImageButton
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:id="@+id/like1"
+                            android:background="@color/blanc"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="310dp"
+                            android:src="@drawable/heart1"/>
                     </LinearLayout>
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="Description, BlaBlaBlaBlaBlaBlaBlaBla BlaBlaBla BlaBlaBla"
-                    android:id="@+id/descr1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.17"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"/>
-
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="350dp"
-                    android:layout_height="260dp"
-                    android:background="@color/blanc"
-                    android:id="@+id/picturesplace">
-
-
-                    <ImageView
-                        android:layout_width="200dp"
-                        android:layout_height="270dp"
-                        android:id="@+id/outfit1"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/blanc"
-                        android:src="@drawable/tshirt"/>
-                    <ImageView
-                        android:layout_width="160dp"
-                        android:layout_height="270dp"
-                        android:id="@+id/selfie1"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/blanc"
-                        android:src="@android:drawable/ic_menu_myplaces"/>
-                </LinearLayout>
-
-
-            <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="350dp"
-                android:layout_height="380dp"
+                    android:layout_width="350dp"
+                    android:layout_height="440dp"
                 android:layout_marginTop="16dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@color/blanc"
@@ -243,12 +272,29 @@
                         android:background="@color/blanc"
                         android:src="@android:drawable/ic_menu_myplaces"/>
                 </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="350dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/blanc"
+                        android:layout_weight="0.70">
+
+                        <ImageButton
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:id="@+id/like2"
+                            android:background="@color/blanc"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="310dp"
+                            android:src="@drawable/heart1"/>
+                    </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="350dp"
-                android:layout_height="380dp"
+                android:layout_height="440dp"
                 android:layout_marginTop="16dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@color/blanc"
@@ -329,6 +375,23 @@
                         android:layout_gravity="center_vertical"
                         android:background="@color/blanc"
                         android:src="@android:drawable/ic_menu_myplaces"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/blanc"
+                    android:layout_weight="0.70">
+
+                    <ImageButton
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:id="@+id/like3"
+                        android:background="@color/blanc"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="310dp"
+                        android:src="@drawable/heart1"/>
                 </LinearLayout>
             </LinearLayout>
             </LinearLayout>
