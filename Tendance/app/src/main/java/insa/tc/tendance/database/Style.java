@@ -21,8 +21,8 @@ public class Style {
         this.id = id;
         this.nom = nom;
     }
-    public void addStyleLocal(SQLiteOpenHelper tendance){
-        SQLiteDatabase db = tendance.getWritableDatabase();
+    public void addStyleLocal(SQLiteDatabase db){
+
         ContentValues values = new ContentValues();
         values.put("nom", this.nom);
         id = db.insert("STYLE", null , values);
@@ -47,10 +47,8 @@ public class Style {
                 null,
                 sortOrder                                 // The sort order
         );
-        c.moveToFirst();
-        while (c.isAfterLast() == false) {
+        while ( c.moveToNext()) {
             styles.add(new Style(c.getInt(0),c.getString(1)));
-            c.moveToNext();
         }
         return styles;
     }

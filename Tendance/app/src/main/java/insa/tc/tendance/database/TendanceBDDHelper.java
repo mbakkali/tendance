@@ -86,13 +86,35 @@ public class TendanceBDDHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_RELATION);
         db.execSQL(TABLE_STYLE);
         db.execSQL(TABLE_TYPE);
-
+        basicconfiguration(db);
 
     }
     public void onUpgrade(SQLiteDatabase db, int oldversion, int newversion){
         //Nothing for now...
     }
-    public void basicconfiguration(TendanceBDDHelper tendance){
-        SQLiteDatabase db = tendance.getWritableDatabase();
+    public void basicconfiguration(SQLiteDatabase db){
+        //Cette fonction sert à peupler avec les style et type que l'on souhaite avoir.
+
+        Style worker = new Style("travail");
+        worker.addStyleLocal(db);
+        Style casual = new Style("detente");
+        casual.addStyleLocal(db);
+        Style clubbing = new Style("club");
+        clubbing.addStyleLocal(db);
+
+
+        Type coat = new Type("coat");
+        coat.addTypeLocal(db);
+        Type top = new Type("top");
+        top.addTypeLocal(db);
+        Type trousers = new Type("trousers");
+        trousers.addTypeLocal(db);
+        Type dress = new Type("dress");
+        dress.addTypeLocal(db);
+        Type skirt = new Type("skirt");
+        skirt.addTypeLocal(db);
+        Type shoes = new Type("shoes");
+        shoes.addTypeLocal(db);
+        Type other = new Type("other");
     }
 }

@@ -46,9 +46,7 @@ public class Outfit {
     }
 
 
-    public void addOutfitLocalDB(SQLiteOpenHelper tendance){
-        SQLiteDatabase db = tendance.getWritableDatabase();
-
+    public void addOutfitLocalDB(SQLiteDatabase db){
         ContentValues values = new ContentValues();
         values.put("p_user", user);
         values.put("date", getDateTime());

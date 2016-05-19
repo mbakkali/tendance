@@ -14,10 +14,10 @@ public class Type {
         this.nom = nom;
     }
 
-    public void addTypeLocal(SQLiteOpenHelper tendance){
-        SQLiteDatabase db = tendance.getWritableDatabase();
+    public void addTypeLocal(SQLiteDatabase db){
         ContentValues values = new ContentValues();
         values.put("nom", this.nom);
         db.insert("TYPES", null, values);
     }
+
 }
