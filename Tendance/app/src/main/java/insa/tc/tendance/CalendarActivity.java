@@ -115,7 +115,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
 
         selectedDayMonthYearButton = (Button) this
                 .findViewById(R.id.selectedDayMonthYear);
-        selectedDayMonthYearButton.setText("Selected: ");
+        selectedDayMonthYearButton.setText("Quelle date? ");
 
         prevMonth = (ImageView) this.findViewById(R.id.prevMonth);
         prevMonth.setOnClickListener(this);
@@ -426,7 +426,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
                         R.color.lightgray02));
             }
             if (day_color[1].equals("BLUE")) {
-                gridcell.setTextColor(getResources().getColor(R.color.orrange));
+                gridcell.setTextColor(getResources().getColor(R.color.rouge));
             }
             return row;
         }
@@ -434,7 +434,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
         @Override
         public void onClick(View view) {
             String date_month_year = (String) view.getTag();
-            selectedDayMonthYearButton.setText("Selected: " + date_month_year);
+            selectedDayMonthYearButton.setText(" " + date_month_year);
             Log.e("Selected date", date_month_year);
             try {
                 Date parsedDate = dateFormatter.parse(date_month_year);
