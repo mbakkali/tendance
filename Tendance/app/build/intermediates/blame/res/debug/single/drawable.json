@@ -1,15 +1,15 @@
 [
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_indicator_material.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_ratingbar_indicator_material.xml"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/iconmail.jpeg",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/iconmail.jpeg"
     },
     {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
         "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_list_selector_holo_dark.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/iconmail.jpeg",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/iconmail.jpeg"
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_indicator_material.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_ratingbar_indicator_material.xml"
     },
     {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/tshirt2.png",
@@ -32,12 +32,12 @@
         "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/heart2.png"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/buttonshape.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/buttonshape.xml"
-    },
-    {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/comment.png",
         "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/comment.png"
+    },
+    {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/buttonshape.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/buttonshape.xml"
     },
     {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
@@ -64,12 +64,12 @@
         "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/logo.png"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/red_border_gray_bg.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/red_border_gray_bg.xml"
-    },
-    {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/heart1.png",
         "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/drawable/heart1.png"
+    },
+    {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/red_border_gray_bg.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/red_border_gray_bg.xml"
     },
     {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/buttonrond.xml",

@@ -67,20 +67,20 @@
         android:layout_above="@+id/layout1">
 
         <ScrollView
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="500dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp">
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="380dp"
                 android:weightSum="1">
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="440dp"
                     android:layout_marginTop="16dp"
                     android:layout_gravity="center_horizontal"
@@ -91,7 +91,7 @@
 
                     <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@color/blanc"
@@ -143,7 +143,7 @@
 
                     <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="260dp"
                         android:background="@color/blanc"
                         android:id="@+id/picturesplace1">
@@ -170,7 +170,7 @@
 
                     <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@color/blanc"
@@ -182,14 +182,14 @@
                             android:id="@+id/like1"
                             android:background="@color/blanc"
                             android:layout_marginTop="0dp"
-                            android:layout_marginLeft="310dp"
+                            android:layout_marginLeft="300dp"
                             android:src="@drawable/heart1"/>
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                 android:orientation="vertical"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="440dp"
                 android:layout_marginTop="16dp"
                 android:layout_gravity="center_horizontal"
@@ -199,7 +199,7 @@
 
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/blanc"
@@ -251,7 +251,7 @@
 
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="260dp"
                     android:background="@color/blanc"
                     android:id="@+id/picturesplace2">
@@ -274,7 +274,7 @@
                 </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@color/blanc"
@@ -293,7 +293,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="440dp"
                 android:layout_marginTop="16dp"
                 android:layout_gravity="center_horizontal"
@@ -303,7 +303,7 @@
 
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/blanc"
@@ -355,7 +355,7 @@
 
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="260dp"
                     android:background="@color/blanc"
                     android:id="@+id/picturesplace3">
@@ -378,7 +378,7 @@
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/blanc"

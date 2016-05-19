@@ -57,7 +57,7 @@ public final class R {
 		public static final int calendar_month_year_textview = 0x7f0c0097;
 		public static final int calendar_right_arrow = 0x7f0c0098;
 		public static final int calendar_title_view = 0x7f0c0095;
-		public static final int calendar_tv = 0x7f0c00a9;
+		public static final int calendar_tv = 0x7f0c00c1;
 		public static final int months_infinite_pager = 0x7f0c009a;
 		public static final int weekday_gridview = 0x7f0c0099;
 	}
