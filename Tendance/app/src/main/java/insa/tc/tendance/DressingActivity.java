@@ -1,9 +1,15 @@
 package insa.tc.tendance;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 /**
@@ -65,5 +71,37 @@ public class DressingActivity extends Activity {
                 startActivity(user);
             }
         });
+
+        ImageButton showPopUpButton = (ImageButton) findViewById(R.id.description);
+        showPopUpButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                showSimplePopUp();
+            }
+        });
+    }
+    private void showSimplePopUp() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Outfit");
+        helpBuilder.setMessage("Description de la tenue");
+        final EditText input = new EditText(this);
+        input.setSingleLine();
+
+        LayoutInflater inflater = getLayoutInflater();
+        View RadioButtonLayout = inflater.inflate(R.layout.outfitstyle, null);
+        helpBuilder.setView(RadioButtonLayout);
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
     }
 }

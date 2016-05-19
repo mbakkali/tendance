@@ -180,7 +180,7 @@
             android:layout_height="42dp"
             android:layout_marginBottom="5dp"
             android:background="@color/blanc"
-            android:id="@+id/imageButton"
+            android:id="@+id/description"
             android:src="@drawable/comment"
             android:layout_gravity="right|bottom" />
 

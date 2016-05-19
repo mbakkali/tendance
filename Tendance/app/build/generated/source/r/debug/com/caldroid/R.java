@@ -65,8 +65,8 @@ public final class R {
 		public static final int calendar_view = 0x7f04001c;
 		public static final int date_grid_fragment = 0x7f04001d;
 		public static final int normal_date_cell = 0x7f040020;
-		public static final int square_date_cell = 0x7f04002e;
-		public static final int weekday_textview = 0x7f040030;
+		public static final int square_date_cell = 0x7f04002f;
+		public static final int weekday_textview = 0x7f040031;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f060014;
