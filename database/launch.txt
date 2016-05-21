@@ -1,9 +1,12 @@
+#SVN
+https://svn.insa-lyon.fr/svn/Tendance/
+
 #Connection PI Patrik 
 
 ssh pi@90.66.114.198 -p 8080
 
 #Lancer MySQL
-mysql -h localhost -u root -p
+mysql -h localhost -u root -p en root
 
 #Phpmyadmin http://localhost/phpmyadmin.
 
