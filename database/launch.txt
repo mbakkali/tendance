@@ -2,7 +2,8 @@
 
 ssh pi@90.66.114.198 -p 8080
 
-
+#Lancer MySQL
+mysql -h localhost -u root -p
 
 #Phpmyadmin http://localhost/phpmyadmin.
 
