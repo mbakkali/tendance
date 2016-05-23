@@ -16,7 +16,9 @@ package insa.tc.tendance;
         import android.annotation.SuppressLint;
         import android.annotation.TargetApi;
         import android.app.Activity;
+        import android.app.AlertDialog;
         import android.content.Context;
+        import android.content.DialogInterface;
         import android.content.Intent;
         import android.os.Bundle;
         import android.text.format.DateFormat;
@@ -104,6 +106,14 @@ public class CalendarActivity extends Activity implements OnClickListener {
             public void onClick(View v) {
                 Intent user = new Intent(CalendarActivity.this, PersonnelActivity.class);
                 startActivity(user);
+            }
+        });
+
+        selectedDayMonthYearButton = (Button) findViewById(R.id.selectedDayMonthYear);
+        selectedDayMonthYearButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showDate();
             }
         });
 
@@ -460,5 +470,22 @@ public class CalendarActivity extends Activity implements OnClickListener {
         public int getCurrentWeekDay() {
             return currentWeekDay;
         }
+    }
+
+    private void showDate() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Affichage du look ou création d'un nouveau");
+
+        helpBuilder.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
     }
 }
