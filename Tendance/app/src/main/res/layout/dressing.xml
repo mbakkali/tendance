@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
             android:textAllCaps="false"
-            android:text="other"
+            android:text="Other"
             android:background="@drawable/buttonshape"
             android:id="@+id/other" />
 

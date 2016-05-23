@@ -22,6 +22,18 @@ public class DressingActivity extends Activity {
     ImageButton tshirt;
     ImageButton friend;
     ImageButton me;
+    ImageButton addButton;
+    ImageButton selfie;
+    ImageButton sendoutfit;
+    ImageButton suggestion;
+    Button coat;
+    Button top;
+    Button trousers;
+    Button dress;
+    Button skirt;
+    Button shoes;
+    Button other;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,11 +89,99 @@ public class DressingActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                showSimplePopUp();
+                showDescritpion();
+            }
+        });
+
+        coat = (Button) findViewById(R.id.coat);
+        coat.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showCoat();
+            }
+        });
+
+        top = (Button) findViewById(R.id.top);
+        top.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showTop();
+            }
+        });
+
+        trousers = (Button) findViewById(R.id.trousers);
+        trousers.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showTrousers();
+            }
+        });
+
+        dress = (Button) findViewById(R.id.dress);
+        dress.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showDress();
+            }
+        });
+
+        skirt = (Button) findViewById(R.id.skirt);
+        skirt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showSkirt();
+            }
+        });
+
+        shoes = (Button) findViewById(R.id.shoes);
+        shoes.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showShoes();
+            }
+        });
+
+        other = (Button) findViewById(R.id.other);
+        other.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showOther();
+            }
+        });
+
+        addButton = (ImageButton) findViewById(R.id.addButton);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAdd();
+            }
+        });
+
+        selfie = (ImageButton) findViewById(R.id.photogr);
+        selfie.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showTakeSelfie();
+            }
+        });
+
+        sendoutfit = (ImageButton) findViewById(R.id.sendoutfit);
+        sendoutfit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showSend();
+            }
+        });
+
+        suggestion = (ImageButton) findViewById(R.id.questiontshirt);
+        suggestion.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showSuggestion();
             }
         });
     }
-    private void showSimplePopUp() {
+    private void showDescritpion() {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
         helpBuilder.setTitle("Outfit");
@@ -94,6 +194,231 @@ public class DressingActivity extends Activity {
         helpBuilder.setView(RadioButtonLayout);
 
         helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void showCoat() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Coat");
+        helpBuilder.setMessage("Choisis ton manteau, veste, etc");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View affichageLayout = inflater.inflate(R.layout.affichagestyle, null);
+        helpBuilder.setView(affichageLayout);
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void showTop() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Top");
+        helpBuilder.setMessage("Choisis ton top");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View affichageLayout = inflater.inflate(R.layout.affichagestyle, null);
+        helpBuilder.setView(affichageLayout);
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void showTrousers() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Trousers");
+        helpBuilder.setMessage("Choisis ton pantalon");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View affichageLayout = inflater.inflate(R.layout.affichagestyle, null);
+        helpBuilder.setView(affichageLayout);
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void showDress() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Dress");
+        helpBuilder.setMessage("Choisis ta robe");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View affichageLayout = inflater.inflate(R.layout.affichagestyle, null);
+        helpBuilder.setView(affichageLayout);
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void showSkirt() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Skirt");
+        helpBuilder.setMessage("Choisis ta jupe");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View affichageLayout = inflater.inflate(R.layout.affichagestyle, null);
+        helpBuilder.setView(affichageLayout);
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void showShoes() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Shoes");
+        helpBuilder.setMessage("Choisis ta paire de chaussures");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View affichageLayout = inflater.inflate(R.layout.affichagestyle, null);
+        helpBuilder.setView(affichageLayout);
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void showOther() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Other");
+        helpBuilder.setMessage("Choisis tes accessoires");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View affichageLayout = inflater.inflate(R.layout.affichagestyle, null);
+        helpBuilder.setView(affichageLayout);
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+
+    private void showAdd() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Ajoute un vêtement à ton dressing !");
+        helpBuilder.setMessage("Quel type de vêtement ?");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View affichageLayout = inflater.inflate(R.layout.addvetementstyle, null);
+        helpBuilder.setView(affichageLayout);
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+
+    private void showTakeSelfie() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        helpBuilder.setPositiveButton("Take a selfie",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+
+    private void showSend() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        helpBuilder.setPositiveButton("Send Outfit",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+
+    private void showSuggestion() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Suggestion de Look");
+        helpBuilder.setMessage("Quel type de Look aujourd'hui ?");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View affichageLayout = inflater.inflate(R.layout.suggestionstyle, null);
+        helpBuilder.setView(affichageLayout);
+
+        helpBuilder.setPositiveButton("Suggestion !",
                 new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {

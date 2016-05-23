@@ -108,6 +108,10 @@
         "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/layout/affichagestyle.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/layout/affichagestyle.xml"
+    },
+    {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/layout/notification_media_cancel_action.xml",
         "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/layout/notification_media_cancel_action.xml"
     },
@@ -148,6 +152,10 @@
         "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/layout/abc_list_menu_item_radio.xml"
     },
     {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/layout/suggestionstyle.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/layout/suggestionstyle.xml"
+    },
+    {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
         "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/layout/abc_action_menu_item_layout.xml"
     },
@@ -158,6 +166,10 @@
     {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
         "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/layout/addvetementstyle.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/src/main/res/layout/addvetementstyle.xml"
     },
     {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",

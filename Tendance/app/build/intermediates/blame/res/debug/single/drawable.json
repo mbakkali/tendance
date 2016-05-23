@@ -228,12 +228,12 @@
         "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_dialog_material_background_light.xml"
     },
     {
-        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/right_arrow.xml",
-        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/right_arrow.xml"
-    },
-    {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_light.xml",
         "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/drawable/abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/right_arrow.xml",
+        "source": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/exploded-aar/com.roomorama/caldroid/3.0.1/res/drawable/right_arrow.xml"
     },
     {
         "merged": "/Users/Camille/Documents/4TC/Tendance/app/build/intermediates/res/merged/debug/drawable/me.PNG",

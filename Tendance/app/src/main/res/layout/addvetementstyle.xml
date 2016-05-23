@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton android:id="@+id/checkBox1" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Coat"></RadioButton>
+        <RadioButton android:id="@+id/checkBox2" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Top"></RadioButton>
+        <RadioButton android:id="@+id/checkBox3" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Trousers"></RadioButton>
+        <RadioButton android:id="@+id/checkBox4" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Dress"></RadioButton>
+        <RadioButton android:id="@+id/checkBox5" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="Skirt"></RadioButton>
+        <RadioButton android:id="@+id/checkBox6" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Shoes"></RadioButton>
+        <RadioButton android:id="@+id/checkBox7" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Other"></RadioButton>
+    </RadioGroup>
+
+    <Button
+        android:layout_width="189dp"
+        android:layout_height="37dp"
+        android:text="Prendre une photo"
+        android:id="@+id/photo"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:textAllCaps="false"
+        android:background="@color/rouge"
+        android:textSize="18dp"
+        android:textColor="@color/blanc"/>
+</LinearLayout>
