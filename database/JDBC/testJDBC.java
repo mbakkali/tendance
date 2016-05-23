@@ -6,33 +6,33 @@ public class testJDBC {
 
   public static void main(String[] argv) {
 
-	System.out.println("-------- MySQL JDBC Connection Testing ------------");
+	System.out.println("--------Test driver MySQL JDBC  ------------");
 
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 	} catch (ClassNotFoundException e) {
-		System.out.println("Where is your MySQL JDBC Driver?");
+		System.out.println("Attention pas de driver JDBC trouvé");
 		e.printStackTrace();
 		return;
 	}
 
-	System.out.println("MySQL JDBC Driver Registered!");
+	System.out.println("MySQL JDBC Driver est bon !");
 	Connection connection = null;
 
 	try {
 		connection = DriverManager
-		.getConnection("jdbc:mysql://90.66.114.198:3306","pi", "tendance2016");
+		.getConnection("jdbc:mysql://90.66.114.198:3306","monitor", "tendance2016");
 
 	} catch (SQLException e) {
-		System.out.println("Connection Failed! Check output console");
+		System.out.println("Problème de connexion ! ");
 		e.printStackTrace();
 		return;
 	}
 
 	if (connection != null) {
-		System.out.println("You made it, take control your database now!");
+		System.out.println("La base de données est connectée");
 	} else {
-		System.out.println("Failed to make connection!");
+		System.out.println("Problème de connexion avec la database!");
 	}
   }
 }

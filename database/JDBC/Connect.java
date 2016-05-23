@@ -81,15 +81,23 @@ pour le user_id on est en auto_incrément => on insert null
   }
 
 
-  public static void del_user(Connection conn, String username, String mail){
+  /*public static void del_user(Connection conn, String username, String mail){
     try {
 
-        //Création d'un objet Statement
+        PreparedStatement pstmnt = conn.prepareStatement("DELETE from users WHERE username="+username+" AND mail="+mail+"");
         Statement state = conn.createStatement();
         //L'objet ResultSet contient le résultat de la requête SQL
-        state.executeUpdate("DELETE from users WHERE username="+username+" AND mail="+mail+"");
+        state.executeUpdate(
 
           System.out.println("utilisateur"+username+" a été supprimé de la base users");
+
+        int rowsUpdated = pstmnt.executeUpdate();
+          if (rowsUpdated == 0) {
+              System.out.println("User does not exist");
+          } else {
+              System.out.println("User deleted");
+          }
+
           state.close(); 
 
       } catch (Exception e) {
@@ -97,7 +105,7 @@ pour le user_id on est en auto_incrément => on insert null
       }
 
 
-  }
+  }*/
 
 //rempli la db avec des user1 --> usernum
   public static void fulldatabase(Connection conn,int user_num)throws SQLException{
@@ -131,7 +139,7 @@ pour le user_id on est en auto_incrément => on insert null
 
 
       
-      del_user(conn,"jib", "jib@gmail.com");
+      //del_user(conn,"jib", "jib@gmail.com");
       DisplayTable(conn,"users"); 
 
          
