@@ -15,6 +15,16 @@ export CLASSPATH=/home/bakkali/mysql-connector-java-5.1.39/mysql-connector-java-
 #Lancer MySQL
 mysql -h localhost -u root -pmotdepassecollé 
 
+mysql -u root -ptendance201
+mysql -u monitor -ptendance2016
+
+mysql -h 90.66.114.198 -u monitor -ptendance2016
+
+
+CREATE USER 'finley'@'localhost' IDENTIFIED BY 'some_pass';
+GRANT ALL PRIVILEGES ON *.* TO 'finley'@'localhost'
+
+
 #Commandes SQL
 https://www.pantz.org/software/mysql/mysqlcommands.html
 
@@ -34,3 +44,18 @@ http://www.it-connect.fr/changer-lemplacement-des-bases-de-donnees-mysql%EF%BB%B
 
 
 https://support.rackspace.com/how-to/mysql-connect-to-your-database-remotely/
+
+
+#Remote my phpadmin 
+https://degreesofzero.com/article/manage-remote-mysql-servers-with-local-phpmyadmin.html
+
+
+#Montrer les relations FK sur 
+
+SELECT 
+  TABLE_NAME,COLUMN_NAME,CONSTRAINT_NAME, REFERENCED_TABLE_NAME,REFERENCED_COLUMN_NAME
+FROM
+  INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE
+  REFERENCED_TABLE_SCHEMA = 'Td' AND
+  REFERENCED_TABLE_NAME = 'users';
