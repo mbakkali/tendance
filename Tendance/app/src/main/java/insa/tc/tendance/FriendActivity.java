@@ -2,9 +2,17 @@ package insa.tc.tendance;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
+import android.text.DynamicLayout;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 /**
  * Created by Camille on 07/05/2016.
@@ -65,5 +73,48 @@ public class FriendActivity extends Activity {
                 startActivity(user);
             }
         });
+
+
+        String amis[] = {"Patoche", "Lele", "Jib", "Mehdi", "Camille","Lulu", "Antoine","Tommy","Théo","Salma","Mathieu"};
+        int nbeAmis = amis.length;
+
+        for (int i = 0; i < nbeAmis; i++) {
+
+            final LinearLayout mylayout = new LinearLayout(this);
+            final Button myButton = new Button(this);
+            final ImageView myPicture = new ImageView (this);
+
+            LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
+            params1.gravity = Gravity.CENTER_HORIZONTAL;
+            params1.setMargins(0,8,150,0);
+            mylayout.setLayoutParams(params1);
+
+            myPicture.setImageResource(R.drawable.androidicon);
+            LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(200, 200);
+            params2.setMargins(20,0,0,0);
+            myPicture.setLayoutParams(params2);
+
+            myButton.setText(amis[i]);
+            myButton.setId(i);
+            myButton.setBackgroundColor(Color.TRANSPARENT);
+            myButton.setTextSize(20);
+            LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
+            params3.gravity = Gravity.CENTER_HORIZONTAL;
+            params3.setMargins(8,8,0,0);
+            myButton.setLayoutParams(params3);
+            final int id_ = myButton.getId();
+
+            mylayout.addView(myPicture);
+            mylayout.addView(myButton);
+
+            LinearLayout layout = (LinearLayout) findViewById(R.id.layoutButton);
+            layout.addView(mylayout);
+
+            myButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    myButton.setText("Go user profile");
+                }
+            });
+        }
     }
 }
