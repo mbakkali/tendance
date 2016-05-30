@@ -96,6 +96,7 @@ public class FriendActivity extends Activity {
 
             myButton.setText(amis[i]);
             myButton.setId(i);
+            myButton.setAllCaps(false);
             myButton.setBackgroundColor(Color.TRANSPARENT);
             myButton.setTextSize(20);
             LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);

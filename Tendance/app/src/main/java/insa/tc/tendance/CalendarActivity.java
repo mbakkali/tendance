@@ -20,9 +20,11 @@ package insa.tc.tendance;
         import android.content.Context;
         import android.content.DialogInterface;
         import android.content.Intent;
+        import android.graphics.Color;
         import android.os.Bundle;
         import android.text.format.DateFormat;
         import android.util.Log;
+        import android.view.Gravity;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.View.OnClickListener;
@@ -32,6 +34,7 @@ package insa.tc.tendance;
         import android.widget.GridView;
         import android.widget.ImageButton;
         import android.widget.ImageView;
+        import android.widget.LinearLayout;
         import android.widget.TextView;
 
 @TargetApi(3)
@@ -108,6 +111,37 @@ public class CalendarActivity extends Activity implements OnClickListener {
                 startActivity(user);
             }
         });
+
+        String date[] = {"11/04/16", "16/04/16", "12/04/16", "21/04/16", "02/05/16","12/05/16", "21/05/16","22/05/16","04/05/16","08/05/16","08/05/16"};
+        int like[] = {123,120,98,79,68,64,54,52,35,31,22};
+        int nbeTenues = date.length; //11
+
+        for (int i = 0; i < nbeTenues; i++) {
+
+            final Button myButton = new Button(this);
+
+            myButton.setText(date[i]+"   LIKE  "+ like[i]);
+            myButton.setId(i);
+            myButton.setAllCaps(false);
+            myButton.setBackgroundColor(Color.WHITE);
+            myButton.setTextColor(Color.BLACK);
+            myButton.setTextSize(18);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(960,150);
+            params.gravity = Gravity.CENTER_HORIZONTAL;
+            params.setMargins(0,18,0,0);
+            myButton.setLayoutParams(params);
+            final int id_ = myButton.getId();
+
+            LinearLayout layout = (LinearLayout) findViewById(R.id.TenuePop);
+            layout.addView(myButton);
+
+            myButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    myButton.setText("Affichage de la tenue");
+                }
+            });
+        }
+
 
         selectedDayMonthYearButton = (Button) findViewById(R.id.selectedDayMonthYear);
         selectedDayMonthYearButton.setOnClickListener(new View.OnClickListener(){

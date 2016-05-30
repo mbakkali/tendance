@@ -190,6 +190,7 @@
 
                         <LinearLayout
                             android:orientation="vertical"
+                            android:id="@+id/TenuePop"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -203,138 +204,6 @@
                                 android:textSize="18dp"
                                 android:textAllCaps="false"
                                 android:id="@+id/button2"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="24/04/16   LIKE 90"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button3"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="08/05/16   LIKE 68"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button4"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="08/05/16   LIKE 68"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button5"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="08/05/16   LIKE 68"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button6"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="08/05/16   LIKE 68"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button7"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="08/05/16   LIKE 68"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button8"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="08/05/16   LIKE 68"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button9"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="08/05/16   LIKE 68"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button10"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="08/05/16   LIKE 68"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button11"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="08/05/16   LIKE 68"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button16"
-                                android:layout_gravity="center_horizontal" />
-
-                            <Button
-                                android:layout_width="320dp"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="08/05/16   LIKE 68 dernier bouton"
-                                android:background="@color/blanc"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"
-                                android:textAllCaps="false"
-                                android:id="@+id/button12"
                                 android:layout_gravity="center_horizontal" />
 
                         </LinearLayout>
