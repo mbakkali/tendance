@@ -27,6 +27,9 @@ public class ActualiteActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actualite);
 
+        //Receive data from previous activity.
+
+        //TODO Qu'est ce qu'on envoie à la prochaine activité?
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.util.Calendar;
 
 import insa.tc.tendance.database.TendanceBDDHelper;
+import insa.tc.tendance.database.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent actualite = new Intent(MainActivity.this, ActualiteActivity.class);
+                //Prédure de login
+                //TODO Add authentication method here
+                User me = new User();
+                Bundle monprofil = new Bundle();
+                monprofil.putString("mail", me.getMail());
+                monprofil.putString("username", me.getUsername());
+                actualite.putExtras(monprofil); //Ceci sert à transporter des valeurs entre les activités
                 startActivity(actualite);
             }
         });
@@ -38,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         //test database
         TendanceBDDHelper tendance = new TendanceBDDHelper(getApplicationContext());
         SQLiteDatabase db = tendance.getWritableDatabase();
+
 
     }
 }
