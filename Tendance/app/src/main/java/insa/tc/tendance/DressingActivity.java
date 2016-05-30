@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 
 /**
  * Created by Camille on 07/05/2016.
+ * TODO Ajout de vêtement dans la BDD
  */
 public class DressingActivity extends Activity {
 
@@ -182,7 +183,7 @@ public class DressingActivity extends Activity {
         });
     }
     private void showDescritpion() {
-
+        //TODO RECURER LA DESCRIPTION DE L'OUTFIT LOCALE dans un objet
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
         helpBuilder.setTitle("Outfit");
         helpBuilder.setMessage("Description de la tenue");
@@ -192,7 +193,7 @@ public class DressingActivity extends Activity {
         LayoutInflater inflater = getLayoutInflater();
         View RadioButtonLayout = inflater.inflate(R.layout.outfitstyle, null);
         helpBuilder.setView(RadioButtonLayout);
-
+        //TODO Sauvegarder la description dans l'objet / BDD
         helpBuilder.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
 
@@ -378,7 +379,7 @@ public class DressingActivity extends Activity {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
-
+        //TODO Fonction pour prendre une photo et récupérer la photo [URGENT]
         helpBuilder.setPositiveButton("Take a selfie",
                 new DialogInterface.OnClickListener() {
 
@@ -392,7 +393,7 @@ public class DressingActivity extends Activity {
     }
 
     private void showSend() {
-
+        //TODO ajouter fonction addOutfitans BDD Internet ET externe (Regarder comment créer la représentation de l'image)
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
 
@@ -409,7 +410,7 @@ public class DressingActivity extends Activity {
     }
 
     private void showSuggestion() {
-
+        //TODO Ajout fonction Demander une suggestion et afficher la suggestion.
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
         helpBuilder.setTitle("Suggestion de Look");
         helpBuilder.setMessage("Quel type de Look aujourd'hui ?");

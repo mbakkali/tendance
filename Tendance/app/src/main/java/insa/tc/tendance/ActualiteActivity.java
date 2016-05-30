@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 
 /**
  * Created by Camille on 06/05/2016.
+ TODO: Récupérer La liste des outfits des amis de l'utilisateur, les trier du plus récent au plus ancient
+ Input : ID distant de l'outfit. Photo profil user, username, date de publication, description de l'outfit, image de l'outfit et le selfie(optionelle)
  */
 public class ActualiteActivity extends Activity {
 
@@ -96,7 +98,7 @@ public class ActualiteActivity extends Activity {
             int i =0;
 
             public void onClick(View v) {
-
+            //TODO: Ajout des fonctions liked et unliked en fonction de la valeur du like (au chargement)
                 if (i % 2 == 0){
                     like2.setImageResource(R.drawable.heart1);
                     i = i + 1;

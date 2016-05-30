@@ -58,4 +58,21 @@ public class Outfit {
         //Associate outfit with clothes.
 
     }
+
+    public void liked(){
+        //TODO Fonction liked qui ajoute une relation like entre l'utilisateur et l'outfit.
+    }
+    public void unliked(){
+
+    }
+    public String getDate(){
+    return null;
+    }
+    public int getLike(){
+        return 0;
+    }
+    //TODO FUNCTION FAVOUTFIT
+    public Object getFavoriteOutfit(){
+        return null;
+    }
 }

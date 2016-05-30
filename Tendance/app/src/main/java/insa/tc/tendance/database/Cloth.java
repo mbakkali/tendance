@@ -15,7 +15,7 @@ public class Cloth {
     private long id;
     private int type;
     private String photo;
-    private int owner;
+    private long owner;
 
 
     public Cloth(int type, int owner){
@@ -24,7 +24,7 @@ public class Cloth {
         String photo = "no_picture";
     }
 
-    public Cloth(long id, int type, String photo, int owner){
+    public Cloth(long id, int type, String photo, long owner){
         this.id = id;
         this.type = type;
         this.photo = photo;
@@ -52,7 +52,7 @@ public class Cloth {
     }
 
     public List<Cloth> getMyCloth(User me, SQLiteDatabase db){
-        List<Cloth> myclothes = new ArrayList<Cloth>();
+        List<Cloth> myclothes = new ArrayList<>();
 
         String[] projection = {
                 "id_cloth",
@@ -61,7 +61,7 @@ public class Cloth {
         };
         String selection = "owner LIKE ?";
         String[] selectionArgs = { String.valueOf(me.getId_user()) };
-        Cursor c = db.query(
+        try (Cursor c = db.query(
                 "CLOTHES",
                 projection,
                 selection,
@@ -69,14 +69,11 @@ public class Cloth {
                 null,
                 null,
                 null
-        );
-        try{
-            while(c.moveToNext()){
-                Cloth cloth = new Cloth(c.getLong(0),c.getInt(1), c.getString(2), me.getId_user());
+        )) {
+            while (c.moveToNext()) {
+                Cloth cloth = new Cloth(c.getLong(0), c.getInt(1), c.getString(2), me.getId_user());
                 myclothes.add(cloth);
             }
-        } finally {
-            c.close();
         }
         return myclothes;
     }

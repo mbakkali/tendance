@@ -73,8 +73,9 @@ public class FriendActivity extends Activity {
                 startActivity(user);
             }
         });
-
-
+        //TODO Barre de recherge, onChangeListener on Submit listener + appel fonction recherge amis avec le contenue du SearchView.
+        //TODO Quand on clic sur un user, on ouvre une nouvelle activité avec le profil d'un ami (ses info,
+        //TODO Recupérer les amis: ProfilPicture and Username, id_user
         String amis[] = {"Patoche", "Lele", "Jib", "Mehdi", "Camille","Lulu", "Antoine","Tommy","Théo","Salma","Mathieu"};
         int nbeAmis = amis.length;
 

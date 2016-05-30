@@ -1,6 +1,8 @@
 package insa.tc.tendance.database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.JsonReader;
 
 import com.android.volley.Request;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
  * Created by patrik on 18/05/16.
  */
 public class User implements Serializable{
-    private int id_user;
+    private long id_user;
     private String username;
     private String mail;
     private String profilpicture;
@@ -34,6 +36,14 @@ public class User implements Serializable{
 
     public User(){
     }
+    public User(String username, String mail, String bio, boolean male, boolean publicprofil, String phonenumber){
+        this.username = username;
+        this.mail = mail;
+        this.bio = bio;
+        this.male = male;
+        this.publicprofil = publicprofil;
+        this.phonenumber = phonenumber;
+    }
 
     public User getMyProfil(){
         User me = new User();
@@ -41,7 +51,7 @@ public class User implements Serializable{
 
         return me;
     }
-    public int getId_user(){
+    public long getId_user(){
         return id_user;
     }
 
@@ -72,5 +82,15 @@ public class User implements Serializable{
         });
 
         return friends;
+    }
+
+    private void setId_user(long id_user) {
+        this.id_user = id_user;
+    }
+    //TODO Finish this method + add Patoch in TendanceBDDHelper
+    public void addTypeLocal(SQLiteDatabase db){
+        ContentValues values = new ContentValues();
+        values.put("nom", this.username);
+        setId_user(db.insert("USERS", null, values));
     }
 }

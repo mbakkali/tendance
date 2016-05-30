@@ -19,6 +19,7 @@ public class TendanceBDDHelper extends SQLiteOpenHelper {
             "CREATE TABLE USERS ("  +
             "id_user" + " INTEGER PRIMARY KEY," +
             "nom" + " TEXT," +
+            "mail" + " TEXT," +
             "profil_picture" + " TEXT," + //Path to his localprofilepicture
             "biographie" + " TEXT," +
             "gender" + " BOOLEAN," + //false pour homme, true pour femme
@@ -116,5 +117,7 @@ public class TendanceBDDHelper extends SQLiteOpenHelper {
         Type shoes = new Type("shoes");
         shoes.addTypeLocal(db);
         Type other = new Type("other");
+
+        User patoche = new User("Patoche", "patoche@insa-lyon.fr", "Je suis patoche la brioche", true, true, "0648966131");
     }
 }

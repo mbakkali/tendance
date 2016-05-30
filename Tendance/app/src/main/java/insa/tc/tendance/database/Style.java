@@ -1,6 +1,7 @@
 package insa.tc.tendance.database;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -17,7 +18,7 @@ public class Style {
     public Style(String nom){
         this.nom = nom;
     }
-    public Style(int id, String nom){
+    public Style(long id, String nom){
         this.id = id;
         this.nom = nom;
     }
@@ -28,8 +29,15 @@ public class Style {
         id = db.insert("STYLE", null , values);
     }
 
+    public ArrayList<String> getRemoteStyles(Context context){
+        ArrayList<String> styles = new ArrayList<>();
+        //TODO REQUEST
+
+        return styles;
+    }
+
     public static ArrayList<Style> getStyles(SQLiteOpenHelper tendance){
-        ArrayList<Style> styles = new ArrayList<Style>();
+        ArrayList<Style> styles = new ArrayList<>();
         SQLiteDatabase db = tendance.getReadableDatabase();
 
         String[] projection = {
@@ -50,6 +58,7 @@ public class Style {
         while ( c.moveToNext()) {
             styles.add(new Style(c.getInt(0),c.getString(1)));
         }
+        c.close();
         return styles;
     }
 }

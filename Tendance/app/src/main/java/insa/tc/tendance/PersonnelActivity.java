@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 /**
  * Created by Camille on 07/05/2016.
+ TODO: On charge les information depuis la base de donnée local au téléphone.
+ TODO: Bouton valider: On rapelle
+ TODO: Bouton déconnexion: Retour vers l'écran mainactivity et Voir comment on gère les données de l'ancien utilisateurs.
  */
 public class PersonnelActivity extends Activity {
 

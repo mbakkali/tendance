@@ -111,7 +111,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
                 startActivity(user);
             }
         });
-
+        //TODO Récupérer les 15 outfits avec le plus de like avec la date, le nombre de like et l'ID de l'outfit
         String date[] = {"11/04/16", "16/04/16", "12/04/16", "21/04/16", "02/05/16","12/05/16", "21/05/16","22/05/16","04/05/16","08/05/16","08/05/16"};
         int like[] = {123,120,98,79,68,64,54,52,35,31,22};
         int nbeTenues = date.length; //11
