@@ -2,12 +2,16 @@ package insa.tc.tendance;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import insa.tc.tendance.database.TendanceBDDHelper;
+import insa.tc.tendance.database.User;
 
 /**
  * Created by Camille on 07/05/2016.
@@ -27,7 +31,18 @@ public class PersonnelActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TendanceBDDHelper tdh = new TendanceBDDHelper(getApplicationContext());
+        SQLiteDatabase db = tdh.getReadableDatabase();
         setContentView(R.layout.personnel);
+
+        //test les noms doivent changer !
+        /*User patrik = User.getMyProfil(db,"patoche@insa-lyon.fr");
+        System.out.println(patrik.getUsername());
+        User patoche = new User("Patrik", "patoche@insa-lyon.fr",  true,"Je suis patoche la brioche", true, "0648966131");
+        patrik.updateUserLocal(db, patoche);
+        User patrik2 = User.getMyProfil(db,"patoche@insa-lyon.fr");
+        System.out.println(patrik2.getUsername());*/
+        //
 
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {

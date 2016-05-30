@@ -2,6 +2,7 @@ package insa.tc.tendance.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.JsonReader;
 
@@ -36,7 +37,7 @@ public class User implements Serializable{
 
     public User(){
     }
-    public User(String username, String mail, String bio, boolean male, boolean publicprofil, String phonenumber){
+    public User(String username, String mail, boolean publicprofil, String bio, boolean male, String phonenumber){
         this.username = username;
         this.mail = mail;
         this.bio = bio;
@@ -45,16 +46,45 @@ public class User implements Serializable{
         this.phonenumber = phonenumber;
     }
 
-    public User getMyProfil(){
-        User me = new User();
-        //On récupère les infos de l'utilisateur après authentification
+    public static User getMyProfil(SQLiteDatabase db, String email){
 
+        //On récupère les infos de l'utilisateur après authentification
+        String[] projection = {
+                "id_user",
+                "nom",
+                "mail",
+                "profil_picture",
+                "biographie",
+                "male",
+                "public",
+                "phonenumber"
+        };
+        String selection = "mail LIKE ?";
+        String[] selectionArgs = { email };
+        Cursor c = db.query(
+                "USERS",
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        c.moveToNext();
+        User me = new User(c.getString(1),c.getString(2),c.getInt(6)==1 ,c.getString(5), c.getInt(4)==1, c.getString(7) );
+        me.setId_user(c.getLong(0));
+        c.close();
         return me;
+
     }
     public long getId_user(){
         return id_user;
     }
 
+    public String getBio() {return bio;}
+    public boolean isMale() {return male;}
+    public boolean isPublicprofil() {return publicprofil;}
+    public String getPhonenumber() {return phonenumber;}
     public String getMail() {return mail;}
     public String getUsername() {return username;}
 
@@ -87,10 +117,33 @@ public class User implements Serializable{
     private void setId_user(long id_user) {
         this.id_user = id_user;
     }
-    //TODO Finish this method + add Patoch in TendanceBDDHelper
-    public void addTypeLocal(SQLiteDatabase db){
+
+    public void addUserLocal(SQLiteDatabase db){
         ContentValues values = new ContentValues();
         values.put("nom", this.username);
+        values.put("mail", this.mail);
+        values.put("profil_picture", this.profilpicture);
+        values.put("biographie", this.bio);
+        values.put("male", this.male);
+        values.put("public", this.publicprofil);
+        values.put("phonenumber", this.phonenumber);
         setId_user(db.insert("USERS", null, values));
+        System.out.println("A user"+ getId_user());
+    }
+
+    public void updateUserLocal(SQLiteDatabase db, User modifiedUser){
+        ContentValues values = new ContentValues();
+        String[] args = {
+                String.valueOf(getId_user())
+        };
+        values.put("nom", modifiedUser.getUsername());
+        values.put("mail", modifiedUser.getMail());
+        //values.put("profil_picture", modifiedUser.profilpicture);
+        values.put("biographie", modifiedUser.getBio());
+        values.put("male", modifiedUser.isMale());
+        values.put("public", modifiedUser.isPublicprofil());
+        values.put("phonenumber", modifiedUser.getPhonenumber());
+        int result =db.update("USERS", values, "id_user=?", args);
+        System.out.println( getId_user() + " Updated..."+ result);
     }
 }

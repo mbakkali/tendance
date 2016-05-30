@@ -26,7 +26,7 @@ public class Style {
 
         ContentValues values = new ContentValues();
         values.put("nom", this.nom);
-        id = db.insert("STYLE", null , values);
+        id = db.insert("STYLES", null , values);
     }
 
     public ArrayList<String> getRemoteStyles(Context context){
