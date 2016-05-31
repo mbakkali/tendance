@@ -25,4 +25,6 @@
     <color name="orrange">#e33d1b</color>
     <color name="darkorrange">#cc2303</color>
 
+    <color name="black_overlay">#66000000</color>
+
 </resources>

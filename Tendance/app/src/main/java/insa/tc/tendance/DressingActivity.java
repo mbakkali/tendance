@@ -162,7 +162,10 @@ public class DressingActivity extends Activity {
         selfie.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showTakeSelfie();
+                Intent camera = new Intent(DressingActivity.this, CameraActivity.class);
+                //Surement faire passer l'utilisateur courant ou sauvegarder ce truc
+                startActivity(camera);
+                //showTakeSelfie();
             }
         });
 
@@ -379,7 +382,7 @@ public class DressingActivity extends Activity {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
-        //TODO Fonction pour prendre une photo et récupérer la photo [URGENT]
+        //TODO Activité Camera !
         helpBuilder.setPositiveButton("Take a selfie",
                 new DialogInterface.OnClickListener() {
 

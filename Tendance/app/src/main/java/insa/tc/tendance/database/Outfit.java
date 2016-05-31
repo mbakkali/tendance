@@ -61,6 +61,7 @@ public class Outfit {
 
     public void liked(){
         //TODO Fonction liked qui ajoute une relation like entre l'utilisateur et l'outfit.
+
     }
     public void unliked(){
 
@@ -72,7 +73,7 @@ public class Outfit {
         return 0;
     }
     //TODO FUNCTION FAVOUTFIT
-    public Object getFavoriteOutfit(){
+    public Outfit getFavoriteOutfits(){
         return null;
     }
 }

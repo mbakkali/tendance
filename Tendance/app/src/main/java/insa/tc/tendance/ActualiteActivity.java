@@ -14,6 +14,7 @@ import android.widget.ImageButton;
  TODO: Récupérer La liste des outfits des amis de l'utilisateur, les trier du plus récent au plus ancient
  Input : ID distant de l'outfit. Photo profil user, username, date de publication, description de l'outfit, image de l'outfit et le selfie(optionelle)
  */
+
 public class ActualiteActivity extends Activity {
 
     ImageButton home;
