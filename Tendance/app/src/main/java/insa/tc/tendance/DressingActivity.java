@@ -162,9 +162,9 @@ public class DressingActivity extends Activity {
         selfie.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent camera = new Intent(DressingActivity.this, CameraActivity.class);
+                //Intent camera = new Intent(DressingActivity.this, CameraActivity.class);
                 //Surement faire passer l'utilisateur courant ou sauvegarder ce truc
-                startActivity(camera);
+                //startActivity(camera);
                 //showTakeSelfie();
             }
         });

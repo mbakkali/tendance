@@ -24,6 +24,7 @@ public class FriendActivity extends Activity {
     ImageButton tshirt;
     ImageButton friend;
     ImageButton me;
+    Button testFriend;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,5 +119,13 @@ public class FriendActivity extends Activity {
                 }
             });
         }
+        testFriend = (Button) findViewById(R.id.friend1);
+        testFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent friendProfile = new Intent(FriendActivity.this, FriendProfile.class);
+                startActivity(friendProfile);
+            }
+        });
     }
 }
