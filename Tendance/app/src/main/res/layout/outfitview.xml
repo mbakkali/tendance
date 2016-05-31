@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    tools:context="insa.tc.tendance.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonshape"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/home"/>
+
+        <ImageButton
+            android:id="@+id/calendar"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/calendar"/>
+
+        <ImageButton
+            android:id="@+id/tshirt"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/tshirt"/>
+
+        <ImageButton
+            android:id="@+id/friend"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/friend"/>
+
+        <ImageButton
+            android:id="@+id/me"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:src="@drawable/me"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/blanc"
+        android:layout_above="@+id/layout1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="460dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_above="@+id/layout1"
+            android:background="@color/blanc">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="22dp"
+                        android:text="28/04/16"
+                        android:textSize="26dp"
+                        android:textColor="@color/rouge"
+                        android:textStyle="bold"
+                        android:id="@+id/date" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="12dp"
+                        android:text="Style blblabla, outfit, blablabla blabalbal"
+                        android:textSize="22dp"
+                        android:textColor="@color/black"
+                        android:id="@+id/description" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"
+                        android:background="@color/blanc"
+                        android:id="@+id/picturesplace1">
+
+
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="270dp"
+                            android:id="@+id/outfit1"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/blanc"
+                            android:src="@drawable/outfit1"/>
+
+                        <ImageView
+                            android:layout_width="160dp"
+                            android:layout_height="270dp"
+                            android:id="@+id/selfie1"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/blanc"
+                            android:src="@drawable/outfit2"/>
+                    </LinearLayout>
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="14dp"
+                android:text="Supprimer"
+                android:textSize="18dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/blanc"
+                android:background="@color/rouge"
+                android:textAllCaps="false"
+                android:id="@+id/supprimer"
+                android:layout_gravity="right" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
