@@ -71,7 +71,7 @@ public class User implements Serializable{
                 null
         );
         c.moveToNext();
-        User me = new User(c.getString(1),c.getString(2),c.getInt(6)==1 ,c.getString(5), c.getInt(4)==1, c.getString(7) );
+        User me = new User(c.getString(1),c.getString(2),c.getInt(6)==1 ,c.getString(4), c.getInt(5)==1, c.getString(7) );
         me.setId_user(c.getLong(0));
         c.close();
         return me;
