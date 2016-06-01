@@ -2,15 +2,23 @@ package insa.tc.tendance;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import insa.tc.tendance.camera.SelfieFile;
+import insa.tc.tendance.database.Outfit;
 
 /**
  * Created by Camille on 07/05/2016.
@@ -18,6 +26,7 @@ import android.widget.ImageButton;
  */
 public class DressingActivity extends Activity {
 
+    Uri fileUri;
     ImageButton home;
     ImageButton calendar;
     ImageButton tshirt;
@@ -162,10 +171,13 @@ public class DressingActivity extends Activity {
         selfie.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Intent camera = new Intent(DressingActivity.this, CameraActivity.class);
-                //Surement faire passer l'utilisateur courant ou sauvegarder ce truc
-                //startActivity(camera);
-                //showTakeSelfie();
+                //On lance l'intent de la camera
+                Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                fileUri = SelfieFile.getOutputMediaFileUri(1, getExternalCacheDir());  // create a file to save the image
+                camera.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);  // set the image file name
+                // start the Image Capture Intent
+                startActivityForResult(camera, 1);
             }
         });
 
@@ -432,5 +444,21 @@ public class DressingActivity extends Activity {
 
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
+    }
+    //Pour récupérer des info d'action lancer par l'activité (ex photo)
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                // Image captured and saved to fileUri specified in the Intent
+                Toast.makeText(this, "Image saved to:\n" +
+                        fileUri.toString(), Toast.LENGTH_LONG).show();
+                //MAJ de la photo de l'outfit*/
+            } else if (resultCode == RESULT_CANCELED) {
+                // User cancelled the image capture
+            } else {
+                // Image capture failed, advise user
+            }
+        }
     }
 }

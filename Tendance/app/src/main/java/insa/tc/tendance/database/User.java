@@ -146,4 +146,30 @@ public class User implements Serializable{
         int result =db.update("USERS", values, "id_user=?", args);
         System.out.println( getId_user() + " Updated..."+ result);
     }
+
+    public ArrayList<Outfit> getFavoriteOutfits(Context context){
+        ArrayList<Outfit> favorites = new ArrayList<>();
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String url = "http://serveurTendance.io/favorite?iduser=" + getId_user(); // Le serveur va enlever le like
+        JsonObjectRequest jsObj = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>(){
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray results = response.getJSONArray("data");
+                            for (int i = 0; i < results.length(); i++) {
+                                JSONObject result = results.getJSONObject(i);
+
+                            }
+                        } catch (JSONException e) {
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+
+        return favorites;
+    }
 }

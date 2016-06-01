@@ -44,10 +44,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         //test database
+
         TendanceBDDHelper tendance = new TendanceBDDHelper(getApplicationContext());
-        SQLiteDatabase db = tendance.getWritableDatabase();
-
-
-
+        SQLiteDatabase db = tendance.getReadableDatabase();
     }
 }
