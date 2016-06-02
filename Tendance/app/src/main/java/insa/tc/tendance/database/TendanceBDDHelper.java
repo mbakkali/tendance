@@ -118,8 +118,16 @@ public class TendanceBDDHelper extends SQLiteOpenHelper {
         shoes.addTypeLocal(db);
         Type other = new Type("other");
 
-        User patoche = new User("Patoche", "patoche@insa-lyon.fr",  true,"Je suis patoche la brioche", true, "0648966131");
+        User patoche = new User("Patoche", "patoche@insa-lyon.fr", true,"Je suis patoche la brioche", true, "0648966131");
         patoche.addUserLocal(db);
+        System.out.println("Ajout d'un user");
+
+        User camille = new User("Caca", "camille@insa-lyon.fr", true,"Princesse Caca", false, "0615354598");
+        camille.addUserLocal(db);
+        System.out.println("Ajout d'un user");
+
+        User jib = new User("JiiB", "jb-BB@insa-lyon.fr", false,"Jib le roi", true, "0612435698");
+        jib.addUserLocal(db);
         System.out.println("Ajout d'un user");
     }
 }
