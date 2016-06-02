@@ -184,6 +184,15 @@
             android:src="@drawable/comment"
             android:layout_gravity="right|bottom" />
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/layoutOutfit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+        </LinearLayout>
+
     </FrameLayout>
 
 </RelativeLayout>
