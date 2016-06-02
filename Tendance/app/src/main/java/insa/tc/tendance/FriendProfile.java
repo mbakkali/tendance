@@ -85,6 +85,7 @@ public class FriendProfile extends Activity {
 
         final ImageView userPict = new ImageView(this);
         final TextView user = new TextView (this);
+        final ImageButton addFriend = new ImageButton(this);
         LinearLayout layoutProfile = new LinearLayout(this);
 
         LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
@@ -99,17 +100,30 @@ public class FriendProfile extends Activity {
         user.setText(userName);
         user.setTextColor(Color.BLACK);
         user.setTextSize(34);
-        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(500, 150);
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(400, 150);
         params3.gravity = Gravity.CENTER_VERTICAL;
         params3.setMargins(20,50,0,0);
         user.setLayoutParams(params3);
         user.setBackgroundColor(Color.WHITE);
+
+        addFriend.setImageResource(R.drawable.plusadd);
+        LinearLayout.LayoutParams params8 = new LinearLayout.LayoutParams(150,150);
+        params8.setMargins(0,50,0,0);
+        addFriend.setLayoutParams(params8);
+        addFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ajouter amis dans BDD
+            }
+        });
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.layoutUserFriend);
         layout.addView(layoutProfile);
 
         layoutProfile.addView(userPict);
         layoutProfile.addView(user);
+        layoutProfile.addView(addFriend);
+
 
         for (int i = 0; i < nbeOutfit; i++) {
 
