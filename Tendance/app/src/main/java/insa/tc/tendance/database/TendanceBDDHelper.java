@@ -122,7 +122,7 @@ public class TendanceBDDHelper extends SQLiteOpenHelper {
         patoche.addUserLocal(db);
         System.out.println("Ajout d'un user");
 
-        User camille = new User("Caca", "camille@insa-lyon.fr", true,"Princesse Caca", false, "0615354598");
+        User camille = new User("Caca", "camille@insa-lyon.fr", true,"Princesse Caca la plus jolie de tout l'INSA et du monde entier !", false, "0615354598");
         camille.addUserLocal(db);
         System.out.println("Ajout d'un user");
 
