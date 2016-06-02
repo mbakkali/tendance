@@ -109,7 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:text="Nicolas"
+                        android:text="Caca"
                         android:textAllCaps="false"
                         android:id="@+id/friend1"
                         android:textSize="20dp"
