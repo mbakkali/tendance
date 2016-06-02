@@ -2,23 +2,26 @@ package insa.tc.tendance;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.v4.content.ContextCompat;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
-import insa.tc.tendance.camera.SelfieFile;
-import insa.tc.tendance.database.Outfit;
+import insa.tc.tendance.database.User;
+
+import static android.widget.Toast.LENGTH_SHORT;
+import static android.widget.Toast.makeText;
 
 /**
  * Created by Camille on 07/05/2016.
@@ -26,7 +29,6 @@ import insa.tc.tendance.database.Outfit;
  */
 public class DressingActivity extends Activity {
 
-    Uri fileUri;
     ImageButton home;
     ImageButton calendar;
     ImageButton tshirt;
@@ -171,13 +173,10 @@ public class DressingActivity extends Activity {
         selfie.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //On lance l'intent de la camera
-                Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                fileUri = SelfieFile.getOutputMediaFileUri(1, getExternalCacheDir());  // create a file to save the image
-                camera.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);  // set the image file name
-                // start the Image Capture Intent
-                startActivityForResult(camera, 1);
+                //Intent camera = new Intent(DressingActivity.this, CameraActivity.class);
+                //Surement faire passer l'utilisateur courant ou sauvegarder ce truc
+                //startActivity(camera);
+                //showTakeSelfie();
             }
         });
 
@@ -243,13 +242,58 @@ public class DressingActivity extends Activity {
     }
     private void showTop() {
 
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.layoutOutfit);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        ImageButton top1 = new ImageButton(this);
+        top1.setImageResource(R.drawable.tshirtd1);
+        top1.setBackgroundColor(Color.WHITE);
+        final ImageView topAdd = new ImageView (this);
+        top1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Top1 sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                topAdd.setImageResource(R.drawable.tshirtd1);
+                layoutOutfit.addView(topAdd);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+
+        ImageButton top2 = new ImageButton(this);
+        top2.setImageResource(R.drawable.tshirtd2);
+        top2.setBackgroundColor(Color.WHITE);
+
+        ImageButton top3 = new ImageButton(this);
+        top3.setImageResource(R.drawable.tshirtd3);
+        top3.setBackgroundColor(Color.WHITE);
+
+        layoutVet.addView(top1);
+        layoutVet.addView(top2);
+        layoutVet.addView(top3);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
         helpBuilder.setTitle("Top");
-        helpBuilder.setMessage("Choisis ton top");
+        helpBuilder.setView(layout);
 
-        LayoutInflater inflater = getLayoutInflater();
-        View affichageLayout = inflater.inflate(R.layout.affichagestyle, null);
-        helpBuilder.setView(affichageLayout);
 
         helpBuilder.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
@@ -444,21 +488,5 @@ public class DressingActivity extends Activity {
 
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-    }
-    //Pour récupérer des info d'action lancer par l'activité (ex photo)
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                // Image captured and saved to fileUri specified in the Intent
-                Toast.makeText(this, "Image saved to:\n" +
-                        fileUri.toString(), Toast.LENGTH_LONG).show();
-                //MAJ de la photo de l'outfit*/
-            } else if (resultCode == RESULT_CANCELED) {
-                // User cancelled the image capture
-            } else {
-                // Image capture failed, advise user
-            }
-        }
     }
 }
