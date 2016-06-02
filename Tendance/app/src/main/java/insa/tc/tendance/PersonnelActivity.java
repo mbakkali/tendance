@@ -18,6 +18,8 @@ import android.widget.Toast;
 import insa.tc.tendance.database.TendanceBDDHelper;
 import insa.tc.tendance.database.User;
 
+import static android.widget.Toast.*;
+
 /**
  * Created by Camille on 07/05/2016.
  TODO: On charge les information depuis la base de donnée local au téléphone.
@@ -144,7 +146,9 @@ public class PersonnelActivity extends Activity {
         saveInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveInfo.setText("SET modifs");
+                Toast toast = makeText(getApplicationContext(), "Informations enregistrées !",
+                        LENGTH_SHORT);
+                toast.show();
 
                 String bio = biog.getText().toString();
                 String telM = tel.getText().toString();
