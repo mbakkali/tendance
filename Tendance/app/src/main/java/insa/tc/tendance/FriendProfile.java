@@ -2,6 +2,7 @@ package insa.tc.tendance;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import insa.tc.tendance.database.TendanceBDDHelper;
+import insa.tc.tendance.database.User;
 
 /**
  * Created by Camille on 30/05/2016.
@@ -76,8 +80,15 @@ public class FriendProfile extends Activity {
             }
         });
 
+        //Récupérer les infos du friend
+        TendanceBDDHelper bddH = new TendanceBDDHelper(getApplicationContext() );
+        final SQLiteDatabase datab = bddH.getWritableDatabase();
+
+        final User ami = User.getMyProfil(datab,"camille@insa-lyon.fr");
+
         int idOutfit[]={1,2};
-        String userName ="Léa";
+        String userName = ami.getUsername();
+        String bio = ami.getBio();
         String dates [] ={"12/05/16","02/05/16"};
         String descriptions[]={"Style1 blblabla, outfit, blablabla blabalbal #Mode #OOTD","Style2 blblabla, outfit, blablabla blabalbal #Mode #OOTD"};
         int nbeOutfit=idOutfit.length;
@@ -86,7 +97,9 @@ public class FriendProfile extends Activity {
         final ImageView userPict = new ImageView(this);
         final TextView user = new TextView (this);
         final ImageButton addFriend = new ImageButton(this);
+        final TextView biog = new TextView(this);
         LinearLayout layoutProfile = new LinearLayout(this);
+        LinearLayout layoutBiog = new LinearLayout(this);
 
         LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
         params1.gravity = Gravity.CENTER_HORIZONTAL;
@@ -106,6 +119,7 @@ public class FriendProfile extends Activity {
         user.setLayoutParams(params3);
         user.setBackgroundColor(Color.WHITE);
 
+        //TODO: test pour savoir si le user est amis avec
         addFriend.setImageResource(R.drawable.plusadd);
         LinearLayout.LayoutParams params8 = new LinearLayout.LayoutParams(150,150);
         params8.setMargins(0,50,0,0);
@@ -117,12 +131,23 @@ public class FriendProfile extends Activity {
             }
         });
 
+        LinearLayout.LayoutParams params9 = new LinearLayout.LayoutParams(900,LinearLayout.LayoutParams.WRAP_CONTENT);
+        params9.setMargins(60,18,0,0);
+        biog.setLayoutParams(params9);
+        biog.setText(bio);
+        biog.setTextColor(Color.parseColor("#696969"));
+        biog.setTextSize(20);
+        biog.setTypeface(null, Typeface.ITALIC);
+        biog.setBackgroundColor(Color.WHITE);
+
         LinearLayout layout = (LinearLayout) findViewById(R.id.layoutUserFriend);
         layout.addView(layoutProfile);
+        layout.addView(layoutBiog);
 
         layoutProfile.addView(userPict);
         layoutProfile.addView(user);
         layoutProfile.addView(addFriend);
+        layoutBiog.addView(biog);
 
 
         for (int i = 0; i < nbeOutfit; i++) {
