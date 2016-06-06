@@ -1,3 +1,8 @@
+package server;
+
+import server.User;
+import server.dao.UserDAO;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -25,9 +30,9 @@ public class Main {
     	//connexion à la BDD
     	Connection connection = ConnectDatabase(); 
 
-    	User utilisateur1 = new User(1,"utilisateur1","utilisateur1@mail.com","/img/utilisateur1","bio1",true,true,0637263716,"1994-02-94","utilisateur1password");
+    	User utilisateur1 = new User(1,"utilisateur1","utilisateur1@mail.com","/img/utilisateur1","bio1",true,true,0637263716,"1994-02-14","utilisateur1password");
  		System.out.println("utilisateur1 crée");
-
+        UserDAO.add_user(connection, utilisateur1);
 
 
     	//DisplayTable(connection,"users"); 

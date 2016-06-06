@@ -44,7 +44,8 @@ public class User {
         this.profilpicture = profilpicture; 
         this.bio = bio; 
         this.male= male;
-        this.priv=priv; 
+        this.priv=priv;
+        this.age = age;
         this.phone = phone; 
         this.password = password; 
     }

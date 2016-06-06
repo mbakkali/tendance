@@ -19,7 +19,7 @@ public class UserDAO {
         try {
 
 
-            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO users (`username`, `mail`, `bio`, `sex`, `phone`, `private`, `age`) VALUE (?,?,?,?,?,?,?)");
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO users (`username`, `mail`, `bio`, `male`, `phone`, `private`, `age`, `password`) VALUE (?,?,?,?,?,?,?,?)");
             pstmt.setString(1, myuser.getUsername());
             pstmt.setString(2, myuser.getMail());
             pstmt.setString(3, myuser.getBio());
@@ -27,6 +27,7 @@ public class UserDAO {
             pstmt.setInt(5, myuser.getPhone());
             pstmt.setBoolean(6, myuser.isPriv());
             pstmt.setString(7, myuser.getAge());
+            pstmt.setString(8, myuser.getPassword());
 
             //execution du statement (requete)
             pstmt.executeUpdate();
