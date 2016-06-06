@@ -1,3 +1,5 @@
+package server;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -13,15 +15,16 @@ import java.text.*;
 
 public class User {
 
-    public int user_id;
-    public String username;
-    public String mail;
-    public String profilpicture;
-    public String bio;
-    public boolean sex;
-    public boolean priv;
-    public int phone;
-    public String password; 
+    private int user_id;
+    private String username;
+    private String mail;
+    private String profilpicture;
+    private String bio;
+    private boolean male;
+    private boolean priv;
+    private int phone;
+    private String password;
+    private String age;
 
 
     public User(int user_id, 
@@ -29,7 +32,7 @@ public class User {
                 String mail, 
                 String profilpicture, 
                 String bio, 
-                boolean sex, 
+                boolean male,
                 boolean priv, 
                 int phone, 
                 String age, 
@@ -40,35 +43,46 @@ public class User {
         this.mail = mail; 
         this.profilpicture = profilpicture; 
         this.bio = bio; 
-        this.sex= sex; 
+        this.male= male;
         this.priv=priv; 
         this.phone = phone; 
         this.password = password; 
     }
 
+    public String getUsername() {
+        return username;
+    }
 
-    //insertion dans la base de données d'un nouvel utilisateur 
-    public static void add_user(Connection connection, User myuser)throws SQLException{
-    try {
- 
+    public String getMail() {
+        return mail;
+    }
 
-        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO users (`username`, `mail`, `bio`, `sex`, `phone`, `private`, `age`) VALUE (?,?,?,?,?,?,?)");
-        pstmt.setString(1,myuser.username); 
-        pstmt.setString(2,myuser.mail); 
-        pstmt.setString(3,myuser.bio); 
-        pstmt.setBoolean(4,myuser.sex); 
-        pstmt.setInt(5,myuser.phone); 
-        pstmt.setBoolean(6,myuser.priv); 
-        pstmt.setString(7,myuser.age); 
+    public String getProfilpicture() {
+        return profilpicture;
+    }
 
-        //execution du statement (requete)
-        pstmt.executeUpdate();
+    public String getBio() {
+        return bio;
+    }
 
-        System.out.println("> Utilisateur : "+myuser.username+" ajouté à la base users");
-        pstmt.close(); 
+    public boolean isMale() {
+        return male;
+    }
 
-    } catch (Exception e) {
-      e.printStackTrace();
+    public boolean isPriv() {
+        return priv;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getAge() {
+        return age;
     }
 
   }
@@ -76,66 +90,11 @@ public class User {
 
 
 
-    //Suppression d'un utilisateur avec en param USERNAME et MAIL 
-    public static void del_user(Connection connection, String username, String mail){
-
-    try {
-
-        String query = "DELETE from users WHERE username=? AND mail=?"; 
-        PreparedStatement pstmnt = connection.prepareStatement(query);
-
-        pstmnt.setString(1,username); 
-        pstmnt.setString(2,mail); 
-        pstmnt.executeUpdate(); 
-
-        int rowsUpdated = pstmnt.executeUpdate();
-
-          if (rowsUpdated == 0) {
-              System.out.println("> L'utilisateur "+username+" avec l'adresse "+mail+" est introuvable");
-          } else {
-             System.out.println("> Utilisateur"+username+" a été supprimé de la base users");
-          }
-
-          pstmnt.close(); 
-
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-
-
-  }
-
-    //methode pour envoyer la date  sous forme  1994-02-25 
-    public static String DateToString(int year,int month, int day){
-
-        NumberFormat yearformat = new DecimalFormat("0000");
-        NumberFormat monthformat = new DecimalFormat("00");
-
-        if(year>2016 || year <1000){
-            System.out.println("L'année est incohérente");
-        }
-
-        if(month>13 || month <0){
-            System.out.println("Le mois est incohérent");
-        }
-
-        if(day>32 || day <0){
-            System.out.println("Le jour est incohérent");
-        }
-
-        String s = yearformat.format(year)+"-"+monthformat.format(month)+"-"+monthformat.format(day); 
-
-        return s; 
-}
 
 
 
 
 
 
-
-
-
-}
 
 
