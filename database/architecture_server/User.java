@@ -50,9 +50,7 @@ public class User {
     //insertion dans la base de données d'un nouvel utilisateur 
     public static void add_user(Connection connection, User myuser)throws SQLException{
     try {
-
-
-        String age = DateToString(1994,02,25); 
+ 
 
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO users (`username`, `mail`, `bio`, `sex`, `phone`, `private`, `age`) VALUE (?,?,?,?,?,?,?)");
         pstmt.setString(1,myuser.username); 
@@ -61,7 +59,7 @@ public class User {
         pstmt.setBoolean(4,myuser.sex); 
         pstmt.setInt(5,myuser.phone); 
         pstmt.setBoolean(6,myuser.priv); 
-        pstmt.setString(7,age); 
+        pstmt.setString(7,myuser.age); 
 
         //execution du statement (requete)
         pstmt.executeUpdate();
@@ -129,6 +127,9 @@ public class User {
 
         return s; 
 }
+
+
+
 
 
 
