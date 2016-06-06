@@ -1,44 +1,47 @@
 package server.rest;
 
-import java.util.concurrent.atomic.AtomicLong;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import server.Outfit;
 import server.User;
 
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement; 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData; 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.ArrayList;
-
-import java.text.*;
-
-
-
-
-
+@RequestMapping("/user")
 @RestController
 public class UserController {
 
     private final int counter = 0; 
 
-
-    @RequestMapping("/user")
-    public User myuser(@RequestParam(value="username", defaultValue="myusername") String username) {
-
-    	
+    @RequestMapping(method = RequestMethod.GET)
+    public User getUserByUsername(@RequestParam(value="username", defaultValue="myusername") String username) {
 
     	/*counter.incrementAndGet(),"mehdi","test@mail.com","/img/mehdi.jpeg","bio",true,true,,"passwd" */
 
         return null; 
        
+    }
+
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public User createUser(@RequestBody User user){
+        //Connection connection = SQLDatabase.ConnectDatabase();
+        //JdbcUserDAO.add_user(connection,user);
+        return null;
+
+    }
+
+    @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
+    public String deleteUser(@PathVariable long id){
+        return "ok";
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    public User updateUser(@PathVariable long id, @RequestBody User user){
+        return user;
+    }
+
+    @RequestMapping(value = "/outfit/add", method = RequestMethod.POST)
+    public Outfit insertOutfit(@RequestBody Outfit outfit){
+        //TODO
+        return outfit;
     }
 
 }

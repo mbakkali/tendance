@@ -1,42 +1,30 @@
 package server;
 
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement; 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData; 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.ArrayList;
-import java.text.*; 
+
 
 public class User {
 
-    private int user_id;
+    private long user_id;
     private String username;
     private String mail;
     private String profilpicture;
     private String bio;
     private boolean male;
     private boolean priv;
-    private int phone;
+    private String phone;
     private String password;
     private String age;
 
 
-    public User(int user_id, 
+    public User(long user_id,
                 String username, 
                 String mail, 
                 String profilpicture, 
                 String bio, 
                 boolean male,
                 boolean priv, 
-                int phone, 
-                String age, 
-                String password) {
+                String phone,
+                String age) {
 
         this.user_id = user_id;
         this.username = username;
@@ -46,9 +34,23 @@ public class User {
         this.male= male;
         this.priv=priv;
         this.age = age;
-        this.phone = phone; 
-        this.password = password; 
+        this.phone = phone;
     }
+
+    public User(String username, String mail, String profilpicture, String bio, boolean male, boolean priv, String phone, String age, String password) {
+        this.username = username;
+        this.mail = mail;
+        this.profilpicture = profilpicture;
+        this.bio = bio;
+        this.male = male;
+        this.priv = priv;
+        this.phone = phone;
+        this.password = password;
+        this.age = age;
+    }
+
+
+
 
     public String getUsername() {
         return username;
@@ -74,7 +76,7 @@ public class User {
         return priv;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -86,7 +88,22 @@ public class User {
         return age;
     }
 
-  }
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", username='" + username + '\'' +
+                ", mail='" + mail + '\'' +
+                ", profilpicture='" + profilpicture + '\'' +
+                ", bio='" + bio + '\'' +
+                ", male=" + male +
+                ", priv=" + priv +
+                ", phone=" + phone +
+                ", password='" + password + '\'' +
+                ", age='" + age + '\'' +
+                '}';
+    }
+}
 
 
 
