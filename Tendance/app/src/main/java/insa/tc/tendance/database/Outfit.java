@@ -1,22 +1,9 @@
 package insa.tc.tendance.database;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,7 +19,6 @@ public class Outfit {
     private String description;
     private int style;
     private String photo;
-    private long likes;
 
     public Outfit(int user){
         this.user = user;
@@ -73,51 +59,21 @@ public class Outfit {
 
     }
 
-    public boolean liked(Context context, User me){
-        final boolean[] success = {false};
-        RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://serveurTendance.io/like/"+ id  + "/?iduser=" + me.getId_user(); // Le serveur va insérer le like
-        JsonObjectRequest jsObj = new JsonObjectRequest(Request.Method.PUT, url, null,
-                new Response.Listener<JSONObject>(){
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        //Le serveur a répondu à la requête, on peut modifier le coeur
-                        success[0] = true;
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
-        return success[0];
-    }
-    public boolean unliked(Context context, User me){
-        final boolean[] success = {false};
-        RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://serveurTendance.io/like/"+ id  + "/?iduser=" + me.getId_user(); // Le serveur va enlever le like
-        JsonObjectRequest jsObj = new JsonObjectRequest(Request.Method.DELETE, url, null,
-                new Response.Listener<JSONObject>(){
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        //Le serveur a répondu à la requête, on peut modifier le coeur
-                        success[0] = true;
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
-        return success[0];
-    }
+    public void liked(){
+        //TODO Fonction liked qui ajoute une relation like entre l'utilisateur et l'outfit.
 
+    }
+    public void unliked(){
+
+    }
     public String getDate(){
     return null;
     }
     public int getLike(){
         return 0;
     }
-
-    public void setLikes(long likes) {
-        this.likes = likes;
+    //TODO FUNCTION FAVOUTFIT
+    public Outfit getFavoriteOutfits(){
+        return null;
     }
 }
