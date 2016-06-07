@@ -1,6 +1,7 @@
 package server;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class User {
 
@@ -12,7 +13,10 @@ public class User {
     private boolean male;
     private boolean priv;
     private String phone;
+
+    @JsonIgnore
     private String password;
+
     private String age;
 
 

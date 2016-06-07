@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class JdbcUserDAO implements UserDAO {
@@ -121,12 +123,41 @@ public class JdbcUserDAO implements UserDAO {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM USERS WHERE username LIKE ?");
             ps.setString(1, username);
 
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return user;
     }
 
+    @Override
+    public List<User> findAll() {
+        List<User> users = new ArrayList<>();
+        User user;
+        try{
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM users");
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                user = new User(
+                        rs.getLong("user_id"),
+                        rs.getString("username"),
+                        rs.getString("mail"),
+                        rs.getString("profil_picture"),
+                        rs.getString("bio"),
+                        rs.getBoolean("male"),
+                        rs.getBoolean("private"),
+                        rs.getString("phone"),
+                        rs.getString("age"));
+                users.add(user);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
 
 
     //methode pour envoyer la date  sous forme  1994-02-25

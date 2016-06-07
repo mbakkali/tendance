@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import server.dao.UserDAO;
 
 import java.sql.Connection;
+import java.util.List;
 
 import static server.SQLDatabase.ConnectDatabase;
 /*
@@ -17,14 +18,16 @@ public class Main {
 		ApplicationContext context =
                 new ClassPathXmlApplicationContext("Spring-Module.xml");
 		UserDAO userDAO = (UserDAO) context.getBean("userDAO");
-    	User utilisateur1 = new User("utilisateur3","utilisateur1@insamail.com","/img/utilisateur1","bio1",true,true,"0637263716","1994-02-14","utilisateur1password");
+
+        User utilisateur1 = new User("utilisateur3","utilisateurpatrik@insamail.com","/img/utilisateur1","bio1",true,true,"0637263716","1994-02-14","utilisateur1password");
  		System.out.println("utilisateur1 crée");
         userDAO.insert(utilisateur1);
 
 
         User user = userDAO.findByUserId(1);
         System.out.println(user);
-
+        List<User> users = userDAO.findAll();
+        System.out.println(users);
     	//DisplayTable(connection,"users")
     }
 
