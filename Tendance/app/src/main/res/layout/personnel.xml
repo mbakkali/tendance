@@ -116,6 +116,7 @@
                     android:layout_height="25dp"
                     android:layout_marginLeft="6dp"
                     android:text="Changer la photo"
+                    android:onClick="loadImagefromGallery"
                     android:background="@null"
                     android:textAllCaps="false"
                     android:id="@+id/changePicture" />

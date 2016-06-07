@@ -204,6 +204,8 @@ public class DressingActivity extends Activity {
                 showSuggestion();
             }
         });
+
+
     }
     private void showDescritpion() {
         //TODO RECURER LA DESCRIPTION DE L'OUTFIT LOCALE dans un objet
