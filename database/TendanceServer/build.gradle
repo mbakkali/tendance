@@ -8,12 +8,12 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'application'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'gs-rest-service'
+    baseName = 'tedanceServer'
     version =  '0.1.0'
 }
 
@@ -24,11 +24,16 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+mainClassName = 'server.App'
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    runtime('mysql:mysql-connector-java')
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
     testCompile("junit:junit")
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
