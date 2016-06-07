@@ -185,13 +185,27 @@
             android:layout_gravity="right|bottom" />
 
         <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/layoutOutfit"
-            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/blanc"
+            android:layout_width="240dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center">
+            android:layout_gravity="left|center_vertical">
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/gauche"
+                android:background="@color/blanc"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/droite"
+                android:background="@color/blanc"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"></LinearLayout>
         </LinearLayout>
+
 
     </FrameLayout>
 
