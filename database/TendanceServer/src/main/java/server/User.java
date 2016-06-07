@@ -52,7 +52,18 @@ public class User {
         this.password = password;
         this.age = age;
     }
-
+    public User(long user_id, String username, String mail, String profilpicture, String bio, boolean male, boolean priv, String phone, String age, String password) {
+        this.username = username;
+        this.user_id = user_id;
+        this.mail = mail;
+        this.profilpicture = profilpicture;
+        this.bio = bio;
+        this.male = male;
+        this.priv = priv;
+        this.phone = phone;
+        this.password = password;
+        this.age = age;
+    }
 
 
 

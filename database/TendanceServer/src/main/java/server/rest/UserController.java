@@ -62,9 +62,9 @@ public class UserController {
     public List<User> getFriends(@RequestParam long iduser){
 
         List<User> friends = new ArrayList<>();
-        friends.add(new User("pfortier", "pfortier@insa-lyon.fr", "null", "Je suis patrik", true,
+        friends.add(new User(1,"pfortier", "pfortier@insa-lyon.fr", "null", "Je suis patrik", true,
                 false, "0678787878", "1994-01-10", "tendance"));
-        friends.add(new User("cemonet", "cemonet@insa-lyon.fr", "null", "Je suis Camille", false, false,
+        friends.add(new User(2,"cemonet", "cemonet@insa-lyon.fr", "null", "Je suis Camille", false, false,
                 "0679797979", "1994-05-20", "tendance"));
         //TODO request from db
 
