@@ -230,7 +230,7 @@ public class DressingActivity extends Activity {
     }
     private void showCoat() {
 
-        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.layoutOutfit);
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.gauche);
 
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
@@ -296,7 +296,7 @@ public class DressingActivity extends Activity {
     }
     private void showTop() {
 
-        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.layoutOutfit);
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
 
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
@@ -324,6 +324,16 @@ public class DressingActivity extends Activity {
                 topAdd.setImageResource(R.drawable.tshirtd1);
                 layoutOutfit.addView(topAdd);
                 //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        topAdd.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                topAdd.setImageDrawable(null);
+                return true;
             }
         });
 
@@ -362,7 +372,7 @@ public class DressingActivity extends Activity {
     }
     private void showTrousers() {
 
-        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.layoutOutfit);
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
 
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
@@ -428,7 +438,7 @@ public class DressingActivity extends Activity {
     }
     private void showDress() {
 
-        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.layoutOutfit);
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
 
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
@@ -494,7 +504,7 @@ public class DressingActivity extends Activity {
     }
     private void showSkirt() {
 
-        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.layoutOutfit);
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
 
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
@@ -560,7 +570,7 @@ public class DressingActivity extends Activity {
     }
     private void showShoes() {
 
-        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.layoutOutfit);
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
 
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
@@ -626,7 +636,7 @@ public class DressingActivity extends Activity {
     }
     private void showOther() {
 
-        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.layoutOutfit);
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.gauche);
 
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
