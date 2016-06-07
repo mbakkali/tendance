@@ -30,21 +30,35 @@ public class User implements Serializable{
     private String username;
     private String mail;
     private String profilpicture;
+    private String age;
     private String bio;
     private boolean male;
-    private boolean publicprofil;
-    private String phonenumber;
+    private boolean priv;
+    private String phone;
 
 
     public User(){
     }
-    public User(String username, String mail, boolean publicprofil, String bio, boolean male, String phonenumber){
+
+    public User(String username, String mail, String profilpicture, String age, String bio, boolean male, boolean priv, String phone) {
+        this.username = username;
+        this.mail = mail;
+        this.profilpicture = profilpicture;
+        this.age = age;
+        this.bio = bio;
+        this.male = male;
+        this.priv = priv;
+        this.phone = phone;
+    }
+
+    public User(String username, String mail, String profilpicture, boolean priv, String bio, boolean male, String phone){
         this.username = username;
         this.mail = mail;
         this.bio = bio;
         this.male = male;
-        this.publicprofil = publicprofil;
-        this.phonenumber = phonenumber;
+        this.priv = priv;
+        this.phone = phone;
+        this.profilpicture = profilpicture;
     }
 
     public static User getMyProfil(SQLiteDatabase db, String email){
@@ -58,7 +72,7 @@ public class User implements Serializable{
                 "biographie",
                 "male",
                 "public",
-                "phonenumber"
+                "phone"
         };
         String selection = "mail LIKE ?";
         String[] selectionArgs = { email };
@@ -72,7 +86,7 @@ public class User implements Serializable{
                 null
         );
         c.moveToNext();
-        User me = new User(c.getString(1),c.getString(2),c.getInt(6)==1 ,c.getString(4), c.getInt(5)==1, c.getString(7) );
+        User me = new User(c.getString(1),c.getString(2),"null",c.getInt(6)==1 ,c.getString(4), c.getInt(5)==1, c.getString(7) );
         me.setId_user(c.getLong(0));
         c.close();
         return me;
@@ -84,16 +98,17 @@ public class User implements Serializable{
 
     public String getBio() {return bio;}
     public boolean isMale() {return male;}
-    public boolean isPublicprofil() {return publicprofil;}
-    public String getPhonenumber() {return phonenumber;}
+    public boolean isPriv() {return priv;}
+    public String getPhone() {return phone;}
     public String getMail() {return mail;}
     public String getUsername() {return username;}
-
-
+    public String getAge() {return age;}
 
     private void setId_user(long id_user) {
         this.id_user = id_user;
     }
+
+    public String getProfilpicture() {        return profilpicture;    }
 
     public void addUserLocal(SQLiteDatabase db){
         ContentValues values = new ContentValues();
@@ -102,8 +117,8 @@ public class User implements Serializable{
         values.put("profil_picture", this.profilpicture);
         values.put("biographie", this.bio);
         values.put("male", this.male);
-        values.put("public", this.publicprofil);
-        values.put("phonenumber", this.phonenumber);
+        values.put("public", this.priv);
+        values.put("phone", this.phone);
         setId_user(db.insert("USERS", null, values));
         System.out.println("A user"+ getId_user());
     }
@@ -118,8 +133,8 @@ public class User implements Serializable{
         //values.put("profil_picture", modifiedUser.profilpicture);
         values.put("biographie", modifiedUser.getBio());
         values.put("male", modifiedUser.isMale());
-        values.put("public", modifiedUser.isPublicprofil());
-        values.put("phonenumber", modifiedUser.getPhonenumber());
+        values.put("public", modifiedUser.isPriv());
+        values.put("phone", modifiedUser.getPhone());
         int result =db.update("USERS", values, "id_user=?", args);
         System.out.println( getId_user() + " Updated..."+ result);
     }
@@ -148,5 +163,19 @@ public class User implements Serializable{
         });
 
         return favorites;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", mail='" + mail + '\'' +
+                ", profilpicture='" + profilpicture + '\'' +
+                ", age='" + age + '\'' +
+                ", bio='" + bio + '\'' +
+                ", male=" + male +
+                ", priv=" + priv +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }

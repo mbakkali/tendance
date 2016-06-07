@@ -131,7 +131,7 @@ public class PersonnelActivity extends Activity {
         email =(EditText) findViewById(R.id.mail);
         email.setText(userEmail);
 
-        String phone = ex.getPhonenumber();
+        String phone = ex.getPhone();
         tel = (EditText) findViewById(R.id.tel);
         tel.setText(phone);
 
@@ -141,7 +141,7 @@ public class PersonnelActivity extends Activity {
             sex.setChecked(true);
         }
 
-        boolean publique = ex.isPublicprofil();
+        boolean publique = ex.isPriv();
         publicC = (Switch) findViewById(R.id.switch1);
         if (publique) {
             publicC.setChecked(true);
@@ -159,7 +159,7 @@ public class PersonnelActivity extends Activity {
                 String telM = tel.getText().toString();
                 boolean sexM = sex.isChecked();
                 boolean publicM = publicC.isChecked();
-                User UpdatePatoche = new User(ex.getUsername(), ex.getMail(), publicM, bio, sexM, telM);
+                User UpdatePatoche = new User(ex.getUsername(), ex.getMail(),ex.getProfilpicture(), publicM, bio, sexM, telM);
                 ex.updateUserLocal(datab,UpdatePatoche);
 
             }

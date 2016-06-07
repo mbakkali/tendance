@@ -1,39 +1,25 @@
 package insa.tc.tendance;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.DynamicLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import insa.tc.tendance.database.User;
 
-/**
- * Created by Camille on 07/05/2016.
- */
 public class FriendActivity extends Activity {
 
     ImageButton home;
@@ -42,6 +28,8 @@ public class FriendActivity extends Activity {
     ImageButton friend;
     ImageButton me;
     Button testFriend;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,9 +86,6 @@ public class FriendActivity extends Activity {
 
         //Test Friendlist
         User patrik = new User();
-        getFriends(patrik);
-
-        int i = 0;
 
         testFriend = (Button) findViewById(R.id.friend1);
         testFriend.setOnClickListener(new View.OnClickListener() {
@@ -110,35 +95,13 @@ public class FriendActivity extends Activity {
                 startActivity(friendProfile);
             }
         });
-    }
-    public void getFriends(User user){
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://90.66.114.198/user/friends" + "?iduser=" + String.valueOf(user.getId_user());
-        JsonObjectRequest jsObj = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>(){
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            List<User> friends = new ArrayList<>();
-                            JSONArray results = response.getJSONArray("");
-                            for(int i = 0; i < results.length(); i++) {
-                                JSONObject result = results.getJSONObject(i);
-                                friends.add(new User(result.getString("username"), result.getString("mail"), result.getBoolean("priv"), result.getString("bio"), result.getBoolean("male"), result.getString("phone")));
-                            }
-                            afficherFriend(friends);
-                        } catch (JSONException e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
-        queue.add(jsObj);
     }
-    public void afficherFriend(List<User> friends){
+    protected void onStart(){
+        super.onStart();
+        new HttpRequestTask().execute();
+    }
+    public void afficherFriend(User... friends){
         for (User friend: friends) {
             final LinearLayout mylayout = new LinearLayout(this);
             final Button myButton = new Button(this);
@@ -176,6 +139,29 @@ public class FriendActivity extends Activity {
                     myButton.setText("Go user profile");
                 }
             });
+        }
+
+    }
+    private class HttpRequestTask extends AsyncTask<Void, Void, User[]> {
+        @Override
+        protected User[] doInBackground(Void... params) {
+            try {
+                final String url = "http://90.68.114.198/user/friends?iduser=1";
+                final String url_local = "http://192.168.1.13:5000/user/friends?iduser=1"; //Pour quand patrik fais des test chez lui...
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+                User[] users = restTemplate.getForObject(url_local, User[].class);
+                return users;
+
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+            }
+
+            return null;
+        }
+
+        protected void onPostExecute(User... users) {
+            afficherFriend(users);
         }
 
     }
