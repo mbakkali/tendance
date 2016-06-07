@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -88,19 +89,20 @@ public class User implements Serializable{
     public String getMail() {return mail;}
     public String getUsername() {return username;}
 
-    public ArrayList<String> getFriends(Context context){
-        final ArrayList<String> friends = new ArrayList<>();
+    public List<User> getFriends(Context context){
+        final List<User> friends = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://serveurTendance.io/myfriends?iduser=" + String.valueOf(id_user);
+        String url = "http://90.66.114.198/user/friends" + "?iduser=" + String.valueOf(id_user);
         JsonObjectRequest jsObj = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>(){
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray results = response.getJSONArray("data");
-                            for(int i = 0; i < results.length(); i++) {
-                                friends.add((String) results.getJSONObject(i).get("username"));
-                            }
+                                JSONArray results = response.getJSONArray("");
+                                for(int i = 0; i < results.length(); i++) {
+                                    JSONObject result = results.getJSONObject(i);
+                                    friends.add(new User(result.getString("username"), result.getString("mail"), result.getBoolean("priv"), result.getString("bio"), result.getBoolean("male"), result.getString("phone")));
+                                }
                             } catch (JSONException e1) {
                             e1.printStackTrace();
                         }

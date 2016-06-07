@@ -14,6 +14,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import insa.tc.tendance.database.User;
+
 /**
  * Created by Camille on 07/05/2016.
  */
@@ -77,11 +82,19 @@ public class FriendActivity extends Activity {
         //TODO Barre de recherge, onChangeListener on Submit listener + appel fonction recherge amis avec le contenue du SearchView.
         //TODO Quand on clic sur un user, on ouvre une nouvelle activité avec le profil d'un ami (ses info,
         //TODO Recupérer les amis: ProfilPicture and Username, id_user
-        String amis[] = {"Patoche", "Lele", "Jib", "Mehdi", "Camille","Lulu", "Antoine","Tommy","Théo","Salma","Mathieu"};
-        int nbeAmis = amis.length;
 
-        for (int i = 0; i < nbeAmis; i++) {
 
+        //Test Friendlist
+        User patrik = new User();
+        List<User> patrik_friends = patrik.getFriends(getApplicationContext());
+
+        List<String> friends_name = new ArrayList<>();
+        for (User user : patrik_friends) {
+            friends_name.add(user.getUsername());
+        }
+        int i = 0;
+        for (String ami: friends_name) {
+            i++;
             final LinearLayout mylayout = new LinearLayout(this);
             final Button myButton = new Button(this);
             final ImageView myPicture = new ImageView (this);
@@ -96,7 +109,7 @@ public class FriendActivity extends Activity {
             params2.setMargins(20,0,0,0);
             myPicture.setLayoutParams(params2);
 
-            myButton.setText(amis[i]);
+            myButton.setText(ami);
             myButton.setId(i);
             myButton.setAllCaps(false);
             myButton.setBackgroundColor(Color.TRANSPARENT);
