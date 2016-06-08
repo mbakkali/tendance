@@ -90,15 +90,6 @@ public class FriendActivity extends Activity {
         //Peupler les amis avec le réseau
         new HttpRequestTask().execute();
 
-        testFriend = (Button) findViewById(R.id.friend1);
-        testFriend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent friendProfile = new Intent(FriendActivity.this, FriendProfile.class);
-                friendProfile.putExtra("friend",friend.getId());
-                startActivity(friendProfile);
-            }
-        });
 
     }
     protected void onStart(){
@@ -156,7 +147,7 @@ public class FriendActivity extends Activity {
                 final String url_local = "http://192.168.1.13:5000/user/friends?iduser=1"; //Pour quand patrik fais des test chez lui...
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                User[] users = restTemplate.getForObject(url_local, User[].class);
+                User[] users = restTemplate.getForObject(url, User[].class);
                 return users;
 
             } catch (Exception e) {

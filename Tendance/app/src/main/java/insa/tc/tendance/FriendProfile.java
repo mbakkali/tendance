@@ -1,6 +1,8 @@
 package insa.tc.tendance;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -139,12 +141,35 @@ public class FriendProfile extends Activity {
         params8.setMargins(0, 50, 0, 0);
         addFriend.setLayoutParams(params8);
 
+
+        final AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+
         if(!myprofil.isFriendWith(ami)) {
             addFriend.setImageResource(R.drawable.plusadd);
             addFriend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //ajouter amis dans BDD
+
+                    helpBuilder.setTitle("Ajouter cette personne ?");
+
+                    helpBuilder.setPositiveButton("OUI",
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //TODO: ajouter le user dans la liste d'amis
+                                }
+                            });
+                    helpBuilder.setNegativeButton("NON",
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //TODO: supprimer le user de la liste d'amis
+                                }
+                            });
+
+                    AlertDialog helpDialog = helpBuilder.create();
+                    helpDialog.show();
                 }
             });
         }else {
@@ -153,6 +178,26 @@ public class FriendProfile extends Activity {
                 @Override
                 public void onClick(View v) {
                     //enlever des amis
+
+                    helpBuilder.setTitle("Supprimer cet ami ?");
+
+                    helpBuilder.setPositiveButton("OUI",
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Do nothing but close the dialog
+                                }
+                            });
+                    helpBuilder.setNegativeButton("NON",
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Do nothing but close the dialog
+                                }
+                            });
+
+                    AlertDialog helpDialog = helpBuilder.create();
+                    helpDialog.show();
                 }
             });
         }
