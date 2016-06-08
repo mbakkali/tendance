@@ -13,10 +13,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.google.gson.Gson;
+
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 import insa.tc.tendance.database.User;
 
@@ -28,12 +28,15 @@ public class FriendActivity extends Activity {
     ImageButton friend;
     ImageButton me;
     Button testFriend;
+    private User myself = new User();
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friend);
+
+
 
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
@@ -84,14 +87,15 @@ public class FriendActivity extends Activity {
         //TODO Recupérer les amis: ProfilPicture and Username, id_user
 
 
-        //Test Friendlist
-        User patrik = new User();
+        //Peupler les amis avec le réseau
+        new HttpRequestTask().execute();
 
         testFriend = (Button) findViewById(R.id.friend1);
         testFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent friendProfile = new Intent(FriendActivity.this, FriendProfile.class);
+                friendProfile.putExtra("friend",friend.getId());
                 startActivity(friendProfile);
             }
         });
@@ -99,10 +103,9 @@ public class FriendActivity extends Activity {
     }
     protected void onStart(){
         super.onStart();
-        new HttpRequestTask().execute();
     }
     public void afficherFriend(User... friends){
-        for (User friend: friends) {
+        for (final User friend: friends) {
             final LinearLayout mylayout = new LinearLayout(this);
             final Button myButton = new Button(this);
             final ImageView myPicture = new ImageView (this);
@@ -136,7 +139,10 @@ public class FriendActivity extends Activity {
 
             myButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    myButton.setText("Go user profile");
+                    Intent friendProfile = new Intent(FriendActivity.this, FriendProfile.class);
+                    friendProfile.putExtra("user", new Gson().toJson(myself));
+                    friendProfile.putExtra("friend", new Gson().toJson(friend));
+                    startActivity(friendProfile);
                 }
             });
         }
@@ -146,7 +152,7 @@ public class FriendActivity extends Activity {
         @Override
         protected User[] doInBackground(Void... params) {
             try {
-                final String url = "http://90.68.114.198/user/friends?iduser=1";
+                final String url = "http://90.66.114.198/user/friends?iduser=1";
                 final String url_local = "http://192.168.1.13:5000/user/friends?iduser=1"; //Pour quand patrik fais des test chez lui...
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());

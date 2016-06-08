@@ -13,18 +13,18 @@ public class TendanceBDDHelper extends SQLiteOpenHelper {
     * Permet la définition de la BDD et la gestion des version de celle ci.
     * */
     private static final String DATABASE_NAME ="TendanceBDD";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     //Database schema
     private static final String TABLE_USERS =
             "CREATE TABLE USERS ("  +
             "id_user" + " INTEGER PRIMARY KEY," +
-            "nom" + " TEXT," +
+            "username" + " TEXT," +
             "mail" + " TEXT UNIQUE," +
-            "profil_picture" + " TEXT," + //Path to his localprofilepicture
-            "biographie" + " TEXT," +
+            "profilpicture" + " TEXT," + //Path to his localprofilepicture
+            "bio" + " TEXT," +
             "male" + " BOOLEAN," + //genre: true pour homme, false pour femme
-            "public" + " BOOLEAN," +
-            "phonenumber" + " TEXT" +
+            "priv" + " BOOLEAN," +
+            "phone" + " TEXT" +
             ");";
 
     private static final String TABLE_OUTFIT = "CREATE TABLE OUTFITS (" +
@@ -91,7 +91,6 @@ public class TendanceBDDHelper extends SQLiteOpenHelper {
 
     }
     public void onUpgrade(SQLiteDatabase db, int oldversion, int newversion){
-        //Nothing for now...
     }
     public void basicconfiguration(SQLiteDatabase db){
         //Cette fonction sert à peupler avec les style et type que l'on souhaite avoir.

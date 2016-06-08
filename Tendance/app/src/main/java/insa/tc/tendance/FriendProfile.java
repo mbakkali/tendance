@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import insa.tc.tendance.database.TendanceBDDHelper;
 import insa.tc.tendance.database.User;
 
@@ -30,10 +32,18 @@ public class FriendProfile extends Activity {
     ImageButton friend;
     ImageButton me;
 
+    private User ami;
+    private User myprofil;
+
+    public void updateFriendButton(){
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friendprofile);
+
 
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
@@ -75,16 +85,20 @@ public class FriendProfile extends Activity {
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent user = new Intent(FriendProfile.this, PersonnelActivity.class);
-                startActivity(user);
+                Intent userActivity = new Intent(FriendProfile.this, PersonnelActivity.class);
+                startActivity(userActivity);
             }
         });
 
         //Récupérer les infos du friend
         TendanceBDDHelper bddH = new TendanceBDDHelper(getApplicationContext() );
-        final SQLiteDatabase datab = bddH.getWritableDatabase();
+        Gson gson = new Gson();
+        ami = gson.fromJson(getIntent().getStringExtra("friend"),User.class);
+        System.out.println(ami);
+        myprofil = gson.fromJson(getIntent().getStringExtra("user"), User.class);
 
-        final User ami = User.getMyProfil(datab,"camille@insa-lyon.fr");
+        final SQLiteDatabase datab = bddH.getReadableDatabase();
+        //final User ami = User.getMyProfil(datab,"camille@insa-lyon.fr");
 
         int idOutfit[]={1,2};
         String userName = ami.getUsername();
@@ -120,16 +134,28 @@ public class FriendProfile extends Activity {
         user.setBackgroundColor(Color.WHITE);
 
         //TODO: test pour savoir si le user est amis avec
-        addFriend.setImageResource(R.drawable.plusadd);
-        LinearLayout.LayoutParams params8 = new LinearLayout.LayoutParams(150,150);
-        params8.setMargins(0,50,0,0);
+
+        LinearLayout.LayoutParams params8 = new LinearLayout.LayoutParams(150, 150);
+        params8.setMargins(0, 50, 0, 0);
         addFriend.setLayoutParams(params8);
-        addFriend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //ajouter amis dans BDD
-            }
-        });
+
+        if(!myprofil.isFriendWith(ami)) {
+            addFriend.setImageResource(R.drawable.plusadd);
+            addFriend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //ajouter amis dans BDD
+                }
+            });
+        }else {
+            addFriend.setImageResource(R.drawable.friended);
+            addFriend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //enlever des amis
+                }
+            });
+        }
 
         LinearLayout.LayoutParams params9 = new LinearLayout.LayoutParams(900,LinearLayout.LayoutParams.WRAP_CONTENT);
         params9.setMargins(60,18,0,0);
@@ -186,7 +212,6 @@ public class FriendProfile extends Activity {
             layout.addView(description);
             layout.addView(outfit);
             layout.addView(selfie);
-
 
         }
     }

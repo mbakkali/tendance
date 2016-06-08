@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.util.JsonReader;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,6 +18,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -66,12 +70,12 @@ public class User implements Serializable{
         //On récupère les infos de l'utilisateur après authentification
         String[] projection = {
                 "id_user",
-                "nom",
+                "username",
                 "mail",
-                "profil_picture",
-                "biographie",
+                "profilpicture",
+                "bio",
                 "male",
-                "public",
+                "priv",
                 "phone"
         };
         String selection = "mail LIKE ?";
@@ -112,12 +116,12 @@ public class User implements Serializable{
 
     public void addUserLocal(SQLiteDatabase db){
         ContentValues values = new ContentValues();
-        values.put("nom", this.username);
+        values.put("username", this.username);
         values.put("mail", this.mail);
-        values.put("profil_picture", this.profilpicture);
-        values.put("biographie", this.bio);
+        values.put("profilpicture", this.profilpicture);
+        values.put("bio", this.bio);
         values.put("male", this.male);
-        values.put("public", this.priv);
+        values.put("priv", this.priv);
         values.put("phone", this.phone);
         setId_user(db.insert("USERS", null, values));
         System.out.println("A user"+ getId_user());
@@ -128,12 +132,12 @@ public class User implements Serializable{
         String[] args = {
                 String.valueOf(getId_user())
         };
-        values.put("nom", modifiedUser.getUsername());
+        values.put("username", modifiedUser.getUsername());
         values.put("mail", modifiedUser.getMail());
         //values.put("profil_picture", modifiedUser.profilpicture);
-        values.put("biographie", modifiedUser.getBio());
+        values.put("bio", modifiedUser.getBio());
         values.put("male", modifiedUser.isMale());
-        values.put("public", modifiedUser.isPriv());
+        values.put("priv", modifiedUser.isPriv());
         values.put("phone", modifiedUser.getPhone());
         int result =db.update("USERS", values, "id_user=?", args);
         System.out.println( getId_user() + " Updated..."+ result);
@@ -177,5 +181,36 @@ public class User implements Serializable{
                 ", priv=" + priv +
                 ", phone='" + phone + '\'' +
                 '}';
+    }
+
+    public boolean isFriendWith(User target) {
+        boolean friend = true;
+
+
+
+        return friend;
+    }
+
+    private class HttpRequestTask extends AsyncTask<Void, Void, User[]> {
+        @Override
+        protected User[] doInBackground(Void... params) {
+            try {
+                final String path = "/user/friends";
+                final String url = "http://90.68.114.198?"+path+"?iduser=1";
+                final String url_local = "http://192.168.1.13:5000" + path + "?iduser=1"; //Pour quand patrik fais des test chez lui...
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+                User[] users = restTemplate.getForObject(url_local, User[].class);
+                return users;
+
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+            }
+
+            return null;
+        }
+
+        protected void onPostExecute(User... users) {}
+
     }
 }
