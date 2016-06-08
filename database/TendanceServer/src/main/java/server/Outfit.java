@@ -1,20 +1,32 @@
 package server;
 
 
+import java.security.Timestamp;
+import java.util.Date;
+
 public class Outfit {
 
     private long outfit_id;
     private String timestamp;
     private String description;
+    private String photo;
     private long style_id;
-    private long likes;
 
-    public Outfit(long outfit_id, String timestamp, String description, long style_id, long likes) {
+    public Outfit(long outfit_id, String timestamp, String description,String photo, long style_id) {
         this.outfit_id = outfit_id;
         this.timestamp = timestamp;
+        this.photo = photo;
         this.description = description;
         this.style_id = style_id;
-        this.likes = likes;
+    }
+
+    public Outfit(long outfit_id, String description, String photo, long style_id) {
+        this.outfit_id = outfit_id;
+        this.description = description;
+        this.photo = photo;
+        this.timestamp = new Timestamp(new Date(), null).toString();
+        this.style_id = style_id;
+
     }
 
     public long getOutfit_id() {
@@ -49,11 +61,13 @@ public class Outfit {
         this.style_id = style_id;
     }
 
-    public long getLikes() {
-        return likes;
-    }
+    //Cette méthode demande une requête vers l'association Likes (CE n'EST PAS UN CHAMP DE OUTFIT)
+    //MAIS UNE RELATION N-N ENTRE USER ET OUTFIT
 
-    public void setLikes(long likes) {
-        this.likes = likes;
+
+    public long getLikes() {
+        //SELECT COUNT(*) FROM LIKES WHERE LIKES.outfit_id = ?
+        //Un truc du genre
+        return 50;
     }
 }
