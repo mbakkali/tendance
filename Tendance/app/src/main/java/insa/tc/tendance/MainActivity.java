@@ -47,7 +47,10 @@ public class MainActivity extends AppCompatActivity {
         TendanceBDDHelper tendance = new TendanceBDDHelper(getApplicationContext());
         SQLiteDatabase db = tendance.getWritableDatabase();
 
+        User testCreateuser = new User("kmort","fortier@kmort.com","kmort");
 
+        new User.HttpRequestCreateProfil().execute(testCreateuser);
+        System.out.println(testCreateuser);
 
     }
 }

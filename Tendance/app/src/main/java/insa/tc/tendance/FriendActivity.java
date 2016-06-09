@@ -158,7 +158,8 @@ public class FriendActivity extends Activity {
         }
 
         protected void onPostExecute(User... users) {
-            afficherFriend(users);
+            if(users!=null)
+                afficherFriend(users);
         }
 
     }
