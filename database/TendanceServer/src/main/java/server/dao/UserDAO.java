@@ -3,9 +3,7 @@ package server.dao;
 import server.SQLDatabase;
 import server.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
@@ -16,32 +14,29 @@ public class UserDAO {
     private static Connection connection = SQLDatabase.ConnectDatabase();
 
     //insertion dans la base de données d'un nouvel utilisateur
-    public static void add_user(User myuser) {
+    public static User add_user(User myuser) {
         try {
 
-            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO users (`username`, `mail`, `bio`, `male`, `phone`, `private`, `age`, `password`) VALUE (?,?,?,?,?,?,?,?)");
-            
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO users (`username`, `mail`, `password`) VALUE (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, myuser.getUsername());
             pstmt.setString(2, myuser.getMail());
-            pstmt.setString(3, myuser.getBio());
-            pstmt.setBoolean(4, myuser.isMale());
-            pstmt.setString(5, myuser.getPhone());
-            pstmt.setBoolean(6, myuser.isPriv());
-            pstmt.setString(7, myuser.getAge());
-            pstmt.setString(8, myuser.getPassword());
+            pstmt.setString(3, myuser.getPassword());
 
             //execution du statement (requete)
             pstmt.executeUpdate();
-
-            System.out.println("> Utilisateur : " + myuser.getUsername() + " ajouté à la base users");
+            ResultSet rs = pstmt.getGeneratedKeys();
+            if(rs.next())
+                myuser.setUserId(rs.getLong(1));
+            System.out.println("> Utilisateur : " + myuser.getUsername() + " ajouté à la base users avec l'id " + myuser.getUser_id());
             pstmt.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return myuser;
     }
 
-
+    
 
     //Suppression d'un utilisateur avec en param USERNAME et MAIL
     public static void del_user(String username, String mail){

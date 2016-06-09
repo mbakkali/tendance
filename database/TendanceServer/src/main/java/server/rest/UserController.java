@@ -12,11 +12,11 @@ import java.util.List;
 @RequestMapping("/user")
 @RestController
 public class UserController {
-    private UserDAO userDAO;
+    private UserDAO userDAO = new UserDAO();
     private final int counter = 0; 
 
     @RequestMapping(method = RequestMethod.GET)
-    public User getUserByUsername(@RequestParam(value="username", defaultValue="myusername") String username) {
+    public User getUserByUsername(@RequestParam String username) {
     	/*counter.incrementAndGet(),"mehdi","test@mail.com","/img/mehdi.jpeg","bio",true,true,,"passwd" */
         return null;
     }

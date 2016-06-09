@@ -1,27 +1,28 @@
 package server;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
 
     private long user_id;
     private String username;
     private String mail;
     private String profilpicture;
+    private String age;
     private String bio;
     private boolean male;
     private boolean priv;
     private String phone;
-    private String age;
-
-
-    @JsonIgnore
     private String password;
 
 
-    public User(){};
+    public User(){
 
+    }
     public User(String username, String mail, String password) {
         this.username = username;
         this.mail = mail;
@@ -85,20 +86,8 @@ public class User {
     public String getPassword() {return password;}
     public String getAge() {return age;}
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_id=" + user_id +
-                ", username='" + username + '\'' +
-                ", mail='" + mail + '\'' +
-                ", profilpicture='" + profilpicture + '\'' +
-                ", bio='" + bio + '\'' +
-                ", male=" + male +
-                ", priv=" + priv +
-                ", phone=" + phone +
-                ", password='" + password + '\'' +
-                ", age='" + age + '\'' +
-                '}';
+    public void setUserId(long userId) {
+        this.user_id = userId;
     }
 }
 
