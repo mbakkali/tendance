@@ -16,12 +16,15 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET)
     public User getUserByUsername(@RequestParam(value="username", defaultValue="myusername") String username) {
-
     	/*counter.incrementAndGet(),"mehdi","test@mail.com","/img/mehdi.jpeg","bio",true,true,,"passwd" */
-
-        return null; 
-       
+        return null;
     }
+
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+    public User getUserById(@PathVariable long id){
+        return userDAO.findByUserId(id);
+    }
+
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String getAll(){
         List<User> users = userDAO.findAll();

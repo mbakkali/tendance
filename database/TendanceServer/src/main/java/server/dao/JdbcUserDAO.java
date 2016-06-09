@@ -159,6 +159,26 @@ public class JdbcUserDAO implements UserDAO {
         return users;
     }
 
+    @Override
+    public long findUseridByMailAndPassword(String mail, String password) {
+        long user_id = 0;
+        try{
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT USERS.user_id FROM USERS WHERE mail LIKE ? AND password = ?");
+            ps.setString(1, mail);
+            ps.setString(2, password);
+
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                user_id = rs.getLong("user_id");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user_id;
+    }
+
 
     //methode pour envoyer la date  sous forme  1994-02-25
     public static String DateToString(int year,int month, int day){

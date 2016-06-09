@@ -9,7 +9,7 @@ public class SQLDatabase {
     public static Connection ConnectDatabase() throws SQLException {
 
         System.out.println("> Début de la connection à la base de données");
-
+        String url2 = "jdbc:mysql://192.168.1.13:3306/Tendance";
         String url = "jdbc:mysql://90.66.114.198:3306/Tendance";
         String user = "monitor";
         String passwd = "tendance2016";

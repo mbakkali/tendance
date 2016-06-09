@@ -14,6 +14,8 @@ public class User {
     private boolean priv;
     private String phone;
 
+
+
     @JsonIgnore
     private String password;
 
@@ -66,42 +68,16 @@ public class User {
     }
 
 
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public String getProfilpicture() {
-        return profilpicture;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public boolean isMale() {
-        return male;
-    }
-
-    public boolean isPriv() {
-        return priv;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getAge() {
-        return age;
-    }
+    public long getUser_id() {return user_id;}
+    public String getUsername() {return username;}
+    public String getMail() {return mail;}
+    public String getProfilpicture(){return profilpicture;}
+    public String getBio(){return bio;}
+    public boolean isMale() {return male;}
+    public boolean isPriv() {return priv;}
+    public String getPhone() {return phone;}
+    public String getPassword() {return password;}
+    public String getAge() {return age;}
 
     @Override
     public String toString() {
