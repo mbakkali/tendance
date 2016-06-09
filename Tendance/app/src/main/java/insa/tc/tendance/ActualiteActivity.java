@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import insa.tc.tendance.database.User;
+
 /**
  * Created by Camille on 06/05/2016.
  TODO: Récupérer La liste des outfits des amis de l'utilisateur, les trier du plus récent au plus ancient
@@ -16,7 +18,7 @@ import android.widget.ImageButton;
  */
 
 public class ActualiteActivity extends Activity {
-
+    User mUser;
     ImageButton home;
     ImageButton calendar;
     ImageButton tshirt;
@@ -31,13 +33,14 @@ public class ActualiteActivity extends Activity {
         setContentView(R.layout.actualite);
 
         //Receive data from previous activity.
+        mUser = User.getUserFromIntent(getIntent());
 
-        //TODO Qu'est ce qu'on envoie à la prochaine activité?
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent home = new Intent(ActualiteActivity.this, ActualiteActivity.class);
+                mUser.putUserIntoIntent(getIntent());
                 startActivity(home);
             }
         });
@@ -47,6 +50,7 @@ public class ActualiteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent calendrier = new Intent(ActualiteActivity.this, CalendarActivity.class);
+                mUser.putUserIntoIntent(getIntent());
                 startActivity(calendrier);
             }
         });
@@ -56,6 +60,7 @@ public class ActualiteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent tshirt = new Intent(ActualiteActivity.this, DressingActivity.class);
+                mUser.putUserIntoIntent(getIntent());
                 startActivity(tshirt);
             }
         });
@@ -65,6 +70,7 @@ public class ActualiteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent friend = new Intent(ActualiteActivity.this, FriendActivity.class);
+                mUser.putUserIntoIntent(getIntent());
                 startActivity(friend);
             }
         });
@@ -74,6 +80,7 @@ public class ActualiteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent user = new Intent(ActualiteActivity.this, PersonnelActivity.class);
+                mUser.putUserIntoIntent(getIntent());
                 startActivity(user);
             }
         });
@@ -87,9 +94,11 @@ public class ActualiteActivity extends Activity {
 
                 if (i % 2 == 0){
                     like.setImageResource(R.drawable.heart1);
+                    //LIKE
                     i = i + 1;
                 } else {
                     like.setImageResource(R.drawable.heart2);
+                    //UNLIKE
                     i = i + 1;
                 }
             }

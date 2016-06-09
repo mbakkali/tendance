@@ -2,16 +2,24 @@ package insa.tc.tendance.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
+import insa.tc.tendance.requests.LoginRequest;
 
 
 /**
@@ -94,7 +102,6 @@ public class User implements Serializable{
     public long getId_user(){
         return user_id;
     }
-
     public String getBio() {return bio;}
     public boolean isMale() {return male;}
     public boolean isPriv() {return priv;}
@@ -151,13 +158,23 @@ public class User implements Serializable{
         return friend;
     }
 
-    public boolean login(String pfortier, String passowrd) {
-        //Reqête connexion
-
-
-        return true;
+    public static User login(String mail, String password) throws InterruptedException, ExecutionException {
+        User user;
+        if((user = new LoginRequest().execute(mail,password).get()) == null)
+            throw new RestClientException("Forbidden");
+        return user;
     }
-
+    public static User getUserFromIntent(Intent intent){
+        Gson gson = new Gson();
+        return gson.fromJson(intent.getStringExtra("user"), User.class);
+    }
+    public void putUserIntoIntent(Intent intent){
+        intent.putExtra("user", new Gson().toJson(this));
+    }
+    public static User getFriendFromIntent(Intent intent){
+        Gson gson = new Gson();
+        return gson.fromJson(intent.getStringExtra("friend"), User.class);
+    }
 
     private class HttpRequestTask extends AsyncTask<Void, Void, User[]> {
         @Override

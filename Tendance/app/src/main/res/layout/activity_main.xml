@@ -16,8 +16,9 @@
         android:layout_height="match_parent"
         android:background="#FFFFFF"
         android:weightSum="1"
+        android:clickable="true"
         android:layout_alignParentTop="true"
-        android:clickable="true">
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:layout_width="169dp"
@@ -47,12 +48,11 @@
 
         <EditText
             android:layout_width="258dp"
-            android:layout_height="17dp"
+            android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/addMail"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.11" />
+            android:layout_gravity="center_horizontal" />
 
         <TextView
             android:layout_width="200dp"
@@ -65,7 +65,7 @@
 
         <EditText
             android:layout_width="263dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/mdp"
@@ -122,7 +122,7 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="27dp"
+            android:layout_height="wrap_content"
             android:text="Nouvel usager ? Inscrivez-vous"
             android:textAllCaps="false"
             android:background="@null"

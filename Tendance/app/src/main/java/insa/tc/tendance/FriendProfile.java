@@ -94,10 +94,10 @@ public class FriendProfile extends Activity {
 
         //Récupérer les infos du friend
         TendanceBDDHelper bddH = new TendanceBDDHelper(getApplicationContext() );
-        Gson gson = new Gson();
-        ami = gson.fromJson(getIntent().getStringExtra("friend"),User.class);
+        ami = User.getFriendFromIntent(getIntent());
         System.out.println(ami);
-        myprofil = gson.fromJson(getIntent().getStringExtra("user"), User.class);
+        myprofil = User.getUserFromIntent(getIntent());
+
 
         final SQLiteDatabase datab = bddH.getReadableDatabase();
         //final User ami = User.getMyProfil(datab,"camille@insa-lyon.fr");

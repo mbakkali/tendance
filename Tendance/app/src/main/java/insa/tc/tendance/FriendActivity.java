@@ -28,7 +28,7 @@ public class FriendActivity extends Activity {
     ImageButton friend;
     ImageButton me;
     Button testFriend;
-    private User myself = new User();
+    private User mUser;
 
 
     @Override
@@ -131,7 +131,7 @@ public class FriendActivity extends Activity {
             myButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     Intent friendProfile = new Intent(FriendActivity.this, FriendProfile.class);
-                    friendProfile.putExtra("user", new Gson().toJson(myself));
+                    friendProfile.putExtra("user", new Gson().toJson(mUser));
                     friendProfile.putExtra("friend", new Gson().toJson(friend));
                     startActivity(friendProfile);
                 }
