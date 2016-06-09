@@ -33,13 +33,11 @@ public class User implements Serializable{
     public User(){
     }
 
-    public User(String mail, String username, String password) {
-        this.mail = mail;
+    public User(String username, String mail, String password) {
         this.username = username;
+        this.mail = mail;
         this.password = password;
     }
-
-
 
     public User(String username, String mail, String profilpicture, String age, String bio, boolean male, boolean priv, String phone) {
         this.username = username;
@@ -104,12 +102,11 @@ public class User implements Serializable{
     public String getMail() {return mail;}
     public String getUsername() {return username;}
     public String getAge() {return age;}
-
     private void setUser_id(long user_id) {
         this.user_id = user_id;
     }
-
     public String getProfilpicture() {        return profilpicture;    }
+    public String getPassword(){return password;};
 
     public void addUserLocal(SQLiteDatabase db){
         ContentValues values = new ContentValues();
@@ -146,26 +143,19 @@ public class User implements Serializable{
         return null;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", mail='" + mail + '\'' +
-                ", profilpicture='" + profilpicture + '\'' +
-                ", age='" + age + '\'' +
-                ", bio='" + bio + '\'' +
-                ", male=" + male +
-                ", priv=" + priv +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
-
     public boolean isFriendWith(User target) {
         boolean friend = true;
 
 
 
         return friend;
+    }
+
+    public boolean login(String pfortier, String passowrd) {
+        //Reqête connexion
+
+
+        return true;
     }
 
 
@@ -175,10 +165,10 @@ public class User implements Serializable{
             try {
                 final String path = "/user/friends";
                 final String url = "http://90.66.114.198?"+path+"?iduser=1";
-                final String url_local = "http://192.168.1.13:5000" + path + "?iduser=1"; //Pour quand patrik fais des test chez lui...
+                final String url_local = "http://192.168.1.21:5000" + path + "?iduser=1"; //Pour quand patrik fais des test chez lui...
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                User[] users = restTemplate.getForObject(url, User[].class);
+                User[] users = restTemplate.getForObject(url_local, User[].class);
                 return users;
 
             } catch (Exception e) {
@@ -200,10 +190,13 @@ public class User implements Serializable{
             User user = null;
             try{
                 final  String path = "/user/add";
-                final String url = "http://90.66.114.198" + path;
+
+               // final String url = "http://90.66.114.198" + path;
+                final String url = "http://192.168.1.21:5000" + path; //LOCAL...
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 user = restTemplate.postForObject(url,params[0],User.class);
+                System.out.println(user.getId_user());
 
             }catch (Exception e){
                 Log.e("MainActivity", e.getMessage(), e);

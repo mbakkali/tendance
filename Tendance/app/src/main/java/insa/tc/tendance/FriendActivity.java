@@ -88,7 +88,7 @@ public class FriendActivity extends Activity {
 
 
         //Peupler les amis avec le réseau
-        new HttpRequestTask().execute();
+        new HttpRequestGetFriend().execute();
 
 
     }
@@ -139,7 +139,7 @@ public class FriendActivity extends Activity {
         }
 
     }
-    private class HttpRequestTask extends AsyncTask<Void, Void, User[]> {
+    private class HttpRequestGetFriend extends AsyncTask<Void, Void, User[]> {
         @Override
         protected User[] doInBackground(Void... params) {
             try {

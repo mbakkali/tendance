@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.gson.Gson;
+
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -30,12 +32,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent actualite = new Intent(MainActivity.this, ActualiteActivity.class);
                 //Prédure de login
                 //TODO Add authentication method here
-                User me = new User();
-                Bundle monprofil = new Bundle();
-                monprofil.putString("mail", me.getMail());
-                monprofil.putString("username", me.getUsername());
-                actualite.putExtras(monprofil); //Ceci sert à transporter des valeurs entre les activités
-                startActivity(actualite);
+                User user = new User();
+                boolean login = user.login("pfortier","passowrd");
+
+                actualite.putExtra("user", new Gson().toJson(user));
+                if(login) {
+                    startActivity(actualite);
+                }
+                else {
+
+                }
             }
         });
 
@@ -46,11 +52,5 @@ public class MainActivity extends AppCompatActivity {
         //test database
         TendanceBDDHelper tendance = new TendanceBDDHelper(getApplicationContext());
         SQLiteDatabase db = tendance.getWritableDatabase();
-
-        User testCreateuser = new User("kmort","fortier@kmort.com","kmort");
-
-        new User.HttpRequestCreateProfil().execute(testCreateuser);
-        System.out.println(testCreateuser);
-
     }
 }
