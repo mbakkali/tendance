@@ -5,6 +5,7 @@ import server.Outfit;
 import server.User;
 import server.dao.UserDAO;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,24 +23,23 @@ public class UserController {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public User getUserById(@PathVariable long id){
-        return userDAO.findByUserId(id);
+        //TODO
+        return null;
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String getAll(){
-        List<User> users = userDAO.findAll();
+
         //TODO
 
-        return users.toString();
+        return null;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public User createUser(@RequestBody User user){
+        userDAO.add_user(user);
 
-        //TODO
-        //Connection connection = SQLDatabase.ConnectDatabase();
-        //JdbcUserDAO.add_user(connection,user);
-        return null;
+        return user;
 
     }
 

@@ -13,22 +13,26 @@ public class User {
     private boolean male;
     private boolean priv;
     private String phone;
-
+    private String age;
 
 
     @JsonIgnore
     private String password;
 
-    private String age;
 
+    public User(String username, String mail, String password) {
+        this.username = username;
+        this.mail = mail;
+        this.password = password;
+    }
 
     public User(long user_id,
-                String username, 
-                String mail, 
-                String profilpicture, 
-                String bio, 
+                String username,
+                String mail,
+                String profilpicture,
+                String bio,
                 boolean male,
-                boolean priv, 
+                boolean priv,
                 String phone,
                 String age) {
 

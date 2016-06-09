@@ -4,8 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import server.User;
-import server.dao.JdbcUserDAO;
 import server.dao.UserDAO;
 
 /**
@@ -21,7 +19,7 @@ public class LoginController {
     public long login(@RequestParam String mail, @RequestParam String password) {
         long user_id = 0 ;
         try {
-            user_id = userDAO.findUseridByMailAndPassword(mail, password);
+            //TODO
         }catch (NullPointerException e){
             user_id = 0;
             System.err.println("Error BDD");
