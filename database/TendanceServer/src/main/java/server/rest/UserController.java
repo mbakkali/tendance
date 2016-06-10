@@ -51,7 +51,8 @@ public class UserController {
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
     public User updateUser(@PathVariable long id, @RequestBody User user){
-        //TODO
+        user.setUserId(id);
+        user = userDAO.update_user(user);
         return user;
     }
 

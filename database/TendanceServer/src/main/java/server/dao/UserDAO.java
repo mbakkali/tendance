@@ -10,10 +10,7 @@ import java.text.NumberFormat;
 
 public class UserDAO {
 
-
     private static Connection connection = SQLDatabase.ConnectDatabase();
-
-    //insertion dans la base de données d'un nouvel utilisateur
     public static User add_user(User myuser) {
         try {
 
@@ -36,9 +33,6 @@ public class UserDAO {
         return myuser;
     }
 
-    
-
-    //Suppression d'un utilisateur avec en param USERNAME et MAIL
     public static void del_user(String username, String mail){
 
         try {
@@ -57,9 +51,7 @@ public class UserDAO {
             } else {
                 System.out.println("> Utilisateur"+username+" a été supprimé de la base users");
             }
-
             pstmnt.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +59,50 @@ public class UserDAO {
 
     }
 
-    //methode pour envoyer la date  sous forme  1994-02-25
+    public static User update_user(User myuser){
+        try{
+            PreparedStatement ps = connection.prepareStatement("UPDATE users " +
+                    "SET users.username = ?, users.mail = ?," +
+                    "users.bio = ?, users.male = ?, users.phone = ?, users.age = ?, users.profil_picture = ? " +
+                    "WHERE users.user_id = ?");
+            ps.setString(1, myuser.getUsername());
+            ps.setString(2, myuser.getMail());
+            ps.setString(3, myuser.getBio());
+            ps.setBoolean(4, myuser.isMale());
+            ps.setString(5, myuser.getPhone());
+            ps.setString(6, myuser.getAge());
+            ps.setString(7, myuser.getProfilpicture());
+
+            ps.setLong(8,myuser.getUser_id());
+
+        }catch (SQLException e){
+            System.err.println("Erreur update_user");
+        }
+        return myuser;
+    }
+
+    public static User getUserByMailAndPassword(String mail, String password) throws SQLException {
+        User user = null;
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
+        ps.setString(1,mail);
+        ps.setString(2,password);
+        ResultSet rs = ps.executeQuery();
+
+        if(rs.next()){
+            user = new User(
+                    rs.getLong("user_id"),
+                    rs.getString("username"),
+                    rs.getString("mail"),
+                    rs.getString("profil_picture"),
+                    rs.getString("bio"),
+                    rs.getBoolean("male"),
+                    rs.getBoolean("private"),
+                    rs.getString("phone"),
+                    rs.getString("age")
+            );
+        }
+        return user;
+    }
     public static String DateToString(int year,int month, int day){
 
         NumberFormat yearformat = new DecimalFormat("0000");

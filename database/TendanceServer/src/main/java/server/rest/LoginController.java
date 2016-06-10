@@ -1,10 +1,11 @@
 package server.rest;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import server.User;
 import server.dao.UserDAO;
+
+import java.sql.SQLException;
 
 /**
  * Created by Patrik on 09/06/2016.
@@ -16,15 +17,19 @@ public class LoginController {
     private UserDAO userDAO;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public long login(@RequestParam String mail, @RequestParam String password) {
-        long user_id = 0 ;
+    public User login(@RequestParam String mail, @RequestParam String password) {
+        User user = null;
         try {
-            //TODO
-        }catch (NullPointerException e){
-            user_id = 0;
-            System.err.println("Error BDD");
+            user = userDAO.getUserByMailAndPassword(mail,password);
+            if(user==null)
+                throw new ForbiddenException();
+            return user;
+        } catch (SQLException e) {
+            throw new ForbiddenException();
         }
-        return user_id;
-        //REQUETE POUR SAVOIR SI LE COUPLE LOGIN MOT DE PASSE DONNE UN RESULTAT, on renvoie l'ID de l'utilisateur pour qu'in récupère son profil
+    }
+
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    private class ForbiddenException extends RuntimeException{
     }
 }
