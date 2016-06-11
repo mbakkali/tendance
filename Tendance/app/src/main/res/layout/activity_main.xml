@@ -127,7 +127,7 @@
             android:textAllCaps="false"
             android:background="@null"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/newUser"
+            android:id="@+id/CreateNewUser"
             android:textSize="13dp"
             android:textColor="@color/Noir" />
     </LinearLayout>

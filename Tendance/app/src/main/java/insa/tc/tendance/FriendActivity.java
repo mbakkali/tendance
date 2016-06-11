@@ -106,7 +106,7 @@ public class FriendActivity extends Activity {
             params1.setMargins(0,8,150,0);
             mylayout.setLayoutParams(params1);
 
-            myPicture.setImageResource(R.drawable.androidicon);
+            myPicture.setImageResource(R.drawable.fakepic);
             LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(200, 200);
             params2.setMargins(20,0,0,0);
             myPicture.setLayoutParams(params2);
