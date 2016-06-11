@@ -1,16 +1,24 @@
 package server;
 
 
+import server.dao.OutfitDAO;
+
 import java.security.Timestamp;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.Set;
 
 public class Outfit {
 
+    public static final String ROOT = "outfits";
     private long outfit_id;
     private String timestamp;
     private String description;
     private String photo;
     private long style_id;
+    private long likes;
+    private Set<Clothe> outfit_clothes;
+
 
     public Outfit(long outfit_id, String timestamp, String description,String photo, long style_id) {
         this.outfit_id = outfit_id;
@@ -18,6 +26,7 @@ public class Outfit {
         this.photo = photo;
         this.description = description;
         this.style_id = style_id;
+        this.likes = getLikes();
     }
 
     public Outfit(long outfit_id, String description, String photo, long style_id) {
@@ -61,13 +70,11 @@ public class Outfit {
         this.style_id = style_id;
     }
 
-    //Cette méthode demande une requête vers l'association Likes (CE n'EST PAS UN CHAMP DE OUTFIT)
-    //MAIS UNE RELATION N-N ENTRE USER ET OUTFIT
-
-
     public long getLikes() {
-        //SELECT COUNT(*) FROM LIKES WHERE LIKES.outfit_id = ?
-        //Un truc du genre
-        return 50;
+        try {
+            return OutfitDAO.get_likes(this);
+        } catch (SQLException e) {
+            return 0;
+        }
     }
 }

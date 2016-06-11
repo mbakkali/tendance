@@ -3,14 +3,18 @@ package server.dao;
 import server.SQLDatabase;
 import server.User;
 
+import javax.jws.soap.SOAPBinding;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 
 public class UserDAO {
 
-    private static Connection connection = SQLDatabase.ConnectDatabase();
+    private static Connection connection = SQLDatabase.connectDatabase();
     public static User add_user(User myuser) {
         try {
 
@@ -33,30 +37,26 @@ public class UserDAO {
         return myuser;
     }
 
-    public static void del_user(String username, String mail){
+    public static boolean del_user(User user, String password) throws SQLException {
 
-        try {
-
-            String query = "DELETE from users WHERE username=? AND mail=?";
+            String query = "DELETE from users WHERE user_id=? AND password=?";
             PreparedStatement pstmnt = connection.prepareStatement(query);
 
-            pstmnt.setString(1,username);
-            pstmnt.setString(2,mail);
+            pstmnt.setLong(1,user.getUser_id());
+            pstmnt.setString(2,password);
             pstmnt.executeUpdate();
 
             int rowsUpdated = pstmnt.executeUpdate();
 
-            if (rowsUpdated == 0) {
-                System.out.println("> L'utilisateur "+username+" avec l'adresse "+mail+" est introuvable");
-            } else {
-                System.out.println("> Utilisateur"+username+" a été supprimé de la base users");
-            }
+
             pstmnt.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (rowsUpdated == 0) {
+            System.out.println("> L'utilisateur "+user.getUsername()+" avec l'adresse "+user.getMail()+" est introuvable");
+            return false;
+        } else {
+            System.out.println("> Utilisateur"+user.getUsername()+" a été supprimé de la base users");
+            return true;
         }
-
-
     }
 
     public static User update_user(User myuser){
@@ -103,26 +103,67 @@ public class UserDAO {
         }
         return user;
     }
-    public static String DateToString(int year,int month, int day){
 
-        NumberFormat yearformat = new DecimalFormat("0000");
-        NumberFormat monthformat = new DecimalFormat("00");
-
-        if(year>2016 || year <1000){
-            System.out.println("L'année est incohérente");
+    public static List<User> getFriendsOfUser(User user){
+        List<User> friends = new ArrayList<>();
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT Tendance.users.* FROM Tendance.users " +
+                                                                "INNER JOIN Tendance.relationships " +
+                                                                "ON users.user_id = relationships.friend_id " +
+                                                                "WHERE relationships.user_id = ?" +
+                                                                "AND status = 2;");
+            //TODO FIX DATABASE TO HAVE STATUS
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                friends.add(new User(
+                        rs.getLong("user_id"),
+                        rs.getString("username"),
+                        rs.getString("mail"),
+                        rs.getString("profil_picture"),
+                        rs.getString("bio"),
+                        rs.getBoolean("male"),
+                        rs.getBoolean("priv"),
+                        rs.getString("phone"),
+                        rs.getString("age")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return friends;
+    }
 
-        if(month>13 || month <0){
-            System.out.println("Le mois est incohérent");
+    public static List<User> getFriendRequestOfUser(User user){
+        List<User> friend_requests= new ArrayList<>();
+
+        return friend_requests;
+    }
+
+    public static boolean addFriend(long source, long target) {
+        Calendar now = Calendar.getInstance();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO relationships VALUES (user_id = ?, friend_id = ?, friended = NOW());");
+            ps.setLong(1,source);
+            ps.setLong(2,target);
+            ps.executeQuery();
+        } catch (SQLException e) {
+            return false;
         }
+        return true;
+    }
+    public static boolean delFriend(long source, long target) {
+        Calendar now = Calendar.getInstance();
 
-        if(day>32 || day <0){
-            System.out.println("Le jour est incohérent");
+        try {
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM relationships WHERE user_id = ? AND friend_id = ?;");
+            ps.setLong(1,source);
+            ps.setLong(2,target);
+            ps.executeQuery();
+        } catch (SQLException e) {
+            return false;
         }
-
-        String s = yearformat.format(year)+"-"+monthformat.format(month)+"-"+monthformat.format(day);
-
-        return s;
+        return true;
     }
 
 

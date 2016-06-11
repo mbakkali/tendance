@@ -62,6 +62,7 @@ public class UserController {
         return outfit;
     }
 
+
     @RequestMapping(value = "/friends", method = RequestMethod.GET)
     public List<User> getFriends(@RequestParam long iduser){
 

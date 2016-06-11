@@ -1,10 +1,15 @@
 package server.rest;
 
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import server.Clothe;
 import server.Outfit;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Patrik on 06/06/2016.
@@ -14,9 +19,9 @@ import java.util.List;
 public class OutfitController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Outfit> getOutfitByOwner(@RequestParam long owner) {
+    public List<Outfit> getOutfitsByOwner(@RequestParam long owner) {
         List<Outfit> outfits = new ArrayList<>();
-        //TODO
+
         return outfits;
     }
 
@@ -27,9 +32,24 @@ public class OutfitController {
         return favorites;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Outfit addOutfit(@RequestBody Outfit outfit ){
+    @RequestMapping(value ="/add",method = RequestMethod.POST)
+    public Outfit addOutfit(@RequestBody Outfit outfit,
+                      @RequestBody MultipartFile selfie) {
+        String name = UUID.randomUUID().toString();
+        if (!selfie.isEmpty()) {
+            try {
+                File outputFile = new File(Outfit.ROOT + "/" + name);
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(outputFile));
+                FileCopyUtils.copy(selfie.getInputStream(), stream);
+                stream.close();
+                //AddToDB
 
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         return outfit;
     }
 }

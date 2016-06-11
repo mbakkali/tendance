@@ -6,7 +6,7 @@ import java.sql.*;
  * Created by Patrik on 06/06/2016.
  */
 public class SQLDatabase {
-    public static Connection ConnectDatabase(){
+    public static Connection connectDatabase(){
 
         System.out.println("> Début de la connection à la base de données");
         String url = "jdbc:mysql://192.168.1.13:3306/Tendance";
