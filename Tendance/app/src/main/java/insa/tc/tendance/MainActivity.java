@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -24,10 +25,14 @@ import java.util.concurrent.ExecutionException;
 import insa.tc.tendance.database.TendanceBDDHelper;
 import insa.tc.tendance.database.User;
 
+import static android.widget.Toast.LENGTH_SHORT;
+import static android.widget.Toast.makeText;
+
 public class MainActivity extends AppCompatActivity {
 
     Button seConnecter = null;
     Button createUser = null;
+    Button FB = null;
 
     EditText mMail;
     EditText mPassword;
@@ -36,6 +41,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FB = (Button) findViewById(R.id.connectFB);
+        FB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Connexion via Facebook bientôt disponible !",
+                        Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+
 
         final AlertDialog.Builder error_login = new AlertDialog.Builder(this).setTitle("Erreur de Connexion")
                 .setMessage("Utilisateur non reconnu...");
