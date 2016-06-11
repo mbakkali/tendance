@@ -18,7 +18,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET)
     public User getUserByUsername(@RequestParam String username) {
-    	/*counter.incrementAndGet(),"mehdi","test@mail.com","/img/mehdi.jpeg","bio",true,true,,"passwd" */
+        User resultuser = userDAO.getUserByUsername(username);
         return null;
     }
 
@@ -28,13 +28,6 @@ public class UserController {
         return result_user;
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public String getAll(){
-
-        //TODO
-
-        return null;
-    }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public User createUser(@RequestBody User user){
@@ -44,9 +37,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
-    public String deleteUser(@PathVariable long id){
-        //TODO
-        return "ok";
+    public void deleteUser(@PathVariable long id){
+        User usertodelete = userDAO.getUserByID(id);
+        userDAO.del_user(usertodelete);
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)

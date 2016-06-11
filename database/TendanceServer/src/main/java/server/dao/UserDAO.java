@@ -10,7 +10,11 @@ import java.text.NumberFormat;
 
 public class UserDAO {
 
+    //Connexion à la base de données. Le "connection" est le descripteur (statique sur cette classe)
     private static Connection connection = SQLDatabase.connectDatabase();
+
+
+
     public static User add_user(User myuser) {
         try {
 
@@ -19,7 +23,6 @@ public class UserDAO {
             pstmt.setString(2, myuser.getMail());
             pstmt.setString(3, myuser.getPassword());
 
-            //execution du statement (requete)
             pstmt.executeUpdate();
             ResultSet rs = pstmt.getGeneratedKeys();
             if(rs.next())
@@ -27,37 +30,38 @@ public class UserDAO {
             System.out.println("> Utilisateur : " + myuser.getUsername() + " ajouté à la base users avec l'id " + myuser.getUser_id());
             pstmt.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) {
+            System.out.println("Erreur Add_user");        }
         return myuser;
     }
 
-    public static void del_user(String username, String mail){
+
+
+    public static void del_user(User user){
 
         try {
 
-            String query = "DELETE from users WHERE username=? AND mail=?";
+            String query = "DELETE from users WHERE username=? AND user_id=?";
             PreparedStatement pstmnt = connection.prepareStatement(query);
 
-            pstmnt.setString(1,username);
-            pstmnt.setString(2,mail);
+            pstmnt.setLong(1,user.getUser_id());
+            pstmnt.setString(2,user.getUsername());
             pstmnt.executeUpdate();
 
             int rowsUpdated = pstmnt.executeUpdate();
 
             if (rowsUpdated == 0) {
-                System.out.println("> L'utilisateur "+username+" avec l'adresse "+mail+" est introuvable");
+                System.out.println("> L'utilisateur "+user.getUsername()+" avec l'ID "+user.getUser_id()+" est introuvable");
             } else {
-                System.out.println("> Utilisateur"+username+" a été supprimé de la base users");
+                System.out.println("> Utilisateur"+user.getUsername()+" a été supprimé de la base users");
             }
             pstmnt.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Erreur Del_user");
         }
-
-
     }
+
+
 
     public static User update_user(User myuser){
         try{
@@ -81,70 +85,90 @@ public class UserDAO {
         return myuser;
     }
 
-    public static User getUserByMailAndPassword(String mail, String password) throws SQLException {
-        User user = null;
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
-        ps.setString(1,mail);
-        ps.setString(2,password);
-        ResultSet rs = ps.executeQuery();
 
-        if(rs.next()){
-            user = new User(
-                    rs.getLong("user_id"),
-                    rs.getString("username"),
-                    rs.getString("mail"),
-                    rs.getString("profil_picture"),
-                    rs.getString("bio"),
-                    rs.getBoolean("male"),
-                    rs.getBoolean("private"),
-                    rs.getString("phone"),
-                    rs.getString("age")
-            );
+
+    public static User getUserByMailAndPassword(String mail, String password) throws  SQLException {
+         User user = null;
+
+             PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
+             ps.setString(1, mail);
+             ps.setString(2, password);
+             ResultSet rs = ps.executeQuery();
+
+             if (rs.next()) {
+                 user = new User(
+                         rs.getLong("user_id"),
+                         rs.getString("username"),
+                         rs.getString("mail"),
+                         rs.getString("profil_picture"),
+                         rs.getString("bio"),
+                         rs.getBoolean("male"),
+                         rs.getBoolean("private"),
+                         rs.getString("phone"),
+                         rs.getString("age")
+                 );
+             }
+
+             return user;
+    }
+
+
+    public static User getUserByID(long id) {
+        User user = null;
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
+            ps.setLong(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                user = new User(
+                        rs.getLong("user_id"),
+                        rs.getString("username"),
+                        rs.getString("mail"),
+                        rs.getString("profil_picture"),
+                        rs.getString("bio"),
+                        rs.getBoolean("male"),
+                        rs.getBoolean("private"),
+                        rs.getString("phone"),
+                        rs.getString("age")
+                );
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println("Erreur GetByUserID");
         }
         return user;
     }
-    public static User getUserByID(long id) throws SQLException {
-        User user = null;
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
-        ps.setLong(1,id);
-        ResultSet rs = ps.executeQuery();
 
-        if(rs.next()){
-            user = new User(
-                    rs.getLong("user_id"),
-                    rs.getString("username"),
-                    rs.getString("mail"),
-                    rs.getString("profil_picture"),
-                    rs.getString("bio"),
-                    rs.getBoolean("male"),
-                    rs.getBoolean("private"),
-                    rs.getString("phone"),
-                    rs.getString("age")
-            );
+
+    public static User getUserByUsername(String username )  {
+
+        User user = null;
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                user = new User(
+                        rs.getLong("user_id"),
+                        rs.getString("username"),
+                        rs.getString("mail"),
+                        rs.getString("profil_picture"),
+                        rs.getString("bio"),
+                        rs.getBoolean("male"),
+                        rs.getBoolean("private"),
+                        rs.getString("phone"),
+                        rs.getString("age")
+                );
+            }
+
+        }
+        catch (SQLException e){
         }
         return user;
     }
-    public static String DateToString(int year,int month, int day){
-
-        NumberFormat yearformat = new DecimalFormat("0000");
-        NumberFormat monthformat = new DecimalFormat("00");
-
-        if(year>2016 || year <1000){
-            System.out.println("L'année est incohérente");
-        }
-
-        if(month>13 || month <0){
-            System.out.println("Le mois est incohérent");
-        }
-
-        if(day>32 || day <0){
-            System.out.println("Le jour est incohérent");
-        }
-
-        String s = yearformat.format(year)+"-"+monthformat.format(month)+"-"+monthformat.format(day);
-
-        return s;
-    }
-
 
 }
