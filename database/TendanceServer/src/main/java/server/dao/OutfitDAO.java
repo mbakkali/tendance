@@ -21,17 +21,58 @@ public class OutfitDAO {
             pstmt.setLong(3, outfit.getStyle_id());
             pstmt.setLong(4, outfit.getLikes());
 
-
-            //execution du statement (requete)
             pstmt.executeUpdate();
 
-            System.out.println("> Outfit : " + outfit.getDescription() + " ajouté à la base users à "+ outfit.getTimestamp());
+            System.out.println("> Outfit : " + outfit.getDescription() + " ajouté à la table Outfit à "+ outfit.getTimestamp());
             pstmt.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+    public static void del_outfit(Outfit outfit){
+
+        try {
+
+            String query = "DELETE from outfits WHERE outfit_id=?";
+            PreparedStatement pstmnt = connection.prepareStatement(query);
+
+            pstmnt.setLong(1,outfit.getOutfit_id());
+            pstmnt.executeUpdate();
+
+            System.out.println("> L'outfit"+outfit.getDescription()+" a été supprimé de la base users");
+
+            pstmnt.close();
+        } catch (SQLException e) {
+            System.out.println("Erreur Del_outfit");
+        }
+    }public static Outfit getOutfitByID(long id) {
+        Outfit outfit = null;
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM outfits WHERE outfits.outfit_id = ? ;");
+            ps.setLong(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                outfit = new Outfit(
+                        rs.getLong("outfit_id"),
+                        rs.getString("timestamp"),
+                        rs.getString("description"),
+                        rs.getString("photo"),
+                        rs.getLong("style_id"),
+                        rs.getLong("likes") );
+            }
+        }
+        catch (SQLException e){
+            System.out.println("Erreur GetOutfitByID");
+        }
+        return outfit;
+    }
+
+
 
     public static Outfit update_outfit(Outfit outfit) throws SQLException{
         PreparedStatement ps = connection.prepareStatement("UPDATE outfit(``,``,``,``)");

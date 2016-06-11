@@ -6,11 +6,13 @@ import java.sql.*;
  * Created by Patrik on 06/06/2016.
  */
 public class SQLDatabase {
+
     public static Connection connectDatabase(){
 
         System.out.println("> Début de la connection à la base de données");
-        String url = "jdbc:mysql://192.168.1.13:3306/Tendance";
+        //String url = "jdbc:mysql://192.168.1.13:3306/Tendance";
         String user = "monitor";
+        String url = "jdbc:mysql://90.66.114.198:3306/Tendance";
         String passwd = "tendance2016";
 
         try {

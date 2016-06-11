@@ -37,6 +37,9 @@ public class Outfit {
         this.style_id = style_id;
 
     }
+    //constructeur pour la methode getOutfitbyID de OutfitDAO
+    public Outfit(long outfit_id, String timestamp, String description, String photo, long style_id, long likes) {
+    }
 
     public long getOutfit_id() {
         return outfit_id;

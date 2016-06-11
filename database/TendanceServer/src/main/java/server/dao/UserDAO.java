@@ -119,7 +119,7 @@ public class UserDAO {
         User user = null;
         try {
 
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.user_id = ? ;");
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
 
@@ -145,8 +145,6 @@ public class UserDAO {
     }
 
 
-
-
     public static List<User> getFriends(long id) {
         User user = null;
         List<User> friends = new ArrayList<>();
@@ -157,9 +155,13 @@ public class UserDAO {
 
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
-                friends.add(getUserByID(rs.getLong("user_id")));
+            while(rs.next()){
+                long friend_id = rs.getLong("friend_id");
+                user = getUserByID(friend_id);
+                friends.add(user);
             }
+
+            rs.close();
 
         }
         catch (SQLException e){

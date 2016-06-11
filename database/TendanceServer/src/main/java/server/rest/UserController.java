@@ -49,11 +49,10 @@ public class UserController {
         return user;
     }
 
-
     @RequestMapping(value = "/friends/{id}", method = RequestMethod.GET)
     public List<User> getFriends(@PathVariable long id){
         List<User> friends;
-        return getFriends(id);
+        return userDAO.getFriends(id);
     }
 
 }

@@ -10,8 +10,13 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.ArrayList;
+
+import server.dao.OutfitDAO;
+import server.dao.UserDAO;
+import server.SQLDatabase;
 
 import java.text.*;
 
@@ -24,10 +29,29 @@ public class Main {
 
         try {
 
-            Connection connection = ConnectDatabase();
 
-            DisplayTable(connection, "users");
-            //Test SVN
+            UserDAO userDAO = new UserDAO();
+            OutfitDAO outfitDAO= new  OutfitDAO();
+
+            Outfit myoutfit1 = new Outfit(1,"2016-06-11 11:12:57","Mon premier outfit","/img/monoutfit1",1);
+            Outfit myoutfit2 = new Outfit(2,"2016-06-11 11:12:23","Mon deuxième outfit","/img/monoutfit2",1);
+            Outfit myoutfit3 = new Outfit(3,"2016-06-11 11:12:37","Mon troisème outfit","/img/monoutfit3",1);
+            Outfit myoutfit4 = new Outfit(4,"2016-06-11 11:12:07","Mon quatrième outfit","/img/monoutfit4",1);
+
+/*
+            outfitDAO.add_outfit(myoutfit1);
+            outfitDAO.add_outfit(myoutfit2);
+            outfitDAO.add_outfit(myoutfit3);
+            outfitDAO.add_outfit(myoutfit4);
+*/
+
+            System.out.println(outfitDAO.getOutfitByID(2).getDescription());
+            // userDAO.test(1);
+
+
+            //List<User> mylist =userDAO.getFriends(1);
+
+
 
 
         } catch (Exception e) {

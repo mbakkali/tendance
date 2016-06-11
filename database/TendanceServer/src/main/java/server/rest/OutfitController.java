@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import server.Clothe;
 import server.Outfit;
+import server.dao.OutfitDAO;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import java.util.UUID;
 
 public class OutfitController {
 
+    private OutfitDAO outfitDAO = new OutfitDAO();
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Outfit> getOutfitsByOwner(@RequestParam long owner) {
         List<Outfit> outfits = new ArrayList<>();
@@ -34,6 +37,14 @@ public class OutfitController {
         return favorites;
     }
 
+
+
+    @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable long id){
+        //Outfit outfitToDelete = OutfitDAO.getOutfitByID(id);
+       // outfitDAO.del_outfit(outfitToDelete);
+    }
+
     @RequestMapping(value ="/add",method = RequestMethod.POST)
     public Outfit addOutfit(@RequestBody Outfit outfit,
                       @RequestBody MultipartFile selfie) {
@@ -44,7 +55,7 @@ public class OutfitController {
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(outputFile));
                 FileCopyUtils.copy(selfie.getInputStream(), stream);
                 stream.close();
-                //AddToDB
+                outfitDAO.add_outfit(outfit);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
