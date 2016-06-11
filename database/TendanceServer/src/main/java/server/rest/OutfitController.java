@@ -16,6 +16,8 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping(value = "/outfit")
+
+
 public class OutfitController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)

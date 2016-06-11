@@ -49,24 +49,11 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value = "/outfit/add", method = RequestMethod.POST)
-    public Outfit insertOutfit(@RequestBody Outfit outfit){
-        //TODO
-        return outfit;
-    }
 
-
-    @RequestMapping(value = "/friends", method = RequestMethod.GET)
-    public List<User> getFriends(@RequestParam long iduser){
-
-        List<User> friends = new ArrayList<>();
-        friends.add(new User(1,"pfortier", "pfortier@insa-lyon.fr", "null", "Je suis patrik", true,
-                false, "0678787878", "1994-01-10", "tendance"));
-        friends.add(new User(2,"cemonet", "cemonet@insa-lyon.fr", "null", "Je suis Camille", false, false,
-                "0679797979", "1994-05-20", "tendance"));
-        //TODO request from db
-
-        return friends;
+    @RequestMapping(value = "/friends/{id}", method = RequestMethod.GET)
+    public List<User> getFriends(@PathVariable long id){
+        List<User> friends;
+        return getFriends(id);
     }
 
 }

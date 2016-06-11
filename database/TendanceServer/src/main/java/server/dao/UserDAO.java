@@ -6,6 +6,8 @@ import server.User;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserDAO {
@@ -140,6 +142,30 @@ public class UserDAO {
             System.out.println("Erreur GetByUserID");
         }
         return user;
+    }
+
+
+
+
+    public static List<User> getFriends(long id) {
+        User user = null;
+        List<User> friends = new ArrayList<>();
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT relationships.friend_id FROM users, relationships WHERE users.user_id = relationships.user_id AND users.user_id = ? ;");
+            ps.setLong(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                friends.add(getUserByID(rs.getLong("user_id")));
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println("Erreur get Friends ");
+        }
+        return friends;
     }
 
 
