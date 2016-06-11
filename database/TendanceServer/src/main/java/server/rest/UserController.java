@@ -6,6 +6,7 @@ import server.User;
 import server.dao.UserDAO;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +23,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public User getUserById(@PathVariable long id){
-        //TODO
-        return null;
+    public User getUserById(@PathVariable long id) throws SQLException{
+        User result_user = userDAO.getUserByID(id);
+        return result_user;
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
@@ -38,7 +39,6 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public User createUser(@RequestBody User user){
         userDAO.add_user(user);
-
         return user;
 
     }
