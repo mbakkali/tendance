@@ -70,10 +70,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/friends/{id}", method = RequestMethod.GET)
-    public List<User> getFriends(@PathVariable long id){
+    public List<User> getFriends(@RequestBody User user){
         List<User> friends;
         try {
-            return userDAO.getFriends(id);
+            return userDAO.getFriends(user);
         } catch (SQLException e) {
             throw new InternalErrorException();
         }

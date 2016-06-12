@@ -115,18 +115,18 @@ public class UserDAO {
         return user;
     }
 
-    public List<User> getFriends(long id) throws SQLException {
-        User user = null;
+    public List<User> getFriends(User user) throws SQLException {
+        User target = null;
         List<User> friends = new ArrayList<>();
             PreparedStatement ps = connection.prepareStatement("SELECT relationships.friend_id FROM users, relationships WHERE users.user_id = relationships.user_id AND users.user_id = ? ;");
-            ps.setLong(1, id);
+            ps.setLong(1, user.getUser_id());
 
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){
                 long friend_id = rs.getLong("friend_id");
-                user = getUserByID(friend_id);
-                friends.add(user);
+                target = getUserByID(friend_id);
+                friends.add(target);
             }
 
             rs.close();
@@ -156,4 +156,7 @@ public class UserDAO {
 
         return user;
     }
+
+    public void addFriend(User user) throws SQLException {}
+    public void delFriend(User user) throws SQLException {}
 }
