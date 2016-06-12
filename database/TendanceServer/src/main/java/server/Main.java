@@ -45,17 +45,6 @@ public class Main {
             Outfit myoutfit3 = new Outfit(3,"2016-06-11 11:12:37","Mon troisème outfit","/img/monoutfit3",3);
             Outfit myoutfit4 = new Outfit(4,"2016-06-11 11:12:07","Mon quatrième outfit","/img/monoutfit4",4);*/
 
-
-            OutfitDAO o = new OutfitDAO();
-
-                ClotheDAO c = new ClotheDAO();
-                List<Clothe> clothes = c.getClothesOfOwner(1);
-
-            for (int i=0; i<10; i++){
-
-            }
-
-
 /*
             Clothe clothe = new Clothe(3,1,1,"photo",SQLDatabase.CurrentTimestampToString());
 
