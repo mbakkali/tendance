@@ -7,18 +7,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class OutfitDAO {
-    private Connection connection = SQLDatabase.connectDatabase();
-    public void add_outfit(Outfit outfit) {
-        try {
-            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO outfits (`timestamp`, `description`, `style_id`, `likes`) VALUE (?,?,?,?);");
+    private static Connection connection = SQLDatabase.connectDatabase();
 
-            pstmt.setString(1, outfit.getTimestamp());
+    public static void add_outfit(Outfit outfit) {
+        try {
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO outfits (`timestamp`, `description`, `photo`, `style_id`,`likes`) VALUE (?,?,?,?,?)");
+
+            pstmt.setString(1, SQLDatabase.CurrentTimestampToString());
             pstmt.setString(2, outfit.getDescription());
-            pstmt.setLong(3, outfit.getStyle_id());
-            pstmt.setLong(4, outfit.getLikes());
+            pstmt.setString(3, outfit.getPhoto());
+            pstmt.setLong(4, outfit.getStyle_id());
+            pstmt.setLong(5, outfit.getLikes());
 
             pstmt.executeUpdate();
 
@@ -29,7 +33,11 @@ public class OutfitDAO {
             e.printStackTrace();
         }
     }
-    public void del_outfit(Outfit outfit) throws SQLException {
+
+
+    public static void del_outfit(Outfit outfit){
+
+        try {
 
             String query = "DELETE from outfits WHERE outfit_id=?";
             PreparedStatement pstmnt = connection.prepareStatement(query);
@@ -40,8 +48,12 @@ public class OutfitDAO {
             System.out.println("> L'outfit"+outfit.getDescription()+" a été supprimé de la base users");
 
             pstmnt.close();
+        } catch (SQLException e) {
+            System.out.println("Erreur Del_outfit");
+        }
     }
-    public Outfit getOutfitByID(long id) {
+
+    public static Outfit getOutfitByID(long id) {
         Outfit outfit = null;
         try {
 
@@ -56,7 +68,8 @@ public class OutfitDAO {
                         rs.getString("description"),
                         rs.getString("photo"),
                         rs.getLong("style_id"),
-                        rs.getLong("likes") );
+                        rs.getLong("likes"),
+                        rs.getLong("user_id") );
             }
         }
         catch (SQLException e){
@@ -64,12 +77,77 @@ public class OutfitDAO {
         }
         return outfit;
     }
-    public Outfit update_outfit(Outfit outfit) throws SQLException{
-        PreparedStatement ps = connection.prepareStatement("UPDATE outfit(``,``,``,``)");
 
-        return outfit;
+
+
+    public static void update_outfit(Outfit outfit) {
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("UPDATE Tendance.outfits " +
+                    "SET outfits.outfit_id = ?, outfits.timestamp = ?," +
+                    "outfits.description = ?, outfits.photo = ?, outfits.style_id = ?, outfits.likes = ? ,outfit.user_id=?" +
+                    "WHERE outfits.outfit_id = ?");
+
+            ps.setLong(1, outfit.getOutfit_id());
+            ps.setString(2, outfit.getTimestamp());
+            ps.setString(3, outfit.getDescription());
+            ps.setString(4, outfit.getPhoto());
+            ps.setLong(5, outfit.getStyle_id());
+            ps.setLong(6, outfit.getLikes());
+            ps.setLong(7, outfit.getUser_id());
+
+            ps.setLong(8, outfit.getOutfit_id());
+
+            ps.executeUpdate();
+
+            ps.close();
+            System.out.println("> L'Outfit : " + outfit.getOutfit_id() + " du  " + outfit.getTimestamp() + " a été mis à jour");
+        }
+        catch (SQLException e){
+            System.out.println("Erreur UpdateOutfit");
+        }
+
+
     }
-    public long get_likes(Outfit outfit) throws SQLException{
+
+
+    public static long[] getOutfitsByUser(long id) {
+
+        long[] tab = new long[2];
+        try {
+
+            String query = "SELECT outfit_id from outfits, users  WHERE users.user_id= outfits.user_id and users.user_id=?";
+            PreparedStatement pstmnt = connection.prepareStatement(query);
+
+            pstmnt.setLong(1, id);
+            ResultSet rs = pstmnt.executeQuery();
+
+            ArrayList<Long> list = new ArrayList<Long>();
+
+            while (rs.next()) {
+
+                int i =0;
+                long outfitid = rs.getLong("outfit_id");
+                list.add(outfitid);
+                //tab[i]=outfitid;
+                //Outfit outfit = OutfitDAO.getOutfitByID(outfitid);
+                //outfit_list.add(0,outfit);
+            }
+
+            for(int j=0; j<list.size(); j++) {
+                tab[j]= list.get(j) ;
+            }
+
+        }
+        catch(SQLException e){
+            System.out.println("Erreur getOutfitsbyUser");
+        }
+
+            return tab;
+
+    }
+
+    public static long get_likes(Outfit outfit) throws SQLException{
         PreparedStatement ps =connection.prepareStatement("SELECT (COUNT *) as likes FROM liker where outfit_id = ?");
         ps.setLong(1, outfit.getOutfit_id());
 

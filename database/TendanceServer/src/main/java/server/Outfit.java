@@ -19,9 +19,10 @@ public class Outfit {
     private String photo;
     private long style_id;
     private long likes;
+    private long user_id;
     private Set<Clothe> outfit_clothes;
 
-
+    //Constructeur plus petit pour OutfitController - patrik
     public Outfit(long outfit_id, String timestamp, String description,String photo, long style_id) {
         this.outfit_id = outfit_id;
         this.timestamp = timestamp;
@@ -31,6 +32,7 @@ public class Outfit {
         this.likes = getLikes();
     }
 
+
     public Outfit(long outfit_id, String description, String photo, long style_id) {
         this.outfit_id = outfit_id;
         this.description = description;
@@ -39,9 +41,18 @@ public class Outfit {
         this.style_id = style_id;
 
     }
-    //constructeur pour la methode getOutfitbyID de OutfitDAO
-    public Outfit(long outfit_id, String timestamp, String description, String photo, long style_id, long likes) {
+
+    //Constructeur défini par Mehdi pour GetOutfitbyID
+    public Outfit(long outfit_id, String timestamp, String description, String photo, long style_id, long likes,long user_id) {
+        this.outfit_id = outfit_id;
+        this.timestamp = timestamp;
+        this.description = description;
+        this.photo = photo;
+        this.style_id = style_id;
+        this.likes = getLikes();
+        this.user_id = getUser_id();
     }
+
 
     public long getOutfit_id() {
         return outfit_id;
@@ -81,5 +92,21 @@ public class Outfit {
         } catch (SQLException e) {
             return 0;
         }
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
     }
 }

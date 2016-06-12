@@ -34,7 +34,7 @@ public class ClotheController {
         try {
             List<Type> types = clotheDAO.getAllTypes();
             for (Type type: types) {
-                myClothesByType.put(type.getType_name(),clotheDAO.getClothesOfOwnerForType(user, type));
+               // myClothesByType.put(type.getType_name(),clotheDAO.getClothesOfOwnerForType(user, type));
             }
             return  myClothesByType;
         } catch (SQLException e) {
@@ -45,11 +45,11 @@ public class ClotheController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public void deleteClothe(@PathVariable long id){
-        try {
-            clotheDAO.del_clothe(id);
+       /* try {
+           // clotheDAO.del_clothe(id);
         } catch (SQLException e) {
             throw new InternalErrorException();
-        }
+        }*/
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
@@ -62,7 +62,7 @@ public class ClotheController {
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(outputFile));
                 FileCopyUtils.copy(file.getInputStream(), stream);
                 stream.close();
-                //AddToDB
+                clotheDAO.add_clothe(clothe);
 
 
            } catch (Exception e){

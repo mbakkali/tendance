@@ -27,17 +27,25 @@ public class ClotheDAO {
         }
         return types;
     }
-    public Clothe add_clothe(Clothe clothe) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("INSERT INTO clothes (`owner`,`clothe_photo`) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
-        ps.setLong(1, clothe.getOwner());
-        ps.setString(2, clothe.getClothe_photo());
+    public Clothe add_clothe(Clothe clothe) throws SQLException{
 
-        //TODO Voir si c'est ok...
-        ResultSet rs = ps.executeQuery();
-        if(rs.next())
-            clothe.setClothe_id(rs.getLong("clothe_id"));
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `Tendance`.`clothes` (`clothe_photo`, `clothe_type`, `user_id`,`clothe_timestamp`) VALUES (?, ?, ?, ?);");
+
+            pstmt.setString(1, clothe.getClothe_photo());
+            pstmt.setLong(2, clothe.getClothe_type());
+            pstmt.setLong(3, clothe.getUser_id());
+            pstmt.setString(4, SQLDatabase.CurrentTimestampToString());
+
+            pstmt.executeUpdate();
+
+            System.out.println("> Clothe : " + clothe.getClothe_photo() + " ajouté à la table Clothe à "+ clothe.getClothe_timestamp());
+            pstmt.close();
+
+
         return clothe;
+
     }
+
 
     public boolean del_clothe(long id) throws SQLException {
         String query = "DELETE from clothes WHERE clothe_id=?;";
@@ -60,16 +68,17 @@ public class ClotheDAO {
     public List<Clothe> getClothesOfOwner(User user) throws SQLException{
         List<Clothe> clothes = new ArrayList<>();
 
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM clothes WHERE owner = ?");
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM clothes WHERE user_id = ?");
         ps.setLong(1,user.getUser_id());
 
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Clothe clothe = new Clothe(
                     rs.getLong("clothe_id"),
-                    rs.getLong("owner"),
-                    rs.getLong("type"),
-                    rs.getString("clothe_photo")
+                    rs.getLong("user_id"),
+                    rs.getLong("clothe_type"),
+                    rs.getString("clothe_photo"),
+                    rs.getString("clothe_timestamp")
             );
             clothes.add(clothe);
         }
@@ -78,21 +87,23 @@ public class ClotheDAO {
     public List<Clothe> getClothesOfOwnerForType(User user, Type type) throws SQLException{
         List<Clothe> clothes = new ArrayList<>();
 
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM clothes WHERE owner = ? AND clothe_type = ?;");
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM clothes WHERE user_id = ? AND clothe_type = ?;");
         ps.setLong(1,user.getUser_id());
         ps.setLong(2, type.getType_id());
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Clothe clothe = new Clothe(
                     rs.getLong("clothe_id"),
-                    rs.getLong("owner"),
-                    rs.getLong("type"),
-                    rs.getString("clothe_photo")
+                    rs.getLong("user_id"),
+                    rs.getLong("clothe_type"),
+                    rs.getString("clothe_photo"),
+                    rs.getString("clothe_timestamp")
             );
             clothes.add(clothe);
         }
         return clothes;
     }
+
 
 
 

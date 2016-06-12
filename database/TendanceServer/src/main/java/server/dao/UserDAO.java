@@ -11,7 +11,10 @@ import java.util.List;
 
 
 public class UserDAO {
+
     private static Connection connection = SQLDatabase.connectDatabase();
+
+
     public User add_user(User myuser) throws SQLException {
             PreparedStatement pstmt = connection.prepareStatement("INSERT INTO users (`username`, `mail`, `password`) VALUE (?,?,?);", Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, myuser.getUsername());
@@ -60,6 +63,7 @@ public class UserDAO {
             ps.setString(7, myuser.getProfilpicture());
 
             ps.setLong(8,myuser.getUser_id());
+            ps.executeUpdate();
 
         return myuser;
     }

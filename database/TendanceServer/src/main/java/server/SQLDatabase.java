@@ -1,7 +1,9 @@
 package server;
 
 import java.sql.*;
-
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 /**
  * Created by Patrik on 06/06/2016.
  */
@@ -10,9 +12,9 @@ public class SQLDatabase {
     public static Connection connectDatabase(){
 
         System.out.println("> Début de la connection à la base de données");
-        String url = "jdbc:mysql://192.168.1.13:3306/Tendance";
+       // String url = "jdbc:mysql://192.168.1.13:3306/Tendance";
         String user = "monitor";
-        //String url = "jdbc:mysql://90.66.114.198:3306/Tendance";
+        String url = "jdbc:mysql://90.66.114.198:3306/Tendance";
         String passwd = "tendance2016";
 
         try {
@@ -48,6 +50,18 @@ public class SQLDatabase {
         }
         return connection;
     }
+
+
+    //Fonction qui renvoie une String avec la date d'aujourd'hui et l'heure
+    public static String CurrentTimestampToString(){
+
+        Calendar calendar = Calendar.getInstance();
+        java.sql.Timestamp JavaTimestampObject = new java.sql.Timestamp(calendar.getTime().getTime());
+        String stringTimeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        return stringTimeStamp;
+    }
+
+
 
 
     //Affiche la table

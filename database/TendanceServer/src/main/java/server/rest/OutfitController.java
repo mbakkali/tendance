@@ -1,15 +1,14 @@
 package server.rest;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import server.Clothe;
 import server.Outfit;
 import server.dao.OutfitDAO;
+import server.dao.UserDAO;
 
 import java.io.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -28,7 +27,8 @@ public class OutfitController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Outfit> getOutfitsByOwner(@RequestParam long owner) {
         List<Outfit> outfits = new ArrayList<>();
-
+        long[] tab = OutfitDAO.getOutfitsByUser(owner);
+        for(int i=0; i<tab.length; i++){outfits.add(OutfitDAO.getOutfitByID(tab[i]));}
         return outfits;
     }
 
@@ -40,14 +40,15 @@ public class OutfitController {
     }
 
 
-
     @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
-    public void deleteUser(@PathVariable Outfit outfit){
-        try {
-            outfitDAO.del_outfit(outfit);
-        } catch (SQLException e) {
-            throw new InternalErrorException();
-        }
+    public void deleteUser(@PathVariable long id){
+        Outfit outfitToDelete = OutfitDAO.getOutfitByID(id);
+        outfitDAO.del_outfit(outfitToDelete);
+    }
+
+    @RequestMapping(value ="/update",method = RequestMethod.POST)
+    public void updateOutfit(@RequestBody Outfit outfit){
+        OutfitDAO.update_outfit(outfit);
     }
 
     @RequestMapping(value ="/add",method = RequestMethod.POST)
@@ -70,10 +71,4 @@ public class OutfitController {
         }
         return outfit;
     }
-
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    private class InternalErrorException extends RuntimeException{
-    }
-
 }
-
