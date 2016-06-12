@@ -41,12 +41,10 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public User createUser(@RequestBody User user){
         try {
-            userDAO.add_user(user);
+            return userDAO.add_user(user);
         } catch (SQLException e) {
-
+            throw new InternalErrorException();
         }
-        return user;
-
     }
 
     @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
