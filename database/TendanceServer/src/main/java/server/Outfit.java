@@ -18,7 +18,7 @@ public class Outfit {
     private String description;
     private String photo;
     private long style_id;
-    private long likes;
+    private long event_id;
     private long user_id;
     private Set<Clothe> outfit_clothes;
 
@@ -29,7 +29,6 @@ public class Outfit {
         this.photo = photo;
         this.description = description;
         this.style_id = style_id;
-        this.likes = getLikes();
     }
 
 
@@ -43,14 +42,14 @@ public class Outfit {
     }
 
     //Constructeur défini par Mehdi pour GetOutfitbyID
-    public Outfit(long outfit_id, String timestamp, String description, String photo, long style_id, long likes,long user_id) {
+    public Outfit(long outfit_id, String timestamp, String description, String photo, long style_id,long user_id, long event_id) {
         this.outfit_id = outfit_id;
         this.timestamp = timestamp;
         this.description = description;
         this.photo = photo;
         this.style_id = style_id;
-        this.likes = getLikes();
-        this.user_id = getUser_id();
+        this.user_id = user_id;
+        this.event_id = event_id;
     }
 
 
@@ -108,5 +107,28 @@ public class Outfit {
 
     public void setUser_id(long user_id) {
         this.user_id = user_id;
+    }
+
+    public long getEvent_id() {
+        return event_id;
+    }
+
+    public void setEvent_id(long event_id) {
+        this.event_id = event_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Outfit{" +
+                "photo='" + photo + '\'' +
+                ", style_id=" + style_id +
+                ", event_id=" + event_id +
+                ", user_id=" + user_id +
+                ", outfit_clothes=" + outfit_clothes +
+                ", description='" + description + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", outfit_id=" + outfit_id +
+                ", outfitDAO=" + outfitDAO +
+                '}';
     }
 }

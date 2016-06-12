@@ -1,5 +1,6 @@
 package server.rest;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,6 +10,7 @@ import server.dao.OutfitDAO;
 import server.dao.UserDAO;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -26,10 +28,24 @@ public class OutfitController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Outfit> getOutfitsByOwner(@RequestParam long owner) {
-        List<Outfit> outfits = new ArrayList<>();
-        long[] tab = OutfitDAO.getOutfitsByUser(owner);
-        for(int i=0; i<tab.length; i++){outfits.add(OutfitDAO.getOutfitByID(tab[i]));}
-        return outfits;
+        try {
+            List<Outfit> outfits = outfitDAO.getOutfitsByUser(owner);
+            return outfits;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new InternalErrorException();
+        }
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public List<Clothe> getClothesOfOutfits(@PathVariable long id) {
+        try {
+            List<Clothe> clothes = outfitDAO.getClothesOfOutfit(id);
+            return clothes;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new InternalErrorException();
+        }
     }
 
     @RequestMapping(value = "/favorite", method = RequestMethod.GET)
@@ -71,4 +87,8 @@ public class OutfitController {
         }
         return outfit;
     }
+
+        @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+        private class InternalErrorException extends RuntimeException{
+        }
 }

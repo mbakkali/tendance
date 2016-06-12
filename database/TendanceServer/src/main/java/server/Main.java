@@ -49,13 +49,27 @@ public class Main {
             Clothe clothe = new Clothe(3,1,1,"photo",SQLDatabase.CurrentTimestampToString());
 
 
+
             ClotheDAO clotheDAO =new ClotheDAO();
             //clotheDAO.add_clothe(clothe);
             clotheDAO.del_clothe(9);*/
 
 
+          /* UserDAO u = new UserDAO();
+            User user =u.getUserByMailAndPassword("camille@insa.fr","cemonet");
+
+            System.out.println(user.getUsername()+" | "+user.getMail());*/
 
 
+
+            OutfitDAO o = new OutfitDAO();
+            List<Clothe> liste = o.getClothesOfOutfit(19);
+
+            liste.forEach(
+                    (e)-> {
+                        System.out.print(e.toString());
+                        }
+                        );
 
         } catch (Exception e) {
             e.printStackTrace();

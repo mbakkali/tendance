@@ -1,5 +1,6 @@
 package server.dao;
 
+import server.Clothe;
 import server.Outfit;
 import server.SQLDatabase;
 
@@ -16,13 +17,13 @@ public class OutfitDAO {
 
     public static void add_outfit(Outfit outfit) {
         try {
-            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO outfits (`timestamp`, `description`, `photo`, `style_id`,`likes`) VALUE (?,?,?,?,?)");
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO outfits (`timestamp`, `description`, `photo`, `style_id`) VALUE (?,?,?,?)");
 
             pstmt.setString(1, SQLDatabase.CurrentTimestampToString());
             pstmt.setString(2, outfit.getDescription());
             pstmt.setString(3, outfit.getPhoto());
             pstmt.setLong(4, outfit.getStyle_id());
-            pstmt.setLong(5, outfit.getLikes());
+
 
             pstmt.executeUpdate();
 
@@ -68,8 +69,9 @@ public class OutfitDAO {
                         rs.getString("description"),
                         rs.getString("photo"),
                         rs.getLong("style_id"),
-                        rs.getLong("likes"),
-                        rs.getLong("user_id") );
+                        rs.getLong("user_id"),
+                        rs.getLong("event_id")
+                );
             }
         }
         catch (SQLException e){
@@ -85,7 +87,7 @@ public class OutfitDAO {
 
             PreparedStatement ps = connection.prepareStatement("UPDATE Tendance.outfits " +
                     "SET outfits.outfit_id = ?, outfits.timestamp = ?," +
-                    "outfits.description = ?, outfits.photo = ?, outfits.style_id = ?, outfits.likes = ? ,outfit.user_id=?" +
+                    "outfits.description = ?, outfits.photo = ?, outfits.style_id = ?, outfits.likes = ? ,outfit.user_id=?, outfit.event_id=?" +
                     "WHERE outfits.outfit_id = ?");
 
             ps.setLong(1, outfit.getOutfit_id());
@@ -95,8 +97,9 @@ public class OutfitDAO {
             ps.setLong(5, outfit.getStyle_id());
             ps.setLong(6, outfit.getLikes());
             ps.setLong(7, outfit.getUser_id());
+            ps.setLong(8, outfit.getEvent_id());
 
-            ps.setLong(8, outfit.getOutfit_id());
+            ps.setLong(9, outfit.getOutfit_id());
 
             ps.executeUpdate();
 
@@ -111,40 +114,65 @@ public class OutfitDAO {
     }
 
 
-    public static long[] getOutfitsByUser(long id) {
+    public List<Outfit> getOutfitsByUser(long id) throws  SQLException{
 
-        long[] tab = new long[2];
-        try {
+        //long[] tab = new long[2];
+        List<Outfit> outfits = new ArrayList<>();
 
 
-
-            String query = "SELECT outfit_id from outfits, users  WHERE users.user_id= outfits.user_id and users.user_id=?";
+            Outfit outfit;
+            String query = "SELECT outfits.* from outfits, users  WHERE users.user_id= outfits.user_id and users.user_id=?";
             PreparedStatement pstmnt = connection.prepareStatement(query);
 
             pstmnt.setLong(1, id);
             ResultSet rs = pstmnt.executeQuery();
 
-            ArrayList<Long> list = new ArrayList<Long>();
-
             while (rs.next()) {
-
-                int i =0;
-                long outfitid = rs.getLong("outfit_id");
-                list.add(outfitid);
+                 outfit = new Outfit(
+                        rs.getLong("outfit_id"),
+                        rs.getString("timestamp"),
+                        rs.getString("description"),
+                        rs.getString("photo"),
+                        rs.getLong("style_id"),
+                        rs.getLong("user_id"),
+                        rs.getLong("event_id")
+                );
+                outfits.add(outfit);
             }
 
-            for(int j=0; j<list.size(); j++) {
-                tab[j]= list.get(j) ;
-            }
-
-        }
-        catch(SQLException e){
-            System.out.println("Erreur getOutfitsbyUser");
-        }
-
-            return tab;
+            return outfits;
 
     }
+
+    public List<Clothe> getClothesOfOutfit(long id) throws  SQLException{
+
+        List<Clothe> clothes = new ArrayList<>();
+
+        Clothe clothe;
+        String query = "SELECT clothes . * \n" +
+                "FROM clothes\n" +
+                "INNER JOIN compose ON clothes.clothe_id = compose.clothe_id\n" +
+                "INNER JOIN outfits ON outfits.outfit_id = compose.outfit_id\n" +
+                "WHERE outfits.outfit_id =?";
+        PreparedStatement pstmnt = connection.prepareStatement(query);
+
+        pstmnt.setLong(1, id);
+        ResultSet rs = pstmnt.executeQuery();
+
+        while (rs.next()) {
+            clothe = new Clothe(
+                    rs.getLong("clothe_id"),
+                    rs.getLong("user_id"),
+                    rs.getLong("clothe_type"),
+                    rs.getString("clothe_photo"),
+                    rs.getString("clothe_timestamp")
+            );
+            clothes.add(clothe);
+        }
+
+        return clothes;
+    }
+
 
     public static long get_likes(Outfit outfit) throws SQLException{
         PreparedStatement ps =connection.prepareStatement("SELECT (COUNT *) as likes FROM liker where outfit_id = ?");

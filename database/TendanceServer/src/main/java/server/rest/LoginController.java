@@ -14,16 +14,16 @@ import java.sql.SQLException;
 @RestController
 public class LoginController {
 
-    private UserDAO userDAO;
+    private UserDAO userDAO = new UserDAO();
 
+    //http://localhost:8080/login/mail=%camille@insa.fr&password=%cemonet
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public User login(@RequestParam String mail, @RequestParam String password) {
         User user = null;
         try {
-            user = userDAO.getUserByMailAndPassword(mail,password);
-            if(user==null)
-                throw new ForbiddenException();
-            return user;
+            System.out.println(mail + " " + password);
+            return userDAO.getUserByMailAndPassword(mail,password);
+
         } catch (SQLException e) {
             throw new ForbiddenException();
         }
