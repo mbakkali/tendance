@@ -41,6 +41,7 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public User createUser(@RequestBody User user){
         try {
+            System.out.println(user);
             return userDAO.add_user(user);
         } catch (SQLException e) {
             throw new InternalErrorException();

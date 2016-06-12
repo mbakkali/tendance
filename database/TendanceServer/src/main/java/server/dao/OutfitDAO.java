@@ -13,7 +13,7 @@ public class OutfitDAO {
     private Connection connection = SQLDatabase.connectDatabase();
     public void add_outfit(Outfit outfit) {
         try {
-            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO outfits (`timestamp`, `description`, `style_id`, `likes`) VALUE (?,?,?,?)");
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO outfits (`timestamp`, `description`, `style_id`, `likes`) VALUE (?,?,?,?);");
 
             pstmt.setString(1, outfit.getTimestamp());
             pstmt.setString(2, outfit.getDescription());

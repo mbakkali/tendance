@@ -13,7 +13,7 @@ import java.util.List;
 public class UserDAO {
     private static Connection connection = SQLDatabase.connectDatabase();
     public User add_user(User myuser) throws SQLException {
-            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO users (`username`, `mail`, `password`) VALUE (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO users (`username`, `mail`, `password`) VALUE (?,?,?);", Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, myuser.getUsername());
             pstmt.setString(2, myuser.getMail());
             pstmt.setString(3, myuser.getPassword());
@@ -29,7 +29,7 @@ public class UserDAO {
 
     public void del_user(User user) throws SQLException {
 
-            String query = "DELETE from users WHERE username=? AND user_id=?";
+            String query = "DELETE from users WHERE username=? AND user_id=?;";
             PreparedStatement pstmnt = connection.prepareStatement(query);
 
             pstmnt.setLong(1,user.getUser_id());
@@ -50,7 +50,7 @@ public class UserDAO {
             PreparedStatement ps = connection.prepareStatement("UPDATE users " +
                     "SET users.username = ?, users.mail = ?," +
                     "users.bio = ?, users.male = ?, users.phone = ?, users.age = ?, users.profil_picture = ? " +
-                    "WHERE users.user_id = ?");
+                    "WHERE users.user_id = ?;");
             ps.setString(1, myuser.getUsername());
             ps.setString(2, myuser.getMail());
             ps.setString(3, myuser.getBio());
