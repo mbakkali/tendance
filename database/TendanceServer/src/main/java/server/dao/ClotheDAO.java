@@ -16,7 +16,7 @@ public class ClotheDAO {
 
     public static Connection connection = SQLDatabase.connectDatabase();
 
-    public static List<Type> getAllTypes() throws SQLException {
+    public List<Type> getAllTypes() throws SQLException {
         List<Type> types = new ArrayList<>();
 
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM types;");
@@ -39,12 +39,11 @@ public class ClotheDAO {
         return clothe;
     }
 
-    public boolean del_clothe(Clothe clothe) throws SQLException {
-        String query = "DELETE from clothes WHERE clothe_id=? AND owner=?";
+    public boolean del_clothe(long id) throws SQLException {
+        String query = "DELETE from clothes WHERE clothe_id=?;";
         PreparedStatement pstmnt = connection.prepareStatement(query);
 
-        pstmnt.setLong(1,clothe.getClothe_id());
-        pstmnt.setLong(2,clothe.getOwner());
+        pstmnt.setLong(1,id);
         pstmnt.executeUpdate();
 
         int rowsUpdated = pstmnt.executeUpdate();
@@ -58,7 +57,7 @@ public class ClotheDAO {
         }
     }
 
-    public static List<Clothe> getClothesOfOwner(User user) throws SQLException{
+    public List<Clothe> getClothesOfOwner(User user) throws SQLException{
         List<Clothe> clothes = new ArrayList<>();
 
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM clothes WHERE owner = ?");
@@ -76,7 +75,7 @@ public class ClotheDAO {
         }
         return clothes;
     }
-    public static List<Clothe> getClothesOfOwnerForType(User user, Type type) throws SQLException{
+    public List<Clothe> getClothesOfOwnerForType(User user, Type type) throws SQLException{
         List<Clothe> clothes = new ArrayList<>();
 
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM clothes WHERE owner = ? AND clothe_type = ?;");

@@ -10,9 +10,8 @@ import java.sql.SQLException;
 
 
 public class OutfitDAO {
-    private static Connection connection = SQLDatabase.connectDatabase();
-
-    public static void add_outfit(Outfit outfit) {
+    private Connection connection = SQLDatabase.connectDatabase();
+    public void add_outfit(Outfit outfit) {
         try {
             PreparedStatement pstmt = connection.prepareStatement("INSERT INTO outfits (`timestamp`, `description`, `style_id`, `likes`) VALUE (?,?,?,?)");
 
@@ -30,11 +29,7 @@ public class OutfitDAO {
             e.printStackTrace();
         }
     }
-
-
-    public static void del_outfit(Outfit outfit){
-
-        try {
+    public void del_outfit(Outfit outfit) throws SQLException {
 
             String query = "DELETE from outfits WHERE outfit_id=?";
             PreparedStatement pstmnt = connection.prepareStatement(query);
@@ -45,10 +40,8 @@ public class OutfitDAO {
             System.out.println("> L'outfit"+outfit.getDescription()+" a été supprimé de la base users");
 
             pstmnt.close();
-        } catch (SQLException e) {
-            System.out.println("Erreur Del_outfit");
-        }
-    }public static Outfit getOutfitByID(long id) {
+    }
+    public Outfit getOutfitByID(long id) {
         Outfit outfit = null;
         try {
 
@@ -71,16 +64,12 @@ public class OutfitDAO {
         }
         return outfit;
     }
-
-
-
-    public static Outfit update_outfit(Outfit outfit) throws SQLException{
+    public Outfit update_outfit(Outfit outfit) throws SQLException{
         PreparedStatement ps = connection.prepareStatement("UPDATE outfit(``,``,``,``)");
 
         return outfit;
     }
-
-    public static long get_likes(Outfit outfit) throws SQLException{
+    public long get_likes(Outfit outfit) throws SQLException{
         PreparedStatement ps =connection.prepareStatement("SELECT (COUNT *) as likes FROM liker where outfit_id = ?");
         ps.setLong(1, outfit.getOutfit_id());
 

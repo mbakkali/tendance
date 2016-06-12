@@ -1,11 +1,11 @@
 package server.rest;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import server.Style;
+import server.dao.StyleDAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,19 +15,23 @@ import java.util.List;
 @RequestMapping(value = "/style")
 @RestController
 public class StyleController {
-
+    StyleDAO styleDAO = new StyleDAO();
     @RequestMapping(method = RequestMethod.GET)
     public List<Style> getStyles(){
-        List<Style> styles = new ArrayList<>();
-
-
-
-        return styles;
+        try {
+            return styleDAO.getStyles();
+        } catch (SQLException e) {
+            throw new InternalErrorException();
+        }
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Style insert(@RequestBody Style style){
+
         return style;
     }
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    private class InternalErrorException extends RuntimeException{
+    }
 }

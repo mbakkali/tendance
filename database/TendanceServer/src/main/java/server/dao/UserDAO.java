@@ -11,15 +11,8 @@ import java.util.List;
 
 
 public class UserDAO {
-
-    //Connexion à la base de données. Le "connection" est le descripteur (statique sur cette classe)
     private static Connection connection = SQLDatabase.connectDatabase();
-
-
-
-    public static User add_user(User myuser) {
-        try {
-
+    public User add_user(User myuser) throws SQLException {
             PreparedStatement pstmt = connection.prepareStatement("INSERT INTO users (`username`, `mail`, `password`) VALUE (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, myuser.getUsername());
             pstmt.setString(2, myuser.getMail());
@@ -31,17 +24,10 @@ public class UserDAO {
                 myuser.setUserId(rs.getLong(1));
             System.out.println("> Utilisateur : " + myuser.getUsername() + " ajouté à la base users avec l'id " + myuser.getUser_id());
             pstmt.close();
-
-        } catch (SQLException e) {
-            System.out.println("Erreur Add_user");        }
         return myuser;
     }
 
-
-
-    public static void del_user(User user){
-
-        try {
+    public void del_user(User user) throws SQLException {
 
             String query = "DELETE from users WHERE username=? AND user_id=?";
             PreparedStatement pstmnt = connection.prepareStatement(query);
@@ -58,15 +44,9 @@ public class UserDAO {
                 System.out.println("> Utilisateur"+user.getUsername()+" a été supprimé de la base users");
             }
             pstmnt.close();
-        } catch (SQLException e) {
-            System.out.println("Erreur Del_user");
-        }
     }
 
-
-
-    public static User update_user(User myuser){
-        try{
+    public User update_user(User myuser) throws SQLException {
             PreparedStatement ps = connection.prepareStatement("UPDATE users " +
                     "SET users.username = ?, users.mail = ?," +
                     "users.bio = ?, users.male = ?, users.phone = ?, users.age = ?, users.profil_picture = ? " +
@@ -81,15 +61,10 @@ public class UserDAO {
 
             ps.setLong(8,myuser.getUser_id());
 
-        }catch (SQLException e){
-            System.err.println("Erreur update_user");
-        }
         return myuser;
     }
 
-
-
-    public static User getUserByMailAndPassword(String mail, String password) throws  SQLException {
+    public User getUserByMailAndPassword(String mail, String password) throws SQLException {
          User user = null;
 
              PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
@@ -114,11 +89,8 @@ public class UserDAO {
              return user;
     }
 
-
-    public static User getUserByID(long id) {
+    public User getUserByID(long id) throws SQLException {
         User user = null;
-        try {
-
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.user_id = ? ;");
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
@@ -136,20 +108,12 @@ public class UserDAO {
                         rs.getString("age")
                 );
             }
-
-        }
-        catch (SQLException e){
-            System.out.println("Erreur GetByUserID");
-        }
         return user;
     }
 
-
-    public static List<User> getFriends(long id) {
+    public List<User> getFriends(long id) throws SQLException {
         User user = null;
         List<User> friends = new ArrayList<>();
-        try {
-
             PreparedStatement ps = connection.prepareStatement("SELECT relationships.friend_id FROM users, relationships WHERE users.user_id = relationships.user_id AND users.user_id = ? ;");
             ps.setLong(1, id);
 
@@ -162,20 +126,12 @@ public class UserDAO {
             }
 
             rs.close();
-
-        }
-        catch (SQLException e){
-            System.out.println("Erreur get Friends ");
-        }
         return friends;
     }
 
-
-    public static User getUserByUsername(String username )  {
+    public User getUserByUsername(String username ) throws SQLException {
 
         User user = null;
-        try {
-
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
@@ -193,10 +149,7 @@ public class UserDAO {
                 );
             }
 
-        }
-        catch (SQLException e){
-        }
+
         return user;
     }
-
 }

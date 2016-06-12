@@ -1,5 +1,6 @@
 package server.rest;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
@@ -7,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.StringMultipartFileEditor;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import server.Clothe;
+import server.Outfit;
 import server.Type;
 import server.User;
 import server.dao.ClotheDAO;
@@ -24,25 +26,30 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(value = "/clothe")
 public class ClotheController {
+    ClotheDAO clotheDAO = new ClotheDAO();
+
     @RequestMapping(method = RequestMethod.GET)
     public Map<String, List<Clothe>> getAllClothOfUser(User user) {
         Map<String, List<Clothe>> myClothesByType = new HashMap<>();
         try {
             List<Type> types = ClotheDAO.getAllTypes();
             for (Type type: types) {
-                myClothesByType.put(type.getType_name(),ClotheDAO.getClothesOfOwnerForType(user, type));
+                myClothesByType.put(type.getType_name(),clotheDAO.getClothesOfOwnerForType(user, type));
             }
             return  myClothesByType;
         } catch (SQLException e) {
-            //TODO REPLACE WITH ERROR 500
-            return null;
+            throw new InternalErrorException();
         }
     }
 
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public void deleteClothe(@PathVariable long id){
-        //TODO
+        try {
+            clotheDAO.del_clothe(id);
+        } catch (SQLException e) {
+            throw new InternalErrorException();
+        }
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
@@ -58,14 +65,15 @@ public class ClotheController {
                 //AddToDB
 
 
-           } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+           } catch (Exception e){
+                throw new InternalErrorException();
             }
         }
         return clothe;
     }
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    private class InternalErrorException extends RuntimeException{
+    }
 
 }
