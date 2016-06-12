@@ -10,6 +10,8 @@ import java.util.Set;
 
 public class Outfit {
 
+    OutfitDAO outfitDAO = new OutfitDAO();
+
     public static final String ROOT = "outfits";
     private long outfit_id;
     private String timestamp;
@@ -75,7 +77,7 @@ public class Outfit {
 
     public long getLikes() {
         try {
-            return OutfitDAO.get_likes(this);
+            return outfitDAO.get_likes(this);
         } catch (SQLException e) {
             return 0;
         }

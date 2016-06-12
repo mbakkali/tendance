@@ -32,7 +32,7 @@ public class ClotheController {
     public Map<String, List<Clothe>> getAllClothOfUser(User user) {
         Map<String, List<Clothe>> myClothesByType = new HashMap<>();
         try {
-            List<Type> types = ClotheDAO.getAllTypes();
+            List<Type> types = clotheDAO.getAllTypes();
             for (Type type: types) {
                 myClothesByType.put(type.getType_name(),clotheDAO.getClothesOfOwnerForType(user, type));
             }
