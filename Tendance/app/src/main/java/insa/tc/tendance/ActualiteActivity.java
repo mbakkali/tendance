@@ -40,7 +40,7 @@ public class ActualiteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent home = new Intent(ActualiteActivity.this, ActualiteActivity.class);
-                mUser.putUserIntoIntent(getIntent());
+                mUser.putUserIntoIntent(home);
                 startActivity(home);
             }
         });
@@ -50,7 +50,7 @@ public class ActualiteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent calendrier = new Intent(ActualiteActivity.this, CalendarActivity.class);
-                mUser.putUserIntoIntent(getIntent());
+                mUser.putUserIntoIntent(calendrier);
                 startActivity(calendrier);
             }
         });
@@ -60,7 +60,7 @@ public class ActualiteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent tshirt = new Intent(ActualiteActivity.this, DressingActivity.class);
-                mUser.putUserIntoIntent(getIntent());
+                mUser.putUserIntoIntent(tshirt);
                 startActivity(tshirt);
             }
         });
@@ -70,7 +70,7 @@ public class ActualiteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent friend = new Intent(ActualiteActivity.this, FriendActivity.class);
-                mUser.putUserIntoIntent(getIntent());
+                mUser.putUserIntoIntent(friend);
                 startActivity(friend);
             }
         });
@@ -80,7 +80,7 @@ public class ActualiteActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent user = new Intent(ActualiteActivity.this, PersonnelActivity.class);
-                mUser.putUserIntoIntent(getIntent());
+                mUser.putUserIntoIntent(user);
                 startActivity(user);
             }
         });

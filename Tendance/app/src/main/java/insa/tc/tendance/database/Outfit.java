@@ -13,12 +13,14 @@ import java.util.Locale;
  * Created by patrik on 18/05/16.
  */
 public class Outfit {
-    private long id;
+    private long outfit_id;
     private int user;
     private Date date;
     private String description;
     private int style;
-    private String photo;
+    private String path_photo;
+
+
 
     public Outfit(int user){
         this.user = user;
@@ -28,6 +30,8 @@ public class Outfit {
         this.user=user;
         this.date=date;
     }
+
+    public Outfit() {}
 
     public void addDescription(String description){
         this.description = description;
@@ -45,6 +49,9 @@ public class Outfit {
         return dateFormat.format(date);
     }
 
+    public void setPath_photo(String path_photo) {this.path_photo = path_photo;}
+
+    public void setDescription(String description) {this.description = description;}
 
     public void addOutfitLocalDB(SQLiteDatabase db){
         ContentValues values = new ContentValues();
@@ -52,18 +59,20 @@ public class Outfit {
         values.put("date", getDateTime());
         values.put("description", description);
         values.put("style", style);
-        values.put("selfie", photo);
+        values.put("selfie", path_photo);
 
-        id = db.insert("OUTFITS", null, values);
+        outfit_id = db.insert("OUTFITS", null, values);
         //Associate outfit with clothes.
-
     }
 
-    public void liked(){
-        //TODO Fonction liked qui ajoute une relation like entre l'utilisateur et l'outfit.
+    public boolean hasSelfie(){
+        return !(path_photo == null || path_photo.isEmpty());
+    }
+
+    public void liked(User target){
 
     }
-    public void unliked(){
+    public void unliked(User target){
 
     }
     public String getDate(){

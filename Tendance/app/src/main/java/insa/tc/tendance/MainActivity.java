@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,11 +25,14 @@ import java.util.concurrent.ExecutionException;
 
 import insa.tc.tendance.database.TendanceBDDHelper;
 import insa.tc.tendance.database.User;
+import insa.tc.tendance.requests.CreateProfilRequest;
 
 import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String SERVEUR_URL = "http://90.66.114.198";
 
     Button seConnecter = null;
     Button createUser = null;
@@ -56,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         final AlertDialog.Builder error_login = new AlertDialog.Builder(this).setTitle("Erreur de Connexion")
                 .setMessage("Utilisateur non reconnu...");
         mMail = (EditText) findViewById(R.id.addMail);
+        mMail.setText("patrik@mail.com"); //default
         mPassword = (EditText) findViewById(R.id.mdp);
         seConnecter = (Button) findViewById(R.id.connect);
         seConnecter.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 String password = mPassword.getText().toString();
                 try {
                     User user = User.login(mail,password);
-                    user.putUserIntoIntent(getIntent());
+                    user.putUserIntoIntent(actualite);
                     startActivity(actualite);
                 } catch (Exception e) {
                     error_login.show();
@@ -76,11 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
         final android.app.AlertDialog.Builder helpBuilder = new android.app.AlertDialog.Builder(this);
         final LinearLayout layout = new LinearLayout(this);
-        final EditText newMail = new EditText(this);
+        final EditText newUsername = new EditText(this);
+        final EditText newMail= new EditText(this);
         final EditText newMDP = new EditText(this);
         final EditText newConfirm = new EditText(this);
         createUser = (Button) findViewById(R.id.CreateNewUser);
         createUser.setOnClickListener(new View.OnClickListener() {
+            User newuser = null;
             @Override
             public void onClick(View v) {
 
@@ -92,25 +99,32 @@ public class MainActivity extends AppCompatActivity {
 
                 LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(700,200);
                 params1.setMargins(16,0,0,0);
-                newMail.setHint("Mail");
+
+                newUsername.setHint("Username...");
+                newUsername.setLayoutParams(params1);
+                newMail.setHint("Mail...");
                 newMail.setLayoutParams(params1);
-                newMDP.setHint("Mot de passe");
+                newMDP.setHint("Password...");
                 newMDP.setLayoutParams(params1);
-                newConfirm.setHint("Confirmation du mdp");
+                newConfirm.setHint("Confirm password...");
                 newConfirm.setLayoutParams(params1);
 
+                layout.addView(newUsername);
                 layout.addView(newMail);
                 layout.addView(newMDP);
                 layout.addView(newConfirm);
-
                 helpBuilder.setView(layout);
-
 
                 helpBuilder.setPositiveButton("Création",
                         new DialogInterface.OnClickListener() {
-
                             public void onClick(DialogInterface dialog, int which) {
-                                //TODO: créer le nouvel utilisateur dans la bdd
+                                System.out.println(newUsername.toString());
+                                try {
+                                    newuser = User.createUserRemote(newUsername.toString(), newMail.toString(), newMDP.toString());
+                                } catch (Exception e) {
+
+                                }
+                                System.out.println(newuser);
                             }
                         });
 

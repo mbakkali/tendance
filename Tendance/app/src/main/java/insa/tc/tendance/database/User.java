@@ -19,6 +19,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import insa.tc.tendance.requests.CreateProfilRequest;
 import insa.tc.tendance.requests.LoginRequest;
 
 
@@ -113,7 +114,7 @@ public class User implements Serializable{
         this.user_id = user_id;
     }
     public String getProfilpicture() {        return profilpicture;    }
-    public String getPassword(){return password;};
+    public String getPassword(){return password;}
 
     public void addUserLocal(SQLiteDatabase db){
         ContentValues values = new ContentValues();
@@ -127,7 +128,6 @@ public class User implements Serializable{
         setUser_id(db.insert("USERS", null, values));
         System.out.println("A user"+ getId_user());
     }
-
     public void updateUserLocal(SQLiteDatabase db, User modifiedUser){
         ContentValues values = new ContentValues();
         String[] args = {
@@ -143,19 +143,25 @@ public class User implements Serializable{
         int result =db.update("USERS", values, "user_id=?", args);
         System.out.println( getId_user() + " Updated..."+ result);
     }
-
     public ArrayList<Outfit> getFavoriteOutfits(Context context){
 
 
         return null;
     }
-
     public boolean isFriendWith(User target) {
         boolean friend = true;
 
 
 
         return friend;
+    }
+
+    public static User createUserRemote(String username, String mail, String password) throws ExecutionException, InterruptedException {
+        User user = new User(username,mail,password);
+        if((user = new CreateProfilRequest().execute(user).get()) == null){
+            throw new RestClientException("Forbidden");
+        }
+        return user;
     }
 
     public static User login(String mail, String password) throws InterruptedException, ExecutionException {
@@ -174,52 +180,5 @@ public class User implements Serializable{
     public static User getFriendFromIntent(Intent intent){
         Gson gson = new Gson();
         return gson.fromJson(intent.getStringExtra("friend"), User.class);
-    }
-
-    private class HttpRequestTask extends AsyncTask<Void, Void, User[]> {
-        @Override
-        protected User[] doInBackground(Void... params) {
-            try {
-                final String path = "/user/friends";
-                final String url = "http://90.66.114.198?"+path+"?iduser=1";
-                final String url_local = "http://192.168.1.21:5000" + path + "?iduser=1"; //Pour quand patrik fais des test chez lui...
-                RestTemplate restTemplate = new RestTemplate();
-                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                User[] users = restTemplate.getForObject(url_local, User[].class);
-                return users;
-
-            } catch (Exception e) {
-                Log.e("MainActivity", e.getMessage(), e);
-            }
-
-            return null;
-        }
-
-        protected void onPostExecute(User... users) {
-        }
-
-    }
-
-    public static class HttpRequestCreateProfil extends AsyncTask<User, Void, User> {
-
-        @Override
-        protected User doInBackground(User... params) {
-            User user = null;
-            try{
-                final  String path = "/user/add";
-
-               // final String url = "http://90.66.114.198" + path;
-                final String url = "http://192.168.1.21:5000" + path; //LOCAL...
-                RestTemplate restTemplate = new RestTemplate();
-                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                user = restTemplate.postForObject(url,params[0],User.class);
-                System.out.println(user.getId_user());
-
-            }catch (Exception e){
-                Log.e("MainActivity", e.getMessage(), e);
-            }
-            return user;
-        }
-
     }
 }

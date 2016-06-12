@@ -1,27 +1,30 @@
 package insa.tc.tendance;
 
-import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.Gravity;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import insa.tc.tendance.camera.SelfieFile;
-import insa.tc.tendance.database.User;
+import java.util.List;
+import java.util.Map;
+
+import insa.tc.tendance.database.Clothe;
+import insa.tc.tendance.database.Outfit;
+import insa.tc.tendance.dialog.DescriptionDialogBuilder;
+import insa.tc.tendance.dialog.SendOutfitDialogBuilder;
 
 import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
@@ -30,7 +33,7 @@ import static android.widget.Toast.makeText;
  * Created by Camille on 07/05/2016.
  * TODO Ajout de vêtement dans la BDD
  */
-public class DressingActivity extends Activity {
+public class DressingActivity extends FragmentActivity {
 
     ImageButton home;
     ImageButton calendar;
@@ -49,11 +52,22 @@ public class DressingActivity extends Activity {
     Button shoes;
     Button other;
     Uri fileUri;
+    Map<String, List<Clothe>> myclothes;
+
+
+    Outfit outfit = new Outfit();
+
+    //create all dialog that we use (might be a horrible way to do it...)
+    private Dialog descriptionDialog = new DescriptionDialogBuilder(this.getApplicationContext(), this, outfit).create();
+    private Dialog sendDialog = new SendOutfitDialogBuilder(this , outfit).create();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dressing);
+
+        //recover clothes from network
+
 
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
@@ -177,15 +191,7 @@ public class DressingActivity extends Activity {
         selfie.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //On lance l'intent de la camera
-                Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                fileUri = SelfieFile.getOutputMediaFileUri(1, getExternalCacheDir());  // create a file to save the image
-                System.out.println(fileUri);
-                camera.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);  // set the image file name
-                // start the Image Capture Intent
-                startActivityForResult(camera, 1);
-
+                showTakeSelfie();
             }
         });
 
@@ -205,31 +211,8 @@ public class DressingActivity extends Activity {
             }
         });
 
-
     }
-    private void showDescritpion() {
-        //TODO RECURER LA DESCRIPTION DE L'OUTFIT LOCALE dans un objet
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        helpBuilder.setTitle("Outfit");
-        helpBuilder.setMessage("Description de la tenue");
-        final EditText input = new EditText(this);
-        input.setSingleLine();
-
-        LayoutInflater inflater = getLayoutInflater();
-        View RadioButtonLayout = inflater.inflate(R.layout.outfitstyle, null);
-        helpBuilder.setView(RadioButtonLayout);
-        //TODO Sauvegarder la description dans l'objet / BDD
-        helpBuilder.setPositiveButton("OK",
-                new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
-                    }
-                });
-
-        AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-    }
+    private void showDescritpion() {descriptionDialog.show();}
     private void showCoat() {
 
         final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.gauche);
@@ -702,7 +685,6 @@ public class DressingActivity extends Activity {
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }
-
     private void showAdd() {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
@@ -724,41 +706,27 @@ public class DressingActivity extends Activity {
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }
-
     private void showTakeSelfie() {
+        AlertDialog.Builder selfieDialogBuilder = new AlertDialog.Builder(getApplicationContext());
 
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        //TODO Activité Camera !
-        helpBuilder.setPositiveButton("Take a selfie",
-                new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
-                    }
-                });
-
-        AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
+        selfieDialogBuilder.setPositiveButton("Take a selfie",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                outfit.setPath_photo(fileUri.getPath());
+                                camera.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);  // set the image file name
+                                // start the Image Capture Intent
+                                startActivityForResult(camera, 1); //La photo sera sauvegarder dans fileUri
+                            }
+                        });
     }
-
     private void showSend() {
         //TODO ajouter fonction addOutfitans BDD Internet ET externe (Regarder comment créer la représentation de l'image)
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
 
-        helpBuilder.setPositiveButton("Send Outfit",
-                new DialogInterface.OnClickListener() {
 
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
-                    }
-                });
-
-        AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
+        sendDialog.show();
     }
-
     private void showSuggestion() {
         //TODO Ajout fonction Demander une suggestion et afficher la suggestion.
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);

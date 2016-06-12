@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 
@@ -22,12 +21,14 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by patrik on 18/05/16.
  */
-public class Cloth {
+public class Clothe {
     private long id;
     private int type;
     private String s_type; //pour directement afficher le type
@@ -39,25 +40,25 @@ public class Cloth {
 
 
 
-    public Cloth(int type, int owner){
+    public Clothe(int type, int owner){
         this.type = type;
         this.owner = owner;
         String photo = "no_picture";
     }
 
-    public Cloth(long id, String type, String photo, long owner){
+    public Clothe(long id, String type, String photo, long owner){
         this.id = id;
         this.s_type = type;
         this.pathphoto = photo;
         this.owner = owner;
     }
-    public Cloth(long id, int type, String photo, long owner){
+    public Clothe(long id, int type, String photo, long owner){
         this.id = id;
         this.type = type;
         this.pathphoto = photo;
         this.owner = owner;
     }
-    public Cloth(int owner){
+    public Clothe(int owner){
         this.owner=owner;
     }
 
@@ -89,37 +90,16 @@ public class Cloth {
         id = db.insert("CLOTHES", null, values);
     }
 
-    public List<Cloth> getMyClothRemote(Context context, final User me){
-        final ArrayList<Cloth> myclothes = new ArrayList<>();
-        RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://serveurTendance.io/myfriends?iduser=" + String.valueOf(me.getId_user());
-        JsonObjectRequest jsObj = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>(){
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray results = response.getJSONArray("data");
-                            for(int i = 0; i < results.length(); i++) {
-                                JSONObject cloth = results.getJSONObject(i);
-                                myclothes.add(new Cloth(cloth.getLong("id_cloth"), cloth.getString("type"), cloth.getString("photo"), me.getId_user() ) );
-                                //
-                            }
-                        } catch (JSONException e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
+    public Map<String, List<Clothe>> getMyClothRemote(Context context, final User me){
+        Map<String, List<Clothe>> myclothes = new HashMap<>();
 
+        //TODO REQUESTs
         return myclothes;
     }
 
 
-    public List<Cloth> getMyCloth(User me, SQLiteDatabase db){
-        List<Cloth> myclothes = new ArrayList<>();
+    public List<Clothe> getMyCloth(User me, SQLiteDatabase db){
+        List<Clothe> myclothes = new ArrayList<>();
 
         String[] projection = {
                 "id_cloth",
@@ -138,14 +118,14 @@ public class Cloth {
                 null
         )) {
             while (c.moveToNext()) {
-                Cloth cloth = new Cloth(c.getLong(0), c.getInt(1), c.getString(2), me.getId_user());
+                Clothe cloth = new Clothe(c.getLong(0), c.getInt(1), c.getString(2), me.getId_user());
                 myclothes.add(cloth);
             }
         }
         return myclothes;
     }
 
-    public void removeClothLocal(SQLiteDatabase db, Cloth target){
+    public void removeClothLocal(SQLiteDatabase db, Clothe target){
         //Cette méthode est immunisé aux injections SQL;
         String selection = "id_cloth LIKE ?";
         String[] selectionArgs = {String.valueOf(target.id)};

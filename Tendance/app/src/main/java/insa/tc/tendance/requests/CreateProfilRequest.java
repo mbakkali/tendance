@@ -6,6 +6,7 @@ import android.util.Log;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import insa.tc.tendance.MainActivity;
 import insa.tc.tendance.database.User;
 
 /**
@@ -19,16 +20,17 @@ public class CreateProfilRequest  extends AsyncTask<User, Void, User> {
         try {
             final String path = "/user/add";
 
-            // final String url = "http://90.66.114.198" + path;
-            final String url = "http://192.168.1.21:5000" + path; //LOCAL...
+            final String url = MainActivity.SERVEUR_URL + path;
+            //final String url = "http://192.168.1.21:5000" + path; //LOCAL...
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-            user = restTemplate.postForObject(url, params[0], User.class);
+            user = restTemplate.postForObject(url, params[0], User.class, params[0]);
             System.out.println(user.getId_user());
 
         } catch (Exception e) {
-            Log.e("MainActivity", e.getMessage(), e);
+            Log.e("CreateProfilRequest", e.getMessage(), e);
         }
         return user;
     }
+
 }
