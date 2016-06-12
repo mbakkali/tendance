@@ -46,7 +46,6 @@ public class ClotheDAO {
 
     }
 
-
     public boolean del_clothe(long id) throws SQLException {
         String query = "DELETE from clothes WHERE clothe_id=?;";
         PreparedStatement pstmnt = connection.prepareStatement(query);
@@ -65,11 +64,11 @@ public class ClotheDAO {
         }
     }
 
-    public List<Clothe> getClothesOfOwner(User user) throws SQLException{
+    public List<Clothe> getClothesOfOwner(long id) throws SQLException{
         List<Clothe> clothes = new ArrayList<>();
 
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM clothes WHERE user_id = ?");
-        ps.setLong(1,user.getUser_id());
+        ps.setLong(1,id);
 
         ResultSet rs = ps.executeQuery();
         while(rs.next()){

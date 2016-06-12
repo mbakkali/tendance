@@ -116,6 +116,8 @@ public class OutfitDAO {
         long[] tab = new long[2];
         try {
 
+
+
             String query = "SELECT outfit_id from outfits, users  WHERE users.user_id= outfits.user_id and users.user_id=?";
             PreparedStatement pstmnt = connection.prepareStatement(query);
 
@@ -129,9 +131,6 @@ public class OutfitDAO {
                 int i =0;
                 long outfitid = rs.getLong("outfit_id");
                 list.add(outfitid);
-                //tab[i]=outfitid;
-                //Outfit outfit = OutfitDAO.getOutfitByID(outfitid);
-                //outfit_list.add(0,outfit);
             }
 
             for(int j=0; j<list.size(); j++) {

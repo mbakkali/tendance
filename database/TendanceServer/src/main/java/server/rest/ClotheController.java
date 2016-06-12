@@ -28,6 +28,8 @@ import java.util.stream.Collectors;
 public class ClotheController {
     ClotheDAO clotheDAO = new ClotheDAO();
 
+
+    //pas testé les fonctions encore
     @RequestMapping(method = RequestMethod.GET)
     public Map<String, List<Clothe>> getAllClothOfUser(User user) {
         Map<String, List<Clothe>> myClothesByType = new HashMap<>();
@@ -43,13 +45,29 @@ public class ClotheController {
     }
 
 
+    @RequestMapping(value = "/clotheof/{id}", method = RequestMethod.GET)
+    public List<Clothe> getAllClotheOfuser(@PathVariable long id){
+        List<Clothe> clothes = null;
+        try {
+           clothes = clotheDAO.getClothesOfOwner(id);
+        }
+        catch(SQLException e){
+            System.out.println("Problème dans Get all clothe of USer");
+            throw new InternalErrorException();
+        }
+        return clothes;
+
+    }
+
+
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public void deleteClothe(@PathVariable long id){
-       /* try {
-           // clotheDAO.del_clothe(id);
+        try {
+           clotheDAO.del_clothe(id);
         } catch (SQLException e) {
+            System.out.println("Problème dans del_Clothes");
             throw new InternalErrorException();
-        }*/
+        }
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
@@ -66,6 +84,7 @@ public class ClotheController {
 
 
            } catch (Exception e){
+                System.out.println("Problème dans add_Clothes");
                 throw new InternalErrorException();
             }
         }
