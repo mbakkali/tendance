@@ -7,9 +7,6 @@ import server.dao.UserDAO;
 
 import java.sql.SQLException;
 
-/**
- * Created by Patrik on 09/06/2016.
- */
 
 @RestController
 public class LoginController {
