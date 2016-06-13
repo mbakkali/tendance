@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -21,9 +23,11 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.Map;
 
+import insa.tc.tendance.camera.SelfieFile;
 import insa.tc.tendance.database.Clothe;
 import insa.tc.tendance.database.Outfit;
 import insa.tc.tendance.dialog.DescriptionDialogBuilder;
+import insa.tc.tendance.dialog.SelfieDialogFragment;
 import insa.tc.tendance.dialog.SendOutfitDialogBuilder;
 
 import static android.widget.Toast.LENGTH_SHORT;
@@ -33,8 +37,9 @@ import static android.widget.Toast.makeText;
  * Created by Camille on 07/05/2016.
  * TODO Ajout de vêtement dans la BDD
  */
-public class DressingActivity extends FragmentActivity {
+public class DressingActivity extends AppCompatActivity {
 
+    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     ImageButton home;
     ImageButton calendar;
     ImageButton tshirt;
@@ -51,21 +56,18 @@ public class DressingActivity extends FragmentActivity {
     Button skirt;
     Button shoes;
     Button other;
-    Uri fileUri;
     Map<String, List<Clothe>> myclothes;
-
-
+    Dialog descriptionDialog;
+    Dialog sendDialog;
+    SelfieDialogFragment selfieDialogFragment;
     Outfit outfit = new Outfit();
 
     //create all dialog that we use (might be a horrible way to do it...)
-    private Dialog descriptionDialog = new DescriptionDialogBuilder(this.getApplicationContext(), this, outfit).create();
-    private Dialog sendDialog = new SendOutfitDialogBuilder(this , outfit).create();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dressing);
-
         //recover clothes from network
 
 
@@ -212,7 +214,14 @@ public class DressingActivity extends FragmentActivity {
         });
 
     }
-    private void showDescritpion() {descriptionDialog.show();}
+
+
+
+    private void showDescritpion() {
+        descriptionDialog.show();
+
+
+    }
     private void showCoat() {
 
         final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.gauche);
@@ -488,9 +497,7 @@ public class DressingActivity extends FragmentActivity {
         helpDialog.show();
     }
     private void showSkirt() {
-
         final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
-
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
 
@@ -707,19 +714,9 @@ public class DressingActivity extends FragmentActivity {
         helpDialog.show();
     }
     private void showTakeSelfie() {
-        AlertDialog.Builder selfieDialogBuilder = new AlertDialog.Builder(getApplicationContext());
-
-        selfieDialogBuilder.setPositiveButton("Take a selfie",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                outfit.setPath_photo(fileUri.getPath());
-                                camera.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);  // set the image file name
-                                // start the Image Capture Intent
-                                startActivityForResult(camera, 1); //La photo sera sauvegarder dans fileUri
-                            }
-                        });
+        FragmentManager fm = getSupportFragmentManager();
+         selfieDialogFragment = SelfieDialogFragment.newInstance("Selfie");
+        selfieDialogFragment.show(fm, "selfie");
     }
     private void showSend() {
         //TODO ajouter fonction addOutfitans BDD Internet ET externe (Regarder comment créer la représentation de l'image)

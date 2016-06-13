@@ -2,37 +2,24 @@ package insa.tc.tendance;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
-
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestClientException;
-
-import java.util.concurrent.ExecutionException;
 
 import insa.tc.tendance.database.TendanceBDDHelper;
 import insa.tc.tendance.database.User;
-import insa.tc.tendance.requests.CreateProfilRequest;
 
-import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String SERVEUR_URL = "http://90.66.114.198";
+    public static final String SERVEUR_URL = "http://192.168.1.21:5000";
 
     Button seConnecter = null;
     Button createUser = null;

@@ -31,7 +31,7 @@ public class SelfieFile {
         // Create the storage directory if it does not exist
         if (! mediaStorageDir.exists()){
             if (! mediaStorageDir.mkdirs()){
-                Log.d("MyCameraApp", "failed to create directory");
+                Log.d("CameraSelfie", "failed to create directory");
                 return null;
             }
         }
@@ -41,7 +41,7 @@ public class SelfieFile {
         File mediaFile;
         if (type == 1){
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    "IMG_"+ timeStamp + ".jpg");
+                    UUID.randomUUID().toString() + timeStamp + ".jpg");
         }else {
             return null;
         }
