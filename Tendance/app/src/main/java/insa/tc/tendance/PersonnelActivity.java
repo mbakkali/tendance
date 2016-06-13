@@ -41,7 +41,7 @@ public class PersonnelActivity extends Activity {
 
     ImageView userPict;
     Button changePict;
-    TextView userName;
+    EditText userName;
     EditText biog;
     EditText email;
     EditText tel;
@@ -120,7 +120,7 @@ public class PersonnelActivity extends Activity {
         final User ex = User.getMyProfil(datab,"patoche@insa-lyon.fr");
 
         String nameUser = ex.getUsername();
-        userName =(TextView) findViewById(R.id.userName);
+        userName =(EditText) findViewById(R.id.userName);
         userName.setText(nameUser);
 
         String bio = ex.getBio();
@@ -157,9 +157,10 @@ public class PersonnelActivity extends Activity {
 
                 String bio = biog.getText().toString();
                 String telM = tel.getText().toString();
+                String userM = userName.getText().toString();
                 boolean sexM = sex.isChecked();
                 boolean publicM = publicC.isChecked();
-                User UpdatePatoche = new User(ex.getUsername(), ex.getMail(),ex.getProfilpicture(), publicM, bio, sexM, telM);
+                User UpdatePatoche = new User(userM, ex.getMail(),ex.getProfilpicture(), publicM, bio, sexM, telM);
                 ex.updateUserLocal(datab,UpdatePatoche);
 
             }
