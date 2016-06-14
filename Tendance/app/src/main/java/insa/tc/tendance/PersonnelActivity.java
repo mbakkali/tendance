@@ -53,6 +53,8 @@ public class PersonnelActivity extends Activity {
     Button supprCompte;
     Button deconn;
 
+    User user;
+
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
 
@@ -63,14 +65,7 @@ public class PersonnelActivity extends Activity {
         SQLiteDatabase db = tdh.getReadableDatabase();
         setContentView(R.layout.personnel);
 
-        //test les noms doivent changer !
-        /*User patrik = User.getMyProfil(db,"patoche@insa-lyon.fr");
-        System.out.println(patrik.getUsername());
-        User patoche = new User("Patrik", "patoche@insa-lyon.fr",  true,"Je suis patoche la brioche", true, "0648966131");
-        patrik.updateUserLocal(db, patoche);
-        User patrik2 = User.getMyProfil(db,"patoche@insa-lyon.fr");
-        System.out.println(patrik2.getUsername());*/
-        //
+        user = User.getUserFromIntent(getIntent());
 
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
@@ -80,49 +75,46 @@ public class PersonnelActivity extends Activity {
                 startActivity(home);
             }
         });
-
         calendar = (ImageButton) findViewById(R.id.calendar);
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent calendrier = new Intent(PersonnelActivity.this, CalendarActivity.class);
+                user.putUserIntoIntent(calendrier);
                 startActivity(calendrier);
             }
         });
-
         tshirt = (ImageButton) findViewById(R.id.tshirt);
         tshirt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent tshirt = new Intent(PersonnelActivity.this, DressingActivity.class);
+                user.putUserIntoIntent(tshirt);
                 startActivity(tshirt);
             }
         });
-
         friend = (ImageButton) findViewById(R.id.friend);
         friend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent friend = new Intent(PersonnelActivity.this, FriendActivity.class);
+                user.putUserIntoIntent(friend);
                 startActivity(friend);
             }
         });
-
         me = (ImageButton) findViewById(R.id.me);
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent user = new Intent(PersonnelActivity.this, PersonnelActivity.class);
-                startActivity(user);
+                Intent userintent = new Intent(PersonnelActivity.this, PersonnelActivity.class);
+                user.putUserIntoIntent(userintent);
+                startActivity(userintent);
             }
         });
 
 
         //Récupérer les infos du user
-        TendanceBDDHelper bddH = new TendanceBDDHelper(getApplicationContext() );
-        final SQLiteDatabase datab = bddH.getWritableDatabase();
-
-        final User ex = User.getMyProfil(datab,"patoche@insa-lyon.fr");
+        final User ex = User.getUserFromIntent(getIntent());
 
         String nameUser = ex.getUsername();
         userName =(EditText) findViewById(R.id.userName);
@@ -166,7 +158,7 @@ public class PersonnelActivity extends Activity {
                 boolean sexM = sex.isChecked();
                 boolean publicM = publicC.isChecked();
                 User UpdatePatoche = new User(userM, ex.getMail(),ex.getProfilpicture(), publicM, bio, sexM, telM);
-                ex.updateUserLocal(datab,UpdatePatoche);
+                //ex.updateUserLocal(datab,UpdatePatoche);
 
             }
         });

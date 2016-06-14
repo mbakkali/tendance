@@ -17,7 +17,7 @@ public class TendanceBDDHelper extends SQLiteOpenHelper {
     //Database schema
     private static final String TABLE_USERS =
             "CREATE TABLE USERS ("  +
-            "id_user" + " INTEGER PRIMARY KEY," +
+            "user_id" + " INTEGER PRIMARY KEY," +
             "username" + " TEXT," +
             "mail" + " TEXT UNIQUE," +
             "profilpicture" + " TEXT," + //Path to his localprofilepicture
@@ -29,7 +29,7 @@ public class TendanceBDDHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_OUTFIT = "CREATE TABLE OUTFITS (" +
             "id_outfit" + " INTEGER PRIMARY KEY," +
-            "p_user" + " INTEGER," +
+            "owner" + " INTEGER," +
             "date" + " TEXT," +
             "description" + " TEXT," +
             "style" + " INTEGER," +
@@ -95,38 +95,5 @@ public class TendanceBDDHelper extends SQLiteOpenHelper {
     public void basicconfiguration(SQLiteDatabase db){
         //Cette fonction sert à peupler avec les style et type que l'on souhaite avoir.
 
-        Style worker = new Style("travail");
-        worker.addStyleLocal(db);
-        Style casual = new Style("detente");
-        casual.addStyleLocal(db);
-        Style clubbing = new Style("club");
-        clubbing.addStyleLocal(db);
-
-
-        Type coat = new Type("coat");
-        coat.addTypeLocal(db);
-        Type top = new Type("top");
-        top.addTypeLocal(db);
-        Type trousers = new Type("trousers");
-        trousers.addTypeLocal(db);
-        Type dress = new Type("dress");
-        dress.addTypeLocal(db);
-        Type skirt = new Type("skirt");
-        skirt.addTypeLocal(db);
-        Type shoes = new Type("shoes");
-        shoes.addTypeLocal(db);
-        Type other = new Type("other");
-
-        User patoche = new User("Patoche", "patoche@insa-lyon.fr",null, true,"Je suis patoche la brioche", true, "0648966131");
-        patoche.addUserLocal(db);
-        System.out.println("Ajout d'un user");
-
-        User camille = new User("Caca", "camille@insa-lyon.fr",null, true,"Princesse Caca la plus jolie de tout l'INSA et du monde entier !", false, "0615354598");
-        camille.addUserLocal(db);
-        System.out.println("Ajout d'un user");
-
-        User jib = new User("JiiB", "jb-BB@insa-lyon.fr",null, false,"Jib le roi", true, "0612435698");
-        jib.addUserLocal(db);
-        System.out.println("Ajout d'un user");
     }
 }

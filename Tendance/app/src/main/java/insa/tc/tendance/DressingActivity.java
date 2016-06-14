@@ -701,25 +701,6 @@ public class DressingActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         addClotheDialogFragment = new AddClotheDialogFragment().newInstance(user);
         addClotheDialogFragment.show(fm, "");
-/*
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        helpBuilder.setTitle("Ajoute un vêtement à ton dressing !");
-        helpBuilder.setMessage("Quel type de vêtement ?");
-
-        LayoutInflater inflater = getLayoutInflater();
-        View affichageLayout = inflater.inflate(R.layout.addvetementstyle, null);
-        helpBuilder.setView(affichageLayout);
-
-        helpBuilder.setPositiveButton("OK",
-                new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
-                    }
-                });
-
-        AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();*/
     }
     private void showTakeSelfie() {
         FragmentManager fm = getSupportFragmentManager();
