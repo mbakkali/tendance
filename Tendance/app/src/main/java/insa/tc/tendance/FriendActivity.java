@@ -245,14 +245,15 @@ public class FriendActivity extends Activity {
         @Override
         protected User doInBackground(String... params) {
             String [] input = params;
+            System.out.println("on est dans getsearch input= "+input[0]);
             try {
-                final String url = "http://90.66.114.198/user/friends?iduser=1";
-                final String url_local = "http://192.168.1.13:5000/user/friends?iduser=1"; //Pour quand patrik fais des test chez lui...
+                final String url = "http://90.66.114.198/user"; //avoir la bonne adresse IP
+                //final String url_local = "http://192.168.1.13:5000/user/friends?iduser=1"; //Pour quand patrik fais des test chez lui...
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 User[] users = restTemplate.getForObject(url, User[].class);
                 for (final User search: users){
-                    if (search.getUsername().equals(input)){
+                    if (search.getUsername().equals(input[0])){
                         return search;
                     }
                 }

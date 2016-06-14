@@ -715,23 +715,20 @@ public class DressingActivity extends AppCompatActivity {
     }
     private void showSuggestion() {
         //TODO Ajout fonction Demander une suggestion et afficher la suggestion.
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        helpBuilder.setTitle("Suggestion de Look");
-        helpBuilder.setMessage("Quel type de Look aujourd'hui ?");
+        final CharSequence[] style_radio = {"Casual", "Gala / Cocktails", "Enterrement", "Mariage / Baptême", "Entretien / Reunion", "Soirée Amis"};
 
-        LayoutInflater inflater = getLayoutInflater();
-        View affichageLayout = inflater.inflate(R.layout.suggestionstyle, null);
-        helpBuilder.setView(affichageLayout);
-
-        helpBuilder.setPositiveButton("Suggestion !",
-                new DialogInterface.OnClickListener() {
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Suggestion de Look")
+                .setItems(style_radio, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
+                        // TODO: appeler algo de Lélé avec le int qui correspond au style
+                        Toast toast = makeText(getApplicationContext(), "style: "+ which,
+                                Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                 });
-
-        AlertDialog helpDialog = helpBuilder.create();
+        AlertDialog helpDialog = builder.create();
         helpDialog.show();
+
     }
 }

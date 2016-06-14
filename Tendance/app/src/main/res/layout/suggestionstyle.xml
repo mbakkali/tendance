@@ -11,15 +11,15 @@
         <RadioButton android:id="@+id/checkBox1" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:text="Casual"></RadioButton>
         <RadioButton android:id="@+id/checkBox2" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="Work"></RadioButton>
+            android:layout_height="wrap_content" android:text="Gala /Cocktails"></RadioButton>
         <RadioButton android:id="@+id/checkBox3" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="Party"></RadioButton>
+            android:layout_height="wrap_content" android:text="Enterrement"></RadioButton>
         <RadioButton android:id="@+id/checkBox4" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="Fête de famille"></RadioButton>
+            android:layout_height="wrap_content" android:text="Mariage/Baptême"></RadioButton>
         <RadioButton android:id="@+id/checkBox5" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="Chic"></RadioButton>
+            android:layout_height="wrap_content" android:text="Entretien/ Reunion"></RadioButton>
         <RadioButton android:id="@+id/checkBox6" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="Relax"></RadioButton>
+            android:layout_height="wrap_content" android:text="Soirée Amis"></RadioButton>
     </RadioGroup>
 
 </LinearLayout>
