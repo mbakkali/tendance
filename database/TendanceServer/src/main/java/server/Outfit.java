@@ -3,6 +3,7 @@ package server;
 
 import server.dao.OutfitDAO;
 
+import java.io.File;
 import java.security.Timestamp;
 import java.sql.SQLException;
 import java.util.Date;
@@ -12,7 +13,7 @@ public class Outfit {
 
     OutfitDAO outfitDAO = new OutfitDAO();
 
-    public static final String ROOT = "outfits";
+    public static final String ROOT = "outfits" + File.separator;
     private long outfit_id;
     private String timestamp;
     private String description;

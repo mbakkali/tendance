@@ -4,7 +4,10 @@ package server;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.UUID;
 
 public class User implements Serializable{
 
@@ -19,6 +22,7 @@ public class User implements Serializable{
     private String phone;
     private String password;
 
+    public static String ROOT = "users"+ File.separator +"profil"+ File.separator;
 
     public User(){
     }
@@ -85,6 +89,21 @@ public class User implements Serializable{
     public String getPhone() {return phone;}
     public String getPassword() {return password;}
     public String getAge() {return age;}
+
+    public File retrieveProfilePicture(){
+        File file;
+        if(profilpicture != null) {
+             file = new File(getProfilpicture());
+        }else{
+             file = new File(ROOT + UUID.randomUUID().toString());
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return file;
+    }
 
     public void setUserId(long userId) {
         this.user_id = userId;

@@ -2,19 +2,18 @@ package server.rest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import server.Outfit;
 import server.User;
 import server.dao.UserDAO;
 
-import java.sql.Connection;
+import java.io.File;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/user")
 @RestController
 public class UserController {
     private UserDAO userDAO = new UserDAO();
+
 
     @RequestMapping(method = RequestMethod.GET)
     public User getUserByUsername(@RequestParam String username){
@@ -25,6 +24,13 @@ public class UserController {
             throw new InternalErrorException();
         }
         return resultuser;
+    }
+    //Pour récupérer la photo de profil
+    @RequestMapping(value = "/{iduser}/profilpicture", method = RequestMethod.GET)
+    public String getPictureOfUser(@PathVariable long iduser){
+        User user = getUserById(iduser);
+        File file = user.retrieveProfilePicture();
+        return file.getPath();
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
