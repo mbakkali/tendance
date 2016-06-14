@@ -5,13 +5,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -27,8 +31,9 @@ public class FriendActivity extends Activity {
     ImageButton tshirt;
     ImageButton friend;
     ImageButton me;
-    Button testFriend;
+
     private User mUser;
+
 
 
     @Override
@@ -86,6 +91,21 @@ public class FriendActivity extends Activity {
         //TODO Quand on clic sur un user, on ouvre une nouvelle activité avec le profil d'un ami (ses info,
         //TODO Recupérer les amis: ProfilPicture and Username, id_user
 
+        EditText searchText = (EditText) findViewById(R.id.searchText);
+        searchText.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                String UserSearch = s.toString();
+                //TODO: recherche amis avec le nom UserSearch dans la BDD
+            }
+        });
 
         //Peupler les amis avec le réseau
         new HttpRequestGetFriend().execute();

@@ -65,14 +65,33 @@
         android:layout_above="@+id/layout1"
         android:background="@color/blanc">
 
-        <SearchView
-            android:layout_width="320dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:queryHint="Rechercher"
-            android:background="#EFEFEF"
-            android:id="@+id/searchView"
-            android:layout_gravity="center_horizontal" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:background="#EFEFEF"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@android:drawable/ic_search_category_default"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="Rechercher"
+                    android:ems="10"
+                    android:id="@+id/searchText"
+                    android:layout_gravity="bottom">
+                    <requestFocus />
+                </EditText>
+
+            </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
