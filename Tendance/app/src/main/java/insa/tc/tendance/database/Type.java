@@ -3,33 +3,33 @@ package insa.tc.tendance.database;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by patrik on 18/05/16.
  */
 public class Type {
-    private long id;
-    private String nom;
+    private long type_id;
+    private String type_name;
 
-    public Type(long id, String nom){
-        this.id = id;
-        this.nom = nom;
+    public Type(long id, String type_name){
+        this.type_id = id;
+        this.type_name = type_name;
     }
-    public Type(String nom){
-        this.nom = nom;
+    public Type(String type_name){
+        this.type_name = type_name;
     }
 
     public void addTypeLocal(SQLiteDatabase db){
         ContentValues values = new ContentValues();
-        values.put("nom", this.nom);
-        id = db.insert("TYPES", null, values);
+        values.put("nom", this.type_name);
+        type_id = db.insert("TYPES", null, values);
     }
 
-    public ArrayList<Type> getType(SQLiteDatabase db){
-        ArrayList<Type> types = new ArrayList<>();
+    public static List<Type> getType(SQLiteDatabase db){
+        List<Type> types = new ArrayList<>();
 
         String[] projection = {
                 "id",
@@ -53,4 +53,6 @@ public class Type {
         return types;
     }
 
+    public String getType_name() {return type_name;}
+    public long getType_id() {return type_id;}
 }

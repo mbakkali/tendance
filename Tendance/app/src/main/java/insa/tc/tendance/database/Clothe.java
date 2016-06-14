@@ -2,6 +2,7 @@ package insa.tc.tendance.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
@@ -13,11 +14,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,18 +36,15 @@ public class Clothe {
     private int type;
     private String s_type; //pour directement afficher le type
     private String pathphoto;
-    private Image photo;
     private long owner;
 
 
-
-
-
-    public Clothe(int type, int owner){
+    public Clothe(int type, long owner){
         this.type = type;
         this.owner = owner;
         String photo = "no_picture";
     }
+
 
     public Clothe(long id, String type, String photo, long owner){
         this.id = id;
@@ -60,6 +60,10 @@ public class Clothe {
     }
     public Clothe(int owner){
         this.owner=owner;
+    }
+
+    public Clothe() {
+
     }
 
 
@@ -130,5 +134,37 @@ public class Clothe {
         String selection = "id_cloth LIKE ?";
         String[] selectionArgs = {String.valueOf(target.id)};
         db.delete("CLOTHES", selection, selectionArgs);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public String getS_type() {
+        return s_type;
+    }
+
+    public String getPathphoto() {
+        return pathphoto;
+    }
+
+    public long getOwner() {
+        return owner;
+    }
+
+    public void putClotheIntoIntent(Intent intent){
+        intent.putExtra("clothe", new Gson().toJson(this));
+    }
+    public static Clothe getClotheFromIntent(Intent intent){
+        Gson gson = new Gson();
+        return gson.fromJson(intent.getStringExtra("clothe"), Clothe.class);
+    }
+
+    public void setOwner(User user) {
+        this.owner = user.getId_user();
     }
 }

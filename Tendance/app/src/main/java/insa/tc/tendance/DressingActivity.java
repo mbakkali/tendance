@@ -26,6 +26,8 @@ import java.util.Map;
 import insa.tc.tendance.camera.SelfieFile;
 import insa.tc.tendance.database.Clothe;
 import insa.tc.tendance.database.Outfit;
+import insa.tc.tendance.database.User;
+import insa.tc.tendance.dialog.AddClotheDialogFragment;
 import insa.tc.tendance.dialog.DescriptionDialogBuilder;
 import insa.tc.tendance.dialog.SelfieDialogFragment;
 import insa.tc.tendance.dialog.SendOutfitDialogBuilder;
@@ -60,16 +62,17 @@ public class DressingActivity extends AppCompatActivity {
     Dialog descriptionDialog;
     Dialog sendDialog;
     SelfieDialogFragment selfieDialogFragment;
+    AddClotheDialogFragment addClotheDialogFragment;
     Outfit outfit = new Outfit();
-
+    User user;
     //create all dialog that we use (might be a horrible way to do it...)
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dressing);
-        //recover clothes from network
 
+        user = User.getUserFromIntent(getIntent());
 
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
@@ -194,6 +197,7 @@ public class DressingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showTakeSelfie();
+
             }
         });
 
@@ -693,7 +697,11 @@ public class DressingActivity extends AppCompatActivity {
         helpDialog.show();
     }
     private void showAdd() {
-
+        System.out.println(user);
+        FragmentManager fm = getSupportFragmentManager();
+        addClotheDialogFragment = new AddClotheDialogFragment().newInstance(user);
+        addClotheDialogFragment.show(fm, "");
+/*
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
         helpBuilder.setTitle("Ajoute un vêtement à ton dressing !");
         helpBuilder.setMessage("Quel type de vêtement ?");
@@ -711,7 +719,7 @@ public class DressingActivity extends AppCompatActivity {
                 });
 
         AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
+        helpDialog.show();*/
     }
     private void showTakeSelfie() {
         FragmentManager fm = getSupportFragmentManager();

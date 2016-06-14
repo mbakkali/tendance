@@ -23,9 +23,20 @@ public class SelfieFile {
     /** Create a File for saving an image or video */
     private static File getOutputMediaFile(int type, File activity){
         // To be safe, you should check that the SDCard is mounted
+        String dir;
         // using Environment.getExternalStorageState() before doing this.
+        switch (type){
+            case 1:
+                dir = "outfits";
+                break;
+            case 2:
+                dir = "clothes";
+                break;
+            default:
+                dir = "null";
+        }
 
-        File mediaStorageDir = new File(activity,"outfits");// This location works best if you want the created images to be shared
+        File mediaStorageDir = new File(activity,dir);// This location works best if you want the created images to be shared
         // between applications and persist after your app has been uninstalled.
 
         // Create the storage directory if it does not exist
@@ -39,12 +50,8 @@ public class SelfieFile {
         // Create a media file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File mediaFile;
-        if (type == 1){
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    UUID.randomUUID().toString() + timeStamp + ".jpg");
-        }else {
-            return null;
-        }
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+            UUID.randomUUID().toString() + timeStamp + ".jpg");
 
         return mediaFile;
     }
