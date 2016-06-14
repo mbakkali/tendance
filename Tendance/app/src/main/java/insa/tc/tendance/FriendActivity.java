@@ -9,13 +9,16 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -23,6 +26,8 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import insa.tc.tendance.database.User;
+
+import static android.widget.Toast.makeText;
 
 public class FriendActivity extends Activity {
 
@@ -92,7 +97,26 @@ public class FriendActivity extends Activity {
         //TODO Recupérer les amis: ProfilPicture and Username, id_user
 
         EditText searchText = (EditText) findViewById(R.id.searchText);
-        searchText.addTextChangedListener(new TextWatcher() {
+        searchText.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+            {
+                String input;
+                if(actionId == EditorInfo.IME_ACTION_DONE)
+                {
+                    input= v.getText().toString();
+                    //TODO: recherche amis avec le input dans la BDD
+                    //afficherFriend(User... friends);
+                    Toast toast = makeText(getApplicationContext(), "chercher "+input,
+                            Toast.LENGTH_SHORT);
+                    toast.show();
+                    return true; // consume.
+                }
+                return false; // pass on to other listeners.
+            }
+        });
+        /*searchText.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
             }
@@ -103,9 +127,14 @@ public class FriendActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 String UserSearch = s.toString();
+                Toast toast = makeText(getApplicationContext(), "chercher "+s,
+                        Toast.LENGTH_SHORT);
+                toast.show();
                 //TODO: recherche amis avec le nom UserSearch dans la BDD
+                //afficherFriend(User... friends);
             }
-        });
+
+        });*/
 
         //Peupler les amis avec le réseau
         new HttpRequestGetFriend().execute();

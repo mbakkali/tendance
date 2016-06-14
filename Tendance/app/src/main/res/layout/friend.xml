@@ -87,7 +87,8 @@
                     android:hint="Rechercher"
                     android:ems="10"
                     android:id="@+id/searchText"
-                    android:layout_gravity="bottom">
+                    android:layout_gravity="bottom"
+                    android:imeOptions="actionDone">
                     <requestFocus />
                 </EditText>
 
