@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.StringMultipartFileEditor;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import server.*;
+import server.Clothe;
+import server.Outfit;
+import server.Type;
+import server.User;
 import server.dao.ClotheDAO;
 
 import java.io.*;
@@ -32,10 +35,10 @@ public class ClotheController {
         Map<String, List<Clothe>> myClothesByType = new HashMap<>();
         try {
             List<Type> types = clotheDAO.getAllTypes();
-            for (Type type : types) {
-                // myClothesByType.put(type.getType_name(),clotheDAO.getClothesOfOwnerForType(user, type));
+            for (Type type: types) {
+               // myClothesByType.put(type.getType_name(),clotheDAO.getClothesOfOwnerForType(user, type));
             }
-            return myClothesByType;
+            return  myClothesByType;
         } catch (SQLException e) {
             throw new InternalErrorException();
         }
@@ -43,11 +46,12 @@ public class ClotheController {
 
 
     @RequestMapping(value = "/clotheof/{id}", method = RequestMethod.GET)
-    public List<Clothe> getAllClotheOfuser(@PathVariable long id) {
+    public List<Clothe> getAllClotheOfuser(@PathVariable long id){
         List<Clothe> clothes = null;
         try {
-            clothes = clotheDAO.getClothesOfOwner(id);
-        } catch (SQLException e) {
+           clothes = clotheDAO.getClothesOfOwner(id);
+        }
+        catch(SQLException e){
             System.out.println("Problème dans Get all clothe of USer");
             throw new InternalErrorException();
         }
@@ -57,9 +61,9 @@ public class ClotheController {
 
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public void deleteClothe(@PathVariable long id) {
+    public void deleteClothe(@PathVariable long id){
         try {
-            clotheDAO.del_clothe(id);
+           clotheDAO.del_clothe(id);
         } catch (SQLException e) {
             System.out.println("Problème dans del_Clothes");
             throw new InternalErrorException();
@@ -67,30 +71,24 @@ public class ClotheController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
-    public void add(@RequestBody ClotheWithFile clothe) {
+    public Clothe add( @RequestBody Clothe clothe,
+                       @RequestBody MultipartFile file) {
         String name = UUID.randomUUID().toString();
-        File file = clothe.getFile();
-        try {
-            File outputFile = new File(Clothe.ROOT + "/" + name);
-            //TODO Probleme here
-            FileCopyUtils.copy(file, outputFile);
-            clothe.setClothe_photo(outputFile.getPath());
-            clotheDAO.add_clothe(clothe);
-        } catch (Exception e) {
-            System.out.println("Problème dans add_Clothes " + e);
+        if (!file.isEmpty()) {
+            try {
+                File outputFile = new File(Clothe.ROOT + "/" + name);
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(outputFile));
+                FileCopyUtils.copy(file.getInputStream(), stream);
+                stream.close();
+                clotheDAO.add_clothe(clothe);
 
-            throw new InternalErrorException();
+
+           } catch (Exception e){
+                System.out.println("Problème dans add_Clothes");
+                throw new InternalErrorException();
+            }
         }
-
-    }
-
-    @RequestMapping(value = "/types", method = RequestMethod.GET)
-    public List<Type> getTypes(){
-        try {
-            return clotheDAO.getAllTypes();
-        } catch (SQLException e) {
-            throw new InternalErrorException();
-        }
+        return clothe;
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

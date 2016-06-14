@@ -1,6 +1,8 @@
 package server;
 
-
+/**
+ * Created by Patrik on 07/06/2016.
+ */
 public class Type {
     private long type_id;
     private String type_name;

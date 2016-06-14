@@ -18,6 +18,7 @@ public class LoginController {
     public User login(@RequestParam String mail, @RequestParam String password) {
         User user = null;
         try {
+            System.out.println(mail + " " + password);
             return userDAO.getUserByMailAndPassword(mail,password);
 
         } catch (SQLException e) {
