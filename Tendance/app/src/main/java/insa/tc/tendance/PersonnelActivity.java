@@ -1,6 +1,8 @@
 package insa.tc.tendance;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
@@ -39,14 +42,16 @@ public class PersonnelActivity extends Activity {
     ImageButton me;
     Button saveInfo;
 
-    ImageView userPict;
-    Button changePict;
+
     EditText userName;
     EditText biog;
     EditText email;
     EditText tel;
     RadioButton sex;
     Switch publicC;
+    Button mdp;
+    Button supprCompte;
+    Button deconn;
 
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
@@ -163,6 +168,95 @@ public class PersonnelActivity extends Activity {
                 User UpdatePatoche = new User(userM, ex.getMail(),ex.getProfilpicture(), publicM, bio, sexM, telM);
                 ex.updateUserLocal(datab,UpdatePatoche);
 
+            }
+        });
+
+        final android.app.AlertDialog.Builder helpBuilder = new android.app.AlertDialog.Builder(this);
+        final LinearLayout layout = new LinearLayout(this);
+        final EditText oldPassword = new EditText(this);
+        final EditText newPassword= new EditText(this);
+        final EditText confirmPassword = new EditText(this);
+        mdp = (Button) findViewById(R.id.changemdp);
+        mdp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                helpBuilder.setTitle("Change password");
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(350,350);//largeur, hauteur
+                layout.setLayoutParams(params);
+                layout.setOrientation(LinearLayout.VERTICAL);
+
+                LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(700,200);
+                params1.setMargins(16,0,0,0);
+
+                oldPassword.setHint("Former password");
+                oldPassword.setLayoutParams(params1);
+                newPassword.setHint("New password");
+                newPassword.setLayoutParams(params1);
+                confirmPassword.setHint("Confirm password");
+                confirmPassword.setLayoutParams(params1);
+
+                layout.addView(oldPassword);
+                layout.addView(newPassword);
+                layout.addView(confirmPassword);
+                helpBuilder.setView(layout);
+
+                helpBuilder.setPositiveButton("SAUVEGARDER",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                /*TODO: si oldPassword est correct, et si newPassword=confirmPassword,
+                                on modifie le mot de passe du user
+                                 */
+                            }
+                        });
+
+
+                android.app.AlertDialog helpDialog = helpBuilder.create();
+                helpDialog.show();
+
+            }
+        });
+
+        final android.app.AlertDialog.Builder helpBuilder2 = new android.app.AlertDialog.Builder(this);
+        supprCompte = (Button) findViewById(R.id.supprCompte);
+        supprCompte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                helpBuilder2.setTitle("Supprimer son compte");
+
+
+                helpBuilder2.setPositiveButton("OUI",
+                        new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+                                //TODO: supprimer le user de la bdd
+                            }
+                        });
+                helpBuilder2.setNegativeButton("NON",
+                        new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+                                //nothing to do
+                            }
+                        });
+
+                AlertDialog helpDialog2 = helpBuilder2.create();
+                helpDialog2.show();
+
+            }
+        });
+
+        deconn = (Button) findViewById(R.id.deconnexion);
+        deconn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: déconnexion du user
+
+                Toast toast = makeText(getApplicationContext(), "Déconnexion !",
+                        LENGTH_SHORT);
+                toast.show();
             }
         });
 
