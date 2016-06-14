@@ -92,7 +92,7 @@ public class FriendActivity extends Activity {
                 startActivity(user);
             }
         });
-        //TODO Barre de recherge, onChangeListener on Submit listener + appel fonction recherge amis avec le contenue du SearchView.
+        //TODO Barre de recherge, onChangeListener on Submit listener + appel fonction recherge amis avec le contenu du SearchView.
         //TODO Quand on clic sur un user, on ouvre une nouvelle activité avec le profil d'un ami (ses info,
         //TODO Recupérer les amis: ProfilPicture and Username, id_user
 
@@ -107,34 +107,16 @@ public class FriendActivity extends Activity {
                 {
                     input= v.getText().toString();
                     //TODO: recherche amis avec le input dans la BDD
-                    //afficherFriend(User... friends);
+                    new HttpRequestGetSearch().execute(input);
+
                     Toast toast = makeText(getApplicationContext(), "chercher "+input,
                             Toast.LENGTH_SHORT);
                     toast.show();
-                    return true; // consume.
+                    return true;
                 }
-                return false; // pass on to other listeners.
+                return false;
             }
         });
-        /*searchText.addTextChangedListener(new TextWatcher() {
-
-            public void afterTextChanged(Editable s) {
-            }
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                String UserSearch = s.toString();
-                Toast toast = makeText(getApplicationContext(), "chercher "+s,
-                        Toast.LENGTH_SHORT);
-                toast.show();
-                //TODO: recherche amis avec le nom UserSearch dans la BDD
-                //afficherFriend(User... friends);
-            }
-
-        });*/
 
         //Peupler les amis avec le réseau
         new HttpRequestGetFriend().execute();
@@ -188,6 +170,52 @@ public class FriendActivity extends Activity {
         }
 
     }
+
+    public void afficherSearch(User... friends){
+        for (final User friend: friends) {
+            final LinearLayout mylayout = new LinearLayout(this);
+            final Button myButton = new Button(this);
+            final ImageView myPicture = new ImageView (this);
+
+            LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
+            params1.gravity = Gravity.CENTER_HORIZONTAL;
+            params1.setMargins(0,8,150,0);
+            mylayout.setLayoutParams(params1);
+
+            myPicture.setImageResource(R.drawable.fakepic);
+            LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(200, 200);
+            params2.setMargins(20,0,0,0);
+            myPicture.setLayoutParams(params2);
+
+            myButton.setText(friend.getUsername());
+            myButton.setId((int) friend.getId_user());
+            myButton.setAllCaps(false);
+            myButton.setBackgroundColor(Color.TRANSPARENT);
+            myButton.setTextSize(20);
+            LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
+            params3.gravity = Gravity.CENTER_HORIZONTAL;
+            params3.setMargins(8,8,0,0);
+            myButton.setLayoutParams(params3);
+            final int id_ = myButton.getId();
+
+            mylayout.addView(myPicture);
+            mylayout.addView(myButton);
+
+            LinearLayout layout = (LinearLayout) findViewById(R.id.layoutSearch);
+            layout.addView(mylayout);
+
+            myButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    Intent friendProfile = new Intent(FriendActivity.this, FriendProfile.class);
+                    friendProfile.putExtra("user", new Gson().toJson(mUser));
+                    friendProfile.putExtra("friend", new Gson().toJson(friend));
+                    startActivity(friendProfile);
+                }
+            });
+        }
+
+    }
+
     private class HttpRequestGetFriend extends AsyncTask<Void, Void, User[]> {
         @Override
         protected User[] doInBackground(Void... params) {
@@ -209,6 +237,37 @@ public class FriendActivity extends Activity {
         protected void onPostExecute(User... users) {
             if(users!=null)
                 afficherFriend(users);
+        }
+
+    }
+
+    private class HttpRequestGetSearch extends AsyncTask<String, Void, User> {
+        @Override
+        protected User doInBackground(String... params) {
+            String [] input = params;
+            try {
+                final String url = "http://90.66.114.198/user/friends?iduser=1";
+                final String url_local = "http://192.168.1.13:5000/user/friends?iduser=1"; //Pour quand patrik fais des test chez lui...
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+                User[] users = restTemplate.getForObject(url, User[].class);
+                for (final User search: users){
+                    if (search.getUsername().equals(input)){
+                        return search;
+                    }
+                }
+
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+            }
+
+            return null;
+        }
+
+        protected void onPostExecute(User... users) {
+            if(users!=null) {
+                afficherSearch(users);
+            }
         }
 
     }

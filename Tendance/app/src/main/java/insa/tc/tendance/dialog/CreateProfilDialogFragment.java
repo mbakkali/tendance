@@ -62,6 +62,7 @@ public class CreateProfilDialogFragment extends DialogFragment implements TextVi
         final EditText mMail = (EditText) dialogView.findViewById(R.id.new_mail);
         final EditText mPassword = (EditText) dialogView.findViewById(R.id.new_password);
         builder.setView(dialogView)
+                .setTitle("Nouvel Utilisateur")
                 .setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
