@@ -182,4 +182,20 @@ public class User implements Serializable{
         Gson gson = new Gson();
         return gson.fromJson(intent.getStringExtra("friend"), User.class);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", username='" + username + '\'' +
+                ", mail='" + mail + '\'' +
+                ", profilpicture='" + profilpicture + '\'' +
+                ", age='" + age + '\'' +
+                ", bio='" + bio + '\'' +
+                ", male=" + male +
+                ", priv=" + priv +
+                ", phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

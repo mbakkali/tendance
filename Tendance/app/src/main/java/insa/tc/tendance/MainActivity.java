@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,13 +15,14 @@ import android.widget.Toast;
 
 import insa.tc.tendance.database.TendanceBDDHelper;
 import insa.tc.tendance.database.User;
+import insa.tc.tendance.dialog.CreateProfilDialogFragment;
 
 import static android.widget.Toast.makeText;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CreateProfilDialogFragment.CreateProfilDialogListener {
 
     public static final String SERVEUR_URL = "http://192.168.1.21:5000";
-
+    User user;
     Button seConnecter = null;
     Button createUser = null;
     Button FB = null;
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 String mail = mMail.getText().toString();
                 String password = mPassword.getText().toString();
                 try {
-                    User user = User.login(mail,password);
+                    user = User.login(mail,password);
                     user.putUserIntoIntent(actualite);
                     startActivity(actualite);
                 } catch (Exception e) {
@@ -74,51 +76,11 @@ public class MainActivity extends AppCompatActivity {
         final EditText newConfirm = new EditText(this);
         createUser = (Button) findViewById(R.id.CreateNewUser);
         createUser.setOnClickListener(new View.OnClickListener() {
-            User newuser = null;
             @Override
             public void onClick(View v) {
-
-                helpBuilder.setTitle("Nouvel utilisateur");
-
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(350,350);//largeur, hauteur
-                layout.setLayoutParams(params);
-                layout.setOrientation(LinearLayout.VERTICAL);
-
-                LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(700,200);
-                params1.setMargins(16,0,0,0);
-
-                newUsername.setHint("Username...");
-                newUsername.setLayoutParams(params1);
-                newMail.setHint("Mail...");
-                newMail.setLayoutParams(params1);
-                newMDP.setHint("Password...");
-                newMDP.setLayoutParams(params1);
-                newConfirm.setHint("Confirm password...");
-                newConfirm.setLayoutParams(params1);
-
-                layout.addView(newUsername);
-                layout.addView(newMail);
-                layout.addView(newMDP);
-                layout.addView(newConfirm);
-                helpBuilder.setView(layout);
-
-                helpBuilder.setPositiveButton("Création",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                System.out.println(newUsername.toString());
-                                try {
-                                    newuser = User.createUserRemote(newUsername.toString(), newMail.toString(), newMDP.toString());
-                                } catch (Exception e) {
-
-                                }
-                                System.out.println(newuser);
-                            }
-                        });
-
-
-                android.app.AlertDialog helpDialog = helpBuilder.create();
-                helpDialog.show();
-
+                FragmentManager fm = getSupportFragmentManager();
+                CreateProfilDialogFragment alertDialog = CreateProfilDialogFragment.newInstance();
+                alertDialog.show(fm, "create_profil");
             }
         });
 
@@ -129,5 +91,13 @@ public class MainActivity extends AppCompatActivity {
         //test database
         TendanceBDDHelper tendance = new TendanceBDDHelper(getApplicationContext());
         SQLiteDatabase db = tendance.getWritableDatabase();
+    }
+
+    @Override
+    public void onFinishCreateProfilDialog(User user) {
+        Intent actualite = new Intent(MainActivity.this, ActualiteActivity.class);
+        user.putUserIntoIntent(actualite);
+        startActivity(actualite);
+
     }
 }
