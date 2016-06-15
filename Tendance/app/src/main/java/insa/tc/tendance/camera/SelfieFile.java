@@ -32,6 +32,9 @@ public class SelfieFile {
             case 2:
                 dir = "clothes";
                 break;
+            case 3:
+                dir = "selfie";
+                break;
             default:
                 dir = "null";
         }

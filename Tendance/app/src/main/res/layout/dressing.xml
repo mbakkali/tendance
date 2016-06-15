@@ -189,7 +189,8 @@
             android:background="@color/blanc"
             android:layout_width="240dp"
             android:layout_height="match_parent"
-            android:layout_gravity="left|center_vertical">
+            android:layout_gravity="left|center_vertical"
+            android:id="@+id/outfitrepresentation">
 
             <LinearLayout
                 android:orientation="vertical"

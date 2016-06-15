@@ -152,8 +152,6 @@ public class User implements Serializable{
     public boolean isFriendWith(User target) {
         boolean friend = true;
 
-
-
         return friend;
     }
 

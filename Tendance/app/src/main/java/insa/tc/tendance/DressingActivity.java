@@ -4,17 +4,18 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,6 +23,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,9 +35,7 @@ import insa.tc.tendance.database.Clothe;
 import insa.tc.tendance.database.Outfit;
 import insa.tc.tendance.database.User;
 import insa.tc.tendance.dialog.AddClotheDialogFragment;
-import insa.tc.tendance.dialog.DescriptionDialogBuilder;
 import insa.tc.tendance.dialog.SelfieDialogFragment;
-import insa.tc.tendance.dialog.SendOutfitDialogBuilder;
 import insa.tc.tendance.requests.GetSuggestion;
 
 import static android.widget.Toast.LENGTH_SHORT;
@@ -63,9 +64,10 @@ public class DressingActivity extends AppCompatActivity {
     Button skirt;
     Button shoes;
     Button other;
+
     Map<String, List<Clothe>> myclothes;
-    Dialog descriptionDialog;
-    Dialog sendDialog;
+
+    AlertDialog descriptionDialog;
     SelfieDialogFragment selfieDialogFragment;
     AddClotheDialogFragment addClotheDialogFragment;
     Outfit outfit = new Outfit();
@@ -76,6 +78,7 @@ public class DressingActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dressing);
+
 
         user = User.getUserFromIntent(getIntent());
         final String name = user.getUsername();
@@ -259,7 +262,10 @@ public class DressingActivity extends AppCompatActivity {
         sendoutfit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showSend();
+                Toast toast = makeText(getApplicationContext(), "Envoie de.. l'outfit.",
+                        Toast.LENGTH_SHORT);
+                toast.show();
+                getScreen();
             }
         });
 
@@ -271,11 +277,33 @@ public class DressingActivity extends AppCompatActivity {
             }
         });
 
+
+        AlertDialog.Builder d = new AlertDialog.Builder(this);
+        d.setTitle("Outfit");
+        d.setMessage("Description de la tenue");
+        final EditText input = new EditText(this);
+        input.setSingleLine();
+
+        LayoutInflater inflater = getLayoutInflater();
+        View RadioButtonLayout = inflater.inflate(R.layout.outfitstyle, null);
+        d.setView(RadioButtonLayout);
+
+        d.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        descriptionDialog = d.create();
+
     }
 
 
 
     private void showDescritpion() {
+
         descriptionDialog.show();
 
     }
@@ -2273,7 +2301,6 @@ public class DressingActivity extends AppCompatActivity {
                         // Do nothing but close the dialog
                     }
                 });
-
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }
@@ -2290,10 +2317,9 @@ public class DressingActivity extends AppCompatActivity {
         selfieDialogFragment.show(fm, "selfie");
     }
     private void showSend() {
-        //TODO ajouter fonction addOutfitans BDD Internet ET externe (Regarder comment créer la représentation de l'image)
-
-
-        sendDialog.show();
+        Toast toast = makeText(getApplicationContext(), "Envoie de.. l'outfit.",
+                Toast.LENGTH_SHORT);
+        toast.show();
     }
     private void showSuggestion() {
         //TODO Ajout fonction Demander une suggestion et afficher la suggestion.
@@ -2351,5 +2377,27 @@ public class DressingActivity extends AppCompatActivity {
         AlertDialog helpDialog2 = helpBuilder.create();
         helpDialog2.show();
 
+    }
+
+    private File getScreen()
+    {
+        View content = findViewById(R.id.outfitrepresentation);
+        content.setDrawingCacheEnabled(true);
+        Bitmap bitmap = content.getDrawingCache();
+        Uri uri = SelfieFile.getOutputMediaFileUri(1,Environment.getExternalStorageDirectory());
+        try
+        {
+            File file = new File(uri.getPath());
+            file.createNewFile();
+            FileOutputStream ostream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
+            ostream.close();
+            return file;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

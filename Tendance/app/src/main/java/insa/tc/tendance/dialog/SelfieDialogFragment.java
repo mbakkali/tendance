@@ -2,7 +2,6 @@ package insa.tc.tendance.dialog;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -46,7 +45,7 @@ public class SelfieDialogFragment extends DialogFragment {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fileUri = SelfieFile.getOutputMediaFileUri(1, Environment.getExternalStorageDirectory());
+                fileUri = SelfieFile.getOutputMediaFileUri(3, Environment.getExternalStorageDirectory());
                 Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 camera.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);  // set the image file name
 

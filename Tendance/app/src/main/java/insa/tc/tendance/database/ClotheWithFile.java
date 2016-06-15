@@ -15,6 +15,10 @@ public class ClotheWithFile extends Clothe {
         this.file = file;
     }
 
+    public void setFile(File file) {
+        this.file = file;
+    }
+
     @Override
     public String toString() {
         return "ClotheWithFile{" +

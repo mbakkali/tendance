@@ -69,7 +69,7 @@ public class AddClotheDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
         LinearLayout linearLayout = new LinearLayout(getContext());
-        linearLayout.setGravity(LinearLayout.VERTICAL);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setWeightSum((float) 0.5);
         mImageView = new ImageView(getContext());
         linearLayout.addView(mImageView);

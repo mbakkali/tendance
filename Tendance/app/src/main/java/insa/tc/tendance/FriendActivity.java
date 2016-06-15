@@ -205,6 +205,7 @@ public class FriendActivity extends Activity {
             mylayout.addView(myButton);
 
             LinearLayout layout = (LinearLayout) findViewById(R.id.layoutSearch);
+            layout.removeView(mylayout);
             layout.addView(mylayout);
 
             myButton.setOnClickListener(new View.OnClickListener() {
@@ -266,6 +267,7 @@ public class FriendActivity extends Activity {
 
         protected void onPostExecute(User... users) {
             if(users!=null) {
+
                 afficherSearch(users);
             }
         }

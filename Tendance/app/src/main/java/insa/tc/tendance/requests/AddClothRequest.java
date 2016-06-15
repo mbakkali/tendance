@@ -6,22 +6,22 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import insa.tc.tendance.MainActivity;
+import insa.tc.tendance.database.Clothe;
 import insa.tc.tendance.database.ClotheWithFile;
 
 /**
  * Created by Patrik on 14/06/2016.
  */
 
-public class AddClothRequest extends AsyncTask<ClotheWithFile, Void, Void> {
+public class AddClothRequest extends AsyncTask<ClotheWithFile, Void, Clothe> {
 
     @Override
-    protected Void doInBackground(ClotheWithFile... params) {
+    protected Clothe doInBackground(ClotheWithFile... params) {
         String path = "/clothe/add";
         String uri = MainActivity.SERVEUR_URL + path;
 
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(uri, params[0], Void.class);
-        return null;
+        return restTemplate.postForObject(uri, params[0], Clothe.class);
     }
 }

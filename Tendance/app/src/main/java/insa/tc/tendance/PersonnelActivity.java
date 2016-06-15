@@ -22,8 +22,11 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.springframework.web.client.RestClientException;
+
 import insa.tc.tendance.database.TendanceBDDHelper;
 import insa.tc.tendance.database.User;
+import insa.tc.tendance.requests.DeleteProfilRequest;
 
 import static android.widget.Toast.*;
 
@@ -158,7 +161,7 @@ public class PersonnelActivity extends Activity {
                 String userM = userName.getText().toString();
                 boolean sexM = sex.isChecked();
                 boolean publicM = publicC.isChecked();
-                User UpdatePatoche = new User(userM, ex.getMail(),ex.getProfilpicture(), publicM, bio, sexM, telM);
+                user = new User(userM, ex.getMail(),ex.getProfilpicture(), publicM, bio, sexM, telM);
                 //ex.updateUserLocal(datab,UpdatePatoche);
 
             }
@@ -201,6 +204,7 @@ public class PersonnelActivity extends Activity {
                                 /*TODO: si oldPassword est correct, et si newPassword=confirmPassword,
                                 on modifie le mot de passe du user
                                  */
+
                             }
                         });
 
@@ -224,14 +228,21 @@ public class PersonnelActivity extends Activity {
                         new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int which) {
-                                //TODO: supprimer le user de la bdd
+                                try {
+                                    new DeleteProfilRequest().execute(user);
+                                    Intent login = new Intent(PersonnelActivity.this,MainActivity.class);
+                                    startActivity(login);
+
+                                }catch (RestClientException rce){
+
+                                }
                             }
                         });
                 helpBuilder2.setNegativeButton("NON",
                         new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int which) {
-                                //nothing to do
+
                             }
                         });
 
@@ -246,10 +257,8 @@ public class PersonnelActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //TODO: déconnexion du user
-
-                Toast toast = makeText(getApplicationContext(), "Déconnexion !",
-                        LENGTH_SHORT);
-                toast.show();
+                Intent login = new Intent(PersonnelActivity.this,MainActivity.class);
+                startActivity(login);
             }
         });
 
