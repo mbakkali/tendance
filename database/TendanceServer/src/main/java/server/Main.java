@@ -1,10 +1,8 @@
 
 package server;
 
-import server.dao.ClotheDAO;
 import server.dao.OutfitDAO;
-
-import java.io.File;
+import server.dao.UserDAO;
 
 
 public class Main {
@@ -16,8 +14,15 @@ public class Main {
             Outfit outfit = OutfitDAO.getOutfitByID(19);
             System.out.println("On selectionne le outfit : " + outfit.getDescription());
 
-            File file = new File("dcoat3.png");
+            User usertest = new User("usertestxxx","mail","password");
+
+            UserDAO userDAO = new UserDAO();
+            userDAO.add_user(usertest);
+
+           /* File file = new File("dcoat3.png");
             ClotheDAO c = new ClotheDAO();
+
+
 
 
             Clothe clothe = c.getClotheById(2);
@@ -29,7 +34,7 @@ public class Main {
             Clothe clothe2 = clotheWithFile;
 
             System.out.println(clothe2.getClothe_id() +clothe2.getClothe_photo());
-
+*/
 
 
            // userDAO.del_user(userA);
