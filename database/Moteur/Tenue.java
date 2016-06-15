@@ -6,7 +6,6 @@ public class Tenue {
 	private String clothesUp;
 	private String clothesDown;
 	private String shoes;
-	private String clothesDressUp;
 
 
 
@@ -18,11 +17,21 @@ public class Tenue {
 	}
 	
 	
-	public  Tenue(String coast, String clothesDressUp, String shoes) {
-		this.coast = coast;
-		this.clothesDressUp = clothesDressUp;
+	public  Tenue(String clothesUp, String clothesDown, String shoes) {
+		this.clothesUp = clothesUp;
+		this.clothesDown = clothesDown;
 		this.shoes = shoes;
 
+	}
+	
+	@Override
+	public String toString() {
+		if (coast!=null){
+			return "Tenue{" + coast + "," + clothesUp + "," + clothesDown + "," + shoes +"}";
+		}else{
+			return "Tenue{" + clothesUp + "," + clothesDown + "," + shoes +"}";
+			
+		}
 	}
 	
 
