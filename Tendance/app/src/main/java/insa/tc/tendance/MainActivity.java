@@ -21,7 +21,7 @@ import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity implements CreateProfilDialogFragment.CreateProfilDialogListener {
 
-    public static final String SERVEUR_URL = "http://192.168.1.21:5000";
+    public static final String SERVEUR_URL = "http://90.66.114.198";
     User user;
     Button seConnecter = null;
     Button createUser = null;

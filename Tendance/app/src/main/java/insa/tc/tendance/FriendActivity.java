@@ -46,7 +46,7 @@ public class FriendActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friend);
 
-
+        mUser = User.getUserFromIntent(getIntent());
 
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
@@ -220,7 +220,7 @@ public class FriendActivity extends Activity {
         @Override
         protected User[] doInBackground(Void... params) {
             try {
-                final String url = "http://90.66.114.198/user/friends?iduser=1";
+                final String url = MainActivity.SERVEUR_URL +"/" + mUser.getId_user()  +"/friends";
                 final String url_local = "http://192.168.1.13:5000/user/friends?iduser=1"; //Pour quand patrik fais des test chez lui...
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
@@ -247,7 +247,7 @@ public class FriendActivity extends Activity {
             String [] input = params;
             System.out.println("on est dans getsearch input= "+input[0]);
             try {
-                final String url = "http://90.66.114.198/user"; //avoir la bonne adresse IP
+                final String url = MainActivity.SERVEUR_URL + "/user"; //avoir la bonne adresse IP
                 //final String url_local = "http://192.168.1.13:5000/user/friends?iduser=1"; //Pour quand patrik fais des test chez lui...
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
