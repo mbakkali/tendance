@@ -115,11 +115,11 @@ public class UserDAO {
         return user;
     }
 
-    public List<User> getFriends(User user) throws SQLException {
+    public List<User> getFriends(Long user_id) throws SQLException {
         User target = null;
         List<User> friends = new ArrayList<>();
             PreparedStatement ps = connection.prepareStatement("SELECT relationships.friend_id FROM users, relationships WHERE users.user_id = relationships.user_id AND users.user_id = ? ;");
-            ps.setLong(1, user.getUser_id());
+            ps.setLong(1, user_id);
 
             ResultSet rs = ps.executeQuery();
 
