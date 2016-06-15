@@ -190,7 +190,7 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!--<LinearLayout
+                <LinearLayout
                 android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="440dp"
@@ -293,7 +293,7 @@
                             android:layout_marginLeft="310dp"
                             android:src="@drawable/heart1"/>
                     </LinearLayout>
-            </LinearLayout> -->
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
