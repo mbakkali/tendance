@@ -16,15 +16,15 @@ public class UserController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public User getUserByUsername(@RequestParam String username){
-        User resultuser = null;
+    public List<User> getUsersLikeUsername(@RequestParam String username){
+        List<User> resultuser = null;
         try {
-            resultuser = userDAO.getUserByUsername(username);
+            return resultuser = userDAO.getUsersByUsername(username);
         } catch (SQLException e) {
             throw new InternalErrorException();
         }
-        return resultuser;
     }
+
     //Pour récupérer la photo de profil
     @RequestMapping(value = "/{iduser}/profilpicture", method = RequestMethod.GET)
     public String getPictureOfUser(@PathVariable long iduser){
