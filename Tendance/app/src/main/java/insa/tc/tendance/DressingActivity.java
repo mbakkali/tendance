@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -77,6 +78,7 @@ public class DressingActivity extends AppCompatActivity {
         setContentView(R.layout.dressing);
 
         user = User.getUserFromIntent(getIntent());
+        final String name = user.getUsername();
 
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +138,14 @@ public class DressingActivity extends AppCompatActivity {
         coat.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showCoat();
+                if (name.equals("camille")){
+                    showCoat();
+                } if (name.equals("pfortier")){
+                    hshowCoat();
+                } else {
+                    eshowCoat();
+                }
+
             }
         });
 
@@ -144,7 +153,13 @@ public class DressingActivity extends AppCompatActivity {
         top.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showTop();
+                if (name.equals("camille")){
+                    showTop();
+                } if (name.equals("pfortier")){
+                    hshowTop();
+                } else {
+                    eshowTop();
+                }
             }
         });
 
@@ -152,7 +167,13 @@ public class DressingActivity extends AppCompatActivity {
         trousers.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showTrousers();
+                if (name.equals("camille")){
+                    showTrousers();
+                } if (name.equals("pfortier")){
+                    hshowTrousers();
+                } else {
+                    eshowTrousers();
+                }
             }
         });
 
@@ -160,7 +181,13 @@ public class DressingActivity extends AppCompatActivity {
         dress.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showDress();
+                if (name.equals("camille")){
+                    showDress();
+                } if (name.equals("pfortier")){
+                    hshowDress();
+                } else {
+                    eshowDress();
+                }
             }
         });
 
@@ -168,7 +195,13 @@ public class DressingActivity extends AppCompatActivity {
         skirt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showSkirt();
+                if (name.equals("camille")){
+                    showSkirt();
+                } if (name.equals("pfortier")){
+                    hshowSkirt();
+                } else {
+                    eshowSkirt();
+                }
             }
         });
 
@@ -176,7 +209,13 @@ public class DressingActivity extends AppCompatActivity {
         shoes.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showShoes();
+                if (name.equals("camille")){
+                    showShoes();
+                } if (name.equals("pfortier")){
+                    hshowShoes();
+                } else {
+                    eshowShoes();
+                }
             }
         });
 
@@ -184,7 +223,13 @@ public class DressingActivity extends AppCompatActivity {
         other.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showOther();
+                if (name.equals("camille")){
+                    showOther();
+                } if (name.equals("pfortier")){
+                    hshowOther();
+                } else {
+                    eshowOther();
+                }
             }
         });
 
@@ -228,8 +273,8 @@ public class DressingActivity extends AppCompatActivity {
     private void showDescritpion() {
         descriptionDialog.show();
 
-
     }
+
     private void showCoat() {
 
         final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.gauche);
@@ -237,7 +282,7 @@ public class DressingActivity extends AppCompatActivity {
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
 
-        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);//largeur, hauteur
         ScrollView scroller = new ScrollView(this);
         scroller.setBackgroundColor(Color.WHITE);
         scroller.setLayoutParams(params3);
@@ -246,34 +291,91 @@ public class DressingActivity extends AppCompatActivity {
         layoutVet.setOrientation(LinearLayout.VERTICAL);
         layoutVet.setBackgroundColor(Color.WHITE);
 
-        ImageButton top1 = new ImageButton(this);
-        top1.setImageResource(R.drawable.coat1);
-        top1.setBackgroundColor(Color.WHITE);
-        final ImageView topAdd = new ImageView (this);
-        top1.setOnClickListener(new View.OnClickListener() {
+        final ImageButton coat1 = new ImageButton(this);
+        coat1.setImageResource(R.drawable.dcoat1);
+        coat1.setBackgroundColor(Color.WHITE);
+        final ImageView coatAdd1 = new ImageView (this);
+        coat1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast toast = makeText(getApplicationContext(), "Coat sélectionné !",
                         LENGTH_SHORT);
                 toast.show();
 
-                topAdd.setImageResource(R.drawable.coat1);
-                layoutOutfit.addView(topAdd);
+                coatAdd1.setImageResource(R.drawable.dcoat1);
+                layoutOutfit.addView(coatAdd1);
                 //TODO: ajouter un setOnLongClick pour le supprimer
             }
         });
+        coatAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                coatAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        ImageButton top2 = new ImageButton(this);
-        top2.setImageResource(R.drawable.tshirtd2);
-        top2.setBackgroundColor(Color.WHITE);
+        ImageButton coat2 = new ImageButton(this);
+        coat2.setImageResource(R.drawable.dcoat2);
+        coat2.setBackgroundColor(Color.WHITE);
+        final ImageView coatAdd2 = new ImageView (this);
+        coat2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Coat sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
 
-        ImageButton top3 = new ImageButton(this);
-        top3.setImageResource(R.drawable.tshirtd3);
-        top3.setBackgroundColor(Color.WHITE);
+                coatAdd2.setImageResource(R.drawable.dcoat2);
+                layoutOutfit.addView(coatAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        coatAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                coatAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        layoutVet.addView(top1);
-        layoutVet.addView(top2);
-        layoutVet.addView(top3);
+
+        ImageButton coat3 = new ImageButton(this);
+        coat3.setImageResource(R.drawable.dcoat3);
+        coat3.setBackgroundColor(Color.WHITE);
+        final ImageView coatAdd3 = new ImageView (this);
+        coat3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Coat sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                coatAdd3.setImageResource(R.drawable.dcoat3);
+                layoutOutfit.addView(coatAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        coatAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                coatAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        layoutVet.addView(coat1);
+        layoutVet.addView(coat2);
+        layoutVet.addView(coat3);
 
         scroller.addView(layoutVet);
 
@@ -303,7 +405,7 @@ public class DressingActivity extends AppCompatActivity {
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
 
-        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);//largeur, hauteur
         ScrollView scroller = new ScrollView(this);
         scroller.setBackgroundColor(Color.WHITE);
         scroller.setLayoutParams(params3);
@@ -313,9 +415,9 @@ public class DressingActivity extends AppCompatActivity {
         layoutVet.setBackgroundColor(Color.WHITE);
 
         ImageButton top1 = new ImageButton(this);
-        top1.setImageResource(R.drawable.tshirtd1);
+        top1.setImageResource(R.drawable.dtop1);
         top1.setBackgroundColor(Color.WHITE);
-        final ImageView topAdd = new ImageView (this);
+        final ImageView topAdd1 = new ImageView (this);
         top1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -323,33 +425,107 @@ public class DressingActivity extends AppCompatActivity {
                         LENGTH_SHORT);
                 toast.show();
 
-                topAdd.setImageResource(R.drawable.tshirtd1);
-                layoutOutfit.addView(topAdd);
+                topAdd1.setImageResource(R.drawable.dtop1);
+                layoutOutfit.addView(topAdd1);
                 //TODO: ajouter un setOnLongClick pour le supprimer
             }
         });
-        topAdd.setOnLongClickListener(new View.OnLongClickListener() {
+        topAdd1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
                         LENGTH_SHORT);
                 toast.show();
-                topAdd.setImageDrawable(null);
+                topAdd1.setImageDrawable(null);
                 return true;
             }
         });
 
         ImageButton top2 = new ImageButton(this);
-        top2.setImageResource(R.drawable.tshirtd2);
+        top2.setImageResource(R.drawable.dtop2);
         top2.setBackgroundColor(Color.WHITE);
+        final ImageView topAdd2 = new ImageView (this);
+        top2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Top sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                topAdd2.setImageResource(R.drawable.dtop2);
+                layoutOutfit.addView(topAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        topAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                topAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
 
         ImageButton top3 = new ImageButton(this);
-        top3.setImageResource(R.drawable.tshirtd3);
+        top3.setImageResource(R.drawable.dtop3);
         top3.setBackgroundColor(Color.WHITE);
+        final ImageView topAdd3 = new ImageView (this);
+        top3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Top sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                topAdd3.setImageResource(R.drawable.dtop3);
+                layoutOutfit.addView(topAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        topAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                topAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton top4 = new ImageButton(this);
+        top4.setImageResource(R.drawable.dtop4);
+        top4.setBackgroundColor(Color.WHITE);
+        final ImageView topAdd4 = new ImageView (this);
+        top4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Top sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                topAdd4.setImageResource(R.drawable.dtop4);
+                layoutOutfit.addView(topAdd4);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        topAdd4.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                topAdd4.setImageDrawable(null);
+                return true;
+            }
+        });
 
         layoutVet.addView(top1);
         layoutVet.addView(top2);
         layoutVet.addView(top3);
+        layoutVet.addView(top4);
 
         scroller.addView(layoutVet);
 
@@ -388,34 +564,90 @@ public class DressingActivity extends AppCompatActivity {
         layoutVet.setOrientation(LinearLayout.VERTICAL);
         layoutVet.setBackgroundColor(Color.WHITE);
 
-        ImageButton top1 = new ImageButton(this);
-        top1.setImageResource(R.drawable.pants1);
-        top1.setBackgroundColor(Color.WHITE);
-        final ImageView topAdd = new ImageView (this);
-        top1.setOnClickListener(new View.OnClickListener() {
+        ImageButton trousers1 = new ImageButton(this);
+        trousers1.setImageResource(R.drawable.dtrousers1);
+        trousers1.setBackgroundColor(Color.WHITE);
+        final ImageView trousersAdd1 = new ImageView (this);
+        trousers1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast toast = makeText(getApplicationContext(), "Pantalon sélectionné !",
                         LENGTH_SHORT);
                 toast.show();
 
-                topAdd.setImageResource(R.drawable.pants1);
-                layoutOutfit.addView(topAdd);
+                trousersAdd1.setImageResource(R.drawable.dtrousers1);
+                layoutOutfit.addView(trousersAdd1);
                 //TODO: ajouter un setOnLongClick pour le supprimer
             }
         });
+        trousersAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                trousersAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        ImageButton top2 = new ImageButton(this);
-        top2.setImageResource(R.drawable.tshirtd2);
-        top2.setBackgroundColor(Color.WHITE);
+        ImageButton trousers2 = new ImageButton(this);
+        trousers2.setImageResource(R.drawable.dtrousers2);
+        trousers2.setBackgroundColor(Color.WHITE);
+        final ImageView trousersAdd2 = new ImageView (this);
+        trousers2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Pantalon sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
 
-        ImageButton top3 = new ImageButton(this);
-        top3.setImageResource(R.drawable.tshirtd3);
-        top3.setBackgroundColor(Color.WHITE);
+                trousersAdd2.setImageResource(R.drawable.dtrousers2);
+                layoutOutfit.addView(trousersAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        trousersAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                trousersAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        layoutVet.addView(top1);
-        layoutVet.addView(top2);
-        layoutVet.addView(top3);
+        ImageButton trousers3 = new ImageButton(this);
+        trousers3.setImageResource(R.drawable.dtrousers3);
+        trousers3.setBackgroundColor(Color.WHITE);
+        final ImageView trousersAdd3 = new ImageView (this);
+        trousers3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Pantalon sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                trousersAdd3.setImageResource(R.drawable.dtrousers3);
+                layoutOutfit.addView(trousersAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        trousersAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                trousersAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        layoutVet.addView(trousers1);
+        layoutVet.addView(trousers2);
+        layoutVet.addView(trousers3);
 
         scroller.addView(layoutVet);
 
@@ -438,7 +670,7 @@ public class DressingActivity extends AppCompatActivity {
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }
-    private void showDress() {
+    private void showSkirt() {
 
         final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
 
@@ -454,34 +686,64 @@ public class DressingActivity extends AppCompatActivity {
         layoutVet.setOrientation(LinearLayout.VERTICAL);
         layoutVet.setBackgroundColor(Color.WHITE);
 
-        ImageButton top1 = new ImageButton(this);
-        top1.setImageResource(R.drawable.dress1);
-        top1.setBackgroundColor(Color.WHITE);
-        final ImageView topAdd = new ImageView (this);
-        top1.setOnClickListener(new View.OnClickListener() {
+        ImageButton skirt1 = new ImageButton(this);
+        skirt1.setImageResource(R.drawable.dskirt1);
+        skirt1.setBackgroundColor(Color.WHITE);
+        final ImageView skirtAdd1 = new ImageView (this);
+        skirt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Skirt sélectionnée !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                skirtAdd1.setImageResource(R.drawable.dskirt1);
+                layoutOutfit.addView(skirtAdd1);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        skirtAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                skirtAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
+
+
+        ImageButton skirt2 = new ImageButton(this);
+        skirt2.setImageResource(R.drawable.dskirt2);
+        skirt2.setBackgroundColor(Color.WHITE);
+        final ImageView skirtAdd2 = new ImageView (this);
+        skirt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast toast = makeText(getApplicationContext(), "Dress sélectionnée !",
                         LENGTH_SHORT);
                 toast.show();
 
-                topAdd.setImageResource(R.drawable.dress1);
-                layoutOutfit.addView(topAdd);
+                skirtAdd2.setImageResource(R.drawable.dskirt2);
+                layoutOutfit.addView(skirtAdd2);
                 //TODO: ajouter un setOnLongClick pour le supprimer
             }
         });
+        skirtAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                skirtAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        ImageButton top2 = new ImageButton(this);
-        top2.setImageResource(R.drawable.tshirtd2);
-        top2.setBackgroundColor(Color.WHITE);
 
-        ImageButton top3 = new ImageButton(this);
-        top3.setImageResource(R.drawable.tshirtd3);
-        top3.setBackgroundColor(Color.WHITE);
-
-        layoutVet.addView(top1);
-        layoutVet.addView(top2);
-        layoutVet.addView(top3);
+        layoutVet.addView(skirt1);
+        layoutVet.addView(skirt2);
 
         scroller.addView(layoutVet);
 
@@ -489,7 +751,7 @@ public class DressingActivity extends AppCompatActivity {
 
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        helpBuilder.setTitle("Dress");
+        helpBuilder.setTitle("Skirt");
         helpBuilder.setView(layout);
 
 
@@ -504,7 +766,7 @@ public class DressingActivity extends AppCompatActivity {
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }
-    private void showSkirt() {
+    private void showDress() {
         final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
         LinearLayout layout = new LinearLayout(this);
         layout.setBackgroundColor(Color.WHITE);
@@ -518,34 +780,90 @@ public class DressingActivity extends AppCompatActivity {
         layoutVet.setOrientation(LinearLayout.VERTICAL);
         layoutVet.setBackgroundColor(Color.WHITE);
 
-        ImageButton top1 = new ImageButton(this);
-        top1.setImageResource(R.drawable.skirt1);
-        top1.setBackgroundColor(Color.WHITE);
-        final ImageView topAdd = new ImageView (this);
-        top1.setOnClickListener(new View.OnClickListener() {
+        ImageButton dress1 = new ImageButton(this);
+        dress1.setImageResource(R.drawable.ddress1);
+        dress1.setBackgroundColor(Color.WHITE);
+        final ImageView dressAdd1 = new ImageView (this);
+        dress1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = makeText(getApplicationContext(), "Skirt sélectionnée !",
+                Toast toast = makeText(getApplicationContext(), "Dress sélectionnée !",
                         LENGTH_SHORT);
                 toast.show();
 
-                topAdd.setImageResource(R.drawable.skirt1);
-                layoutOutfit.addView(topAdd);
+                dressAdd1.setImageResource(R.drawable.ddress1);
+                layoutOutfit.addView(dressAdd1);
                 //TODO: ajouter un setOnLongClick pour le supprimer
             }
         });
+        dressAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                dressAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        ImageButton top2 = new ImageButton(this);
-        top2.setImageResource(R.drawable.tshirtd2);
-        top2.setBackgroundColor(Color.WHITE);
+        ImageButton dress2 = new ImageButton(this);
+        dress2.setImageResource(R.drawable.ddress2);
+        dress2.setBackgroundColor(Color.WHITE);
+        final ImageView dressAdd2 = new ImageView (this);
+        dress2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Dress sélectionnée !",
+                        LENGTH_SHORT);
+                toast.show();
 
-        ImageButton top3 = new ImageButton(this);
-        top3.setImageResource(R.drawable.tshirtd3);
-        top3.setBackgroundColor(Color.WHITE);
+                dressAdd2.setImageResource(R.drawable.ddress2);
+                layoutOutfit.addView(dressAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        dressAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                dressAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        layoutVet.addView(top1);
-        layoutVet.addView(top2);
-        layoutVet.addView(top3);
+        ImageButton dress3 = new ImageButton(this);
+        dress3.setImageResource(R.drawable.ddress3);
+        dress3.setBackgroundColor(Color.WHITE);
+        final ImageView dressAdd3 = new ImageView (this);
+        dress3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Dress sélectionnée !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                dressAdd3.setImageResource(R.drawable.ddress1);
+                layoutOutfit.addView(dressAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        dressAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                dressAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        layoutVet.addView(dress1);
+        layoutVet.addView(dress2);
+        layoutVet.addView(dress3);
 
         scroller.addView(layoutVet);
 
@@ -553,7 +871,7 @@ public class DressingActivity extends AppCompatActivity {
 
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        helpBuilder.setTitle("Skirt");
+        helpBuilder.setTitle("Dress");
         helpBuilder.setView(layout);
 
 
@@ -584,34 +902,118 @@ public class DressingActivity extends AppCompatActivity {
         layoutVet.setOrientation(LinearLayout.VERTICAL);
         layoutVet.setBackgroundColor(Color.WHITE);
 
-        ImageButton top1 = new ImageButton(this);
-        top1.setImageResource(R.drawable.shoes1);
-        top1.setBackgroundColor(Color.WHITE);
-        final ImageView topAdd = new ImageView (this);
-        top1.setOnClickListener(new View.OnClickListener() {
+        ImageButton shoes1 = new ImageButton(this);
+        shoes1.setImageResource(R.drawable.dshoes1);
+        shoes1.setBackgroundColor(Color.WHITE);
+        final ImageView shoesAdd1 = new ImageView (this);
+        shoes1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast toast = makeText(getApplicationContext(), "Shoes sélectionnées",
                         LENGTH_SHORT);
                 toast.show();
 
-                topAdd.setImageResource(R.drawable.shoes1);
-                layoutOutfit.addView(topAdd);
+                shoesAdd1.setImageResource(R.drawable.dshoes1);
+                layoutOutfit.addView(shoesAdd1);
                 //TODO: ajouter un setOnLongClick pour le supprimer
             }
         });
+        shoesAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                shoesAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        ImageButton top2 = new ImageButton(this);
-        top2.setImageResource(R.drawable.tshirtd2);
-        top2.setBackgroundColor(Color.WHITE);
+        ImageButton shoes2 = new ImageButton(this);
+        shoes2.setImageResource(R.drawable.dshoes2);
+        shoes2.setBackgroundColor(Color.WHITE);
+        final ImageView shoesAdd2 = new ImageView (this);
+        shoes2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Shoes sélectionnées",
+                        LENGTH_SHORT);
+                toast.show();
 
-        ImageButton top3 = new ImageButton(this);
-        top3.setImageResource(R.drawable.tshirtd3);
-        top3.setBackgroundColor(Color.WHITE);
+                shoesAdd2.setImageResource(R.drawable.dshoes2);
+                layoutOutfit.addView(shoesAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        shoesAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                shoesAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        layoutVet.addView(top1);
-        layoutVet.addView(top2);
-        layoutVet.addView(top3);
+        ImageButton shoes3 = new ImageButton(this);
+        shoes3.setImageResource(R.drawable.dshoes3);
+        shoes3.setBackgroundColor(Color.WHITE);
+        final ImageView shoesAdd3 = new ImageView (this);
+        shoes3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Shoes sélectionnées",
+                        LENGTH_SHORT);
+                toast.show();
+
+                shoesAdd3.setImageResource(R.drawable.dshoes3);
+                layoutOutfit.addView(shoesAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        shoesAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                shoesAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton shoes4 = new ImageButton(this);
+        shoes4.setImageResource(R.drawable.dshoes4);
+        shoes4.setBackgroundColor(Color.WHITE);
+        final ImageView shoesAdd4 = new ImageView (this);
+        shoes4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Shoes sélectionnées",
+                        LENGTH_SHORT);
+                toast.show();
+
+                shoesAdd4.setImageResource(R.drawable.dshoes4);
+                layoutOutfit.addView(shoesAdd4);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        shoesAdd4.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                shoesAdd4.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        layoutVet.addView(shoes1);
+        layoutVet.addView(shoes2);
+        layoutVet.addView(shoes3);
+        layoutVet.addView(shoes4);
 
         scroller.addView(layoutVet);
 
@@ -650,34 +1052,146 @@ public class DressingActivity extends AppCompatActivity {
         layoutVet.setOrientation(LinearLayout.VERTICAL);
         layoutVet.setBackgroundColor(Color.WHITE);
 
-        ImageButton top1 = new ImageButton(this);
-        top1.setImageResource(R.drawable.hat1);
-        top1.setBackgroundColor(Color.WHITE);
-        final ImageView topAdd = new ImageView (this);
-        top1.setOnClickListener(new View.OnClickListener() {
+        ImageButton other1 = new ImageButton(this);
+        other1.setImageResource(R.drawable.dother1);
+        other1.setBackgroundColor(Color.WHITE);
+        final ImageView otherAdd1 = new ImageView (this);
+        other1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast toast = makeText(getApplicationContext(), "Accessoire sélectionné",
                         LENGTH_SHORT);
                 toast.show();
 
-                topAdd.setImageResource(R.drawable.hat1);
-                layoutOutfit.addView(topAdd);
+                otherAdd1.setImageResource(R.drawable.dother1);
+                layoutOutfit.addView(otherAdd1);
                 //TODO: ajouter un setOnLongClick pour le supprimer
             }
         });
+        otherAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                otherAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        ImageButton top2 = new ImageButton(this);
-        top2.setImageResource(R.drawable.tshirtd2);
-        top2.setBackgroundColor(Color.WHITE);
+        ImageButton other2 = new ImageButton(this);
+        other2.setImageResource(R.drawable.dother2);
+        other2.setBackgroundColor(Color.WHITE);
+        final ImageView otherAdd2 = new ImageView (this);
+        other2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Accessoire sélectionné",
+                        LENGTH_SHORT);
+                toast.show();
 
-        ImageButton top3 = new ImageButton(this);
-        top3.setImageResource(R.drawable.tshirtd3);
-        top3.setBackgroundColor(Color.WHITE);
+                otherAdd2.setImageResource(R.drawable.dother2);
+                layoutOutfit.addView(otherAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        otherAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                otherAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
 
-        layoutVet.addView(top1);
-        layoutVet.addView(top2);
-        layoutVet.addView(top3);
+        ImageButton other3 = new ImageButton(this);
+        other3.setImageResource(R.drawable.dother3);
+        other3.setBackgroundColor(Color.WHITE);
+        final ImageView otherAdd3 = new ImageView (this);
+        other3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Accessoire sélectionné",
+                        LENGTH_SHORT);
+                toast.show();
+
+                otherAdd3.setImageResource(R.drawable.dother3);
+                layoutOutfit.addView(otherAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        otherAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                otherAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton other4 = new ImageButton(this);
+        other4.setImageResource(R.drawable.dother4);
+        other4.setBackgroundColor(Color.WHITE);
+        final ImageView otherAdd4 = new ImageView (this);
+        other4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Accessoire sélectionné",
+                        LENGTH_SHORT);
+                toast.show();
+
+                otherAdd4.setImageResource(R.drawable.dother4);
+                layoutOutfit.addView(otherAdd4);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        otherAdd4.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                otherAdd4.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton other5 = new ImageButton(this);
+        other5.setImageResource(R.drawable.dother5);
+        other5.setBackgroundColor(Color.WHITE);
+        final ImageView otherAdd5 = new ImageView (this);
+        other5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Accessoire sélectionné",
+                        LENGTH_SHORT);
+                toast.show();
+
+                otherAdd5.setImageResource(R.drawable.dother5);
+                layoutOutfit.addView(otherAdd5);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        otherAdd5.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                otherAdd5.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        layoutVet.addView(other1);
+        layoutVet.addView(other2);
+        layoutVet.addView(other3);
+        layoutVet.addView(other4);
+        layoutVet.addView(other5);
 
         scroller.addView(layoutVet);
 
@@ -700,6 +1214,1065 @@ public class DressingActivity extends AppCompatActivity {
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }
+
+    private void hshowCoat() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.gauche);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        final ImageButton coat1 = new ImageButton(this);
+        coat1.setImageResource(R.drawable.dhcoat1);
+        coat1.setBackgroundColor(Color.WHITE);
+        final ImageView coatAdd1 = new ImageView (this);
+        coat1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Coat sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                coatAdd1.setImageResource(R.drawable.dhcoat1);
+                layoutOutfit.addView(coatAdd1);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        coatAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                coatAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton coat2 = new ImageButton(this);
+        coat2.setImageResource(R.drawable.dhcoat2);
+        coat2.setBackgroundColor(Color.WHITE);
+        final ImageView coatAdd2 = new ImageView (this);
+        coat2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Coat sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                coatAdd2.setImageResource(R.drawable.dhcoat2);
+                layoutOutfit.addView(coatAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        coatAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                coatAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
+
+
+        ImageButton coat3 = new ImageButton(this);
+        coat3.setImageResource(R.drawable.dhcoat3);
+        coat3.setBackgroundColor(Color.WHITE);
+        final ImageView coatAdd3 = new ImageView (this);
+        coat3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Coat sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                coatAdd3.setImageResource(R.drawable.dhcoat3);
+                layoutOutfit.addView(coatAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        coatAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                coatAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton coat4 = new ImageButton(this);
+        coat4.setImageResource(R.drawable.dhcoat4);
+        coat4.setBackgroundColor(Color.WHITE);
+        final ImageView coatAdd4 = new ImageView (this);
+        coat4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Coat sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                coatAdd4.setImageResource(R.drawable.dhcoat4);
+                layoutOutfit.addView(coatAdd4);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        coatAdd4.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                coatAdd4.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        layoutVet.addView(coat1);
+        layoutVet.addView(coat2);
+        layoutVet.addView(coat3);
+        layoutVet.addView(coat4);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Coat");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void hshowTop() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        ImageButton top1 = new ImageButton(this);
+        top1.setImageResource(R.drawable.dhtop1);
+        top1.setBackgroundColor(Color.WHITE);
+        final ImageView topAdd1 = new ImageView (this);
+        top1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Top sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                topAdd1.setImageResource(R.drawable.dhtop1);
+                layoutOutfit.addView(topAdd1);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        topAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                topAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton top2 = new ImageButton(this);
+        top2.setImageResource(R.drawable.dhtop2);
+        top2.setBackgroundColor(Color.WHITE);
+        final ImageView topAdd2 = new ImageView (this);
+        top2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Top sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                topAdd2.setImageResource(R.drawable.dhtop2);
+                layoutOutfit.addView(topAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        topAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                topAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton top3 = new ImageButton(this);
+        top3.setImageResource(R.drawable.dhtop3);
+        top3.setBackgroundColor(Color.WHITE);
+        final ImageView topAdd3 = new ImageView (this);
+        top3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Top sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                topAdd3.setImageResource(R.drawable.dhtop3);
+                layoutOutfit.addView(topAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        topAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                topAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton top4 = new ImageButton(this);
+        top4.setImageResource(R.drawable.dhtop4);
+        top4.setBackgroundColor(Color.WHITE);
+        final ImageView topAdd4 = new ImageView (this);
+        top4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Top sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                topAdd4.setImageResource(R.drawable.dhtop4);
+                layoutOutfit.addView(topAdd4);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        topAdd4.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                topAdd4.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        layoutVet.addView(top1);
+        layoutVet.addView(top2);
+        layoutVet.addView(top3);
+        layoutVet.addView(top4);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Top");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void hshowTrousers() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        ImageButton trousers1 = new ImageButton(this);
+        trousers1.setImageResource(R.drawable.dhtrousers1);
+        trousers1.setBackgroundColor(Color.WHITE);
+        final ImageView trousersAdd1 = new ImageView (this);
+        trousers1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Pantalon sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                trousersAdd1.setImageResource(R.drawable.dhtrousers1);
+                layoutOutfit.addView(trousersAdd1);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        trousersAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                trousersAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton trousers2 = new ImageButton(this);
+        trousers2.setImageResource(R.drawable.dhtrousers2);
+        trousers2.setBackgroundColor(Color.WHITE);
+        final ImageView trousersAdd2 = new ImageView (this);
+        trousers2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Pantalon sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                trousersAdd2.setImageResource(R.drawable.dhtrousers2);
+                layoutOutfit.addView(trousersAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        trousersAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                trousersAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton trousers3 = new ImageButton(this);
+        trousers3.setImageResource(R.drawable.dhtrousers3);
+        trousers3.setBackgroundColor(Color.WHITE);
+        final ImageView trousersAdd3 = new ImageView (this);
+        trousers3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Pantalon sélectionné !",
+                        LENGTH_SHORT);
+                toast.show();
+
+                trousersAdd3.setImageResource(R.drawable.dhtrousers3);
+                layoutOutfit.addView(trousersAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        trousersAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                trousersAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        layoutVet.addView(trousers1);
+        layoutVet.addView(trousers2);
+        layoutVet.addView(trousers3);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Trousers");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void hshowSkirt() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Skirt");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void hshowDress() {
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Dress");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void hshowShoes() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        ImageButton shoes1 = new ImageButton(this);
+        shoes1.setImageResource(R.drawable.dhshoes1);
+        shoes1.setBackgroundColor(Color.WHITE);
+        final ImageView shoesAdd1 = new ImageView (this);
+        shoes1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Shoes sélectionnées",
+                        LENGTH_SHORT);
+                toast.show();
+
+                shoesAdd1.setImageResource(R.drawable.dhshoes1);
+                layoutOutfit.addView(shoesAdd1);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        shoesAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                shoesAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton shoes2 = new ImageButton(this);
+        shoes2.setImageResource(R.drawable.dhshoes2);
+        shoes2.setBackgroundColor(Color.WHITE);
+        final ImageView shoesAdd2 = new ImageView (this);
+        shoes2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Shoes sélectionnées",
+                        LENGTH_SHORT);
+                toast.show();
+
+                shoesAdd2.setImageResource(R.drawable.dhshoes2);
+                layoutOutfit.addView(shoesAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        shoesAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                shoesAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton shoes3 = new ImageButton(this);
+        shoes3.setImageResource(R.drawable.dhshoes3);
+        shoes3.setBackgroundColor(Color.WHITE);
+        final ImageView shoesAdd3 = new ImageView (this);
+        shoes3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Shoes sélectionnées",
+                        LENGTH_SHORT);
+                toast.show();
+
+                shoesAdd3.setImageResource(R.drawable.dhshoes3);
+                layoutOutfit.addView(shoesAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        shoesAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                shoesAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton shoes4 = new ImageButton(this);
+        shoes4.setImageResource(R.drawable.dhshoes4);
+        shoes4.setBackgroundColor(Color.WHITE);
+        final ImageView shoesAdd4 = new ImageView (this);
+        shoes4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Shoes sélectionnées",
+                        LENGTH_SHORT);
+                toast.show();
+
+                shoesAdd4.setImageResource(R.drawable.dhshoes4);
+                layoutOutfit.addView(shoesAdd4);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        shoesAdd4.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                shoesAdd4.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        layoutVet.addView(shoes1);
+        layoutVet.addView(shoes2);
+        layoutVet.addView(shoes3);
+        layoutVet.addView(shoes4);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Shoes");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void hshowOther() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.gauche);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        ImageButton other1 = new ImageButton(this);
+        other1.setImageResource(R.drawable.dhother1);
+        other1.setBackgroundColor(Color.WHITE);
+        final ImageView otherAdd1 = new ImageView (this);
+        other1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Accessoire sélectionné",
+                        LENGTH_SHORT);
+                toast.show();
+
+                otherAdd1.setImageResource(R.drawable.dhother1);
+                layoutOutfit.addView(otherAdd1);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        otherAdd1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                otherAdd1.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton other2 = new ImageButton(this);
+        other2.setImageResource(R.drawable.dhother2);
+        other2.setBackgroundColor(Color.WHITE);
+        final ImageView otherAdd2 = new ImageView (this);
+        other2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Accessoire sélectionné",
+                        LENGTH_SHORT);
+                toast.show();
+
+                otherAdd2.setImageResource(R.drawable.dhother2);
+                layoutOutfit.addView(otherAdd2);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        otherAdd2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                otherAdd2.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton other3 = new ImageButton(this);
+        other3.setImageResource(R.drawable.dhother3);
+        other3.setBackgroundColor(Color.WHITE);
+        final ImageView otherAdd3 = new ImageView (this);
+        other3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Accessoire sélectionné",
+                        LENGTH_SHORT);
+                toast.show();
+
+                otherAdd3.setImageResource(R.drawable.dhother3);
+                layoutOutfit.addView(otherAdd3);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        otherAdd3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                otherAdd3.setImageDrawable(null);
+                return true;
+            }
+        });
+
+        ImageButton other4 = new ImageButton(this);
+        other4.setImageResource(R.drawable.dhother4);
+        other4.setBackgroundColor(Color.WHITE);
+        final ImageView otherAdd4 = new ImageView (this);
+        other4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Accessoire sélectionné",
+                        LENGTH_SHORT);
+                toast.show();
+
+                otherAdd4.setImageResource(R.drawable.dhother4);
+                layoutOutfit.addView(otherAdd4);
+                //TODO: ajouter un setOnLongClick pour le supprimer
+            }
+        });
+        otherAdd4.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast toast = makeText(getApplicationContext(), "Vêtement supprimé !",
+                        LENGTH_SHORT);
+                toast.show();
+                otherAdd4.setImageDrawable(null);
+                return true;
+            }
+        });
+
+
+        layoutVet.addView(other1);
+        layoutVet.addView(other2);
+        layoutVet.addView(other3);
+        layoutVet.addView(other4);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Accessoires");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+
+    private void eshowCoat() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.gauche);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Coat");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void eshowTop() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Top");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void eshowTrousers() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Trousers");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void eshowSkirt() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Skirt");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void eshowDress() {
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Dress");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void eshowShoes() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.droite);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Shoes");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+    private void eshowOther() {
+
+        final LinearLayout layoutOutfit = (LinearLayout) findViewById(R.id.gauche);
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.WHITE);
+
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,1200);//largeur, hauteur
+        ScrollView scroller = new ScrollView(this);
+        scroller.setBackgroundColor(Color.WHITE);
+        scroller.setLayoutParams(params3);
+
+        LinearLayout layoutVet = new LinearLayout(this);
+        layoutVet.setOrientation(LinearLayout.VERTICAL);
+        layoutVet.setBackgroundColor(Color.WHITE);
+
+        scroller.addView(layoutVet);
+
+        layout.addView(scroller);
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Accessoires");
+        helpBuilder.setView(layout);
+
+
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+
     private void showAdd() {
         System.out.println(user);
         FragmentManager fm = getSupportFragmentManager();
@@ -750,6 +2323,9 @@ public class DressingActivity extends AppCompatActivity {
     private void showLook (List<ArrayList> look){
         AlertDialog.Builder helpBuilder = new android.app.AlertDialog.Builder(this);
         //String lookSug = look.get(0).toString();
+        Toast toast = makeText(getApplicationContext(), "showlook: ",
+                Toast.LENGTH_SHORT);
+        toast.show();
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         for (ArrayList<String> lookSug : look) {
