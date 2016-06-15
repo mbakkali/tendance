@@ -3,7 +3,8 @@ package server;
 
 import server.dao.ClotheDAO;
 import server.dao.OutfitDAO;
-import server.dao.UserDAO;
+
+import java.io.File;
 
 
 public class Main {
@@ -15,27 +16,32 @@ public class Main {
             Outfit outfit = OutfitDAO.getOutfitByID(19);
             System.out.println("On selectionne le outfit : " + outfit.getDescription());
 
+            File file = new File("dcoat3.png");
             ClotheDAO c = new ClotheDAO();
+
+
             Clothe clothe = c.getClotheById(2);
 
-            UserDAO userDAO = new UserDAO();
-            User userA = userDAO.getUserByID(40);
+            ClotheWithFile clotheWithFile = new ClotheWithFile();
 
-            userDAO.del_user(userA);
+            ClotheWithFile.PutClotheInClotheWithFile(clotheWithFile,clothe,file);
+
+            Clothe clothe2 = clotheWithFile;
+
+            System.out.println(clothe2.getClothe_id() +clothe2.getClothe_photo());
+
+
+
+           // userDAO.del_user(userA);
 
             //userDAO.delFriend(userA,userB);
 
-/*
-           File file = new File("dcoat1.png");
-
-            if (file.exists()) {
 
 
-                System.out.println("Ok MockMultipartFile");
-                System.out.println(c.addPhotoToClothe(clothe,m));
 
-                System.out.println("Ok addSelfietoDatabase");
-            }*/
+
+                //System.out.println(c.addPhotoToClothe(clotheWithFile));
+
 
 
 

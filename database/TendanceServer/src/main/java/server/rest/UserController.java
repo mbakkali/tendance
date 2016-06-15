@@ -55,6 +55,31 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "/friend/{id1}/{id2}", method = RequestMethod.POST)
+    public void addfriend(@RequestParam long id1 ,@RequestParam long id2){
+        try {
+            User user1 = userDAO.getUserByID(id1);
+            User user2 = userDAO.getUserByID(id2);
+
+            userDAO.addFriend(user1,user2);
+
+        } catch (SQLException e) {
+            throw new InternalErrorException();
+        }
+    }
+
+    @RequestMapping(value = "/friend/{id1}/{id2}", method = RequestMethod.DELETE)
+    public void delfriend(@PathVariable long id1, @RequestParam long id2){
+        try {
+
+            User user1 = userDAO.getUserByID(id1);
+            User user2 = userDAO.getUserByID(id2);
+            userDAO.delFriend(user1,user2);
+        } catch (SQLException e) {
+            throw new InternalErrorException();
+        }
+    }
+
     @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable long id){
         try {

@@ -21,6 +21,7 @@ public class Clothe {
     private File photo;
 
 
+
     public Clothe(){}
     public Clothe(long clothe_id, long user_id, long clothe_type, String clothe_photo, String clothe_timestamp) {
         this.clothe_id = clothe_id;
@@ -28,6 +29,13 @@ public class Clothe {
         this.clothe_type = clothe_type;
         this.clothe_photo = clothe_photo;
         this.clothe_timestamp = clothe_timestamp;
+    }
+    public Clothe(Clothe clothe){
+        this.clothe_id=clothe.getClothe_id();
+        this.user_id = clothe.getUser_id();
+        this.clothe_type = clothe.getClothe_type();
+        this.clothe_photo = clothe.getClothe_photo();
+        this.clothe_timestamp = clothe.getClothe_timestamp();
     }
 
     public Clothe(long user_id, long clothe_type) {
@@ -54,4 +62,8 @@ public class Clothe {
     }
 
     public File getPhotoUrl() {return photo;}
+
+    public void setClothe_type(long clothe_type) {
+        this.clothe_type = clothe_type;
+    }
 }

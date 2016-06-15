@@ -53,6 +53,10 @@ public class Outfit {
         this.event_id = event_id;
     }
 
+    public Outfit() {
+
+    }
+
 
     public long getOutfit_id() {
         return outfit_id;

@@ -71,13 +71,7 @@ public class ClotheDAO {
 
 
         PreparedStatement ps = connection.prepareStatement(
-                "  UPDATE `Tendance`.`clothes` " +
-                        "SET `clothe_id` = ?," +
-                        "`clothe_photo` = ?, " +
-                        "`clothe_type` = ?, " +
-                        "`user_id` = ?, " +
-                        "`clothe_timestamp` = ?" +
-                        "WHERE clothes.clothe_id = ?;");
+                "  UPDATE `Tendance`.`clothes`SET `clothe_id` = ?,`clothe_photo` = ?, `clothe_type` = ?, `user_id` = ?,`clothe_timestamp` = ? WHERE clothes.clothe_id = ?;");
 
 
         ps.setLong(1, clothe.getClothe_id());
@@ -101,15 +95,13 @@ public class ClotheDAO {
 
         String name = UUID.randomUUID().toString();
         String path = Clothe.ROOT+"/"+name+".png";
-        Clothe clothe = clotheWithFile;
+        Clothe clothe = new Clothe(clotheWithFile.getClothe_id(),clotheWithFile.getUser_id(),clotheWithFile.getClothe_type(),clotheWithFile.getClothe_photo(),clotheWithFile.getClothe_timestamp());
 
-        if (clotheWithFile.getFile().exists()) {
             try {
 
                 //Saving the picture in the the ROOT directory
-                FileCopyUtils.copy(clotheWithFile.getFile(), new File(path));
-
-                //Updating database
+                File outputFile = new File(path);
+                FileCopyUtils.copy(clotheWithFile.getFile(),outputFile);
                 clothe.setClothe_photo(path);
                 update_clothe(clothe);
 
@@ -120,7 +112,7 @@ public class ClotheDAO {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+
         return clothe;
     }
 

@@ -34,7 +34,7 @@ public class SQLDatabase {
 
         try {
 
-            connection = DriverManager.getConnection(url,user,passwd);
+            connection = DriverManager.getConnection(urlserver,user,passwd);
 
         } catch (SQLException e) {
 
