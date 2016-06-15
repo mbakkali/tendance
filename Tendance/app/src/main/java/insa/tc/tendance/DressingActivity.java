@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -721,14 +722,37 @@ public class DressingActivity extends AppCompatActivity {
         builder.setTitle("Suggestion de Look")
                 .setItems(style_radio, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO: appeler algo de Lélé avec le int qui correspond au style
                         Toast toast = makeText(getApplicationContext(), "style: "+ which,
                                 Toast.LENGTH_SHORT);
                         toast.show();
+                        //TODO: appeler fonction Lélé et appeler showLook
+                        //1 homme, 0 femme
                     }
                 });
         AlertDialog helpDialog = builder.create();
         helpDialog.show();
+
+    }
+    private void showLook (String look){
+        AlertDialog.Builder helpBuilder = new android.app.AlertDialog.Builder(this);
+        String lookSug = look;
+        LinearLayout layout = new LinearLayout(this);
+        TextView suggestion = new TextView(this);
+        suggestion.setText(lookSug);
+        layout.addView(suggestion);
+        helpBuilder.setView(layout);
+
+        helpBuilder.setTitle("Voici ta suggestion de look TENDANCE !");
+        helpBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Close le dialog
+                    }
+                });
+
+        AlertDialog helpDialog2 = helpBuilder.create();
+        helpDialog2.show();
 
     }
 }
