@@ -53,9 +53,13 @@ public class SelfieFile {
         // Create a media file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File mediaFile;
-        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-            UUID.randomUUID().toString() + timeStamp + ".jpg");
-
+        if(dir.equals("outifts")) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                "outfit.jpg");
+        }else {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    UUID.randomUUID().toString() + timeStamp + ".jpg");
+        }
         return mediaFile;
     }
 }

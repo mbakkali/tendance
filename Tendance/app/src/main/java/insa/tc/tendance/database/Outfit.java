@@ -18,9 +18,17 @@ public class Outfit {
     private Date date;
     private String description;
     private int style;
+    private String selfie;
+
+    public String getSelfie() {
+        return selfie;
+    }
+
+    public void setSelfie(String selfie) {
+        this.selfie = selfie;
+    }
+
     private String path_photo;
-
-
 
     public Outfit(int user){
         this.user = user;
@@ -75,6 +83,30 @@ public class Outfit {
     public void unliked(User target){
 
     }
+    public void setOutfit_id(long outfit_id) {
+        this.outfit_id = outfit_id;
+    }
+    public void setUser(int user) {
+        this.user = user;
+    }
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    public void setStyle(int style) {
+        this.style = style;
+    }
+    public int getUser() {
+        return user;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public int getStyle() {
+        return style;
+    }
+    public String getPath_photo() {
+        return path_photo;
+    }
     public String getDate(){
     return null;
     }
@@ -86,4 +118,15 @@ public class Outfit {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "Outfit{" +
+                "outfit_id=" + outfit_id +
+                ", user=" + user +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                ", style=" + style +
+                ", path_photo='" + path_photo + '\'' +
+                '}';
+    }
 }

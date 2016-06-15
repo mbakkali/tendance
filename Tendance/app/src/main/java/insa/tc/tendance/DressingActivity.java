@@ -1,7 +1,6 @@
 package insa.tc.tendance;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,6 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -35,6 +35,7 @@ import insa.tc.tendance.database.Clothe;
 import insa.tc.tendance.database.Outfit;
 import insa.tc.tendance.database.User;
 import insa.tc.tendance.dialog.AddClotheDialogFragment;
+import insa.tc.tendance.dialog.DescriptionDialogFragment;
 import insa.tc.tendance.dialog.SelfieDialogFragment;
 import insa.tc.tendance.requests.GetSuggestion;
 
@@ -45,7 +46,7 @@ import static android.widget.Toast.makeText;
  * Created by cemonet on 07/05/2016.
  * TODO Ajout de vêtement dans la BDD
  */
-public class DressingActivity extends AppCompatActivity {
+public class DressingActivity extends AppCompatActivity implements DescriptionDialogFragment.EditDescDialogListener {
 
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     ImageButton home;
@@ -70,7 +71,7 @@ public class DressingActivity extends AppCompatActivity {
     AlertDialog descriptionDialog;
     SelfieDialogFragment selfieDialogFragment;
     AddClotheDialogFragment addClotheDialogFragment;
-    Outfit outfit = new Outfit();
+    Outfit outfit;
     User user;
     //create all dialog that we use (might be a horrible way to do it...)
 
@@ -80,6 +81,7 @@ public class DressingActivity extends AppCompatActivity {
         setContentView(R.layout.dressing);
 
 
+        outfit = new Outfit();
         user = User.getUserFromIntent(getIntent());
         final String name = user.getUsername();
 
@@ -262,10 +264,7 @@ public class DressingActivity extends AppCompatActivity {
         sendoutfit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast toast = makeText(getApplicationContext(), "Envoie de.. l'outfit.",
-                        Toast.LENGTH_SHORT);
-                toast.show();
-                getScreen();
+                showSend();
             }
         });
 
@@ -277,7 +276,7 @@ public class DressingActivity extends AppCompatActivity {
             }
         });
 
-
+/*
         AlertDialog.Builder d = new AlertDialog.Builder(this);
         d.setTitle("Outfit");
         d.setMessage("Description de la tenue");
@@ -296,15 +295,16 @@ public class DressingActivity extends AppCompatActivity {
                     }
                 });
 
-        descriptionDialog = d.create();
+        descriptionDialog = d.create();*/
 
     }
 
 
 
     private void showDescritpion() {
-
-        descriptionDialog.show();
+        FragmentManager fm = getSupportFragmentManager();
+        DescriptionDialogFragment frag = new DescriptionDialogFragment().newInstance();
+        frag.show(fm, "Description");
 
     }
 
@@ -2313,13 +2313,13 @@ public class DressingActivity extends AppCompatActivity {
     }
     private void showTakeSelfie() {
         FragmentManager fm = getSupportFragmentManager();
-         selfieDialogFragment = SelfieDialogFragment.newInstance("Selfie");
+        selfieDialogFragment = SelfieDialogFragment.newInstance("Selfie");
         selfieDialogFragment.show(fm, "selfie");
     }
     private void showSend() {
-        Toast toast = makeText(getApplicationContext(), "Envoie de.. l'outfit.",
-                Toast.LENGTH_SHORT);
-        toast.show();
+            outfit.setSelfie(getScreen().getPath());
+            System.out.println(outfit);
+
     }
     private void showSuggestion() {
         //TODO Ajout fonction Demander une suggestion et afficher la suggestion.
@@ -2379,6 +2379,7 @@ public class DressingActivity extends AppCompatActivity {
 
     }
 
+    @Nullable
     private File getScreen()
     {
         View content = findViewById(R.id.outfitrepresentation);
@@ -2392,6 +2393,7 @@ public class DressingActivity extends AppCompatActivity {
             FileOutputStream ostream = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
             ostream.close();
+            System.out.println(file.getAbsoluteFile());
             return file;
         }
         catch (Exception e)
@@ -2399,5 +2401,12 @@ public class DressingActivity extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public void onFinishEditDialog(String inputText, int selectedRadio) {
+        System.out.println(inputText + " " + selectedRadio);
+        outfit.setDescription(inputText);
+        outfit.setStyle(selectedRadio);
     }
 }
