@@ -1,15 +1,20 @@
 package server.dao;
 
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 import server.Clothe;
 import server.Outfit;
 import server.SQLDatabase;
 
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 public class OutfitDAO {
@@ -82,33 +87,27 @@ public class OutfitDAO {
 
 
 
-    public static void update_outfit(Outfit outfit) {
-        try {
+    public static void update_outfit(Outfit outfit) throws SQLException{
 
-            PreparedStatement ps = connection.prepareStatement("UPDATE Tendance.outfits " +
-                    "SET outfits.outfit_id = ?, outfits.timestamp = ?," +
-                    "outfits.description = ?, outfits.photo = ?, outfits.style_id = ?, outfits.likes = ? ,outfit.user_id=?, outfit.event_id=?" +
-                    "WHERE outfits.outfit_id = ?");
+
+            PreparedStatement ps = connection.prepareStatement(
+                  "  UPDATE `Tendance`.`outfits` SET `outfit_id` = ?,`timestamp` = ?, `description` = ?, `photo` = ?, `style_id` = ?, `user_id` = ?, `event_id` = ? WHERE `outfits`.`outfit_id` = ?;");
+
 
             ps.setLong(1, outfit.getOutfit_id());
             ps.setString(2, outfit.getTimestamp());
             ps.setString(3, outfit.getDescription());
             ps.setString(4, outfit.getPhoto());
             ps.setLong(5, outfit.getStyle_id());
-            ps.setLong(6, outfit.getLikes());
-            ps.setLong(7, outfit.getUser_id());
-            ps.setLong(8, outfit.getEvent_id());
-
-            ps.setLong(9, outfit.getOutfit_id());
+            ps.setLong(6, outfit.getUser_id());
+            ps.setLong(7, outfit.getEvent_id());
+            ps.setLong(8, outfit.getOutfit_id());
 
             ps.executeUpdate();
 
             ps.close();
             System.out.println("> L'Outfit : " + outfit.getOutfit_id() + " du  " + outfit.getTimestamp() + " a été mis à jour");
-        }
-        catch (SQLException e){
-            System.out.println("Erreur UpdateOutfit");
-        }
+
 
 
     }
@@ -181,5 +180,32 @@ public class OutfitDAO {
         ResultSet rs = ps.executeQuery();
         rs.next();
         return rs.getLong("likes");
+    }
+
+
+    public Outfit addSelfieToOutfit(Outfit outfit, MultipartFile selfie) throws SQLException, IOException {
+        String name = UUID.randomUUID().toString();
+        String path = Outfit.ROOT+"/"+name;
+        if (!selfie.isEmpty()) {
+            try {
+                //Saving the picture in the the ROOT directory
+                File outputFile = new File(path);
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(outputFile));
+                FileCopyUtils.copy(selfie.getInputStream(), stream);
+                stream.close();
+
+                //Updating database
+                outfit.setPhoto(path);
+                OutfitDAO.update_outfit(outfit);
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                System.out.println("Fichier non trouvé");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return outfit;
     }
 }

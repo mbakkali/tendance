@@ -13,7 +13,7 @@ public class Outfit {
 
     OutfitDAO outfitDAO = new OutfitDAO();
 
-    public static final String ROOT = "outfits" + File.separator;
+    public static final String ROOT = "images/outfits" + File.separator;
     private long outfit_id;
     private String timestamp;
     private String description;
@@ -88,7 +88,7 @@ public class Outfit {
 
     public long getLikes() {
         try {
-            return outfitDAO.get_likes(this);
+            return OutfitDAO.get_likes(this);
         } catch (SQLException e) {
             return 0;
         }

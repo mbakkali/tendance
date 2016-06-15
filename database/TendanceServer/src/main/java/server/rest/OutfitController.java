@@ -3,17 +3,16 @@ package server.rest;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.http.HttpStatus;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import server.Clothe;
 import server.Outfit;
 import server.dao.OutfitDAO;
-import server.dao.UserDAO;
 import server.moteur.PropositionLook;
 import server.moteur.Tenue;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,12 +64,19 @@ public class OutfitController {
     @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable long id){
         Outfit outfitToDelete = OutfitDAO.getOutfitByID(id);
-        outfitDAO.del_outfit(outfitToDelete);
+        OutfitDAO.del_outfit(outfitToDelete);
     }
 
     @RequestMapping(value ="/update",method = RequestMethod.POST)
     public void updateOutfit(@RequestBody Outfit outfit){
-        OutfitDAO.update_outfit(outfit);
+        try {
+            OutfitDAO.update_outfit(outfit);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            throw new InternalErrorException();
+        }
+
     }
 
     @RequestMapping(value = "/suggestion/{sexe}/{event}", method = RequestMethod.GET)
@@ -89,17 +95,19 @@ public class OutfitController {
         String name = UUID.randomUUID().toString();
         if (!selfie.isEmpty()) {
             try {
-                File outputFile = new File(Outfit.ROOT + "/" + name);
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(outputFile));
-                FileCopyUtils.copy(selfie.getInputStream(), stream);
-                stream.close();
-                outfitDAO.add_outfit(outfit);
+
+                outfitDAO.addSelfieToOutfit(outfit,selfie);
+                OutfitDAO.update_outfit(outfit);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new InternalErrorException();
+        }
+
         }
         return outfit;
     }

@@ -1,27 +1,13 @@
 
 package server;
 
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.ArrayList;
-
+import org.springframework.mock.web.MockMultipartFile;
 import server.dao.ClotheDAO;
 import server.dao.OutfitDAO;
-import server.dao.UserDAO;
-import server.SQLDatabase;
 
-import java.text.*;
-
-
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 
 
 public class Main {
@@ -29,47 +15,50 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-
-
-
-         /*   for (int i=0; i<10; i++){
-                String outfitdesc = "myoutfit numéro "+i;
-                String outfitphoto = "/img/photo"+i;
-                String outfittime = "2016-06-11 11:12:00";
-
-                Outfit myoutfit = new Outfit(outfittime, outfitdesc,outfitphoto);
-                outfitDAO.add_outfit(myoutfit);
-            }*/
-/*
-            Outfit myoutfit2 = new Outfit(2,"2016-06-11 11:12:23","Mon deuxième outfit","/img/monoutfit2",2);
-            Outfit myoutfit3 = new Outfit(3,"2016-06-11 11:12:37","Mon troisème outfit","/img/monoutfit3",3);
-            Outfit myoutfit4 = new Outfit(4,"2016-06-11 11:12:07","Mon quatrième outfit","/img/monoutfit4",4);*/
-
-/*
-            Clothe clothe = new Clothe(3,1,1,"photo",SQLDatabase.CurrentTimestampToString());
-
-
-
-            ClotheDAO clotheDAO =new ClotheDAO();
-            //clotheDAO.add_clothe(clothe);
-            clotheDAO.del_clothe(9);*/
-
-
-          /* UserDAO u = new UserDAO();
-            User user =u.getUserByMailAndPassword("camille@insa.fr","cemonet");
-
-            System.out.println(user.getUsername()+" | "+user.getMail());*/
-
-
-
             OutfitDAO o = new OutfitDAO();
-            List<Clothe> liste = o.getClothesOfOutfit(19);
+            Outfit outfit = OutfitDAO.getOutfitByID(19);
+            System.out.println("On selectionne le outfit : " + outfit.getDescription());
 
-            liste.forEach(
-                    (e)-> {
-                        System.out.print(e.toString());
-                        }
-                        );
+            ClotheDAO c = new ClotheDAO();
+            Clothe clothe = c.getClotheById(2);
+
+
+            File file = new File("dcoat1.png");
+
+            if (file.exists()) {
+
+                FileInputStream fileInputStream = new FileInputStream(file);
+                System.out.println("Ok FileInputStream");
+
+                BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file));
+                System.out.println("Ok BufferedInputStream");
+
+                MockMultipartFile m = new MockMultipartFile("name",fileInputStream);
+                System.out.println("Ok MockMultipartFile");
+                System.out.println(c.addPhotoToClothe(clothe,m));
+
+                System.out.println("Ok addSelfietoDatabase");
+            }
+
+
+
+
+/*
+
+            Path path = Paths.get("test.txt");
+            String name = "test.txt";
+            String originalFileName = "test.txt";
+            String contentType = "txt/plain";
+            byte[] content = null;
+            try {
+                content = Files.readAllBytes(path);
+            } catch (final IOException e) {
+            }
+            MultipartFile result = new MockMultipartFile(name,
+                    originalFileName, contentType, content);
+*/
+
+
 
         } catch (Exception e) {
             e.printStackTrace();

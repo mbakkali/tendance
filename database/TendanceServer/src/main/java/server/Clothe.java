@@ -6,7 +6,7 @@ import java.io.File;
  * Created by Patrik on 07/06/2016.
  */
 public class Clothe {
-    public static String ROOT = "clothes/images";
+    public static String ROOT = "images/clothes";
 
     private long clothe_id;
     private long user_id;

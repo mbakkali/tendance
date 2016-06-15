@@ -1,13 +1,14 @@
 package server.dao;
 
-import server.Clothe;
-import server.SQLDatabase;
-import server.Type;
-import server.User;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.multipart.MultipartFile;
+import server.*;
 
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by patrik on 10/06/16.
@@ -27,6 +28,8 @@ public class ClotheDAO {
         }
         return types;
     }
+
+
     public Clothe add_clothe(Clothe clothe) throws SQLException{
 
             PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `Tendance`.`clothes` (`clothe_photo`, `clothe_type`, `user_id`,`clothe_timestamp`) VALUES (?, ?, ?, ?);");
@@ -57,11 +60,85 @@ public class ClotheDAO {
 
 
         pstmnt.close();
-        if (rowsUpdated == 0) {
-            return false;
-        } else {
-            return true;
+        return rowsUpdated != 0;
+    }
+
+    public static void update_clothe(Clothe clothe) throws SQLException{
+
+
+        PreparedStatement ps = connection.prepareStatement(
+                "  UPDATE `Tendance`.`clothes` " +
+                        "SET `clothe_id` = ?," +
+                        "`clothe_photo` = ?, " +
+                        "`clothe_type` = ?, " +
+                        "`user_id` = ?, " +
+                        "`clothe_timestamp` = ?" +
+                        "WHERE clothes.clothe_id = ?;");
+
+
+        ps.setLong(1, clothe.getClothe_id());
+        ps.setString(2, clothe.getClothe_photo());
+        ps.setLong(3, clothe.getClothe_type());
+        ps.setLong(4, clothe.getUser_id());
+        ps.setString(5, clothe.getClothe_timestamp());
+        ps.setLong(6, clothe.getClothe_id());
+
+        ps.executeUpdate();
+
+        ps.close();
+        System.out.println("> Clothe : " + clothe.getClothe_id() + " du  " + clothe.getClothe_timestamp() + " a été mis à jour");
+
+
+
+    }
+
+
+    public Clothe addPhotoToClothe(Clothe clothe, MultipartFile photo) throws SQLException {
+        String name = UUID.randomUUID().toString();
+        String path = Clothe.ROOT+"/"+name;
+        if (!photo.isEmpty()) {
+            try {
+
+                //Saving the picture in the the ROOT directory
+                File outputFile = new File(path);
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(outputFile));
+                FileCopyUtils.copy(photo.getInputStream(), stream);
+                stream.close();
+
+                //Updating database
+                clothe.setClothe_photo(path);
+                update_clothe(clothe);
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                System.out.println("Fichier non trouvé");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        return clothe;
+    }
+
+
+    public Clothe getClotheById(long id) throws SQLException{
+        Clothe clothe = null;
+
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM clothes WHERE clothe_id = ?");
+        ps.setLong(1,id);
+
+        ResultSet rs = ps.executeQuery();
+
+        if(rs.next()){
+             clothe = new Clothe(
+                    rs.getLong("clothe_id"),
+                    rs.getLong("user_id"),
+                    rs.getLong("clothe_type"),
+                    rs.getString("clothe_photo"),
+                    rs.getString("clothe_timestamp")
+            );
+        }
+        return clothe;
     }
 
     public List<Clothe> getClothesOfOwner(long id) throws SQLException{

@@ -1,23 +1,18 @@
 package server.rest;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.support.StringMultipartFileEditor;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import server.Clothe;
-import server.Outfit;
 import server.Type;
 import server.User;
 import server.dao.ClotheDAO;
 
-import java.io.*;
-import java.lang.reflect.Array;
 import java.sql.SQLException;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by Patrik on 07/06/2016.
@@ -76,10 +71,8 @@ public class ClotheController {
         String name = UUID.randomUUID().toString();
         if (!file.isEmpty()) {
             try {
-                File outputFile = new File(Clothe.ROOT + "/" + name);
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(outputFile));
-                FileCopyUtils.copy(file.getInputStream(), stream);
-                stream.close();
+
+                clotheDAO.addPhotoToClothe(clothe,file);
                 clotheDAO.add_clothe(clothe);
 
 

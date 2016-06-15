@@ -15,13 +15,13 @@ public class ClotheWithFile extends Clothe {
         this.file = file;
     }
 
+
     @Override
     public String toString() {
         return "ClotheWithFile{" +
                 "file=" + file +
                 '}';
     }
-    //
 
     public File getFile() {
         return file;
