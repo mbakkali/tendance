@@ -1,5 +1,7 @@
 package server.rest;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import org.springframework.boot.json.JsonParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
@@ -8,11 +10,14 @@ import server.Clothe;
 import server.Outfit;
 import server.dao.OutfitDAO;
 import server.dao.UserDAO;
+import server.moteur.PropositionLook;
+import server.moteur.Tenue;
 
 import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -25,6 +30,7 @@ import java.util.UUID;
 public class OutfitController {
 
     private OutfitDAO outfitDAO = new OutfitDAO();
+    private PropositionLook propositionLook = new PropositionLook();
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Outfit> getOutfitsByOwner(@RequestParam long owner) {
@@ -67,6 +73,16 @@ public class OutfitController {
         OutfitDAO.update_outfit(outfit);
     }
 
+    @RequestMapping(value = "/suggestion/{sexe}/{event}", method = RequestMethod.GET)
+    public List<List> suggestOutfit(@PathVariable int sexe, @PathVariable int event){
+
+        List<List> retour = new ArrayList<>();
+        Map<Float, Tenue> suggestion = propositionLook.proposerLook(sexe, event, 20);
+        for (Tenue tenue : suggestion.values()) {
+            retour.add(tenue.toJson());
+        }
+        return retour;
+    }
     @RequestMapping(value ="/add",method = RequestMethod.POST)
     public Outfit addOutfit(@RequestBody Outfit outfit,
                       @RequestBody MultipartFile selfie) {

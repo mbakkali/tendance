@@ -88,8 +88,6 @@ public class UserDAO {
                          rs.getString("phone"),
                          rs.getString("age")
                  );
-             }else{
-                 throw new SQLException();
              }
 
              return user;
