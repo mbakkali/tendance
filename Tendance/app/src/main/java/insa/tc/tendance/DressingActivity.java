@@ -41,7 +41,7 @@ import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
 
 /**
- * Created by Camille on 07/05/2016.
+ * Created by cemonet on 07/05/2016.
  * TODO Ajout de vêtement dans la BDD
  */
 public class DressingActivity extends AppCompatActivity {
@@ -85,6 +85,7 @@ public class DressingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent home = new Intent(DressingActivity.this, ActualiteActivity.class);
+                user.putUserIntoIntent(home);
                 startActivity(home);
             }
         });
@@ -94,6 +95,7 @@ public class DressingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent calendrier = new Intent(DressingActivity.this, CalendarActivity.class);
+                user.putUserIntoIntent(calendrier);
                 startActivity(calendrier);
             }
         });
@@ -103,6 +105,7 @@ public class DressingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent tshirt = new Intent(DressingActivity.this, DressingActivity.class);
+                user.putUserIntoIntent(tshirt);
                 startActivity(tshirt);
             }
         });
@@ -112,6 +115,7 @@ public class DressingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent friend = new Intent(DressingActivity.this, FriendActivity.class);
+                user.putUserIntoIntent(friend);
                 startActivity(friend);
             }
         });
@@ -120,8 +124,9 @@ public class DressingActivity extends AppCompatActivity {
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent user = new Intent(DressingActivity.this, PersonnelActivity.class);
-                startActivity(user);
+                Intent personnel = new Intent(DressingActivity.this, PersonnelActivity.class);
+                user.putUserIntoIntent(personnel);
+                startActivity(personnel);
             }
         });
 
@@ -138,7 +143,7 @@ public class DressingActivity extends AppCompatActivity {
         coat.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (name.equals("camille")){
+                if (name.equals("cemonet")){
                     showCoat();
                 } if (name.equals("pfortier")){
                     hshowCoat();
@@ -153,7 +158,7 @@ public class DressingActivity extends AppCompatActivity {
         top.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (name.equals("camille")){
+                if (name.equals("cemonet")){
                     showTop();
                 } if (name.equals("pfortier")){
                     hshowTop();
@@ -167,7 +172,7 @@ public class DressingActivity extends AppCompatActivity {
         trousers.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (name.equals("camille")){
+                if (name.equals("cemonet")){
                     showTrousers();
                 } if (name.equals("pfortier")){
                     hshowTrousers();
@@ -181,7 +186,7 @@ public class DressingActivity extends AppCompatActivity {
         dress.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (name.equals("camille")){
+                if (name.equals("cemonet")){
                     showDress();
                 } if (name.equals("pfortier")){
                     hshowDress();
@@ -195,7 +200,7 @@ public class DressingActivity extends AppCompatActivity {
         skirt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (name.equals("camille")){
+                if (name.equals("cemonet")){
                     showSkirt();
                 } if (name.equals("pfortier")){
                     hshowSkirt();
@@ -209,7 +214,7 @@ public class DressingActivity extends AppCompatActivity {
         shoes.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (name.equals("camille")){
+                if (name.equals("cemonet")){
                     showShoes();
                 } if (name.equals("pfortier")){
                     hshowShoes();
@@ -223,7 +228,7 @@ public class DressingActivity extends AppCompatActivity {
         other.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (name.equals("camille")){
+                if (name.equals("cemonet")){
                     showOther();
                 } if (name.equals("pfortier")){
                     hshowOther();
@@ -2307,9 +2312,7 @@ public class DressingActivity extends AppCompatActivity {
                         try {
                             List result = new GetSuggestion().execute(male, which).get();
                             showLook(result);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        } catch (ExecutionException e) {
+                        } catch (InterruptedException | ExecutionException e) {
                             e.printStackTrace();
                         }
                         //TODO: appeler fonction Lélé et appeler showLook

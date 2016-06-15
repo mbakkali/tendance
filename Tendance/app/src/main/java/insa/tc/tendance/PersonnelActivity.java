@@ -72,6 +72,7 @@ public class PersonnelActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent home = new Intent(PersonnelActivity.this, ActualiteActivity.class);
+                user.putUserIntoIntent(home);
                 startActivity(home);
             }
         });

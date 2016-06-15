@@ -51,6 +51,7 @@ public class FriendActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent home = new Intent(FriendActivity.this, ActualiteActivity.class);
+                mUser.putUserIntoIntent(home);
                 startActivity(home);
             }
         });
@@ -60,6 +61,7 @@ public class FriendActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent calendrier = new Intent(FriendActivity.this, CalendarActivity.class);
+                mUser.putUserIntoIntent(calendrier);
                 startActivity(calendrier);
             }
         });
@@ -69,6 +71,7 @@ public class FriendActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent tshirt = new Intent(FriendActivity.this, DressingActivity.class);
+                mUser.putUserIntoIntent(tshirt);
                 startActivity(tshirt);
             }
         });
@@ -78,6 +81,7 @@ public class FriendActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent friend = new Intent(FriendActivity.this, FriendActivity.class);
+                mUser.putUserIntoIntent(friend);
                 startActivity(friend);
             }
         });
@@ -86,8 +90,9 @@ public class FriendActivity extends Activity {
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent user = new Intent(FriendActivity.this, PersonnelActivity.class);
-                startActivity(user);
+                Intent personnel = new Intent(FriendActivity.this, PersonnelActivity.class);
+                mUser.putUserIntoIntent(personnel);
+                startActivity(personnel);
             }
         });
         //TODO Barre de recherge, onChangeListener on Submit listener + appel fonction recherge amis avec le contenu du SearchView.

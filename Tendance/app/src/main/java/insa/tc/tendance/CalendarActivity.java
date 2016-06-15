@@ -37,6 +37,8 @@ package insa.tc.tendance;
         import android.widget.LinearLayout;
         import android.widget.TextView;
 
+        import insa.tc.tendance.database.User;
+
 @TargetApi(3)
 public class CalendarActivity extends Activity implements OnClickListener {
     private static final String tag = "CalendarActivity";
@@ -61,6 +63,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
     ImageButton friend;
     ImageButton me;
     Button testOutfit;
+    User mUser;
 
     /** Called when the activity is first created. */
     @Override
@@ -68,11 +71,14 @@ public class CalendarActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar);
 
+        mUser = User.getUserFromIntent(getIntent());
+
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent home = new Intent(CalendarActivity.this, ActualiteActivity.class);
+                mUser.putUserIntoIntent(home);
                 startActivity(home);
             }
         });
@@ -82,6 +88,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
             @Override
             public void onClick(View v) {
                 Intent calendrier = new Intent(CalendarActivity.this, CalendarActivity.class);
+                mUser.putUserIntoIntent(calendrier);
                 startActivity(calendrier);
             }
         });
@@ -91,6 +98,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
             @Override
             public void onClick(View v) {
                 Intent tshirt = new Intent(CalendarActivity.this, DressingActivity.class);
+                mUser.putUserIntoIntent(tshirt);
                 startActivity(tshirt);
             }
         });
@@ -100,6 +108,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
             @Override
             public void onClick(View v) {
                 Intent friend = new Intent(CalendarActivity.this, FriendActivity.class);
+                mUser.putUserIntoIntent(friend);
                 startActivity(friend);
             }
         });
@@ -108,8 +117,9 @@ public class CalendarActivity extends Activity implements OnClickListener {
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent user = new Intent(CalendarActivity.this, PersonnelActivity.class);
-                startActivity(user);
+                Intent personel = new Intent(CalendarActivity.this, PersonnelActivity.class);
+                mUser.putUserIntoIntent(personel);
+                startActivity(personel);
             }
         });
 
@@ -119,6 +129,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
             @Override
             public void onClick(View v) {
                 Intent outfit = new Intent(CalendarActivity.this, OutfitView.class);
+                mUser.putUserIntoIntent(outfit);
                 startActivity(outfit);
             }
         });
@@ -463,7 +474,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
                 if (eventsPerMonthMap.containsKey(theday)) {
                     num_events_per_day = (TextView) row
                             .findViewById(R.id.num_events_per_day);
-                    Integer numEvents = (Integer) eventsPerMonthMap.get(theday);
+                    Integer numEvents = eventsPerMonthMap.get(theday);
                     num_events_per_day.setText(numEvents.toString());
                 }
             }

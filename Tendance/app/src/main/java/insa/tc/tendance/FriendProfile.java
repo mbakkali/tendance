@@ -35,7 +35,7 @@ public class FriendProfile extends Activity {
     ImageButton me;
 
     private User ami;
-    private User myprofil;
+    private User mUser;
 
     public void updateFriendButton(){
 
@@ -46,12 +46,16 @@ public class FriendProfile extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friendprofile);
 
+        mUser = User.getUserFromIntent(getIntent());
+        ami = User.getFriendFromIntent(getIntent());
+
 
         home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent home = new Intent(FriendProfile.this, ActualiteActivity.class);
+                mUser.putUserIntoIntent(home);
                 startActivity(home);
             }
         });
@@ -61,6 +65,7 @@ public class FriendProfile extends Activity {
             @Override
             public void onClick(View v) {
                 Intent calendrier = new Intent(FriendProfile.this, CalendarActivity.class);
+                mUser.putUserIntoIntent(calendrier);
                 startActivity(calendrier);
             }
         });
@@ -70,6 +75,7 @@ public class FriendProfile extends Activity {
             @Override
             public void onClick(View v) {
                 Intent tshirt = new Intent(FriendProfile.this, DressingActivity.class);
+                mUser.putUserIntoIntent(tshirt);
                 startActivity(tshirt);
             }
         });
@@ -79,6 +85,7 @@ public class FriendProfile extends Activity {
             @Override
             public void onClick(View v) {
                 Intent friend = new Intent(FriendProfile.this, FriendActivity.class);
+                mUser.putUserIntoIntent(friend);
                 startActivity(friend);
             }
         });
@@ -87,16 +94,14 @@ public class FriendProfile extends Activity {
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent userActivity = new Intent(FriendProfile.this, PersonnelActivity.class);
-                startActivity(userActivity);
+                Intent personnel = new Intent(FriendProfile.this, PersonnelActivity.class);
+                mUser.putUserIntoIntent(personnel);
+                startActivity(personnel);
             }
         });
 
         //Récupérer les infos du friend
         TendanceBDDHelper bddH = new TendanceBDDHelper(getApplicationContext() );
-        ami = User.getFriendFromIntent(getIntent());
-        System.out.println(ami);
-        myprofil = User.getUserFromIntent(getIntent());
 
 
         final SQLiteDatabase datab = bddH.getReadableDatabase();
@@ -144,7 +149,7 @@ public class FriendProfile extends Activity {
 
         final AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 
-        if(!myprofil.isFriendWith(ami)) {
+        if(!mUser.isFriendWith(ami)) {
             addFriend.setImageResource(R.drawable.plusadd);
             addFriend.setOnClickListener(new View.OnClickListener() {
                 @Override
