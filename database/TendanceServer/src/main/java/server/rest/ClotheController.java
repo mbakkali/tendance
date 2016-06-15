@@ -84,6 +84,15 @@ public class ClotheController {
         return clothe;
     }
 
+    @RequestMapping(value = "/types", method = RequestMethod.GET)
+    public List<Type> getTypes(){
+        try {
+            return clotheDAO.getAllTypes();
+        } catch (SQLException e) {
+            throw new InternalErrorException();
+        }
+    }
+    
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     private class InternalErrorException extends RuntimeException{
     }
