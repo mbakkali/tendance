@@ -39,7 +39,8 @@ public class Tenue {
 
 	public List<String> toJson() {
         List<String> json = new ArrayList<>();
-        json.add(coast);
+        if(coast != null)
+            json.add(coast);
         json.add(clothesUp);
         json.add(clothesDown);
         json.add(shoes);

@@ -110,7 +110,6 @@ public class PropositionLook {
 		if (sex == M) {
 
 			for (int k = 0; k < ManClothesUp.length; k++) {
-				System.out.println(ManClothesUp[k]);
 				for (int i = 0; i < ManClothesDown.length; i++) {
 
 					for (int j = 0; j < ManShoes.length; j++) {
@@ -134,7 +133,6 @@ public class PropositionLook {
 							Tenue LookEvents = new Tenue(ManClothesUp[k], ManClothesDown[i], ManShoes[j]);
 
 							items.put((float) res, LookEvents);
-							System.out.println(res);
 							for (int l = 0; l < tabMCDrUp.length-3; l++) {
 								temp2 = produit * tabMCDrUp[3+l][index];
 								res2 = temp2 * (somme + tabMCDrUp[l+3][index]);
@@ -142,7 +140,6 @@ public class PropositionLook {
 										ManShoes[j]);
 
 								items.put((float) res2, LookEvents2);
-								System.out.println(res2);
 
 
 							}
@@ -153,7 +150,6 @@ public class PropositionLook {
 										ManShoes[j]);
 
 								items.put((float) res2, LookEvents2);
-								System.out.println(res2);
 							}
 
 						} else {
@@ -182,22 +178,21 @@ public class PropositionLook {
 
 			// les tenue habill� costume
 			for (int k = 0; k < ManClothesDressUp.length-1; k++) {
-				System.out.println(ManClothesDressUp[k]);
 				for (int i = 0; i < ManClothesUp.length; i++) {
 
 					for (int j = 0; j < ManShoes.length; j++) {
 
 						if (weather > 18) {
-							System.out.println((3*ManShoes.length)+j);
+							/*System.out.println((3*ManShoes.length)+j);
 							System.out.println(tabMS[(3*ManShoes.length)+j][index]);
 							System.out.println(ManClothesUp[i]);
-							System.out.println(tabMCDrUp[i][index]);
+							System.out.println(tabMCDrUp[i][index]);*/
 							produit = tabMCDrUp[i][index] * tabMS[(3*ManShoes.length)+j][index] ;
 							res = produit * (tabMCDrUp[i][index] + tabMS[(3*ManShoes.length)+j][index]);
 							Tenue LookEvents = new Tenue(ManClothesUp[i], ManClothesDressUp[k], ManShoes[j]);
 							items.put((float) res, LookEvents);
-							System.out.println(LookEvents);
-							System.out.println(res);
+							//System.out.println(LookEvents);
+							//System.out.println(res);
 
 						} else {
 
@@ -216,7 +211,6 @@ public class PropositionLook {
 		} else {
 
 			for (int k = 0; k < WoManClothesUp.length; k++) {
-				System.out.println(WoManClothesUp[k]);
 				for (int i = 0; i < tabWCCC.length; i++) {
 
 					for (int j = 0; j < tabWS.length; j++) {
@@ -278,7 +272,6 @@ public class PropositionLook {
 
 			// les tenue habill�es
 			for (int k = 0; k < WoManClothesDressUp.length; k++) {
-				System.out.println(WoManClothesDressUp[k]);
 				for (int i = 0; i < tabWCDrUp.length; i++) {
 
 					for (int j = 0; j < tabWS.length; j++) {
@@ -316,15 +309,18 @@ public class PropositionLook {
 
 		// Parcours les keys et affiche celle superieur a seuil
 		int kk = 0;
-
-		for (float key : items.keySet()) {
-
+        List<Float> keys = (List<Float>) items.keySet();
+        Collections.reverse(keys);
+		for (float key : keys) {
 			if (key > seuil) {
-				//System.out.println("Cl� : " + key);
+				System.out.println("Cle : " + key);
 				//System.out.println("Cl� : " + items.get(key));
 				finalItems.put(key, items.get(key));
+
 				kk++;
 			}
+            if(kk == 3)
+                break;
 		}
 
 		return finalItems;
