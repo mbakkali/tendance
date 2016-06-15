@@ -21,6 +21,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -732,7 +733,7 @@ public class DressingActivity extends AppCompatActivity {
                             male = 1;
                         try {
                             List result = new GetSuggestion().execute(male, which).get();
-                            System.out.println(result);
+                            showLook(result);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         } catch (ExecutionException e) {
@@ -746,13 +747,17 @@ public class DressingActivity extends AppCompatActivity {
         helpDialog.show();
 
     }
-    private void showLook (String look){
+    private void showLook (List<ArrayList> look){
         AlertDialog.Builder helpBuilder = new android.app.AlertDialog.Builder(this);
-        String lookSug = look;
+        //String lookSug = look.get(0).toString();
         LinearLayout layout = new LinearLayout(this);
-        TextView suggestion = new TextView(this);
-        suggestion.setText(lookSug);
-        layout.addView(suggestion);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        for (ArrayList<String> lookSug : look) {
+            TextView suggestion = new TextView(this);
+            suggestion.setText(lookSug.toString());
+            layout.addView(suggestion);
+        }
+
         helpBuilder.setView(layout);
 
         helpBuilder.setTitle("Voici ta suggestion de look TENDANCE !");
