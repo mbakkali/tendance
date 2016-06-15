@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import insa.tc.tendance.camera.SelfieFile;
 import insa.tc.tendance.database.Clothe;
@@ -32,6 +33,7 @@ import insa.tc.tendance.dialog.AddClotheDialogFragment;
 import insa.tc.tendance.dialog.DescriptionDialogBuilder;
 import insa.tc.tendance.dialog.SelfieDialogFragment;
 import insa.tc.tendance.dialog.SendOutfitDialogBuilder;
+import insa.tc.tendance.requests.GetSuggestion;
 
 import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
@@ -725,6 +727,17 @@ public class DressingActivity extends AppCompatActivity {
                         Toast toast = makeText(getApplicationContext(), "style: "+ which,
                                 Toast.LENGTH_SHORT);
                         toast.show();
+                        int male = 0;
+                        if(user.isMale())
+                            male = 1;
+                        try {
+                            List result = new GetSuggestion().execute(male, which).get();
+                            System.out.println(result);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
                         //TODO: appeler fonction Lélé et appeler showLook
                         //1 homme, 0 femme
                     }
