@@ -36,42 +36,46 @@ public class PropositionLook {
 	// machine learning
 	// private final float tabMCCC[][] = new
 	// float[ManClothesDown.length][events[0].length];
-	private final float tabMCCC[][] = { { 0.33f, 0.17f, 0.07f, 0.12f, 0.23f, 0.22f },
-										{ 0.27f, 0.13f, 0.13f, 0.1f, 0.22f, 0.21f },
-										{ 0.08f, 0.0f, 0.0f, 0.0f, 0.0f, 0.19f } };
+    private final float tabMCCC[][] = { { 0.23f, 0.17f, 0.1f, 0.12f, 0.23f, 0.3f },
+            { 0.27f, 0.13f, 0.1f, 0.1f, 0.22f, 0.21f },
+            { 0.28f, 0.0f, 0.0f, 0.0f, 0.0f, 0.19f } };
 
-	private final float tabMCCT[][] = { { 0.21f, 0.23f, 0.0f, 0.16f, 0.1f, 0.22f },
-			                            { 0.23f, 0.17f, 0.1f, 0.15f, 0.2f, 0.21f },
-                                        { 0.19f, 0.0f, 0.0f, 0.0f, 0.0f, 0.18f } }; // ...
+    private final float tabMCCT[][] = { { 0.22f, 0.23f, 0.1f, 0.14f, 0.1f, 0.25f },
+            { 0.22f, 0.17f, 0.1f, 0.15f, 0.2f, 0.27f },
+            { 0.27f, 0.0f, 0.0f, 0.0f, 0.0f, 0.18f } }; // ...
 
-	private final float tabMCCP[][] = { { 0.23f, 0.25f, 0.0f, 0.17f, 0.1f, 0.23f },
-			{ 0.19f, 0.15f, 0.1f, 0.16f, 0.2f, 0.22f }, { 0.2f, 0.0f, 0.0f, 0.0f, 0.0f, 0.18f } };
+    private final float tabMCCP[][] = { { 0.26f, 0.25f, 0.1f, 0.17f, 0.1f, 0.27f },
+            { 0.24f, 0.15f, 0.1f, 0.16f, 0.2f, 0.25f },
+            { 0.29f, 0.0f, 0.0f, 0.0f, 0.0f, 0.1f } };
 
-	private final float tabMCDrUp[][] = { { 0.12f, 0.4f, 0.6f, 0.58f, 0.45f, 0.18f },
-			{ 0.17f, 0.28f, 0.4f, 0.55f, 0.4f, 0.19f }, { 0.15f, 0.27f, 0.4f, 0.54f, 0.4f, 0.17f },
-			{ 0.2f, 0.3f, 0.3f, 0.3f, 0.1f, 0.2f },
-			{ 0.2f, 0.32f, 0.57f, 0.24f, 0.3f, 0.2f }, { 0.21f, 0.33f, 0.5f, 0.23f, 0.3f, 0.2f }};
+    private final float tabMCDrUp[][] = { { 0.02f, 0.4f, 0.6f, 0.58f, 0.45f, 0.1f },
+            { 0.05f, 0.28f, 0.4f, 0.41f, 0.4f, 0.1f },
+            { 0.05f, 0.27f, 0.4f, 0.54f, 0.4f, 0.17f },
+            { 0.2f, 0.3f, 0.3f, 0.3f, 0.1f, 0.2f },
+            { 0.2f, 0.32f, 0.5f, 0.3f, 0.3f, 0.2f },
+            { 0.21f, 0.33f, 0.5f, 0.23f, 0.3f, 0.2f }};
+    //ordre jeans pantalon short costume
+    private final float tabMS[][] = {
+            { 0.33f, 0.1f, 0.1f, 0.1f, 0.1f, 0.4f },
+            { 0.32f, 0.4f, 0.3f, 0.4f, 0.3f, 0.3f },
+            { 0.1f, 0.4f, 0.5f, 0.5f, 0.6f, 0.05f },
+            { 0.25f, 0.1f, 0.1f, 0.0f, 0.0f, 0.25f },
+            { 0.4f, 0.32f, 0.1f, 0.25f, 0.25f, 0.4f },
+            { 0.1f, 0.15f, 0.1f, 0.15f, 0.15f, 0.1f },
+            { 0.15f, 0.33f, 0.7f, 0.6f, 0.6f, 0.23f },
+            { 0.35f, 0.2f, 0.0f, 0.0f, 0.0f, 0.27f },
+            { 0.55f, 0.0f, 0.0f, 0.0f, 0.0f, 0.6f },
+            { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
+            { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
+            { 0.45f, 0.0f, 0.0f, 0.0f, 0.0f, 0.4f },
+            { 0.4f, 0.3f, 0.3f, 0.3f, 0.3f, 0.4f },
+            { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
+            { 0.3f, 0.7f, 0.7f, 0.7f, 0.6f, 0.5f },
+            { 0.3f, 0.0f, 0.0f, 0.0f, 0.1f, 0.1f }};
 
-	private final float tabMS[][] = {
-                                    { 0.33f, 0.12f, 0.1f, 0.1f, 0.1f, 0.5f },
-                                    { 0.32f, 0.4f, 0.3f, 0.3f, 0.3f, 0.3f },
-                                    { 0.2f, 0.4f, 0.6f, 0.6f, 0.6f, 0.1f },
-			                        { 0.15f, 0.8f, 0.0f, 0.0f, 0.0f, 0.1f },
-			                        { 0.3f, 0.32f, 0.1f, 0.25f, 0.25f, 0.27f },
-			                        { 0.1f, 0.15f, 0.1f, 0.15f, 0.15f, 0.1f },
-                                    { 0.3f, 0.33f, 0.8f, 0.6f, 0.6f, 0.4f },
-                                    { 0.3f, 0.2f, 0.0f, 0.0f, 0.0f, 0.23f },
-                                    { 0.55f, 0.0f, 0.0f, 0.0f, 0.0f, 0.6f },
-                                    { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
-                                    { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
-                                    { 0.6f, 0.0f, 0.0f, 0.0f, 0.0f, 0.4f },
-			                        { 0.2f, 0.1f, 0.1f, 0.1f, 0.2f, 0.3f },
-			                        { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
-                                    { 0.8f, 0.9f, 0.9f, 0.9f, 0.7f, 0.6f },
-                                    { 0.0f, 0.0f, 0.0f, 0.0f, 0.1f, 0.1f }};
-
-	private final float tabMC[][] = { {0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f },
-			{ 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f }, { 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f }};
+    private final float tabMC[][] = { {0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f },
+            { 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f },
+            { 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f }};
 	// MCCC0manclothescouplechemise,polo,t-shirt
 	private final float tabWCCC[][] = new float[WoManClothesDown.length][events[0].length];
 	private final float tabWCCT[][] = new float[WoManClothesDown.length][events[0].length]; // ...
@@ -309,11 +313,15 @@ public class PropositionLook {
 
 		// Parcours les keys et affiche celle superieur a seuil
 		int kk = 0;
-        List<Float> keys = (List<Float>) items.keySet();
-        Collections.reverse(keys);
-		for (float key : keys) {
+        ArrayList<Float> listkey = new ArrayList<>();;
+        items.keySet().forEach((key) -> {
+            listkey.add(key);
+        });
+        Collections.sort(listkey);
+        Collections.reverse(listkey);
+		for (float key : listkey) {
 			if (key > seuil) {
-				System.out.println("Cle : " + key);
+				//System.out.println("Cle : " + key);
 				//System.out.println("Cl� : " + items.get(key));
 				finalItems.put(key, items.get(key));
 
