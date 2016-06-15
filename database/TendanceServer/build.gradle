@@ -23,6 +23,7 @@ mainClassName = 'server.App'
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web" )
     compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework:spring-test")
     runtime('mysql:mysql-connector-java')
     testCompile("junit:junit")
 }
