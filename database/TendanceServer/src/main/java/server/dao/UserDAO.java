@@ -69,7 +69,7 @@ public class UserDAO {
     }
 
     public User getUserByMailAndPassword(String mail, String password) throws SQLException {
-         User user = null;
+             User user = null;
 
              PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
              ps.setString(1, mail);
@@ -88,6 +88,8 @@ public class UserDAO {
                          rs.getString("phone"),
                          rs.getString("age")
                  );
+             }else{
+                 throw new SQLException();
              }
 
              return user;

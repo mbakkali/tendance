@@ -21,6 +21,7 @@ public class LoginController {
             System.out.println(mail + " " + password);
 
             user = userDAO.getUserByMailAndPassword(mail,password);
+            System.out.println(user);
             return user;
         } catch (SQLException e) {
             throw new ForbiddenException();
