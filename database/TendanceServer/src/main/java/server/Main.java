@@ -1,13 +1,9 @@
 
 package server;
 
-import org.springframework.mock.web.MockMultipartFile;
 import server.dao.ClotheDAO;
 import server.dao.OutfitDAO;
-
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
+import server.dao.UserDAO;
 
 
 public class Main {
@@ -22,8 +18,13 @@ public class Main {
             ClotheDAO c = new ClotheDAO();
             Clothe clothe = c.getClotheById(2);
 
+            UserDAO userDAO = new UserDAO();
+            User userA = userDAO.getUserByID(1);
+            User userB = userDAO.getUserByID(123);
 
-            File file = new File("dcoat1.png");
+            System.out.println(userDAO.isFriended(userA,userB));
+
+           /* File file = new File("dcoat1.png");
 
             if (file.exists()) {
 
@@ -38,7 +39,7 @@ public class Main {
                 System.out.println(c.addPhotoToClothe(clothe,m));
 
                 System.out.println("Ok addSelfietoDatabase");
-            }
+            }*/
 
 
 

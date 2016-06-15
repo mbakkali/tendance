@@ -65,10 +65,11 @@ public class ClotheController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/add")
-    public Clothe add( @RequestBody Clothe clothe,
-                       @RequestBody MultipartFile file) {
+    @RequestMapping(method = RequestMethod.POST, value = "/add/{id}")
+    public Clothe add(@RequestBody MultipartFile file, @PathVariable long id) {
         String name = UUID.randomUUID().toString();
+        Clothe clothe = new Clothe();
+        clothe.setUser_id(id);
         if (!file.isEmpty()) {
             try {
 

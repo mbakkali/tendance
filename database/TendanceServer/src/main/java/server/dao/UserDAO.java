@@ -140,6 +140,7 @@ public class UserDAO {
         ps.setString(1,username);
 
         ResultSet rs = ps.executeQuery();
+
         while(rs.next()){
             user = new User(rs.getLong("user_id"),
                             rs.getString("username"),
@@ -151,5 +152,35 @@ public class UserDAO {
     }
 
     public void addFriend(User user) throws SQLException {}
-    public void delFriend(User user) throws SQLException {}
+
+    public boolean isFriended(User userA,User userB) throws SQLException {
+        boolean bool = false;
+        PreparedStatement ps = connection.prepareStatement("SELECT EXISTS (SELECT * FROM relationships WHERE user_id =? AND friend_id =?);");
+
+        ps.setLong(1,userA.getUser_id());
+        ps.setLong(2,userB.getUser_id());
+
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            bool = true;
+        }
+        return bool;
+    }
+
+
+    public void delFriend(User user, User friend) throws SQLException {
+        String query = "DELETE FROM `Tendance`.`relationships` WHERE `relationships`.`user_id` = ? AND `relationships`.`friend_id` = ?;";
+        PreparedStatement pstmnt = connection.prepareStatement(query);
+
+        pstmnt.setLong(1,user.getUser_id());
+        pstmnt.setLong(2,friend.getUser_id());
+        pstmnt.executeUpdate();
+
+
+        int rowsUpdated = pstmnt.executeUpdate();
+
+        System.out.println("L'amitié supprimée entre "+user.getUsername()+" et "+friend.getUsername());
+
+        pstmnt.close();
+    }
 }

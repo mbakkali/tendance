@@ -19,7 +19,6 @@ public class LoginController {
         User user = null;
         try {
             System.out.println(mail + " " + password);
-
             user = userDAO.getUserByMailAndPassword(mail,password);
             System.out.println(user);
             return user;

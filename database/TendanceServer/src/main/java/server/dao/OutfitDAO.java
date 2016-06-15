@@ -88,8 +88,6 @@ public class OutfitDAO {
 
 
     public static void update_outfit(Outfit outfit) throws SQLException{
-
-
             PreparedStatement ps = connection.prepareStatement(
                   "  UPDATE `Tendance`.`outfits` SET `outfit_id` = ?,`timestamp` = ?, `description` = ?, `photo` = ?, `style_id` = ?, `user_id` = ?, `event_id` = ? WHERE `outfits`.`outfit_id` = ?;");
 
@@ -117,8 +115,6 @@ public class OutfitDAO {
 
         //long[] tab = new long[2];
         List<Outfit> outfits = new ArrayList<>();
-
-
             Outfit outfit;
             String query = "SELECT outfits.* from outfits, users  WHERE users.user_id= outfits.user_id and users.user_id=?";
             PreparedStatement pstmnt = connection.prepareStatement(query);
@@ -197,7 +193,6 @@ public class OutfitDAO {
                 //Updating database
                 outfit.setPhoto(path);
                 OutfitDAO.update_outfit(outfit);
-
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

@@ -94,8 +94,10 @@ public class ClotheDAO {
 
 
     public Clothe addPhotoToClothe(Clothe clothe, MultipartFile photo) throws SQLException {
+
         String name = UUID.randomUUID().toString();
         String path = Clothe.ROOT+"/"+name;
+
         if (!photo.isEmpty()) {
             try {
 
