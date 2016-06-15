@@ -1,11 +1,15 @@
 package server.dao;
 
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.multipart.MultipartFile;
 import server.*;
 
-import java.io.*;
-import java.sql.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -93,19 +97,17 @@ public class ClotheDAO {
     }
 
 
-    public Clothe addPhotoToClothe(Clothe clothe, MultipartFile photo) throws SQLException {
+    public Clothe addPhotoToClothe(ClotheWithFile clotheWithFile) throws SQLException {
 
         String name = UUID.randomUUID().toString();
-        String path = Clothe.ROOT+"/"+name;
+        String path = Clothe.ROOT+"/"+name+".png";
+        Clothe clothe = clotheWithFile;
 
-        if (!photo.isEmpty()) {
+        if (clotheWithFile.getFile().exists()) {
             try {
 
                 //Saving the picture in the the ROOT directory
-                File outputFile = new File(path);
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(outputFile));
-                FileCopyUtils.copy(photo.getInputStream(), stream);
-                stream.close();
+                FileCopyUtils.copy(clotheWithFile.getFile(), new File(path));
 
                 //Updating database
                 clothe.setClothe_photo(path);

@@ -2,8 +2,8 @@ package server.rest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import server.Clothe;
+import server.ClotheWithFile;
 import server.Type;
 import server.User;
 import server.dao.ClotheDAO;
@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * Created by Patrik on 07/06/2016.
@@ -66,16 +65,13 @@ public class ClotheController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/add/{id}")
-    public Clothe add(@RequestBody MultipartFile file, @PathVariable long id) {
-        String name = UUID.randomUUID().toString();
-        Clothe clothe = new Clothe();
-        clothe.setUser_id(id);
-        if (!file.isEmpty()) {
+    public Clothe add(@RequestBody ClotheWithFile clotheWithFile, @PathVariable long id) {
+        Clothe clothe = clotheWithFile;
+        if (clotheWithFile.getFile().exists()) {
             try {
 
-                clotheDAO.addPhotoToClothe(clothe,file);
+                clotheDAO.addPhotoToClothe(clotheWithFile);
                 clotheDAO.add_clothe(clothe);
-
 
            } catch (Exception e){
                 System.out.println("Problème dans add_Clothes");

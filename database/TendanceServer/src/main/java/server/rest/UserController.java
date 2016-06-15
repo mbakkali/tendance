@@ -76,7 +76,7 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value = "{1}/friends", method = RequestMethod.GET)
+    @RequestMapping(value = "{user_id}/friends", method = RequestMethod.GET)
     public List<User> getFriends(@PathVariable Long user_id){
         List<User> friends;
         try {

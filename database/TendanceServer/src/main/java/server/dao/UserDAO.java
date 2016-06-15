@@ -32,20 +32,13 @@ public class UserDAO {
 
     public void del_user(User user) throws SQLException {
 
-            String query = "DELETE from users WHERE username=? AND user_id=?;";
+            String query = "DELETE from users WHERE user_id=?;";
             PreparedStatement pstmnt = connection.prepareStatement(query);
 
             pstmnt.setLong(1,user.getUser_id());
-            pstmnt.setString(2,user.getUsername());
             pstmnt.executeUpdate();
 
-            int rowsUpdated = pstmnt.executeUpdate();
-
-            if (rowsUpdated == 0) {
-                System.out.println("> L'utilisateur "+user.getUsername()+" avec l'ID "+user.getUser_id()+" est introuvable");
-            } else {
-                System.out.println("> Utilisateur"+user.getUsername()+" a été supprimé de la base users");
-            }
+            System.out.println("> Utilisateur"+user.getUsername()+" a été supprimé de la base users");
             pstmnt.close();
     }
 
@@ -151,11 +144,27 @@ public class UserDAO {
         return users;
     }
 
-    public void addFriend(User user) throws SQLException {}
+    public void addFriend(User user,User friend) throws SQLException {
+
+        if(isFriended(user,friend)==false){
+
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `Tendance`.`relationships` (`friended`, `user_id`, `friend_id`) VALUES (CURRENT_TIMESTAMP, ?, ?)");
+            pstmt.setLong(1, user.getUser_id());
+            pstmt.setLong(2, friend.getUser_id());
+
+            pstmt.executeUpdate();
+            System.out.println(user.getUsername() +"et"+friend.getUser_id() +" sonts amis");
+        }
+
+        else{
+            System.out.println("Deja amis");
+        }
+
+    }
 
     public boolean isFriended(User userA,User userB) throws SQLException {
         boolean bool = false;
-        PreparedStatement ps = connection.prepareStatement("SELECT EXISTS (SELECT * FROM relationships WHERE user_id =? AND friend_id =?);");
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM relationships WHERE user_id =? AND friend_id =?;");
 
         ps.setLong(1,userA.getUser_id());
         ps.setLong(2,userB.getUser_id());
@@ -164,6 +173,7 @@ public class UserDAO {
         if(rs.next()){
             bool = true;
         }
+
         return bool;
     }
 

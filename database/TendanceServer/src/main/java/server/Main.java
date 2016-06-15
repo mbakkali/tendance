@@ -19,22 +19,18 @@ public class Main {
             Clothe clothe = c.getClotheById(2);
 
             UserDAO userDAO = new UserDAO();
-            User userA = userDAO.getUserByID(1);
-            User userB = userDAO.getUserByID(123);
+            User userA = userDAO.getUserByID(40);
 
-            System.out.println(userDAO.isFriended(userA,userB));
+            userDAO.del_user(userA);
 
-           /* File file = new File("dcoat1.png");
+            //userDAO.delFriend(userA,userB);
+
+/*
+           File file = new File("dcoat1.png");
 
             if (file.exists()) {
 
-                FileInputStream fileInputStream = new FileInputStream(file);
-                System.out.println("Ok FileInputStream");
 
-                BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file));
-                System.out.println("Ok BufferedInputStream");
-
-                MockMultipartFile m = new MockMultipartFile("name",fileInputStream);
                 System.out.println("Ok MockMultipartFile");
                 System.out.println(c.addPhotoToClothe(clothe,m));
 

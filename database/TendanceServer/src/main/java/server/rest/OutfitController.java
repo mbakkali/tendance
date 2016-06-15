@@ -1,12 +1,11 @@
 package server.rest;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import org.springframework.boot.json.JsonParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import server.Clothe;
 import server.Outfit;
+import server.User;
 import server.dao.OutfitDAO;
 import server.moteur.PropositionLook;
 import server.moteur.Tenue;
@@ -53,12 +52,28 @@ public class OutfitController {
         }
     }
 
-    @RequestMapping(value = "/favorite", method = RequestMethod.GET)
-    public List<Outfit> getFavoriteByOwner(long owner){
-        List<Outfit> favorites = new ArrayList<>();
-        favorites.add(new Outfit(1,"petit outfit posé", "Outfit 1", null, 1));
-        return favorites;
+  @RequestMapping(value = "/favorite", method = RequestMethod.GET)
+    public List<Outfit> getFavoriteByOwner(List<User> user_list){
+
+      try {
+          List<Outfit> outfit_list = new ArrayList<>();
+          Outfit outfit ;
+          for (int i = 0; i < outfit_list.size(); i++) {
+              outfit = outfitDAO.getOutfitsByUser(i).get(i);
+              user_list.get(i);
+              outfit_list.add(outfit);
+          }
+          return outfit_list;
+      }
+      catch (SQLException e){
+          e.printStackTrace();
+          throw new InternalErrorException();
+      }
     }
+
+
+
+
 
 
     @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
