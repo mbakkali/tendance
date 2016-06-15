@@ -133,28 +133,21 @@ public class UserDAO {
         return friends;
     }
 
-    public User getUserByUsername(String username ) throws SQLException {
+    public List<User> getUsersByUsername(String username) throws SQLException{
+        List<User> users = new ArrayList<>();
+        User user= null;
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE username LIKE ?");
+        ps.setString(1,username);
 
-        User user = null;
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE users.mail = ? AND users.password = ? ;");
-            ps.setString(1, username);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                user = new User(
-                        rs.getLong("user_id"),
-                        rs.getString("username"),
-                        rs.getString("mail"),
-                        rs.getString("profil_picture"),
-                        rs.getString("bio"),
-                        rs.getBoolean("male"),
-                        rs.getBoolean("private"),
-                        rs.getString("phone"),
-                        rs.getString("age")
-                );
-            }
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            user = new User(rs.getLong("user_id"),
+                            rs.getString("username"),
+                            rs.getString("profil_picture"));
+            users.add(user);
+        }
 
-
-        return user;
+        return users;
     }
 
     public void addFriend(User user) throws SQLException {}

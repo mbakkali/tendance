@@ -78,6 +78,12 @@ public class User implements Serializable{
         this.age = age;
     }
 
+    public User(long user_id, String username, String profilpicture) {
+        this.user_id = user_id;
+        this.username = username;
+        this.profilpicture = profilpicture;
+    }
+
 
     public long getUser_id() {return user_id;}
     public String getUsername() {return username;}
