@@ -267,7 +267,6 @@ public class FriendActivity extends Activity {
 
         protected void onPostExecute(User... users) {
             if(users!=null) {
-
                 afficherSearch(users);
             }
         }

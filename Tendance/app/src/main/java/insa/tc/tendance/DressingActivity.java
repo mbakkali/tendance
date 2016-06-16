@@ -150,9 +150,9 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
             public void onClick(View v) {
                 if (name.equals("cemonet")){
                     showCoat();
-                } if (name.equals("pfortier")){
+                }else if (name.equals("pfortier")){
                     hshowCoat();
-                } else {
+                }else {
                     eshowCoat();
                 }
 

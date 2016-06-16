@@ -8,20 +8,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
 
 import insa.tc.tendance.database.TendanceBDDHelper;
 import insa.tc.tendance.database.User;
+import insa.tc.tendance.requests.FriendAddRequest;
+import insa.tc.tendance.requests.FriendDelRequest;
 
 /**
  * Created by Camille on 30/05/2016.
@@ -162,14 +159,13 @@ public class FriendProfile extends Activity {
                             new DialogInterface.OnClickListener() {
 
                                 public void onClick(DialogInterface dialog, int which) {
-                                    //TODO: ajouter le user dans la liste d'amis
+                                    new FriendAddRequest().execute(mUser,ami);
                                 }
                             });
                     helpBuilder.setNegativeButton("NON",
                             new DialogInterface.OnClickListener() {
 
                                 public void onClick(DialogInterface dialog, int which) {
-                                    //TODO: supprimer le user de la liste d'amis
                                 }
                             });
 
@@ -190,7 +186,7 @@ public class FriendProfile extends Activity {
                             new DialogInterface.OnClickListener() {
 
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // Do nothing but close the dialog
+                                   new FriendDelRequest().execute(mUser,ami);
                                 }
                             });
                     helpBuilder.setNegativeButton("NON",

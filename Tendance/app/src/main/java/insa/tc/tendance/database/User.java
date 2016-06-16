@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.Gson;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -26,6 +27,8 @@ import insa.tc.tendance.requests.LoginRequest;
 /**
  * Created by patrik on 18/05/16.
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User implements Serializable{
     private long user_id;
     private String username;

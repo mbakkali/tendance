@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import insa.tc.tendance.R;
 import insa.tc.tendance.camera.SelfieFile;
 
-public class SelfieDialogFragment extends DialogFragment {
+public class SelfieDialogFragment extends DialogFragment   {
 
     private ImageView mImageView;
     private Button mButton;
