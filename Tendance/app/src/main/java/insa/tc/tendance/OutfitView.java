@@ -90,14 +90,6 @@ public class OutfitView extends Activity {
             }
         });
 
-        String date= "11/04/16";
-        String description ="Blaba blablablabla balabab lababala bablaba balab #style #mode #ootf";
-
-        dateView = (TextView) findViewById(R.id.date);
-        dateView.setText(date);
-
-        descriptionView =(TextView) findViewById(R.id.description);
-        descriptionView.setText(description);
 
 
     }

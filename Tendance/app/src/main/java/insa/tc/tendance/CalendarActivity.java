@@ -129,7 +129,6 @@ public class CalendarActivity extends Activity implements OnClickListener {
             @Override
             public void onClick(View v) {
                 Intent outfit = new Intent(CalendarActivity.this, OutfitView.class);
-                mUser.putUserIntoIntent(outfit);
                 startActivity(outfit);
             }
         });
@@ -531,19 +530,7 @@ public class CalendarActivity extends Activity implements OnClickListener {
     }
 
     private void showDate() {
-
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        helpBuilder.setTitle("Affichage du look ou création d'un nouveau");
-
-        helpBuilder.setPositiveButton("Ok",
-                new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
-                    }
-                });
-
-        AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
+        Intent outfit = new Intent(CalendarActivity.this, OutfitView.class);
+        startActivity(outfit);
     }
 }
