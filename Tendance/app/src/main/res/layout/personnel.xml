@@ -96,7 +96,7 @@
                         android:layout_height="55dp"
                         android:layout_margin="10dp"
                         android:id="@+id/userPicture"
-                        android:src="@drawable/me"
+                        android:src="@drawable/pike2"
                         android:background="#FF0000"
                         android:layout_weight="0.08" />
 

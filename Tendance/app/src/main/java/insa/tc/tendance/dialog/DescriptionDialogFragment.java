@@ -41,7 +41,7 @@ public class DescriptionDialogFragment extends DialogFragment implements TextVie
         mRadiogroup = new RadioGroup(getContext());
         RadioButton mRadiobutton;
         int i = 0;
-        String[] strs = new String[]{"casual", "gala / cocktail", "enterrement", "mariage / baptême", "Soirée entre amis"};
+        String[] strs = new String[]{"casual", "gala / cocktail", "enterrement", "mariage / baptême","entretien / réunion ", "Soirée entre amis"};
         for (String str: strs) {
             mRadiobutton = new RadioButton(getContext());
             mRadiobutton.setText(str);

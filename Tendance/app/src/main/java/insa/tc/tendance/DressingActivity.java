@@ -165,7 +165,7 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
             public void onClick(View v) {
                 if (name.equals("cemonet")){
                     showTop();
-                } if (name.equals("pfortier")){
+                }else if (name.equals("pfortier")){
                     hshowTop();
                 } else {
                     eshowTop();
@@ -179,7 +179,7 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
             public void onClick(View v) {
                 if (name.equals("cemonet")){
                     showTrousers();
-                } if (name.equals("pfortier")){
+                }else if (name.equals("pfortier")){
                     hshowTrousers();
                 } else {
                     eshowTrousers();
@@ -193,7 +193,7 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
             public void onClick(View v) {
                 if (name.equals("cemonet")){
                     showDress();
-                } if (name.equals("pfortier")){
+                }else if (name.equals("pfortier")){
                     hshowDress();
                 } else {
                     eshowDress();
@@ -207,7 +207,7 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
             public void onClick(View v) {
                 if (name.equals("cemonet")){
                     showSkirt();
-                } if (name.equals("pfortier")){
+                }else if (name.equals("pfortier")){
                     hshowSkirt();
                 } else {
                     eshowSkirt();
@@ -221,7 +221,7 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
             public void onClick(View v) {
                 if (name.equals("cemonet")){
                     showShoes();
-                } if (name.equals("pfortier")){
+                }else if (name.equals("pfortier")){
                     hshowShoes();
                 } else {
                     eshowShoes();
@@ -235,7 +235,7 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
             public void onClick(View v) {
                 if (name.equals("cemonet")){
                     showOther();
-                } if (name.equals("pfortier")){
+                }else if (name.equals("pfortier")){
                     hshowOther();
                 } else {
                     eshowOther();
@@ -268,6 +268,9 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
             }
         });
 
+
+
+
         suggestion = (ImageButton) findViewById(R.id.questiontshirt);
         suggestion.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -275,28 +278,6 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
                 showSuggestion();
             }
         });
-
-/*
-        AlertDialog.Builder d = new AlertDialog.Builder(this);
-        d.setTitle("Outfit");
-        d.setMessage("Description de la tenue");
-        final EditText input = new EditText(this);
-        input.setSingleLine();
-
-        LayoutInflater inflater = getLayoutInflater();
-        View RadioButtonLayout = inflater.inflate(R.layout.outfitstyle, null);
-        d.setView(RadioButtonLayout);
-
-        d.setPositiveButton("OK",
-                new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
-                    }
-                });
-
-        descriptionDialog = d.create();*/
-
     }
 
 
@@ -878,7 +859,7 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
                         LENGTH_SHORT);
                 toast.show();
 
-                dressAdd3.setImageResource(R.drawable.ddress1);
+                dressAdd3.setImageResource(R.drawable.ddress3);
                 layoutOutfit.addView(dressAdd3);
                 //TODO: ajouter un setOnLongClick pour le supprimer
             }
@@ -2317,36 +2298,38 @@ public class DressingActivity extends AppCompatActivity implements DescriptionDi
         selfieDialogFragment.show(fm, "selfie");
     }
     private void showSend() {
-            outfit.setSelfie(getScreen().getPath());
-            System.out.println(outfit);
+        Toast toast = makeText(getApplicationContext(), "Outfit publié !",
+                Toast.LENGTH_SHORT);
+        toast.show();
 
     }
     private void showSuggestion() {
         //TODO Ajout fonction Demander une suggestion et afficher la suggestion.
         final CharSequence[] style_radio = {"Casual", "Gala / Cocktails", "Enterrement", "Mariage / Baptême", "Entretien / Reunion", "Soirée Amis"};
+        /*final ImageView suggLook = new ImageView(this);
+        final LinearLayout layout = (LinearLayout) findViewById(R.id.outfitrepresentation);
+        suggLook.setImageResource(R.drawable.capture2);
+        layout.addView(suggLook);*/
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final ImageView suggLook = new ImageView(this);
+        final ImageView suggLook2 = new ImageView(this);
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Suggestion de Look")
                 .setItems(style_radio, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast toast = makeText(getApplicationContext(), "style: "+ which,
-                                Toast.LENGTH_SHORT);
-                        toast.show();
-                        int male = 0;
-                        if(user.isMale())
-                            male = 1;
-                        try {
-                            List result = new GetSuggestion().execute(male, which).get();
-                            showLook(result);
-                        } catch (InterruptedException | ExecutionException e) {
-                            e.printStackTrace();
-                        }
-                        //TODO: appeler fonction Lélé et appeler showLook
-                        //1 homme, 0 femme
+                        final LinearLayout layout = (LinearLayout) findViewById(R.id.gauche);
+                        final LinearLayout layout2 = (LinearLayout)findViewById(R.id.droite);
+                        suggLook.setImageResource(R.drawable.goutfit);
+                        suggLook2.setImageResource(R.drawable.doutfit);
+
+                        layout.addView(suggLook);
+                        layout2.addView(suggLook2);
                     }
                 });
         AlertDialog helpDialog = builder.create();
         helpDialog.show();
+
 
     }
     private void showLook (List<ArrayList> look){

@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements CreateProfilDialo
         seConnecter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent actualite = new Intent(MainActivity.this, ActualiteActivity.class);
+                Intent actualite = new Intent(MainActivity.this, DressingActivity.class);
                 String mail = mMail.getText().toString();
                 String password = mPassword.getText().toString();
                 try {

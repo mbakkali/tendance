@@ -194,7 +194,7 @@ public class ActualiteActivity extends Activity {
                 }
             }
         });
-        /*like2 = (ImageButton)findViewById(R.id.like2);
+        like2 = (ImageButton)findViewById(R.id.like2);
         like2.setOnClickListener(new View.OnClickListener() {
             int i =0;
 
@@ -208,7 +208,7 @@ public class ActualiteActivity extends Activity {
                     i = i + 1;
                 }
             }
-        });*/
+        });
         like3 = (ImageButton)findViewById(R.id.like3);
         like3.setOnClickListener(new View.OnClickListener() {
             int i =0;

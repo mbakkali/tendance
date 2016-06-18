@@ -104,7 +104,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:id="@+id/userPicture1"
-                            android:src="@drawable/fakepic"/>
+                            android:src="@drawable/pike2"/>
 
                         <LinearLayout
                             android:orientation="vertical"
@@ -117,7 +117,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:text="Léa_"
+                                android:text="Pfortier"
                                 android:id="@+id/userName1"
                                 android:textColor="@color/black"
                                 android:textSize="26dp"/>
@@ -126,7 +126,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:text="24/05/2016"
+                                android:text="20/06/2016"
                                 android:id="@+id/date1"
                                 android:textColor="@color/rouge"
                                 android:textStyle="bold"
@@ -137,7 +137,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
-                        android:text="Look du jour ! #OOTD #Chic #Summer #Skirt #HighHeels #Fashion "
+                        android:text="Au top avec Tendance #OOTD #Tendance #Fashion"
                         android:id="@+id/descr1"
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="0.17"
@@ -158,7 +158,7 @@
                             android:id="@+id/outfit1"
                             android:layout_gravity="center_vertical"
                             android:background="@color/blanc"
-                            android:src="@drawable/outfit1"/>
+                            android:src="@drawable/capture2"/>
 
 
 
@@ -168,7 +168,7 @@
                             android:id="@+id/selfie1"
                             android:layout_gravity="center_vertical"
                             android:background="@color/blanc"
-                            android:src="@drawable/outfit2"/>
+                            android:src="@drawable/outfit23"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -226,7 +226,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Margo"
+                            android:text="Margo_S"
                             android:id="@+id/userName2"
                             android:textColor="@color/black"
                             android:textSize="26dp"/>
@@ -235,7 +235,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="04/05/2016"
+                            android:text="19/06/2016"
                             android:id="@+id/date2"
                             android:textColor="@color/rouge"
                             android:textStyle="bold"
@@ -246,7 +246,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Look du jour ! #OOTD #Chic #Summer #Skirt #HighHeels #Fashion"
+                    android:text="Look du jour ! #OOTD #Chic #Summer #Dress #Green #Jean #HighHeels #Fashion"
                     android:id="@+id/descr2"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="0.17"
@@ -267,14 +267,14 @@
                         android:id="@+id/outfit2"
                         android:layout_gravity="center_vertical"
                         android:background="@color/blanc"
-                        android:src="@drawable/outfit1"/>
+                        android:src="@drawable/capture1"/>
                     <ImageView
                         android:layout_width="160dp"
                         android:layout_height="270dp"
                         android:id="@+id/selfie2"
                         android:layout_gravity="center_vertical"
                         android:background="@color/blanc"
-                        android:src="@drawable/outfit2"/>
+                        android:src="@drawable/outfit21"/>
                 </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
@@ -340,7 +340,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="04/05/2016"
+                            android:text="19/06/2016"
                             android:id="@+id/date3"
                             android:textColor="@color/rouge"
                             android:textStyle="bold"
@@ -351,7 +351,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Look du jour ! #OOTD #Chic #Summer #Skirt #HighHeels #Fashion"
+                    android:text="Du jean et encore du jean ! #Jeans #OOTD #Girl #Fashion"
                     android:id="@+id/descr"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="0.17"
@@ -372,14 +372,14 @@
                         android:id="@+id/outfit3"
                         android:layout_gravity="center_vertical"
                         android:background="@color/blanc"
-                        android:src="@drawable/outfit1"/>
+                        android:src="@drawable/capture3"/>
                     <ImageView
                         android:layout_width="160dp"
                         android:layout_height="270dp"
                         android:id="@+id/selfie3"
                         android:layout_gravity="center_vertical"
                         android:background="@color/blanc"
-                        android:src="@drawable/outfit2"/>
+                        android:src="@drawable/outfit22"/>
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="horizontal"
